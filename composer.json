@@ -1,0 +1,22 @@
+{
+    "name": "vasildakov/speedy",
+    "description": "Speedy API Client",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "10.0.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vasildakov\\Speedy\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vasil",
+            "email": "vasildakov@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
