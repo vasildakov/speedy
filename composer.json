@@ -2,13 +2,15 @@
     "name": "vasildakov/speedy",
     "description": "Speedy API Client",
     "type": "library",
-    "require-dev": {
-        "phpunit/phpunit": "10.0.x-dev"
-    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Vasildakov\\Speedy\\": "src/"
+            "VasilDakov\\Speedy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VasilDakov\\SpeedyTest\\": "test/"
         }
     },
     "authors": [
@@ -18,5 +20,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": "^7.3 || ~8.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
