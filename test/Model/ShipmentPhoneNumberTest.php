@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class ShipmentPhoneNumberTest
  *
@@ -11,7 +13,7 @@ namespace VasilDakov\SpeedyTest\Model;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-class ShipmentPhoneNumberTest
+class ShipmentPhoneNumberTest extends TestCase
 {
 
 }
