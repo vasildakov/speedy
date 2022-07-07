@@ -1,1 +1,1 @@
-{"version":1,"defects":{"VasilDakov\\SpeedyTest\\Model\\ShipmentPhoneNumberTest::testItCanBeCreated":4},"times":{"VasilDakov\\SpeedyTest\\Model\\ShipmentPhoneNumberTest::testItCanBeCreated":0.042}}
+{"version":1,"defects":{"VasilDakov\\SpeedyTest\\Model\\ShipmentPhoneNumberTest::testItCanBeCreated":4},"times":{"VasilDakov\\SpeedyTest\\Model\\ShipmentPhoneNumberTest::testItCanBeCreated":0.104,"VasilDakov\\SpeedyTest\\Model\\ShipmentPhoneNumberTest::testItCanRetrieveTheNumber":0.013}}

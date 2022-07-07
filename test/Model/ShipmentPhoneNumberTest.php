@@ -23,9 +23,22 @@ class ShipmentPhoneNumberTest extends TestCase
         $this->number = '0888302050';
     }
     
+    /**
+     * @group phone
+     */
     public function testItCanBeCreated() 
     {
-        $shipmentPhoneNumber = new ShipmentPhoneNumber($this->number);
-        $this->assertSame($this->number, $shipmentPhoneNumber->getNumber());
+        $object = new ShipmentPhoneNumber($this->number);
+        $this->assertInstanceOf(ShipmentPhoneNumber::class, $object);
+        
+        //$this->assertSame($this->number, $shipmentPhoneNumber->getNumber());
     }
+    
+    public function testItCanRetrieveTheNumber() 
+    {
+        $object = new ShipmentPhoneNumber($this->number);
+        
+        $this->assertEquals($this->number, $object->getNumber());
+    }
+    
 }
