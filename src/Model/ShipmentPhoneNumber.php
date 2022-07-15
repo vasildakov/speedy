@@ -14,6 +14,7 @@ namespace VasilDakov\Speedy\Model;
 class ShipmentPhoneNumber {
 
     private string $number;
+    
     private ?string $extension = null;
 
     public function __construct(string $number) 
