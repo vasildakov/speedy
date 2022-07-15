@@ -26,7 +26,7 @@ class CountryCodeTest extends TestCase
     /**
      * @group countryCode
      */
-    public function testItCanBeCreatedWithBulgariaCode()
+    public function testItCanBeCreatedWithBulgariaCode():void
     {
         $object = new CountryCode(CountryCode::BGR);
         $this->assertInstanceOf(CountryCode::class, $object);
@@ -35,8 +35,13 @@ class CountryCodeTest extends TestCase
     /**
      * @group countryCode
      */
-    public function testItCanBeCreatedWithRomaniaCode()
+    public function testItCanBeCreatedWithRomaniaCode():void
     {
         $this->assertInstanceOf(CountryCode::class, new CountryCode(CountryCode::ROU));
+    }
+    
+    public function testCodeIsInvalid():void
+    {
+        $this->assertContains(setCode(), self::CODES );
     }
 }
