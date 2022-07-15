@@ -31,36 +31,36 @@ class CalculationAddressLocation
      */
     private CountryCode $countryId;
     
-    /*
+    /**
      * @var string
      */
-    
     private string $stateId;
     
-    /*
+    /**
      * @var int
      */
-    
     private int $siteId;
     
-    /*
+    /**
      * @var string
      */
-    
     private string $siteType;
     
-    /*
+    /**
      * @var string
      */
-    
     private string $siteName;
-    
-    /*
+
+    /**
      * @var string
      */
-    
     private string $postCode;
-    
+
+    /**
+     * @param string $stateId
+     * @param int $siteId
+     * @param string $postCode
+     */
     public function __construct(string $stateId, int $siteId, string $postCode) 
     {
         $this->stateId = $stateId;
@@ -68,11 +68,10 @@ class CalculationAddressLocation
         $this->postCode = $postCode;
     }
     
-    /*
+    /**
      * @param CountryCode $countryId
      * @return self
      */
-
     public function setCountryId(CountryCode $countryId): self
     {
         $this->countryId = $countryId;
@@ -80,20 +79,18 @@ class CalculationAddressLocation
         return $this;    
     }
     
-     /*
+    /**
      * @return string stateId
      */
-    
     public function getStateId(): string 
     {
         return $this->stateId;
     }
     
-    /*
+    /**
      * @param string $stateId
      * @return self
      */
-    
     public function setStateId(string $stateId): self 
     {
         $this->stateId = $stateId;
@@ -101,7 +98,7 @@ class CalculationAddressLocation
         return $this;
     }
     
-    /*
+    /**
      * @return int stateId
      */
 
@@ -110,11 +107,10 @@ class CalculationAddressLocation
         return $this->siteId;
     }
     
-    /*
+    /**
      * @param int $siteId
      * @return self
      */
-    
     public function setSiteId(int $siteId): self
     {
         $this->siteId = $siteId;
@@ -122,16 +118,15 @@ class CalculationAddressLocation
         return $this;
     }
     
-    /*
+    /**
      * @return string siteType
      */
-    
     public function getSiteType(): string 
     {
         return $this->siteType;
     }
     
-    /*
+    /**
      * @param int $siteType
      * @return self
      */
@@ -142,40 +137,36 @@ class CalculationAddressLocation
         return $this;
     }
     
-    /*
-     * @return strinf siteName
+    /**
+     * @return string siteName
      */
-
     public function getSiteName(): string 
     {
         return $this->siteName;
     }
     
-    /*
+    /**
      * @param string $siteName
      * @return self
      */
-    
     public function setSiteName(string $siteName): self
     {
         $this->siteName = $siteName;
         return $this;
     }
     
-    /*
+    /**
      * @return string postCode
      */
-
     public function getPostCode(): string 
     {
         return $this->postCode;
     }
     
-    /*
+    /**
      * @param string $postCode
      * @return self
      */
-
     public function setPostCode(string $postCode): self 
     {
         $this->postCode = $postCode;
