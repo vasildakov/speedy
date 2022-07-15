@@ -28,7 +28,10 @@ class CountryCode
      * @var int
      */
     private int $code;
-
+    
+    /**
+     * @param string $code
+     */
     public function __construct(int $code)
     {
         $this->code = $code;
@@ -45,7 +48,11 @@ class CountryCode
         // you can try make it with one line of code
         return $this->getCode() === $other->getCode();
     }
-
+    
+    /**
+     * @param int $code
+     * @return self
+     */
     public function setCode(int $code): self
     {
         if (!in_array($code, self::CODES)) {
@@ -55,10 +62,12 @@ class CountryCode
 
         return $this;
     }
-
+    
+    /**
+     * @return int code
+     */
     public function getCode(): int
     {
         return $this->code;
     }
-
 }
