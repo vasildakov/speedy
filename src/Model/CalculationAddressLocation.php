@@ -152,6 +152,7 @@ class CalculationAddressLocation
     public function setSiteName(string $siteName): self
     {
         $this->siteName = $siteName;
+        
         return $this;
     }
     
@@ -170,6 +171,7 @@ class CalculationAddressLocation
     public function setPostCode(string $postCode): self 
     {
         $this->postCode = $postCode;
+        
         return $this;
     }  
 }
