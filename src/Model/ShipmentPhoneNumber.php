@@ -14,20 +14,21 @@ namespace VasilDakov\Speedy\Model;
 class ShipmentPhoneNumber {
 
     private string $number;
-    private string $extension;
+    private ?string $extension = null;
 
     public function __construct(string $number) 
     {
-        $this->number = $number;
+        $this->setNumber($number);
     }
     
-    public function setNumber(string $number): self
+    private function setNumber(string $number): self
     {
+        // validation goes here
         $this->number = $number;
         return $this;
     }
 
-        public function getNumber(): string 
+    public function getNumber(): string 
     {
         return $this->number;
     }
@@ -38,7 +39,7 @@ class ShipmentPhoneNumber {
         return $this;
     }
     
-    public function getExtension(): string 
+    public function getExtension(): ?string 
     {
         return $this->extension;
     }

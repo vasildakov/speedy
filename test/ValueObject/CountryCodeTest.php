@@ -7,6 +7,8 @@ namespace VasilDakov\SpeedyTest\ValueObject;
 
 use PHPUnit\Framework\TestCase;
 
+use VasilDakov\Speedy\ValueObject\CountryCode;
+
 /**
  * Class CountryCodeTest
  *
@@ -16,5 +18,14 @@ use PHPUnit\Framework\TestCase;
  */
 class CountryCodeTest extends TestCase
 {
-
+    /*
+     * var int
+     */
+    private $code;
+    
+    protected function setUp() :void
+    {
+        $this->code = new CountryCode(100);
+    }
+    
 }

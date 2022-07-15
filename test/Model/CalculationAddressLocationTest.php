@@ -16,5 +16,8 @@ use PHPUnit\Framework\TestCase;
  */
 class CalculationAddressLocationTest extends TestCase
 {
-
+    public function testItIsADummyTest() 
+    {
+        $this->assertTrue(true);
+    }
 }
