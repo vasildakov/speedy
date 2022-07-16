@@ -69,6 +69,15 @@ class CalculationAddressLocation
     }
     
     /**
+     * 
+     * @return string countryId
+     */
+     public function getCountryId(): string
+    {
+        return $this->countryId;    
+    }
+    
+    /**
      * @param CountryCode $countryId
      * @return self
      */

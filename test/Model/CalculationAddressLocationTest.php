@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 
 namespace VasilDakov\SpeedyTest\Model;
+use VasilDakov\Speedy\ValueObject\CountryCode;
 
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +24,7 @@ class CalculationAddressLocationTest extends TestCase
     }
     
     /**
-     * @test CalculationAddressLocation
+     * @group CalculationAddressLocation
      * return void
      */
     public function testItCanBeCreated(): void
@@ -31,5 +32,15 @@ class CalculationAddressLocationTest extends TestCase
         $object = new CalculationAddressLocation($this->stateId, $this->siteId, $this->postCode);
         $this->assertOfInstance(CalculationAddressLocation::class, $object);
         
+    }
+    
+    /**
+     * 
+     * @return void
+     */
+    public function testItCanRetrieveStateId() :void
+    {
+        $object = new CalculationAddressLocation($this->stateId, $this->siteId, $this->postCode); 
+        $this->assertEquals($this->stateId, $object->getStateId());
     }
 }
