@@ -34,7 +34,7 @@ class CountryCode
      */
     public function __construct(int $code)
     {
-        $this->code = $code;
+        $this->setCode($code);
     }
 
     /**

@@ -50,6 +50,17 @@ class CountryCodeTest extends TestCase
      */
     public function testIsCodeInvalid():void
     {
-        $this->assertNotContains($code, self::CODES );
+        $this->assertContains(100, CountryCode::CODES);
+        $this->assertContains(642, CountryCode::CODES);
+    }
+
+    /**
+     * @group countryCode
+     */
+    public function testSetCodeThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $object = new CountryCode(3000);
     }
 }
