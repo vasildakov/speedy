@@ -16,8 +16,20 @@ use PHPUnit\Framework\TestCase;
  */
 class CalculationAddressLocationTest extends TestCase
 {
-    public function testItIsADummyTest() 
+    protected function setUp():void
     {
-        $this->assertTrue(true);
+        parent::setUp();
+        
+    }
+    
+    /**
+     * @test CalculationAddressLocation
+     * return void
+     */
+    public function testItCanBeCreated(): void
+    {
+        $object = new CalculationAddressLocation($this->stateId, $this->siteId, $this->postCode);
+        $this->assertOfInstance(CalculationAddressLocation::class, $object);
+        
     }
 }

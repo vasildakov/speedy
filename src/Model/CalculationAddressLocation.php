@@ -63,9 +63,9 @@ class CalculationAddressLocation
      */
     public function __construct(string $stateId, int $siteId, string $postCode) 
     {
-        $this->stateId = $stateId;
-        $this->siteId = $siteId;
-        $this->postCode = $postCode;
+        $this->setStateId($stateId);
+        $this->setSiteId($siteId);
+        $this->setPostCode($postCode);
     }
     
     /**

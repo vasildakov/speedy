@@ -43,8 +43,7 @@ class ShipmentPhoneNumberTest extends TestCase
     
     public function testItCanRetrieveTheNumber() 
     {
-        $object = new ShipmentPhoneNumber($this->number);
-        
+        $object = new ShipmentPhoneNumber($this->number); 
         $this->assertEquals($this->number, $object->getNumber());
     }
     
