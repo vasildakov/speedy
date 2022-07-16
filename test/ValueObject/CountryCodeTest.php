@@ -46,9 +46,8 @@ class CountryCodeTest extends TestCase
     /**
      * @group countryCode
      * @return void
-     * @var CountryCode $code
      */
-    public function testIsCodeInvalid():void
+    public function testItContainsValidCountryCodes():void
     {
         $this->assertContains(100, CountryCode::CODES);
         $this->assertContains(642, CountryCode::CODES);
@@ -62,5 +61,27 @@ class CountryCodeTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
 
         $object = new CountryCode(3000);
+    }
+
+    /**
+     * @group countryCode
+     */
+    public function testObjectsAreEqual()
+    {
+        $object = new CountryCode(100); // first object
+        $other  = new CountryCode(100); // second object is the same
+
+        $this->assertTrue($object->equals($other));
+    }
+
+    /**
+     * @group countryCode
+     */
+    public function testObjectsAreNotEqual()
+    {
+        $object = new CountryCode(100); // first object
+        $other  = new CountryCode(642); // second object is different
+
+        $this->assertFalse($object->equals($other));
     }
 }
