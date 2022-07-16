@@ -69,5 +69,5 @@ class CountryCode
     public function getCode(): int
     {
         return $this->code;
-    }
+    }  
 }
