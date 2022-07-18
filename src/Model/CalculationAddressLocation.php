@@ -32,49 +32,58 @@ class CalculationAddressLocation
     private CountryCode $countryId;
     
     /**
+     * Required, if country supports states
+     *
      * @var string
      */
     private string $stateId;
     
     /**
+     * Required, if country has full site nomenclature and pair (siteType, siteName) is not provided.
+     *
      * @var int
      */
     private int $siteId;
     
     /**
+     * Forbidden, if siteId is provided. Otherwise, is not mandatory
+     *
      * @var string
      */
     private string $siteType;
     
     /**
+     * Forbidden, if siteId is provided. Otherwise, is not mandatory
+     *
      * @var string
      */
     private string $siteName;
 
     /**
+     * Required if country requires postcode for addresses
+     *
      * @var string
      */
     private string $postCode;
 
     /**
-     * @param string $stateId
+     * // stateId has been removed because it is an optional argument
      * @param int $siteId
      * @param string $postCode
      */
-    public function __construct(string $stateId, int $siteId, string $postCode) 
+    public function __construct(int $siteId, string $postCode)
     {
-        $this->setStateId($stateId);
+        // stateId has been removed because it is an optional argument
         $this->setSiteId($siteId);
         $this->setPostCode($postCode);
     }
     
     /**
-     * 
-     * @return string countryId
+     * @return CountryCode countryId
      */
-     public function getCountryId(): string
+     public function getCountryId(): CountryCode
     {
-        return $this->countryId;    
+        return $this->countryId;
     }
     
     /**
