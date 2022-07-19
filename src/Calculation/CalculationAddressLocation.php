@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\Speedy\Model;
+namespace VasilDakov\Speedy\Calculation;
 
 use VasilDakov\Speedy\ValueObject\CountryCode;
 
@@ -10,20 +10,13 @@ use VasilDakov\Speedy\ValueObject\CountryCode;
  * Class CalculationAddressLocation
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
+ * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  * @todo https://api.speedy.bg/web-api.html#href-ds-calculation-address-location
  */
 class CalculationAddressLocation
 {
-    /**
-     * @todo Create all class attributes
-     * @todo Initialize all required attributes in the constructor
-     * @todo Create setters and getters for all attributes
-     * @todo Create unit tests
-     */
-
-    
     /**
      * Country ISO code. If not provided, local country is assumed. Used for all address types.
      *
@@ -67,13 +60,11 @@ class CalculationAddressLocation
     private string $postCode;
 
     /**
-     * // stateId has been removed because it is an optional argument
      * @param int $siteId
      * @param string $postCode
      */
     public function __construct(int $siteId, string $postCode)
     {
-        // stateId has been removed because it is an optional argument
         $this->setSiteId($siteId);
         $this->setPostCode($postCode);
     }

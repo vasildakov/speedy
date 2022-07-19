@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Model;
+namespace VasilDakov\SpeedyTest\Shipment;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Model\ShipmentPhoneNumber;
+use VasilDakov\Speedy\Shipment\ShipmentPhoneNumber;
 
 /**
  * Class ShipmentPhoneNumberTest

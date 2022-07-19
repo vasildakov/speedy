@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Model;
+namespace VasilDakov\Speedy\Shipment;
 
 /**
  * Class ShipmentPhoneNumber
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
+ * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  * @todo https://api.speedy.bg/web-api.html?fbclid=IwAR1pcF0uXsAZheAKesQcArBJ7QenkDVyEz36aXwfRGCQZvcInjIYMuE82E4#href-ds-shipment-phone-number
