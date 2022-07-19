@@ -136,7 +136,7 @@ class CalculationAddressLocation
     }
     
     /**
-     * @param int $siteType
+     * @param string $siteType
      * @return self
      */
     public function setSiteType(string $siteType): self
