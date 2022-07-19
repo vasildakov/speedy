@@ -20,10 +20,10 @@ class ShipmentPhoneNumberTest extends TestCase
     /**
      * @var string
      */
-    protected $number;
-    
+    protected string $number;
+
     /**
-     * @param string $number
+     * @param string
      */
     protected function setUp(): void 
     {
