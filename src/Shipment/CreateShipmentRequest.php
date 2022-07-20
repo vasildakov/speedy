@@ -39,6 +39,34 @@ class CreateShipmentRequest
     private ShipmentSender $sender;
 
     /**
+     * @var string
+     */
+    private string $shipmentNote;
+
+    /**
+     * @var string
+     */
+
+    private string $ref1;
+
+    /**
+     * @var string
+     *
+     */
+    private string $ref2;
+
+    /**
+     * @var string
+     */
+
+    private string $consolidationRef;
+
+    /**
+     * @var bool
+     */
+    private bool $requireUnsuccessfulDeliveryStickerImage;
+
+    /**
      * @param ShipmentRecipient $recipient
      * @param ShipmentService $service
      * @param ShipmentContent $content
@@ -53,6 +81,25 @@ class CreateShipmentRequest
     }
 
     /**
+     * @return ShipmentRecipient
+     */
+    public function getRecipient(): ShipmentRecipient
+    {
+        return $this->recipient;
+    }
+
+    /**
+     * @param ShipmentRecipient $recipient
+     * @return $this
+     */
+    public function setRecipient(ShipmentRecipient $recipient): self
+    {
+        $this->recipient = $recipient;
+
+        return $this;
+    }
+
+    /**
      * @return ShipmentService
      */
     public function getService(): ShipmentService
@@ -62,10 +109,13 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentService $service
+     * @return $this
      */
-    public function setService(ShipmentService $service): void
+    public function setService(ShipmentService $service): self
     {
         $this->service = $service;
+
+        return $this;
     }
 
     /**
@@ -78,10 +128,13 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentContent $content
+     * @return $this
      */
-    public function setContent(ShipmentContent $content): void
+    public function setContent(ShipmentContent $content): self
     {
         $this->content = $content;
+
+        return $this;
     }
 
     /**
@@ -94,29 +147,14 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentPayment $payment
+     * @return $this
      */
-    public function setPayment(ShipmentPayment $payment): void
+    public function setPayment(ShipmentPayment $payment): self
     {
         $this->payment = $payment;
+
+        return $this;
     }
-
-
-    /**
-     * @return ShipmentRecipient
-     */
-    public function getRecipient(): ShipmentRecipient
-    {
-        return $this->recipient;
-    }
-
-    /**
-     * @param ShipmentRecipient $recipient
-     */
-    public function setRecipient(ShipmentRecipient $recipient): void
-    {
-        $this->recipient = $recipient;
-    }
-
 
     /**
      * @return ShipmentSender
@@ -128,11 +166,111 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentSender $sender
+     * @return $this
      */
-    public function setSender(ShipmentSender $sender): void
+    public function setSender(ShipmentSender $sender): self
     {
         $this->sender = $sender;
+
+        return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getShipmentNote(): string
+    {
+        return $this->shipmentNote;
+    }
+
+    /**
+     * @param string $shipmentNote
+     * @return $this
+     */
+    public function setShipmentNote(string $shipmentNote): self
+    {
+        $this->shipmentNote = $shipmentNote;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRef1(): string
+    {
+        return $this->ref1;
+    }
+
+    /**
+     * @param string $ref1
+     * @return $this
+     */
+    public function setRef1(string $ref1): self
+    {
+        $this->ref1 = $ref1;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRef2(): string
+    {
+        return $this->ref2;
+    }
+
+    /**
+     * @param string $ref2
+     * @return $this
+     */
+    public function setRef2(string $ref2): self
+    {
+        $this->ref2 = $ref2;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getConsolidationRef(): string
+    {
+        return $this->consolidationRef;
+    }
+
+    /**
+     * @param string $consolidationRef
+     * @return $this
+     */
+    public function setConsolidationRef(string $consolidationRef): self
+    {
+        $this->consolidationRef = $consolidationRef;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getRequireUnsuccessfulDeliveryStickerImage(): bool
+    {
+        return $this->requireUnsuccessfulDeliveryStickerImage;
+    }
+
+    /**
+     * @param bool $requireUnsuccessfulDeliveryStickerImage
+     * @return $this
+     */
+    public function setRequireUnsuccessfulDeliveryStickerImage(bool $requireUnsuccessfulDeliveryStickerImage): self
+    {
+        $this->requireUnsuccessfulDeliveryStickerImage = $requireUnsuccessfulDeliveryStickerImage;
+
+        return $this;
+    }
+
+
 
 
 
