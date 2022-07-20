@@ -92,7 +92,7 @@ class CreateShipmentRequest
      * @param ShipmentRecipient $recipient
      * @return $this
      */
-    public function setRecipient(ShipmentRecipient $recipient): self
+    private function setRecipient(ShipmentRecipient $recipient): self
     {
         $this->recipient = $recipient;
 
@@ -111,7 +111,7 @@ class CreateShipmentRequest
      * @param ShipmentService $service
      * @return $this
      */
-    public function setService(ShipmentService $service): self
+    private function setService(ShipmentService $service): self
     {
         $this->service = $service;
 
@@ -128,13 +128,12 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentContent $content
-     * @return $this
+     * @return void
      */
-    public function setContent(ShipmentContent $content): self
+    private function setContent(ShipmentContent $content): void
     {
         $this->content = $content;
 
-        return $this;
     }
 
     /**
@@ -147,13 +146,12 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentPayment $payment
-     * @return $this
+     * @return void
      */
-    public function setPayment(ShipmentPayment $payment): self
+    private function setPayment(ShipmentPayment $payment): void
     {
         $this->payment = $payment;
 
-        return $this;
     }
 
     /**

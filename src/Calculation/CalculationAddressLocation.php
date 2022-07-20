@@ -100,7 +100,7 @@ class CalculationAddressLocation
      * @param string $stateId
      * @return self
      */
-    public function setStateId(string $stateId): self 
+    public function setStateId(string $stateId): self
     {
         $this->stateId = $stateId;
         
@@ -120,7 +120,7 @@ class CalculationAddressLocation
      * @param int $siteId
      * @return self
      */
-    public function setSiteId(int $siteId): self
+    private function setSiteId(int $siteId): self
     {
         $this->siteId = $siteId;
         
@@ -168,7 +168,7 @@ class CalculationAddressLocation
     /**
      * @return string postCode
      */
-    public function getPostCode(): string 
+    public function getPostCode(): string
     {
         return $this->postCode;
     }
@@ -177,7 +177,7 @@ class CalculationAddressLocation
      * @param string $postCode
      * @return self
      */
-    public function setPostCode(string $postCode): self 
+    private function setPostCode(string $postCode): self
     {
         $this->postCode = $postCode;
         

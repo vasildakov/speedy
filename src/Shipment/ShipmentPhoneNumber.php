@@ -35,14 +35,13 @@ class ShipmentPhoneNumber {
     
     /**
      * @param string $number
-     * @return self
+     * @return void
      */
-    private function setNumber(string $number): self
+    private function setNumber(string $number): void
     {
         // validation goes here
         $this->number = $number;
-        
-        return $this;
+
     }
     
     /**
@@ -63,9 +62,9 @@ class ShipmentPhoneNumber {
         
         return $this;
     }
-    
+
     /**
-     * @return string extension
+     * @return string|null extension
      */
     public function getExtension(): ?string 
     {
