@@ -118,13 +118,12 @@ class CalculationAddressLocation
     
     /**
      * @param int $siteId
-     * @return self
+     * @return void
      */
-    private function setSiteId(int $siteId): self
+    private function setSiteId(int $siteId): void
     {
         $this->siteId = $siteId;
-        
-        return $this;
+
     }
     
     /**
@@ -175,12 +174,11 @@ class CalculationAddressLocation
     
     /**
      * @param string $postCode
-     * @return self
+     * @return void
      */
-    private function setPostCode(string $postCode): self
+    private function setPostCode(string $postCode): void
     {
         $this->postCode = $postCode;
-        
-        return $this;
-    }  
+
+    }
 }

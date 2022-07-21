@@ -90,13 +90,12 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentRecipient $recipient
-     * @return $this
+     * @return void
      */
-    private function setRecipient(ShipmentRecipient $recipient): self
+    private function setRecipient(ShipmentRecipient $recipient): void
     {
         $this->recipient = $recipient;
 
-        return $this;
     }
 
     /**
@@ -109,13 +108,12 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentService $service
-     * @return $this
+     * @return void
      */
-    private function setService(ShipmentService $service): self
+    private function setService(ShipmentService $service): void
     {
         $this->service = $service;
 
-        return $this;
     }
 
     /**
