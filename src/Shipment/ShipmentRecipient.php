@@ -58,6 +58,11 @@ class ShipmentRecipient
      */
     private ShipmentAddress $address;
 
+    /**
+     * @var int
+     */
+    private int $pickupOfficeId;
+
     public function __construct()
     {
     }
@@ -177,7 +182,7 @@ class ShipmentRecipient
     /**
      * @return bool
      */
-    public function isPrivatePerson(): bool
+    public function getPrivatePerson(): bool
     {
         return $this->privatePerson;
     }
@@ -205,6 +210,23 @@ class ShipmentRecipient
     {
         $this->address = $address;
     }
+
+    /**
+     * @return int
+     */
+    public function getPickupOfficeId(): int
+    {
+        return $this->pickupOfficeId;
+    }
+
+    /**
+     * @param int $pickupOfficeId
+     */
+    public function setPickupOfficeId(int $pickupOfficeId): void
+    {
+        $this->pickupOfficeId = $pickupOfficeId;
+    }
+
 
 
 
