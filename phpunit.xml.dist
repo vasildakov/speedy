@@ -12,4 +12,8 @@
       <directory>./test</directory>
     </testsuite>
   </testsuites>
+  <logging>
+    <junit outputFile="./build/junit.xml"/>
+    <testdoxHtml outputFile="./build/testdox.html"/>
+  </logging>
 </phpunit>
