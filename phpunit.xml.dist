@@ -13,7 +13,7 @@
     </testsuite>
   </testsuites>
   <logging>
-    <junit outputFile="./build/junit.xml"/>
-    <testdoxHtml outputFile="./build/testdox.html"/>
+    <junit outputFile="./build/logs/junit.xml"/>
+    <testdoxHtml outputFile="./build/logs/testdox.html"/>
   </logging>
 </phpunit>
