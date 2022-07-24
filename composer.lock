@@ -781,12 +781,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "9455bde915e322a823d464a2c41e5c0de03512a6"
+                "reference": "3032f88c16e0f659826caaba86eb5cceab4c7726"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/9455bde915e322a823d464a2c41e5c0de03512a6",
-                "reference": "9455bde915e322a823d464a2c41e5c0de03512a6",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/3032f88c16e0f659826caaba86eb5cceab4c7726",
+                "reference": "3032f88c16e0f659826caaba86eb5cceab4c7726",
                 "shasum": ""
             },
             "require": {
@@ -831,7 +831,7 @@
                 "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
                 "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/master"
             },
-            "time": "2022-04-02T20:16:01+00:00"
+            "time": "2022-07-22T14:19:31+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -958,12 +958,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "06a7aa6a51fe1d4d2a437d49a13093536adb6ace"
+                "reference": "259eb8767efee94427c40bb978786e08ef8c799c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/06a7aa6a51fe1d4d2a437d49a13093536adb6ace",
-                "reference": "06a7aa6a51fe1d4d2a437d49a13093536adb6ace",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/259eb8767efee94427c40bb978786e08ef8c799c",
+                "reference": "259eb8767efee94427c40bb978786e08ef8c799c",
                 "shasum": ""
             },
             "require": {
@@ -1027,7 +1027,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-02T06:44:58+00:00"
+            "time": "2022-07-23T07:48:54+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1276,12 +1276,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "59819644b61807a56a97313b396d604dd771c11f"
+                "reference": "53c54bf720feed441cf14018c9a48c52aabc0485"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/59819644b61807a56a97313b396d604dd771c11f",
-                "reference": "59819644b61807a56a97313b396d604dd771c11f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/53c54bf720feed441cf14018c9a48c52aabc0485",
+                "reference": "53c54bf720feed441cf14018c9a48c52aabc0485",
                 "shasum": ""
             },
             "require": {
@@ -1370,7 +1370,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-02T06:45:28+00:00"
+            "time": "2022-07-23T07:49:30+00:00"
         },
         {
             "name": "psr/container",
@@ -2786,12 +2786,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "e10f22da1e4b71aa0fb9fbc4bdc81413b289f033"
+                "reference": "6dd8b9a0d59858a05e8021c792367f497d3f2b09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/e10f22da1e4b71aa0fb9fbc4bdc81413b289f033",
-                "reference": "e10f22da1e4b71aa0fb9fbc4bdc81413b289f033",
+                "url": "https://api.github.com/repos/symfony/console/zipball/6dd8b9a0d59858a05e8021c792367f497d3f2b09",
+                "reference": "6dd8b9a0d59858a05e8021c792367f497d3f2b09",
                 "shasum": ""
             },
             "require": {
@@ -2874,7 +2874,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-21T08:02:15+00:00"
+            "time": "2022-07-23T15:16:55+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3769,5 +3769,5 @@
         "php": "^7.4 || ~8.1.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
