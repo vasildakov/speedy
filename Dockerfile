@@ -16,6 +16,10 @@ RUN apt-get install --yes libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
+## Install zip libraries and extension
+RUN apt-get install --yes git zlib1g-dev libzip-dev \
+    && docker-php-ext-install zip
+
 ###
 ## Optional PHP extensions
 ###
