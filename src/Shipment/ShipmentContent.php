@@ -34,14 +34,14 @@ class ShipmentContent
     private string $package;
 
     /**
-     * @var bool
-     */
-    private bool $palletized;
-
-    /**
      * @var ShipmentParcel
      */
     private ShipmentParcel $parcel;
+
+    /**
+     * @var bool
+     */
+    private bool $palletized;
 
     /**
      * @var bool
@@ -65,7 +65,6 @@ class ShipmentContent
         $this->setContents($contents);
         $this->setPackage($package);
         $this->setParcel($parcel);
-
     }
 
     /**
@@ -133,6 +132,22 @@ class ShipmentContent
     }
 
     /**
+     * @param ShipmentParcel $parcel
+     */
+    public function setParcel(ShipmentParcel $parcel): void
+    {
+        $this->parcel = $parcel;
+    }
+
+    /**
+     * @return ShipmentParcel
+     */
+    public function getParcel(): ShipmentParcel
+    {
+        return $this->parcel;
+    }
+
+    /**
      * @return bool
      */
     public function isDocuments(): bool
@@ -141,11 +156,12 @@ class ShipmentContent
     }
 
     /**
-     * @param bool $documents
+     * @return self
      */
-    public function setDocuments(bool $documents): void
+    public function setDocuments(): self
     {
-        $this->documents = $documents;
+        $this->documents = True;
+        return $this;
     }
 
     /**
@@ -158,26 +174,12 @@ class ShipmentContent
 
     /**
      * @param bool $palletized
+     * @return self
      */
-    public function setPalletized(bool $palletized): void
+    public function setPalletized(bool $palletized): self
     {
-        $this->palletized = $palletized;
-    }
-
-    /**
-     * @return ShipmentParcel
-     */
-    public function getParcel(): ShipmentParcel
-    {
-        return $this->parcel;
-    }
-
-    /**
-     * @param ShipmentParcel $parcel
-     */
-    public function setParcel(ShipmentParcel $parcel): void
-    {
-        $this->parcel = $parcel;
+        $this->palletized = True;
+        return $this;
     }
 
     /**
@@ -189,11 +191,13 @@ class ShipmentContent
     }
 
     /**
-     * @param bool $pendingParcels
+     * @return self
      */
-    public function setPendingParcels(bool $pendingParcels): void
+    public function setPendingParcels(): self
     {
-        $this->pendingParcels = $pendingParcels;
+        $this->pendingParcels = True;
+
+        return $this;
     }
 
     /**
@@ -205,13 +209,13 @@ class ShipmentContent
     }
 
     /**
-     * @param bool $exciseGoods
+     * @return self
      */
-    public function setExciseGoods(bool $exciseGoods): void
+    public function setExciseGoods(): self
     {
-        $this->exciseGoods = $exciseGoods;
+        $this->exciseGoods = True;
+
+        return $this;
     }
-
-
 
 }
