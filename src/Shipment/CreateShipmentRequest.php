@@ -195,6 +195,11 @@ class CreateShipmentRequest
      */
     public function setShipmentNote(string $shipmentNote): self
     {
+        if (null !== $shipmentNote && \strlen($shipmentNote) > 200)
+        {
+            throw new \InvalidArgumentException();
+        }
+
         $this->shipmentNote = $shipmentNote;
 
         return $this;
@@ -214,6 +219,11 @@ class CreateShipmentRequest
      */
     public function setRef1(string $ref1): self
     {
+        if (null !== $ref1 && \strlen($ref1) > 30)
+        {
+            throw new \InvalidArgumentException();
+        }
+
         $this->ref1 = $ref1;
 
         return $this;
@@ -233,6 +243,11 @@ class CreateShipmentRequest
      */
     public function setRef2(string $ref2): ?self
     {
+        if (null !== $ref2 && \strlen($ref2) > 30)
+        {
+            throw new \InvalidArgumentException();
+        }
+
         $this->ref2 = $ref2;
 
         return $this;
