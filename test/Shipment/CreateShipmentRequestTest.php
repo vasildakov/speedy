@@ -10,6 +10,7 @@ use VasilDakov\Speedy\Shipment\ShipmentPayment;
 use VasilDakov\Speedy\Shipment\ShipmentRecipient;
 use VasilDakov\Speedy\Shipment\ShipmentSender;
 use VasilDakov\Speedy\Shipment\ShipmentService;
+use VasilDakov\Speedy\Speedy;
 
 /**
  * Class CreateShipmentRequestTest
@@ -50,16 +51,19 @@ class CreateShipmentRequestTest extends TestCase
      */
     protected function setUp():void
     {
+        $this->sender    = $this->createMock(ShipmentSender::class);
         $this->recipient = $this->createMock(ShipmentRecipient::class);
-        $this->service = $this->createMock(ShipmentService::class);
-        $this->content = $this->createMock(ShipmentContent::class);
-        $this->payment = $this->createMock(ShipmentPayment::class);
-        $this->sender = $this->createMock(ShipmentSender::class);
+        $this->service   = $this->createMock(ShipmentService::class);
+        $this->content   = $this->createMock(ShipmentContent::class);
+        $this->payment   = $this->createMock(ShipmentPayment::class);
+
         $this->shipmentNote = "Shipment Note";
+
         $this->ref1 = "10";
         $this->ref2 = "20";
+
         $this->consolidationRef = "Consolidation Text";
-        $this->requireUnsuccessfulDeliveryStickerImage = True;
+        $this->requireUnsuccessfulDeliveryStickerImage = true;
 
         parent::setUp();
 
@@ -67,66 +71,66 @@ class CreateShipmentRequestTest extends TestCase
 
     /**
      * @return void
-     * * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanBeCreated() :void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $this->assertInstanceOf(CreateShipmentRequest::class, $object);
     }
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheRecipient():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $this->assertEquals($this->recipient, $object->getRecipient());
     }
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheService():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $this->assertEquals($this->service, $object->getService());
     }
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheContent():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $this->assertEquals($this->content, $object->getContent());
     }
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveThePayment():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $this->assertEquals($this->payment, $object->getPayment());
     }
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheSender():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $object->setSender($this->sender);
 
@@ -135,11 +139,11 @@ class CreateShipmentRequestTest extends TestCase
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheShipmentNote():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $object->setShipmentNote($this->shipmentNote);
 
@@ -148,11 +152,11 @@ class CreateShipmentRequestTest extends TestCase
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheRef1():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $object->setRef1($this->ref1);
 
@@ -161,11 +165,11 @@ class CreateShipmentRequestTest extends TestCase
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheRef2():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $object->setRef2($this->ref2);
 
@@ -174,11 +178,11 @@ class CreateShipmentRequestTest extends TestCase
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheConsolidationRef():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $object->setConsolidationRef($this->consolidationRef);
 
@@ -187,15 +191,39 @@ class CreateShipmentRequestTest extends TestCase
 
     /**
      * @return void
-     * &group CreateShipmentRequest
+     * @group CreateShipmentRequest
      */
     public function testItCanRetrieveTheRequireUnsuccessfulDeliveryStickerImage():void
     {
-        $object = new CreateShipmentRequest($this->recipient, $this->service, $this->content, $this->payment);
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $object->setRequireUnsuccessfulDeliveryStickerImage($this->requireUnsuccessfulDeliveryStickerImage);
 
         $this->assertEquals($this->requireUnsuccessfulDeliveryStickerImage, $object->getRequireUnsuccessfulDeliveryStickerImage());
+    }
+
+    public function testItCanBeConvertedAsArray()
+    {
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+
+        $this->assertIsArray($object->toArray());
+    }
+
+
+    public function testExportedArrayHasRequiredKeys()
+    {
+        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+
+        $array = $object->toArray();
+
+        $this->assertArrayHasKey(Speedy::SENDER, $array);
+        $this->assertArrayHasKey(Speedy::RECIPIENT, $array);
+        $this->assertArrayHasKey(Speedy::SERVICE, $array);
+        $this->assertArrayHasKey(Speedy::CONTENT, $array);
+        $this->assertArrayHasKey(Speedy::PAYMENT, $array);
+        $this->assertArrayHasKey(Speedy::SHIPMENT_NOTE, $array);
+        $this->assertArrayHasKey(Speedy::REF_1, $array);
+        $this->assertArrayHasKey(Speedy::REF_2, $array);
     }
 
 }

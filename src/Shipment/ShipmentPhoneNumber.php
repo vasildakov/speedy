@@ -71,4 +71,11 @@ class ShipmentPhoneNumber {
         return $this->extension;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [];
+    }
 }

@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class CreateShipmentRequest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  * @version
  */
@@ -41,39 +44,46 @@ class CreateShipmentRequest
     /**
      * @var string
      */
-    private string $shipmentNote;
+    private ?string $shipmentNote = null;
 
     /**
      * @var string
      */
 
-    private string $ref1;
+    private ?string $ref1 = null;
 
     /**
      * @var string
      *
      */
-    private string $ref2;
+    private ?string $ref2 = null;
 
     /**
      * @var string
      */
 
-    private string $consolidationRef;
+    private ?string $consolidationRef = null;
 
     /**
      * @var bool
      */
-    private bool $requireUnsuccessfulDeliveryStickerImage;
+    private bool $requireUnsuccessfulDeliveryStickerImage = false;
 
     /**
+     * @param ShipmentSender $sender
      * @param ShipmentRecipient $recipient
      * @param ShipmentService $service
      * @param ShipmentContent $content
      * @param ShipmentPayment $payment
      */
-    public function __construct(ShipmentRecipient $recipient, ShipmentService $service, ShipmentContent $content, ShipmentPayment $payment)
-    {
+    public function __construct(
+        ShipmentSender $sender,
+        ShipmentRecipient $recipient,
+        ShipmentService $service,
+        ShipmentContent $content,
+        ShipmentPayment $payment
+    ) {
+        $this->setSender($sender);
         $this->setRecipient($recipient);
         $this->setService($service);
         $this->setContent($content);
@@ -174,7 +184,7 @@ class CreateShipmentRequest
     /**
      * @return string
      */
-    public function getShipmentNote(): string
+    public function getShipmentNote(): ?string
     {
         return $this->shipmentNote;
     }
@@ -193,7 +203,7 @@ class CreateShipmentRequest
     /**
      * @return string
      */
-    public function getRef1(): string
+    public function getRef1(): ?string
     {
         return $this->ref1;
     }
@@ -212,7 +222,7 @@ class CreateShipmentRequest
     /**
      * @return string
      */
-    public function getRef2(): string
+    public function getRef2(): ?string
     {
         return $this->ref2;
     }
@@ -221,7 +231,7 @@ class CreateShipmentRequest
      * @param string $ref2
      * @return $this
      */
-    public function setRef2(string $ref2): self
+    public function setRef2(string $ref2): ?self
     {
         $this->ref2 = $ref2;
 
@@ -231,7 +241,7 @@ class CreateShipmentRequest
     /**
      * @return string
      */
-    public function getConsolidationRef(): string
+    public function getConsolidationRef(): ?string
     {
         return $this->consolidationRef;
     }
@@ -266,9 +276,20 @@ class CreateShipmentRequest
         return $this;
     }
 
-
-
-
-
-
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            Speedy::SENDER        => $this->sender->toArray(),
+            Speedy::RECIPIENT     => $this->recipient->toArray(),
+            Speedy::SERVICE       => $this->service->toArray(),
+            Speedy::CONTENT       => $this->content->toArray(),
+            Speedy::PAYMENT       => $this->payment->toArray(),
+            Speedy::SHIPMENT_NOTE => $this->getShipmentNote(),
+            Speedy::REF_1         => $this->getRef1(),
+            Speedy::REF_2         => $this->getRef2(),
+        ];
+    }
 }

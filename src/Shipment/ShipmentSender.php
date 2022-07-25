@@ -8,10 +8,17 @@ namespace VasilDakov\Speedy\Shipment;
  * Class ShipmentSender
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  * @version
  */
 class ShipmentSender
 {
-
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+       return [];
+    }
 }

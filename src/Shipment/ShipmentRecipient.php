@@ -8,6 +8,7 @@ namespace VasilDakov\Speedy\Shipment;
  * Class ShipmentRecipient
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  * @version
  */
@@ -227,7 +228,12 @@ class ShipmentRecipient
         $this->pickupOfficeId = $pickupOfficeId;
     }
 
-
-
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [];
+    }
 
 }
