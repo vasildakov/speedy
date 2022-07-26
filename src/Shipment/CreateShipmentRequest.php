@@ -42,24 +42,24 @@ class CreateShipmentRequest
     private ShipmentSender $sender;
 
     /**
-     * @var string
+     * @var string|null
      */
     private ?string $shipmentNote = null;
 
     /**
-     * @var string
+     * @var string|null
      */
 
     private ?string $ref1 = null;
 
     /**
-     * @var string
+     * @var string|null
      *
      */
     private ?string $ref2 = null;
 
     /**
-     * @var string
+     * @var string|null
      */
 
     private ?string $consolidationRef = null;
@@ -182,7 +182,7 @@ class CreateShipmentRequest
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getShipmentNote(): ?string
     {
@@ -206,7 +206,7 @@ class CreateShipmentRequest
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRef1(): ?string
     {
@@ -254,7 +254,7 @@ class CreateShipmentRequest
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getConsolidationRef(): ?string
     {

@@ -21,7 +21,7 @@ class ShipmentPhoneNumber {
     private string $number;
     
     /**
-     * @var string
+     * @var string|null
      */
     private ?string $extension = null;
     
@@ -39,7 +39,7 @@ class ShipmentPhoneNumber {
      */
     private function setNumber(string $number): void
     {
-        // validation goes here
+
         $this->number = $number;
 
     }

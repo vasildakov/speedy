@@ -7,6 +7,7 @@ namespace VasilDakov\SpeedyTest\Shipment;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\ShipmentContent;
 use VasilDakov\Speedy\Shipment\ShipmentParcel;
+use VasilDakov\Speedy\Speedy;
 
 /**
  * Class ShipmentContentTest
@@ -119,7 +120,7 @@ class ShipmentContentTest extends TestCase
     {
         $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
 
-        $object->setPalletized($this->palletized);
+        $object->setPalletized();
 
         $this->assertEquals($this->palletized, $object->isPalletized());
     }
@@ -145,8 +146,29 @@ class ShipmentContentTest extends TestCase
     {
         $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
 
-        $object->setExciseGoods($this->exciseGoods);
+        $object->setExciseGoods();
 
         $this->assertEquals($this->exciseGoods, $object->isExciseGoods());
     }
+
+    public function testItCanBeConvertedAsArray()
+    {
+        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+
+        $this->assertIsArray($object->toArray());
+    }
+
+    public function testExportedArrayHasRequiredKeys()
+    {
+        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+
+        $array = $object->toArray();
+
+        $this->assertArrayHasKey(Speedy::PARCEL, $array);
+        $this->assertArrayHasKey(Speedy::PARCELS_COUNT, $array);
+        $this->assertArrayHasKey(Speedy::TOTAL_WEIGHT, $array);
+        $this->assertArrayHasKey(Speedy::CONTENTS, $array);
+        $this->assertArrayHasKey(Speedy::PACKAGE, $array);
+    }    
+
 }

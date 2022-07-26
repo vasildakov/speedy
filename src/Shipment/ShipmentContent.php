@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class ShipmentContent
  *
@@ -174,10 +176,9 @@ class ShipmentContent
     }
 
     /**
-     * @param bool $palletized
      * @return self
      */
-    public function setPalletized(bool $palletized): self
+    public function setPalletized(): self
     {
         $this->palletized = True;
         return $this;
@@ -224,6 +225,16 @@ class ShipmentContent
      */
     public function toArray(): array
     {
-        return [];
+        return [
+            Speedy::PARCEL              =>$this->parcel->toArray(),
+            Speedy::PARCELS_COUNT       =>$this->getParcelsCount(),
+            Speedy::TOTAL_WEIGHT        =>$this->getTotalWeight(),
+            Speedy::CONTENTS            =>$this->getContents(),
+            Speedy::PACKAGE             =>$this->getPackage(),
+//            Speedy::DOCUMENTS           =>$this->isDocuments(),
+//            Speedy::PALLETIZED          =>$this->isPalletized(),
+//            Speedy::PENDING_PARCELS     =>$this->isPendingParcels(),
+        ];
     }
+
 }

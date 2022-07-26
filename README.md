@@ -16,6 +16,7 @@ $ docker run -d --name speedy speedy
 or start the container with mounted volume
 ```
 $ docker run -it --rm --name speedy -v "$PWD":/usr/src/speedy -w /usr/src/speedy -d speedy
+$ docker run -it --rm --name speedy -v //c/speedy:/usr/src/speedy -d speedy
 ```
 
 List the containers
