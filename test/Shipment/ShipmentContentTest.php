@@ -169,6 +169,6 @@ class ShipmentContentTest extends TestCase
         $this->assertArrayHasKey(Speedy::TOTAL_WEIGHT, $array);
         $this->assertArrayHasKey(Speedy::CONTENTS, $array);
         $this->assertArrayHasKey(Speedy::PACKAGE, $array);
-    }    
+    }
 
 }

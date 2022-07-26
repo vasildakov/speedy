@@ -6,6 +6,7 @@ namespace VasilDakov\SpeedyTest\Shipment;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\ShipmentPhoneNumber;
+use VasilDakov\Speedy\Speedy;
 
 /**
  * Class ShipmentPhoneNumberTest
@@ -13,7 +14,6 @@ use VasilDakov\Speedy\Shipment\ShipmentPhoneNumber;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
- * @todo https://api.speedy.bg/web-api.html?fbclid=IwAR1pcF0uXsAZheAKesQcArBJ7QenkDVyEz36aXwfRGCQZvcInjIYMuE82E4#href-ds-shipment-phone-number
  */
 class ShipmentPhoneNumberTest extends TestCase 
 {
@@ -28,6 +28,7 @@ class ShipmentPhoneNumberTest extends TestCase
     protected function setUp(): void 
     {
         $this->number = '0888302050';
+        $this->extension ='Extension';
     }
     
     /**
@@ -46,5 +47,18 @@ class ShipmentPhoneNumberTest extends TestCase
         $object = new ShipmentPhoneNumber($this->number); 
         $this->assertEquals($this->number, $object->getNumber());
     }
-    
+
+    public function testItCanBeConvertedAsArray()
+    {
+        $object = new ShipmentPhoneNumber($this->number);
+        $this->assertIsArray($object->toArray());
+    }
+
+    public function testExportedArrayHasRequiredKeys()
+    {
+        $object = new ShipmentPhoneNumber($this->number);
+        $array = $object->toArray();
+        $this->assertArrayHasKey(Speedy::NUMBER, $array);
+        $this->assertArrayHasKey(Speedy::EXTENSION, $array);
+    }
 }
