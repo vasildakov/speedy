@@ -18,8 +18,10 @@ RUN apt-get install -y libicu-dev \
 
 RUN apt-get install -y \
         libzip-dev \
+        unzip \
         zip \
-  && docker-php-ext-install zip
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip
 
 ###
 ## Optional PHP extensions
