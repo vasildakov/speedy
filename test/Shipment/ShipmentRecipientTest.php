@@ -88,7 +88,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePhone1():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setPhone1($this->phone1);
 
@@ -101,7 +101,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePhone2():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setPhone2($this->phone2);
 
@@ -114,7 +114,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePhone3():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setPhone3($this->phone3);
 
@@ -127,7 +127,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheClientName():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setClientName($this->clientName);
 
@@ -140,7 +140,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheObjectName():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setObjectName($this->clientName);
 
@@ -153,7 +153,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheContactName():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setContactName($this->contactName);
 
@@ -166,7 +166,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheEmail():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setEmail($this->email);
 
@@ -179,7 +179,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePrivatePerson():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setPrivatePerson($this->privatePerson);
 
@@ -192,7 +192,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheAddress():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setAddress($this->address);
 
@@ -205,11 +205,22 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePickupOfficeId():void
     {
-        $object = new ShipmentRecipient();
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
         $object->setPickupOfficeId($this->pickupOfficeId);
 
         $this->assertEquals($this->pickupOfficeId, $object->getPickupOfficeId());
+    }
+
+    /**
+     * @return void
+     * &group ShipmentRecipient
+     */
+    public function testItCanBeConvertedAsArray(): void
+    {
+        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+
+        $this->assertIsArray($object->toArray());
     }
 
 }

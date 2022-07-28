@@ -202,15 +202,22 @@ class CreateShipmentRequestTest extends TestCase
         $this->assertEquals($this->requireUnsuccessfulDeliveryStickerImage, $object->getRequireUnsuccessfulDeliveryStickerImage());
     }
 
-    public function testItCanBeConvertedAsArray()
+    /**
+     * @return void
+     * @group CreateShipmentRequest
+     */
+    public function testItCanBeConvertedAsArray(): void
     {
         $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 
         $this->assertIsArray($object->toArray());
     }
 
-
-    public function testExportedArrayHasRequiredKeys()
+    /**
+     * @return void
+     * @group CreateShipmentRequest
+     */
+    public function testExportedArrayHasRequiredKeys(): void
     {
         $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
 

@@ -151,14 +151,22 @@ class ShipmentContentTest extends TestCase
         $this->assertEquals($this->exciseGoods, $object->isExciseGoods());
     }
 
-    public function testItCanBeConvertedAsArray()
+    /**
+     * @return void
+     * * &group ShipmentContent
+     */
+    public function testItCanBeConvertedAsArray(): void
     {
         $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
 
         $this->assertIsArray($object->toArray());
     }
 
-    public function testExportedArrayHasRequiredKeys()
+    /**
+     * @return void
+     * * &group ShipmentContent
+     */
+    public function testExportedArrayHasRequiredKeys(): void
     {
         $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
 
@@ -169,6 +177,9 @@ class ShipmentContentTest extends TestCase
         $this->assertArrayHasKey(Speedy::TOTAL_WEIGHT, $array);
         $this->assertArrayHasKey(Speedy::CONTENTS, $array);
         $this->assertArrayHasKey(Speedy::PACKAGE, $array);
+        $this->assertArrayHasKey(Speedy::PALLETIZED, $array);
+        $this->assertArrayHasKey(Speedy:: DOCUMENTS, $array);
+        $this->assertArrayHasKey(Speedy::PENDING_PARCELS, $array);
     }
 
 }

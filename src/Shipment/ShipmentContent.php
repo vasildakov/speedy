@@ -44,23 +44,30 @@ class ShipmentContent
     /**
      * @var bool
      */
-    private bool $palletized;
+    private bool $palletized = false;
 
     /**
      * @var bool
      */
-    private bool $documents;
+    private bool $documents = false;
 
     /**
      * @var bool
      */
-    private bool $pendingParcels;
+    private bool $pendingParcels = false;
 
     /**
      * @var bool
      */
-    private bool $exciseGoods;
+    private bool $exciseGoods = false;
 
+    /**
+     * @param int $parcelsCount
+     * @param float $totalWeight
+     * @param string $contents
+     * @param string $package
+     * @param ShipmentParcel $parcel
+     */
     public function __construct(int $parcelsCount, float $totalWeight, string $contents, string $package, ShipmentParcel $parcel)
     {
         $this->setParcelsCount($parcelsCount);
@@ -231,9 +238,9 @@ class ShipmentContent
             Speedy::TOTAL_WEIGHT        =>$this->getTotalWeight(),
             Speedy::CONTENTS            =>$this->getContents(),
             Speedy::PACKAGE             =>$this->getPackage(),
-//            Speedy::DOCUMENTS           =>$this->isDocuments(),
-//            Speedy::PALLETIZED          =>$this->isPalletized(),
-//            Speedy::PENDING_PARCELS     =>$this->isPendingParcels(),
+            Speedy::DOCUMENTS           =>$this->isDocuments(),
+            Speedy::PALLETIZED          =>$this->isPalletized(),
+            Speedy::PENDING_PARCELS     =>$this->isPendingParcels(),
         ];
     }
 

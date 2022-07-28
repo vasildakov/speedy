@@ -79,8 +79,8 @@ class ShipmentPhoneNumber {
     public function toArray(): array
     {
         return [
-            Speedy::NUMBER=>$this->getNumber(),
-            Speedy::EXTENSION=>$this->getExtension()
+            Speedy::NUMBER     =>$this->getNumber(),
+            Speedy::EXTENSION  =>$this->getExtension()
         ];
     }
 }

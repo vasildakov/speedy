@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class ShipmentRecipient
  *
@@ -64,8 +66,14 @@ class ShipmentRecipient
      */
     private int $pickupOfficeId;
 
-    public function __construct()
+    /**
+     * @param ShipmentPhoneNumber $phone1
+     */
+    public function __construct(ShipmentPhoneNumber $phone1, $clientName, $email)
     {
+        $this->setClientName($clientName);
+        $this->setEmail($email);
+        $this->setPhone1($phone1);
     }
 
     /**
@@ -233,7 +241,17 @@ class ShipmentRecipient
      */
     public function toArray(): array
     {
-        return [];
+        return [
+            Speedy::PHONE_1           =>$this->phone1->toArray(),
+            //Speedy::PHONE_2           =>$this->phone2->toArray(),
+            //Speedy::PHONE_3           =>$this->phone3->toArray(),
+            Speedy::CLIENT_NAME       =>$this->getClientName(),
+            //Speedy::OBJECT_NAME       =>$this->getObjectName(),
+            //Speedy::CONTACT_NAME      =>$this->getContactName(),
+            Speedy::EMAIL             =>$this->getEmail(),
+            //Speedy::PRIVATE_PERSON    =>$this->getPrivatePerson(),
+            //Speedy::ADDRESS           =>$this->getAddress(),
+            //Speedy::PICKUP_OFFICE_ID  =>$this->getPickupOfficeId(),
+        ];
     }
-
 }
