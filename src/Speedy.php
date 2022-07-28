@@ -5,6 +5,9 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
+use Fig\Http\Message\RequestMethodInterface;
+use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
+
 /**
  * Class Speedy
  *
@@ -145,6 +148,9 @@ final class Speedy
     public const LABEL = 'label';
     public const SHIPMENT_IDS = 'shipmentIds';
     public const LAST_OPERATION_ONLY = 'lastOperationOnly';
+    public const CONSOLIDATION_REF = 'consolidationRef';
+    public const REQUIRE_UNSUCCESSFUL_DELIVERY_STICKER_IMAGE = 'requireUnsuccessfulDeliveryStickerImage';
+    public const EXCISE_GOODS = 'exciseGoods';
 
     /**
      * @var string
@@ -198,12 +204,20 @@ final class Speedy
     }
 
     /**
+     * @param CreateShipmentRequest $request
+     */
+    public function createShipment(CreateShipmentRequest $request)
+    {
+        return $this->request(RequestMethodInterface::METHOD_POST, '/shipment', $request->toArray());
+    }
+
+    /**
      * @param string $method
      * @param string $uri
      * @param array $data
      */
     private function request(string $method, string $uri, array $data)
     {
-
+        return [];
     }
 }

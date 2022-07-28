@@ -2,7 +2,43 @@
 
 Documentation
 
-# Docker
+## Installation
+
+```
+$ composer require vasildakov\speedy
+```
+
+## Usage
+
+
+```php
+
+use VasilDakov\Speedy\Speedy;
+
+$speedy = new Speedy($username, $password, $language);
+
+```
+
+## Services
+
+### Create Shipment Request
+
+```php
+
+use VasilDakov\Speedy\Shipment;
+
+$shipmentRequest = new Shipment\CreateShipmentRequest(
+    new Shipment\ShipmentRecipient(),
+    new Shipment\ShipmentSender(),
+    new Shipment\ShipmentService()
+);
+
+$response = $speedy->createShipment($shipmentRequest);
+
+```
+
+
+## Docker
 
 Build the image
 ```
