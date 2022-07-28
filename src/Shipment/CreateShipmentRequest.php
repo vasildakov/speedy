@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Shipment;
 
 use VasilDakov\Speedy\Speedy;
+use InvalidArgumentException;
+
+use function strlen;
+use function array_push;
+
 
 /**
  * Class CreateShipmentRequest
@@ -195,9 +200,9 @@ class CreateShipmentRequest
      */
     public function setShipmentNote(string $shipmentNote): self
     {
-        if (null !== $shipmentNote && \strlen($shipmentNote) > 200)
+        if (null !== $shipmentNote && strlen($shipmentNote) > 200)
         {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
 
         $this->shipmentNote = $shipmentNote;
@@ -219,9 +224,9 @@ class CreateShipmentRequest
      */
     public function setRef1(string $ref1): self
     {
-        if (null !== $ref1 && \strlen($ref1) > 30)
+        if (null !== $ref1 && strlen($ref1) > 30)
         {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
 
         $this->ref1 = $ref1;
@@ -243,9 +248,9 @@ class CreateShipmentRequest
      */
     public function setRef2(string $ref2): ?self
     {
-        if (null !== $ref2 && \strlen($ref2) > 30)
+        if (null !== $ref2 && strlen($ref2) > 30)
         {
-            throw new \InvalidArgumentException();
+            throw new InvalidArgumentException();
         }
 
         $this->ref2 = $ref2;
@@ -305,6 +310,8 @@ class CreateShipmentRequest
             Speedy::SHIPMENT_NOTE => $this->getShipmentNote(),
             Speedy::REF_1         => $this->getRef1(),
             Speedy::REF_2         => $this->getRef2(),
+            Speedy::CONSOLIDATION_REF => '',
+            Speedy::REQUIRE_UNSUCCESSFUL_DELIVERY_STICKER_IMAGE => '',
         ];
     }
 }

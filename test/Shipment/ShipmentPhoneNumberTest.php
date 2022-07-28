@@ -48,6 +48,15 @@ class ShipmentPhoneNumberTest extends TestCase
         $this->assertEquals($this->number, $object->getNumber());
     }
 
+    public function testItCanRetrieveTheExtension()
+    {
+        $object = new ShipmentPhoneNumber($this->number);
+
+        $object->setExtension('123');
+
+        $this->assertEquals('123', $object->getExtension());
+    }
+
     public function testItCanBeConvertedAsArray()
     {
         $object = new ShipmentPhoneNumber($this->number);

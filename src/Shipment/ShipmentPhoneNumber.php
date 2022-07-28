@@ -41,9 +41,7 @@ class ShipmentPhoneNumber {
      */
     private function setNumber(string $number): void
     {
-
         $this->number = $number;
-
     }
     
     /**
@@ -66,7 +64,7 @@ class ShipmentPhoneNumber {
     }
 
     /**
-     * @return string|null extension
+     * @return string|null
      */
     public function getExtension(): ?string 
     {
@@ -79,8 +77,8 @@ class ShipmentPhoneNumber {
     public function toArray(): array
     {
         return [
-            Speedy::NUMBER     =>$this->getNumber(),
-            Speedy::EXTENSION  =>$this->getExtension()
+            Speedy::NUMBER    => $this->getNumber(),
+            Speedy::EXTENSION => $this->getExtension()
         ];
     }
 }
