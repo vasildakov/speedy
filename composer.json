@@ -30,7 +30,8 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4 || ~8.1.0",
-        "beberlei/assert": "dev-master"
+        "beberlei/assert": "dev-master",
+        "fig/http-message-util": "1.1.x-dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
