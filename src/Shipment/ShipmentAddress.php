@@ -19,6 +19,8 @@ class ShipmentAddress
      */
     public function toArray(): array
     {
-        return [];
+        return [
+            
+        ];
     }
 }
