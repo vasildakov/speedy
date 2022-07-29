@@ -67,9 +67,11 @@ class ShipmentRecipient
     private int $pickupOfficeId;
 
     /**
+     * @param string $clientName
+     * @param string $email
      * @param ShipmentPhoneNumber $phone1
      */
-    public function __construct(ShipmentPhoneNumber $phone1, $clientName, $email)
+    public function __construct(ShipmentPhoneNumber $phone1, string $clientName, string $email)
     {
         $this->setClientName($clientName);
         $this->setEmail($email);
