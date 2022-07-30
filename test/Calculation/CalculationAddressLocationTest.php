@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\SpeedyTest\Calculation;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use VasilDakov\Speedy\ValueObject\CountryCode;
 use VasilDakov\Speedy\Calculation\CalculationAddressLocation;
-
 use PHPUnit\Framework\TestCase;
 
 
@@ -21,30 +20,46 @@ use PHPUnit\Framework\TestCase;
  */
 class CalculationAddressLocationTest extends TestCase
 {
+    /**
+     * @var int
+     */
     protected int $siteId;
 
+    /**
+     * @var string
+     */
     protected string $stateId;
 
+    /**
+     * @var string
+     */
     protected string $postCode;
 
+    /**
+     * @var string
+     */
     protected string $siteType;
 
+    /**
+     * @var string
+     */
     protected string $siteName;
 
+    /**
+     * @var CountryCode|MockObject
+     */
     protected CountryCode $countryId;
 
+    /**
+     * @return void
+     */
     protected function setUp():void
     {
-        $this->siteId   = 100;
-
-        $this->stateId  = 'StateId';
-
+        $this->siteId    = 100;
+        $this->stateId   = 'StateId';
         $this->siteType  = 'SiteType';
-
         $this->siteName  = 'SiteName';
-
-        $this->postCode = '1000';
-
+        $this->postCode  = '1000';
         $this->countryId = $this->createMock(CountryCode::class);
 
         parent::setUp();
@@ -76,7 +91,7 @@ class CalculationAddressLocationTest extends TestCase
     /**
      * @group CalculationAddressLocation
      */
-    public function testItCanRetrieveTheStateId()
+    public function testItCanRetrieveTheStateId(): void
     {
         $object = new CalculationAddressLocation($this->siteId, $this->postCode);
 
@@ -88,7 +103,7 @@ class CalculationAddressLocationTest extends TestCase
     /**
      * @group CalculationAddressLocation
      */
-    public function testItCanRetrieveTheSiteId()
+    public function testItCanRetrieveTheSiteId(): void
     {
         $object = new CalculationAddressLocation($this->siteId, $this->postCode);
 
@@ -98,7 +113,7 @@ class CalculationAddressLocationTest extends TestCase
     /**
      * @group CalculationAddressLocation
      */
-    public function testItCanRetrieveThePostCode()
+    public function testItCanRetrieveThePostCode(): void
     {
         $object = new CalculationAddressLocation($this->siteId, $this->postCode);
 
@@ -108,7 +123,7 @@ class CalculationAddressLocationTest extends TestCase
     /**
      * @group CalculationAddressLocation
      */
-    public function testItCanRetrieveTheSiteType()
+    public function testItCanRetrieveTheSiteType(): void
     {
         $object = new CalculationAddressLocation($this->siteId, $this->postCode);
 
@@ -120,7 +135,7 @@ class CalculationAddressLocationTest extends TestCase
     /**
      * @group CalculationAddressLocation
      */
-    public function testItCanRetrieveTheSiteName()
+    public function testItCanRetrieveTheSiteName(): void
     {
         $object = new CalculationAddressLocation($this->siteId, $this->postCode);
 

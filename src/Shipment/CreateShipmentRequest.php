@@ -8,8 +8,6 @@ use VasilDakov\Speedy\Speedy;
 use InvalidArgumentException;
 
 use function strlen;
-use function array_push;
-
 
 /**
  * Class CreateShipmentRequest
