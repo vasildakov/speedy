@@ -54,6 +54,11 @@ class ShipmentAddress
     /**
      * @var string
      */
+    private string $streetType;
+
+    /**
+     * @var string
+     */
     private string $streetName;
 
     /**
@@ -247,6 +252,22 @@ class ShipmentAddress
     public function setStreetId(int $streetId): void
     {
         $this->streetId = $streetId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreetType(): string
+    {
+        return $this->streetType;
+    }
+
+    /**
+     * @param string $streetType
+     */
+    public function setStreetType(string $streetType): void
+    {
+        $this->streetType = $streetType;
     }
 
     /**
@@ -488,12 +509,6 @@ class ShipmentAddress
     {
         $this->y = $y;
     }
-
-    /**
-     * @param int $siteId
-     */
-
-
 
 
     /**
