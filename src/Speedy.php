@@ -151,6 +151,8 @@ final class Speedy
     public const CONSOLIDATION_REF = 'consolidationRef';
     public const REQUIRE_UNSUCCESSFUL_DELIVERY_STICKER_IMAGE = 'requireUnsuccessfulDeliveryStickerImage';
     public const EXCISE_GOODS = 'exciseGoods';
+    public const SENDER_BANK_ACCOUNT = 'senderBankAccount';
+
 
     /**
      * @var string
