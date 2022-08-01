@@ -206,6 +206,7 @@ class ShipmentAddressTest extends TestCase
     public function testItCanRetrieveTheCountryId(): void
     {
         $object = new ShipmentAddress($this->siteId);
+        $object->setCountryId($this->countryId);
 
         $this->assertEquals($this->countryId, $object->getCountryId());
     }
@@ -213,6 +214,7 @@ class ShipmentAddressTest extends TestCase
     public function testItCanRetrieveTheSiteType(): void
     {
         $object = new ShipmentAddress($this->siteId);
+        $object->setSiteType($this->siteType);
 
         $this->assertEquals($this->siteType, $object->getSiteType());
     }
