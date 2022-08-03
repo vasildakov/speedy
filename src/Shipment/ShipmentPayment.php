@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class ShipmentPayment
  *
@@ -14,29 +16,179 @@ namespace VasilDakov\Speedy\Shipment;
  */
 class ShipmentPayment
 {
-    public const PAYER_SENDER      = 1;
-    public const PAYER_RECIPIENT   = 2;
-    public const PAYER_THIRD_PARTY = 3;
 
-    public const PAYER_OPTIONS = [
-        self::PAYER_SENDER      => 'SENDER',
-        self::PAYER_RECIPIENT   => 'RECIPIENT',
-        self::PAYER_THIRD_PARTY => 'THIRD_PARTY'
-    ];
+    /**
+     * @var Payer
+     */
+    private Payer $courierServicePayer;
 
-    public function setCourierServicePayer($courierServicePayer): void
+    /**
+     * @var Payer|null
+     */
+    private ?Payer $declaredValuePayer;
+
+    /**
+     * @var Payer|null
+     */
+    private ?Payer $packagePayer;
+
+    /**
+     * @var int
+     */
+    private int $thirdPartyClientId;
+
+    /**
+     * @var ShipmentDiscountCardId
+     */
+    private ShipmentDiscountCardId $discountCardId;
+
+    /**
+     * @var BankAccount
+     */
+    private BankAccount $senderBankAccount;
+
+    /**
+     * @param Payer $courierServicePayer
+     */
+    public function __construct(Payer $courierServicePayer)
     {
-        if (!in_array(self::PAYER_OPTIONS, $courierServicePayer, true)) {
-            throw new \InvalidArgumentException();
-        }
-
         $this->courierServicePayer = $courierServicePayer;
     }
+
+    /**
+     * @return Payer
+     */
+    public function getCourierServicePayer(): Payer
+    {
+        return $this->courierServicePayer;
+    }
+
+    /**
+     * @param Payer $declaredValuePayer
+     * @return $this
+     */
+    public function setDeclaredValuePayer(Payer $declaredValuePayer): self
+    {
+        $this->declaredValuePayer = $declaredValuePayer;
+
+        return $this;
+    }
+
+    /**
+     * @return Payer|null
+     */
+    public function getDeclaredValuePayer(): ?Payer
+    {
+        return $this->declaredValuePayer;
+    }
+
+    /**
+     * @param Payer $packagePayer
+     * @return $this
+     */
+    public function setPackagePayer(Payer $packagePayer) :self
+    {
+        $this->packagePayer = $packagePayer;
+
+        return $this;
+    }
+    /**
+     * @return Payer|null
+     */
+    public function getPackagePayer(): ?Payer
+    {
+        return $this->packagePayer;
+    }
+
+    /**
+     * @param int $thirdPartyClientId
+     * @return $this
+     */
+    public function setThirdPartyClientId(int $thirdPartyClientId) : self
+    {
+        $this->thirdPartyClientId = $thirdPartyClientId;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getThirdPartyClientId(): ?int
+    {
+        return $this->thirdPartyClientId;
+    }
+
+    /**
+     * @param ShipmentDiscountCardId $discountCardId
+     * @return ShipmentPayment
+     */
+    public function setDiscountCardId(ShipmentDiscountCardId $discountCardId): self
+    {
+        $this->discountCardId = $discountCardId;
+
+        return $this;
+    }
+
+    /**
+     * @return ShipmentDiscountCardId|null
+     */
+    public function getDiscountCardId(): ?ShipmentDiscountCardId
+    {
+       return $this->discountCardId;
+    }
+
+    /**
+     * @param BankAccount $bankAccount
+     * @return $this
+     */
+    public function setSenderBankAccount(BankAccount $bankAccount): self
+    {
+        $this->senderBankAccount = $bankAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return BankAccount|null
+     */
+    public function getSenderBankAccount(): ?BankAccount
+    {
+        return $this->senderBankAccount;
+    }
+
     /**
      * @return array
      */
     public function toArray(): array
     {
-        return [];
+        $data = [
+            Speedy::COURIER_SERVICE_PAYER =>  (string) $this->getCourierServicePayer()
+        ];
+
+        // short hand ternary operator
+        // $data[Speedy::DECLARED_VALUE_PAYER] = ($this->declaredValuePayer) ?: null;
+
+        if (null !== $this->getDeclaredValuePayer()) {
+            $data[Speedy::DECLARED_VALUE_PAYER] = $this->declaredValuePayer;
+        }
+
+        if (null !== $this->getPackagePayer()) {
+            $data[Speedy::PACKAGE_PAYER] = $this->packagePayer;
+        }
+
+        if (null !== $this->getThirdPartyClientId()) {
+        $data[Speedy::THIRD_PARTY_CLIENT_ID] = $this->thirdPartyClientId;
+        }
+
+        if (null !== $this->getDiscountCardId()) {
+            $data[Speedy::DISCOUNT_CARD_ID] = $this->discountCardId;
+        }
+
+        if (null !== $this->getSenderBankAccount()) {
+            $data[Speedy::SENDER_BANK_ACCOUNT] = $this->senderBankAccount;
+        }
+
+        return $data;
     }
 }
