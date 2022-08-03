@@ -25,27 +25,27 @@ class ShipmentPayment
     /**
      * @var Payer|null
      */
-    private ?Payer $declaredValuePayer;
+    private ?Payer $declaredValuePayer = null;
 
     /**
      * @var Payer|null
      */
-    private ?Payer $packagePayer;
+    private ?Payer $packagePayer = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private int $thirdPartyClientId;
+    private ?int $thirdPartyClientId = null;
 
     /**
-     * @var ShipmentDiscountCardId
+     * @var ShipmentDiscountCardId|null
      */
-    private ShipmentDiscountCardId $discountCardId;
+    private ?ShipmentDiscountCardId $discountCardId = null;
 
     /**
-     * @var BankAccount
+     * @var BankAccount|null
      */
-    private BankAccount $senderBankAccount;
+    private ?BankAccount $senderBankAccount = null;
 
     /**
      * @param Payer $courierServicePayer
@@ -169,23 +169,23 @@ class ShipmentPayment
         // short hand ternary operator
         // $data[Speedy::DECLARED_VALUE_PAYER] = ($this->declaredValuePayer) ?: null;
 
-        if (null !== $this->getDeclaredValuePayer()) {
+        if (null !== $this->declaredValuePayer) {
             $data[Speedy::DECLARED_VALUE_PAYER] = $this->declaredValuePayer;
         }
 
-        if (null !== $this->getPackagePayer()) {
+        if (null !== $this->packagePayer ) {
             $data[Speedy::PACKAGE_PAYER] = $this->packagePayer;
         }
 
-        if (null !== $this->getThirdPartyClientId()) {
+        if (null !== $this->thirdPartyClientId) {
         $data[Speedy::THIRD_PARTY_CLIENT_ID] = $this->thirdPartyClientId;
         }
 
-        if (null !== $this->getDiscountCardId()) {
+        if (null !== $this->discountCardId) {
             $data[Speedy::DISCOUNT_CARD_ID] = $this->discountCardId;
         }
 
-        if (null !== $this->getSenderBankAccount()) {
+        if (null !== $this->senderBankAccount) {
             $data[Speedy::SENDER_BANK_ACCOUNT] = $this->senderBankAccount;
         }
 
