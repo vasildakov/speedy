@@ -170,23 +170,23 @@ class ShipmentPayment
         // $data[Speedy::DECLARED_VALUE_PAYER] = ($this->declaredValuePayer) ?: null;
 
         if (null !== $this->declaredValuePayer) {
-            $data[Speedy::DECLARED_VALUE_PAYER] = $this->declaredValuePayer;
+            $data[Speedy::DECLARED_VALUE_PAYER] = $this->getDeclaredValuePayer();
         }
 
         if (null !== $this->packagePayer ) {
-            $data[Speedy::PACKAGE_PAYER] = $this->packagePayer;
+            $data[Speedy::PACKAGE_PAYER] = $this->getPackagePayer();
         }
 
         if (null !== $this->thirdPartyClientId) {
-        $data[Speedy::THIRD_PARTY_CLIENT_ID] = $this->thirdPartyClientId;
+        $data[Speedy::THIRD_PARTY_CLIENT_ID] = $this->getThirdPartyClientId();
         }
 
         if (null !== $this->discountCardId) {
-            $data[Speedy::DISCOUNT_CARD_ID] = $this->discountCardId;
+            $data[Speedy::DISCOUNT_CARD_ID] = $this->getDiscountCardId();
         }
 
         if (null !== $this->senderBankAccount) {
-            $data[Speedy::SENDER_BANK_ACCOUNT] = $this->senderBankAccount;
+            $data[Speedy::SENDER_BANK_ACCOUNT] = $this->getSenderBankAccount();
         }
 
         return $data;

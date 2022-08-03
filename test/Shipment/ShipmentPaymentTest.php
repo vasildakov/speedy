@@ -58,7 +58,7 @@ class ShipmentPaymentTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->arrayHasKey(Speedy::COURIER_SERVICE_PAYER, $array);
+        $this->assertArrayHasKey(Speedy::COURIER_SERVICE_PAYER, $array);
     }
 
     /**
@@ -76,30 +76,11 @@ class ShipmentPaymentTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->arrayHasKey(Speedy::DECLARED_VALUE_PAYER, $array);
-        $this->arrayHasKey(Speedy::PACKAGE_PAYER, $array);
-        $this->arrayHasKey(Speedy::THIRD_PARTY_CLIENT_ID, $array);
-        $this->arrayHasKey(Speedy::DISCOUNT_CARD_ID, $array);
-        $this->arrayHasKey(Speedy::SENDER_BANK_ACCOUNT, $array);
+        $this->assertArrayHasKey(Speedy::DECLARED_VALUE_PAYER, $array);
+        $this->assertArrayHasKey(Speedy::PACKAGE_PAYER, $array);
+        $this->assertArrayHasKey(Speedy::THIRD_PARTY_CLIENT_ID, $array);
+        $this->assertArrayHasKey(Speedy::DISCOUNT_CARD_ID, $array);
+        $this->assertArrayHasKey(Speedy::SENDER_BANK_ACCOUNT, $array);
 
     }
-//    public function testItCanExportToArrayWithOptionalProperty()
-//    {
-//        $object = new ShipmentPayment($this->payer);
-//
-//        $object->setDeclaredValuePayer($this->payer);
-//        $object->setPackagePayer($this->payer);
-//        $object->setThirdPartyClientId(1);
-//        $object->setDiscountCardId($this->discount);
-//        $object->setSenderBankAccount($this->account);
-//
-//        $array = $object->toArray();
-//
-//        $this->assertArrayHasKey(Speedy::DECLARED_VALUE_PAYER, $array);
-//        $this->assertArrayHasKey(Speedy::PACKAGE_PAYER, $array);
-//        $this->assertArrayHasKey(Speedy::THIRD_PARTY_CLIENT_ID, $array);
-//        $this->assertArrayHasKey(Speedy::DISCOUNT_CARD_ID, $array);
-//        $this->assertArrayHasKey(Speedy::SENDER_BANK_ACCOUNT, $array);
-//    }
-
 }
