@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class BankAccount
  *
@@ -15,6 +17,7 @@ class BankAccount
     public function toArray(): array
     {
         return [
+
         ];
     }
 }

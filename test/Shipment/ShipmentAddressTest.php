@@ -226,13 +226,4 @@ class ShipmentAddressTest extends TestCase
         $this->assertArrayHasKey(Speedy::X, $array);
         $this->assertArrayHasKey(Speedy::Y, $array);
     }
-
-
-//
-//    public function testItCanBeConvertedAsArray(): void
-//    {
-//        $object = new ShipmentAddress($this->siteId);
-//
-//        $this->assertIsArray($object->toArray());
-//    }
 }
