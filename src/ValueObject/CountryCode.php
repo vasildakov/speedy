@@ -69,5 +69,12 @@ class CountryCode
     public function getCode(): int
     {
         return $this->code;
-    }  
+    }
+
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
 }

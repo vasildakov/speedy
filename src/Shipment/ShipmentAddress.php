@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics\NestingLevelSniff;
+use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\ValueObject\CountryCode;
 
 /**
@@ -17,14 +19,14 @@ use VasilDakov\Speedy\ValueObject\CountryCode;
 class ShipmentAddress
 {
     /**
-     * @var CountryCode
+     * @var CountryCode|null
      */
-    private CountryCode $countryId;
+    private ?CountryCode $countryId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $stateId;
+    private ?string $stateId = null;
 
     /**
      * @var int
@@ -32,104 +34,104 @@ class ShipmentAddress
     private int $siteId;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $siteType;
+    private ?string $siteType = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $siteName;
+    private ?string $siteName = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $postCode;
+    private ?string $postCode = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private int $streetId;
+    private ?int $streetId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $streetType;
+    private ?string $streetType = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $streetName;
+    private ?string $streetName = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $streetNo;
+    private ?string $streetNo = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private int $complexId;
+    private ?int $complexId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $complexType;
+    private ?string $complexType = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $complexName;
+    private ?string $complexName = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $blockNo;
+    private ?string $blockNo = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $entranceNo;
+    private ?string $entranceNo = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $floorNo;
+    private ?string $floorNo = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $apartmentNo;
+    private ?string $apartmentNo = null;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private int $poiId;
+    private ?int $poiId = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $addressNote;
+    private ?string $addressNote = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $addressLine1;
+    private ?string $addressLine1 = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $addressLine2;
+    private ?string $addressLine2 = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private float $x;
+    private ?float $x = null;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private float $y;
+    private ?float $y = null;
 
     /**
      * @param int $siteId
@@ -140,9 +142,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return CountryCode
+     * @return CountryCode|null
      */
-    public function getCountryId(): CountryCode
+    public function getCountryId(): ?CountryCode
     {
         return $this->countryId;
     }
@@ -159,25 +161,28 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStateId(): string
+    public function getStateId(): ?string
     {
         return $this->stateId;
     }
 
     /**
      * @param string $stateId
+     * @return $this
      */
-    public function setStateId(string $stateId): void
+    public function setStateId(string $stateId): self
     {
         $this->stateId = $stateId;
+
+        return $this;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getSiteId(): int
+    public function getSiteId(): ?int
     {
         return $this->siteId;
     }
@@ -191,9 +196,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSiteType(): string
+    public function getSiteType(): ?string
     {
         return $this->siteType;
     }
@@ -207,9 +212,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSiteName(): string
+    public function getSiteName(): ?string
     {
         return $this->siteName;
     }
@@ -223,9 +228,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPostCode(): string
+    public function getPostCode(): ?string
     {
         return $this->postCode;
     }
@@ -239,9 +244,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getStreetId(): int
+    public function getStreetId(): ?int
     {
         return $this->streetId;
     }
@@ -255,9 +260,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStreetType(): string
+    public function getStreetType(): ?string
     {
         return $this->streetType;
     }
@@ -271,9 +276,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStreetName(): string
+    public function getStreetName(): ?string
     {
         return $this->streetName;
     }
@@ -287,9 +292,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStreetNo(): string
+    public function getStreetNo(): ?string
     {
         return $this->streetNo;
     }
@@ -303,9 +308,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getComplexId(): int
+    public function getComplexId(): ?int
     {
         return $this->complexId;
     }
@@ -319,9 +324,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getComplexType(): string
+    public function getComplexType(): ?string
     {
         return $this->complexType;
     }
@@ -335,9 +340,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getComplexName(): string
+    public function getComplexName(): ?string
     {
         return $this->complexName;
     }
@@ -351,9 +356,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBlockNo(): string
+    public function getBlockNo(): ?string
     {
         return $this->blockNo;
     }
@@ -367,9 +372,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEntranceNo(): string
+    public function getEntranceNo(): ?string
     {
         return $this->entranceNo;
     }
@@ -383,9 +388,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFloorNo(): string
+    public function getFloorNo(): ?string
     {
         return $this->floorNo;
     }
@@ -399,9 +404,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getApartmentNo(): string
+    public function getApartmentNo(): ?string
     {
         return $this->apartmentNo;
     }
@@ -415,9 +420,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getPoiId(): int
+    public function getPoiId(): ?int
     {
         return $this->poiId;
     }
@@ -431,9 +436,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAddressNote(): string
+    public function getAddressNote(): ?string
     {
         return $this->addressNote;
     }
@@ -447,9 +452,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAddressLine1(): string
+    public function getAddressLine1(): ?string
     {
         return $this->addressLine1;
     }
@@ -463,9 +468,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAddressLine2(): string
+    public function getAddressLine2(): ?string
     {
         return $this->addressLine2;
     }
@@ -479,9 +484,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getX(): float
+    public function getX(): ?float
     {
         return $this->x;
     }
@@ -495,9 +500,9 @@ class ShipmentAddress
     }
 
     /**
-     * @return float
+     * @return float|null
      */
-    public function getY(): float
+    public function getY(): ?float
     {
         return $this->y;
     }
@@ -516,8 +521,98 @@ class ShipmentAddress
      */
     public function toArray(): array
     {
-        return [
+        $data = [Speedy::SITE_ID => $this->getSiteId()
 
         ];
+
+        if (null !== $this->countryId) {
+            $data[Speedy::COUNTRY_ID]  = $this->getCountryId();
+        }
+
+        if (null !== $this->countryId) {
+            $data[Speedy::STATE_ID]  = $this->getStateId();
+        }
+
+        if (null !== $this->siteType) {
+            $data[Speedy::SITE_TYPE]  = $this->getSiteType();
+        }
+
+        if (null !== $this->siteName) {
+            $data[Speedy::SITE_NAME]  = $this->getSiteName();
+        }
+
+        if (null !== $this->postCode) {
+            $data[Speedy::POST_CODE]  = $this->getPostCode();
+        }
+
+        if (null !== $this->streetId) {
+            $data[Speedy::STREET_ID]  = $this->getStreetId();
+        }
+        if (null !== $this->streetType) {
+            $data[Speedy::STREET_TYPE]  = $this->getStreetType();
+        }
+
+        if (null !== $this->streetName) {
+            $data[Speedy::STREET_NAME] = $this->getStreetName();
+        }
+
+        if (null !== $this->streetNo) {
+            $data[Speedy::STREET_NO] = $this->getStreetNo();
+        }
+
+        if (null !== $this->complexId) {
+            $data[Speedy::COMPLEX_ID] = $this->getComplexId();
+        }
+
+        if (null !== $this->complexType) {
+            $data[Speedy::COMPLEX_TYPE] = $this->getComplexType();
+        }
+
+        if (null !== $this->complexName) {
+            $data[Speedy::COMPLEX_NAME] = $this->getComplexName();
+        }
+
+        if (null !== $this->blockNo) {
+            $data[Speedy::BLOCK_NO] = $this->getBlockNo();
+        }
+
+        if (null !== $this->entranceNo) {
+            $data[Speedy::ENTRANCE_NO] = $this->getEntranceNo();
+        }
+
+        if (null !== $this->floorNo) {
+            $data[Speedy::FLOOR_NO] = $this->getFloorNo();
+        }
+
+        if (null !== $this->apartmentNo) {
+            $data[Speedy::APARTMENT_NO] = $this->getApartmentNo();
+        }
+
+        if (null !== $this->poiId) {
+            $data[Speedy::POI_ID] = $this->getPoiId();
+        }
+
+        if (null !== $this->addressNote) {
+            $data[Speedy::ADDRESS_NOTE] = $this->getAddressNote();
+        }
+
+        if (null !== $this->addressLine1) {
+            $data[Speedy::ADDRESS_LINE_1] = $this->getAddressLine1();
+        }
+
+        if (null !== $this->addressLine2) {
+            $data[Speedy::ADDRESS_LINE_2] = $this->getAddressLine2();
+        }
+
+        if (null !== $this->x) {
+            $data[Speedy::X] = $this->getX();
+        }
+        if (null !== $this->y) {
+            $data[Speedy::Y] = $this->getY();
+        }
+
+
+        return $data;
     }
 }
+
