@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest;
 
+use Fig\Http\Message\RequestMethodInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -30,13 +31,13 @@ class SpeedyTest extends TestCase
     protected RequestFactoryInterface $factory;
     protected RequestInterface $request;
     protected ResponseInterface $response;
+    protected StreamInterface $stream;
 
     protected function setUp(): void
     {
         $this->configuration = $this->createMock(Configuration::class);
         $this->client        = $this->createMock(ClientInterface::class);
         $this->factory       = $this->createMock(RequestFactoryInterface::class);
-
         $this->stream        = $this->createMock(StreamInterface::class);
         $this->request       = $this->createMock(RequestInterface::class);
         $this->response      = $this->createMock(ResponseInterface::class);
@@ -62,7 +63,9 @@ class SpeedyTest extends TestCase
         $this->factory
             ->expects($this->once())
             ->method('createRequest')
-            ->with('POST', 'https://api.speedy.bg/v1/client/contract')
+            ->with(
+                RequestMethodInterface::METHOD_POST,
+                'https://api.speedy.bg/v1/client/contract')
             ->willReturn($this->request)
         ;
 
@@ -77,6 +80,19 @@ class SpeedyTest extends TestCase
             ->expects($this->once())
             ->method('getBody')
             ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('write')
+            ->willReturn($this->request)
+        ;
+
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
         ;
 
         $response = $speedy->getContractClient(new GetContractClientsRequest());

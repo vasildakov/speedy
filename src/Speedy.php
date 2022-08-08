@@ -191,7 +191,6 @@ final class Speedy
         $this->configuration = $configuration;
         $this->client  = $client;
         $this->factory = $factory;
-
     }
 
     /**
