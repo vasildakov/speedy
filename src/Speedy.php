@@ -5,8 +5,15 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Client\ClientExceptionInterface;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
+use Psr\Http\Client\ClientInterface;
+use VasilDakov\Speedy\Client\GetContractClientsRequest;
+use VasilDakov\Speedy\Location\FindCountry;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 
 /**
@@ -154,156 +161,110 @@ final class Speedy
     public const EXCISE_GOODS = 'exciseGoods';
     public const SENDER_BANK_ACCOUNT = 'senderBankAccount';
 
+    /**
+     * @var Configuration
+     */
+    private Configuration $configuration;
 
     /**
-     * @var string
+     * PSR-18: HTTP Client
+     * @var ClientInterface
      */
-    private string $username;
+    private ClientInterface $client;
 
     /**
-     * @var string
+     * PSR-17: HTTP Factories
+     * @var RequestFactoryInterface
      */
-    private string $password;
+    private RequestFactoryInterface $factory;
 
     /**
-     * @var string
+     * @param Configuration $configuration
+     * @param ClientInterface $client
+     * @param RequestFactoryInterface $factory
      */
-    private string $language;
+    public function __construct(
+        Configuration $configuration,
+        ClientInterface $client,
+        RequestFactoryInterface $factory
+    ) {
+        $this->configuration = $configuration;
+        $this->client  = $client;
+        $this->factory = $factory;
 
-    /**
-     * @param string $username
-     * @param string $password
-     * @param string $language
-     */
-    public function __construct(string $username, string $password, string $language)
-    {
-        $this->username = $username;
-        $this->password = $password;
-        $this->language = $language;
     }
-
-    /**
-     * @return string
-     */
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-
-    /**
-     * @param array $data
-     * @return mixed|void
-     */
-    public function getContractClient(array $data = [])
-    {
-        return $this->request(
-            RequestMethodInterface::METHOD_POST,
-            '/client/contract/',
-            $data
-        );
-    }
-
-    /**
-     * @param CreateShipmentRequest $request
-     */
-    public function createShipment(CreateShipmentRequest $request)
-    {
-        $data = $request->toArray();
-
-        return $this->request(RequestMethodInterface::METHOD_POST, '/shipment', $data);
-    }
-
 
     /**
      * @param string $method
      * @param string $uri
      * @param array $data
+     * @return RequestInterface
      */
-    private function request(string $method, string $uri, array $data)
+    private function createRequest(string $method, string $uri, array $data): RequestInterface
     {
-        $data[self::USER_NAME] = $this->getUsername();
-        $data[self::PASSWORD]  = $this->getPassword();
-        $data[self::LANGUAGE]  = $this->getLanguage();
+        $request = $this->factory->createRequest($method, $uri);
 
-        $curl = curl_init(self::API_URL.$uri);
+        $request = $request->withAddedHeader('Content-Type', 'application/json');
 
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $request->getBody()->write(\json_encode($data));
 
-        $json = json_encode($data);
+        return $request;
+    }
 
-        switch ($method) {
-            case RequestMethodInterface::METHOD_GET:
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-                break;
-            case RequestMethodInterface::METHOD_POST:
-                curl_setopt($curl, CURLOPT_POST, 1);
-                curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-                break;
-            case RequestMethodInterface::METHOD_PUT:
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-                break;
-            case RequestMethodInterface::METHOD_DELETE:
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
-                break;
-        }
+    /**
+     * @param array $data
+     * @return array
+     */
+    private function createPayload(array $data): array
+    {
+        $config = $this->configuration->toArray();
 
-        $response = curl_exec($curl);
-        $data = json_decode($response);
+        return \array_merge($config, $data);
+    }
 
-        /* Check for 404 (file not found). */
-        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    /**
+     * @param GetContractClientsRequest $object
+     * @return ResponseInterface
+     * @throws ClientExceptionInterface
+     */
+    public function getContractClient(GetContractClientsRequest $object)
+    {
+        $payload = $this->createPayload($object->toArray());
 
-        // Check the HTTP Status code
-        switch ($httpCode) {
-            case StatusCodeInterface::STATUS_OK: // 200
-                $statusCode = "200: Success";
-                return ($data);
-                break;
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL.'/client/contract',
+            $payload
+        );
 
-            case StatusCodeInterface::STATUS_NOT_FOUND: // 404
-                $statusCode = "404: API Not found";
-                break;
+        return $this->client->sendRequest($request);
+    }
 
-            case StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR: // 500
-                $statusCode = "500: servers replied with an error.";
-                break;
+    /**
+     * @throws ClientExceptionInterface
+     */
+    public function findCountry(FindCountry $object): ResponseInterface
+    {
+        $payload = $this->createPayload($object->toArray());
 
-            case StatusCodeInterface::STATUS_BAD_GATEWAY: // 402
-                $statusCode = "502: servers may be down or being upgraded. Hopefully they'll be OK soon!";
-                break;
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL.'/location/country',
+            $payload
+        );
 
-            case StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE:
-                $statusCode = "503: service unavailable. Hopefully they'll be OK soon!";
-                break;
+        return $this->client->sendRequest($request);
+    }
 
-            default:
-                $statusCode = "Undocumented error: " . $httpCode . " : " . curl_error($curl);
-                break;
-        }
 
-        curl_close($curl);
-        echo $statusCode;
-        die;
+    public function printRequest()
+    {
+        // @TODO Implementation
+    }
+
+
+    public function createShipment(CreateShipmentRequest $request)
+    {
+        // @TODO Implementation
     }
 }

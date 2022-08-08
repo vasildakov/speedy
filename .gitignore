@@ -3,4 +3,4 @@
 /nbproject/private/
 /nbproject/
 .phpunut.result.cache
-/public
+public/.env

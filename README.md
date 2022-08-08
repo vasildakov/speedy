@@ -2,6 +2,11 @@
 
 Documentation
 
+## Features
+
+This library is compliant with [PSR-7: HTTP message interfaces](https://www.php-fig.org/psr/psr-7/), [PSR-17: HTTP Factories](https://www.php-fig.org/psr/psr-17/) and [PSR-18: HTTP Client](https://www.php-fig.org/psr/psr-18/) 
+
+
 ## Installation
 
 ```
@@ -15,11 +20,25 @@ $ composer require vasildakov\speedy
 
 use VasilDakov\Speedy\Speedy;
 
-$speedy = new Speedy($username, $password, $language);
+$speedy = new Speedy(
+    new Client(), 
+    new Options('username', 'password', 'language')
+);
+
+$response = $speedy->getContractClient();
 
 ```
 
 ## Services
+
+Shipment Service
+- Create Shipment
+- Cancel Shipment
+- Add parcel
+- Finalize Pending Shipment
+- Shipment Information
+
+
 
 ### Create Shipment Request
 
