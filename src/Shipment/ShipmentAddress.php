@@ -170,7 +170,7 @@ class ShipmentAddress
 
     /**
      * @param string $stateId
-     * @return $this
+     * @return self
      */
     public function setStateId(string $stateId): self
     {
@@ -522,7 +522,6 @@ class ShipmentAddress
     public function toArray(): array
     {
         $data = [Speedy::SITE_ID => $this->getSiteId()
-
         ];
 
         if (null !== $this->countryId) {
