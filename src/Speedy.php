@@ -183,6 +183,8 @@ final class Speedy
     public const REQUIRE_UNSUCCESSFUL_DELIVERY_STICKER_IMAGE = 'requireUnsuccessfulDeliveryStickerImage';
     public const EXCISE_GOODS = 'exciseGoods';
     public const SENDER_BANK_ACCOUNT = 'senderBankAccount';
+    public const IBAN = 'iban';
+    public const ACCOUNT_HOLDER = 'accountHolder';
 
     /**
      * @var Configuration
