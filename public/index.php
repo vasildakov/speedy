@@ -28,8 +28,8 @@ $guzzleHttp = new GuzzleHttp();
 
 $speedy = new Speedy($configuration, $curlHttp, $factory);
 
-//$response = $speedy->getContractClient(new GetContractClientsRequest());
-$response = $speedy->findCountry(new FindCountry('Fr'));
+$response = $speedy->getContractClient(new GetContractClientsRequest());
+//$response = $speedy->findCountry(new FindCountry('Fr'));
 
-echo '<pre>'; var_dump($response->getBody()->getContents());
+echo '<pre>'; var_dump($response);
 

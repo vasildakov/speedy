@@ -13,7 +13,10 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use VasilDakov\Speedy\Client\GetContractClientsRequest;
+use VasilDakov\Speedy\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Configuration;
+use VasilDakov\Speedy\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Location\Country\FindCountryResponse;
 use VasilDakov\Speedy\Location\FindCountry;
 use VasilDakov\Speedy\Speedy;
 
@@ -95,9 +98,28 @@ class SpeedyTest extends TestCase
             ->willReturn($this->response)
         ;
 
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(
+                json_encode([
+                    'clients' => [
+                        ['clientId' => 1, 'address' => ['countryId' => 1, 'siteId' => 2] ],
+                        ['clientId' => 2, 'address' => ['countryId' => 3, 'siteId' => 4] ]
+                    ]
+                ])
+            )
+        ;
+
         $response = $speedy->getContractClient(new GetContractClientsRequest());
 
-        $this->assertInstanceOf(ResponseInterface::class, $response);
+        $this->assertInstanceOf(GetContractClientsResponse::class, $response);
     }
 
     /**
@@ -127,8 +149,8 @@ class SpeedyTest extends TestCase
             ->willReturn($this->stream)
         ;
 
-        $response = $speedy->findCountry(new FindCountry('Bulgaria'));
+        $response = $speedy->findCountry(new FindCountryRequest('Bulgaria'));
 
-        $this->assertInstanceOf(ResponseInterface::class, $response);
+        $this->assertInstanceOf(FindCountryResponse::class, $response);
     }
 }

@@ -1,9 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-
-namespace VasilDakov\Speedy\Location;
+namespace VasilDakov\Speedy\Location\Country;
 
 /**
  * Class FindCountry
@@ -12,7 +9,7 @@ namespace VasilDakov\Speedy\Location;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-class FindCountry
+class FindCountryRequest
 {
     /**
      * @var string

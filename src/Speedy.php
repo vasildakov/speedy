@@ -12,9 +12,32 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Client\ClientInterface;
+use VasilDakov\Speedy\Calculation\CalculationRequest;
+use VasilDakov\Speedy\Calculation\CalculationResponse;
+use VasilDakov\Speedy\Client\Address;
+use VasilDakov\Speedy\Client\Client;
 use VasilDakov\Speedy\Client\GetContractClientsRequest;
+use VasilDakov\Speedy\Client\GetContractClientsResponse;
+use VasilDakov\Speedy\Client\GetContractClientsResponseFactory;
+use VasilDakov\Speedy\Location\Complex\FindComplexRequest;
+use VasilDakov\Speedy\Location\Complex\FindComplexResponse;
+use VasilDakov\Speedy\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Location\Country\FindCountryResponse;
 use VasilDakov\Speedy\Location\FindCountry;
+use VasilDakov\Speedy\Location\Office\FindOfficeRequest;
+use VasilDakov\Speedy\Location\Office\FindOfficeResponse;
+use VasilDakov\Speedy\Location\Site\FindSiteRequest;
+use VasilDakov\Speedy\Location\Site\FindSiteResponse;
+use VasilDakov\Speedy\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Location\State\FindStateResponse;
+use VasilDakov\Speedy\Location\Street\FindStreetRequest;
+use VasilDakov\Speedy\Location\Street\FindStreetResponse;
+use VasilDakov\Speedy\Printing\PrintRequest;
+use VasilDakov\Speedy\Printing\PrintResponse;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
+use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
+use VasilDakov\Speedy\Track\TrackRequest;
+use VasilDakov\Speedy\Track\TrackResponse;
 
 /**
  * Class Speedy
@@ -222,11 +245,11 @@ final class Speedy
     }
 
     /**
-     * @param GetContractClientsRequest $object
-     * @return ResponseInterface
+     * @param GetContractClientsRequest
+     * @return GetContractClientsResponse
      * @throws ClientExceptionInterface
      */
-    public function getContractClient(GetContractClientsRequest $object)
+    public function getContractClient(GetContractClientsRequest $object): GetContractClientsResponse
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -236,13 +259,17 @@ final class Speedy
             $payload
         );
 
-        return $this->client->sendRequest($request);
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
+
+        return (new GetContractClientsResponseFactory())($json);
     }
 
     /**
-     * @throws ClientExceptionInterface
+     * @param FindCountryRequest $object
+     * @return FindCountryResponse
      */
-    public function findCountry(FindCountry $object): ResponseInterface
+    public function findCountry(FindCountryRequest $object): FindCountryResponse
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -252,18 +279,89 @@ final class Speedy
             $payload
         );
 
-        return $this->client->sendRequest($request);
+        //return $this->client->sendRequest($request);
+
+        return new FindCountryResponse();
     }
 
-
-    public function printRequest()
+    /**
+     * @param FindStateRequest $request
+     * @return FindStateResponse
+     */
+    public function findState(FindStateRequest $request): FindStateResponse
     {
-        // @TODO Implementation
+        return new FindStateResponse();
     }
 
-
-    public function createShipment(CreateShipmentRequest $request)
+    /**
+     * @param FindOfficeRequest $request
+     * @return FindOfficeResponse
+     */
+    public function findOffice(FindOfficeRequest $request): FindOfficeResponse
     {
-        // @TODO Implementation
+        return new FindOfficeResponse();
+    }
+
+    /**
+     * @param FindSiteRequest $request
+     * @return FindSiteResponse
+     */
+    public function findSite(FindSiteRequest $request): FindSiteResponse
+    {
+        return new FindSiteResponse();
+    }
+
+    /**
+     * @param FindComplexRequest $request
+     * @return FindComplexResponse
+     */
+    public function findComplex(FindComplexRequest $request): FindComplexResponse
+    {
+        return new FindComplexResponse();
+    }
+
+    /**
+     * @param FindStreetRequest $request
+     * @return FindStreetResponse
+     */
+    public function findStreet(FindStreetRequest $request): FindStreetResponse
+    {
+        return new FindStreetResponse();
+    }
+
+    /**
+     * @param CalculationRequest $request
+     * @return CalculationResponse
+     */
+    public function calculation(CalculationRequest $request): CalculationResponse
+    {
+        return new CalculationResponse();
+    }
+
+    /**
+     * @param TrackRequest $request
+     * @return TrackResponse
+     */
+    public function track(TrackRequest $request): TrackResponse
+    {
+        return new TrackResponse();
+    }
+
+    /**
+     * @param PrintRequest $request
+     * @return PrintResponse
+     */
+    public function print(PrintRequest $request): PrintResponse
+    {
+        return new PrintResponse();
+    }
+
+    /**
+     * @param CreateShipmentRequest $request
+     * @return CreateShipmentResponse
+     */
+    public function createShipment(CreateShipmentRequest $request): CreateShipmentResponse
+    {
+        return new CreateShipmentResponse();
     }
 }
