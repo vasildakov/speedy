@@ -17,14 +17,14 @@ class FindCountryRequest
     private string $name;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $isoAlpha2;
+    private ?string $isoAlpha2;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $isoAlpha3;
+    private ?string $isoAlpha3;
 
     /**
      * @param string $name
@@ -32,6 +32,36 @@ class FindCountryRequest
     public function __construct(string $name)
     {
         $this->name = $name;
+    }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setIsoAlpha2(string $isoAlpha2)
+    {
+        $this->isoAlpha2 = $isoAlpha2;
+    }
+
+    public function getIsoAlpha2(): ?string
+    {
+        return $this->isoAlpha2;
+    }
+
+    public function setIsoAlpha3(string $isoAlpha3)
+    {
+        $this->isoAlpha3 = $isoAlpha3;
+    }
+
+    public function getIsoAlpha3(): ?string
+    {
+        return $this->isoAlpha3;
     }
 
     /**

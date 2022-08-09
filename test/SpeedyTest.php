@@ -12,13 +12,20 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use VasilDakov\Speedy\Client\GetContractClientsRequest;
-use VasilDakov\Speedy\Client\GetContractClientsResponse;
+use VasilDakov\Speedy\Calculation;
+use VasilDakov\Speedy\Client;
 use VasilDakov\Speedy\Configuration;
-use VasilDakov\Speedy\Location\Country\FindCountryRequest;
-use VasilDakov\Speedy\Location\Country\FindCountryResponse;
-use VasilDakov\Speedy\Location\FindCountry;
+use VasilDakov\Speedy\Location\Complex;
+use VasilDakov\Speedy\Location\Country;
+use VasilDakov\Speedy\Location\Office;
+use VasilDakov\Speedy\Location\Site;
+use VasilDakov\Speedy\Location\State;
+use VasilDakov\Speedy\Location\Street;
+use VasilDakov\Speedy\Printing;
+use VasilDakov\Speedy\Shipment;
+use VasilDakov\Speedy\Track;
 use VasilDakov\Speedy\Speedy;
+
 
 /**
  * Class SpeedyTest
@@ -117,17 +124,25 @@ class SpeedyTest extends TestCase
             )
         ;
 
-        $response = $speedy->getContractClient(new GetContractClientsRequest());
+        $response = $speedy->getContractClient(new Client\GetContractClientsRequest());
 
-        $this->assertInstanceOf(GetContractClientsResponse::class, $response);
+        $this->assertInstanceOf(Client\GetContractClientsResponse::class, $response);
     }
 
     /**
      * @group client
+     * @throws \Psr\Http\Client\ClientExceptionInterface
      */
     public function testItCanFindCountry()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
 
         $this->factory
             ->expects($this->once())
@@ -149,8 +164,110 @@ class SpeedyTest extends TestCase
             ->willReturn($this->stream)
         ;
 
-        $response = $speedy->findCountry(new FindCountryRequest('Bulgaria'));
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
 
-        $this->assertInstanceOf(FindCountryResponse::class, $response);
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(
+                json_encode([
+                    'countries' => [
+                        ['id' => 100, 'name' =>  'Bulgaria']
+                    ]
+                ])
+            )
+        ;
+
+        $response = $speedy->findCountry(new Country\FindCountryRequest('Bulgaria'));
+
+        $this->assertInstanceOf(Country\FindCountryResponse::class, $response);
+    }
+
+    public function testItCanFindState()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->findState(new State\FindStateRequest());
+
+        $this->assertInstanceOf(State\FindStateResponse::class, $response);
+    }
+
+
+    public function testItCanFindOffice()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->findOffice(new Office\FindOfficeRequest());
+
+        $this->assertInstanceOf(Office\FindOfficeResponse::class, $response);
+    }
+
+    public function testItCanFindSite()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->findSite(new Site\FindSiteRequest());
+
+        $this->assertInstanceOf(Site\FindSiteResponse::class, $response);
+    }
+
+    public function testItCanFindComplex()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->findComplex(new Complex\FindComplexRequest());
+
+        $this->assertInstanceOf(Complex\FindComplexResponse::class, $response);
+    }
+
+    public function testItCanFindStreet()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->findStreet(new Street\FindStreetRequest());
+
+        $this->assertInstanceOf(Street\FindStreetResponse::class, $response);
+    }
+
+    public function testItCanCalculate()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->calculation(new Calculation\CalculationRequest());
+
+        $this->assertInstanceOf(Calculation\CalculationResponse::class, $response);
+    }
+
+    public function testItCanTrack()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->track(new Track\TrackRequest());
+
+        $this->assertInstanceOf(Track\TrackResponse::class, $response);
+    }
+
+    public function testItCanPrint()
+    {
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->print(new Printing\PrintRequest());
+
+        $this->assertInstanceOf(Printing\PrintResponse::class, $response);
+    }
+
+    public function testItCanCreateShipment()
+    {
+        $request = $this->createMock(Shipment\CreateShipmentRequest::class);
+
+        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+
+        $response = $speedy->createShipment($request);
+
+        $this->assertInstanceOf(Shipment\CreateShipmentResponse::class, $response);
     }
 }

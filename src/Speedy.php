@@ -23,6 +23,7 @@ use VasilDakov\Speedy\Location\Complex\FindComplexRequest;
 use VasilDakov\Speedy\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Location\Country\FindCountryResponseFactory;
 use VasilDakov\Speedy\Location\FindCountry;
 use VasilDakov\Speedy\Location\Office\FindOfficeRequest;
 use VasilDakov\Speedy\Location\Office\FindOfficeResponse;
@@ -247,7 +248,7 @@ final class Speedy
     }
 
     /**
-     * @param GetContractClientsRequest
+     * @param GetContractClientsRequest $object
      * @return GetContractClientsResponse
      * @throws ClientExceptionInterface
      */
@@ -270,20 +271,22 @@ final class Speedy
     /**
      * @param FindCountryRequest $object
      * @return FindCountryResponse
+     * @throws ClientExceptionInterface
      */
     public function findCountry(FindCountryRequest $object): FindCountryResponse
     {
-        $payload = $this->createPayload($object->toArray());
+        $payload = $this->createPayload((array)$object);
 
         $request = $this->createRequest(
-            RequestMethodInterface::METHOD_POST,
+            'POST',
             self::API_URL.'/location/country',
             $payload
         );
 
-        //return $this->client->sendRequest($request);
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
 
-        return new FindCountryResponse();
+        return (new FindCountryResponseFactory())($json);
     }
 
     /**
