@@ -1,0 +1,22 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:office:OfficeWorkingTimeSchedule",
+  "properties" : {
+    "date" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "workingTimeFrom" : {
+      "type" : "string"
+    },
+    "workingTimeTo" : {
+      "type" : "string"
+    },
+    "sameDayDepartureCutoff" : {
+      "type" : "string"
+    },
+    "standardSchedule" : {
+      "type" : "boolean"
+    }
+  }
+}

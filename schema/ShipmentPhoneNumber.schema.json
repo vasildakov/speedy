@@ -1,0 +1,12 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPhoneNumber",
+  "properties" : {
+    "number" : {
+      "type" : "string"
+    },
+    "extension" : {
+      "type" : "string"
+    }
+  }
+}

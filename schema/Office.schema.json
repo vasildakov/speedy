@@ -1,0 +1,100 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:office:Office",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "nameEn" : {
+      "type" : "string"
+    },
+    "siteId" : {
+      "type" : "integer"
+    },
+    "address" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:model:Address"
+    },
+    "workingTimeFrom" : {
+      "type" : "string"
+    },
+    "workingTimeTo" : {
+      "type" : "string"
+    },
+    "workingTimeHalfFrom" : {
+      "type" : "string"
+    },
+    "workingTimeHalfTo" : {
+      "type" : "string"
+    },
+    "workingTimeDayOffFrom" : {
+      "type" : "string"
+    },
+    "workingTimeDayOffTo" : {
+      "type" : "string"
+    },
+    "sameDayDepartureCutoff" : {
+      "type" : "string"
+    },
+    "sameDayDepartureCutoffHalf" : {
+      "type" : "string"
+    },
+    "sameDayDepartureCutoffDayOff" : {
+      "type" : "string"
+    },
+    "maxParcelDimensions" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcelSize"
+    },
+    "maxParcelWeight" : {
+      "type" : "number"
+    },
+    "type" : {
+      "type" : "string",
+      "enum" : [ "OFFICE", "APT" ]
+    },
+    "nearbyOfficeId" : {
+      "type" : "integer"
+    },
+    "workingTimeSchedule" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:location:office:OfficeWorkingTimeSchedule"
+      }
+    },
+    "validFrom" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "validTo" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "cargoTypesAllowed" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "enum" : [ "PARCEL", "PALLET", "TYRE" ]
+      }
+    },
+    "pickUpAllowed" : {
+      "type" : "boolean"
+    },
+    "dropOffAllowed" : {
+      "type" : "boolean"
+    },
+    "cardPaymentAllowed" : {
+      "type" : "boolean"
+    },
+    "cashPaymentAllowed" : {
+      "type" : "boolean"
+    },
+    "palletOffice" : {
+      "type" : "boolean"
+    }
+  }
+}

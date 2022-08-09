@@ -1,0 +1,60 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:model:Site",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "countryId" : {
+      "type" : "integer"
+    },
+    "mainSiteId" : {
+      "type" : "integer"
+    },
+    "type" : {
+      "type" : "string"
+    },
+    "typeEn" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "nameEn" : {
+      "type" : "string"
+    },
+    "municipality" : {
+      "type" : "string"
+    },
+    "municipalityEn" : {
+      "type" : "string"
+    },
+    "region" : {
+      "type" : "string"
+    },
+    "regionEn" : {
+      "type" : "string"
+    },
+    "postCode" : {
+      "type" : "string"
+    },
+    "servingDays" : {
+      "type" : "string"
+    },
+    "addressNomenclature" : {
+      "type" : "integer"
+    },
+    "x" : {
+      "type" : "number"
+    },
+    "y" : {
+      "type" : "number"
+    },
+    "servingOfficeId" : {
+      "type" : "integer"
+    },
+    "servingHubOfficeId" : {
+      "type" : "integer"
+    }
+  }
+}

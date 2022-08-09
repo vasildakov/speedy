@@ -1,0 +1,36 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:site:FindSiteRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "countryId" : {
+      "type" : "integer"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "postCode" : {
+      "type" : "string"
+    },
+    "type" : {
+      "type" : "string"
+    },
+    "municipality" : {
+      "type" : "string"
+    },
+    "region" : {
+      "type" : "string"
+    }
+  }
+}

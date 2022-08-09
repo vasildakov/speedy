@@ -1,0 +1,33 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:office:FindOfficeRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "countryId" : {
+      "type" : "integer"
+    },
+    "siteId" : {
+      "type" : "integer"
+    },
+    "siteName" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "limit" : {
+      "type" : "integer"
+    }
+  }
+}

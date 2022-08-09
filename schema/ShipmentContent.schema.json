@@ -1,0 +1,37 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentContent",
+  "properties" : {
+    "parcelsCount" : {
+      "type" : "integer"
+    },
+    "totalWeight" : {
+      "type" : "number"
+    },
+    "contents" : {
+      "type" : "string"
+    },
+    "package" : {
+      "type" : "string"
+    },
+    "documents" : {
+      "type" : "boolean"
+    },
+    "palletized" : {
+      "type" : "boolean"
+    },
+    "parcels" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcel"
+      }
+    },
+    "pendingParcels" : {
+      "type" : "boolean"
+    },
+    "exciseGoods" : {
+      "type" : "boolean"
+    }
+  }
+}

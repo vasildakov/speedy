@@ -1,0 +1,31 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcel",
+  "properties" : {
+    "id" : {
+      "type" : "string"
+    },
+    "seqNo" : {
+      "type" : "integer"
+    },
+    "packageUniqueNumber" : {
+      "type" : "integer"
+    },
+    "size" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcelSize"
+    },
+    "weight" : {
+      "type" : "number"
+    },
+    "externalCarrierParcelNumber" : {
+      "type" : "string"
+    },
+    "ref1" : {
+      "type" : "string"
+    },
+    "ref2" : {
+      "type" : "string"
+    }
+  }
+}

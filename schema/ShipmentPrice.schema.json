@@ -1,0 +1,54 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPrice",
+  "properties" : {
+    "amount" : {
+      "type" : "number"
+    },
+    "vat" : {
+      "type" : "number"
+    },
+    "total" : {
+      "type" : "number"
+    },
+    "currency" : {
+      "type" : "string"
+    },
+    "details" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPriceAmount"
+      }
+    },
+    "amountLocal" : {
+      "type" : "number"
+    },
+    "vatLocal" : {
+      "type" : "number"
+    },
+    "totalLocal" : {
+      "type" : "number"
+    },
+    "currencyLocal" : {
+      "type" : "string"
+    },
+    "detailsLocal" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPriceAmount"
+      }
+    },
+    "currencyExchangeRateUnit" : {
+      "type" : "integer"
+    },
+    "currencyExchangeRate" : {
+      "type" : "number"
+    },
+    "returnAmounts" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ReturnAmounts"
+    }
+  }
+}

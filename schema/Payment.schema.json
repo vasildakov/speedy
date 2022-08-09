@@ -1,0 +1,29 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Payment",
+  "properties" : {
+    "courierServicePayer" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRole"
+    },
+    "declaredValuePayer" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRole"
+    },
+    "packagePayer" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRole"
+    },
+    "thirdPartyClientId" : {
+      "type" : "integer"
+    },
+    "discountCardId" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentDiscountCardId"
+    },
+    "codPayment" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:CODPayment"
+    }
+  }
+}

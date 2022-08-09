@@ -1,0 +1,23 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:pickup:model:PickupOrder",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "shipmentIds" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "pickupPeriodFrom" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "pickupPeriodTo" : {
+      "type" : "string",
+      "format" : "date-time"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ReturnAmounts",
+  "properties" : {
+    "moneyTransfer" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:MoneyTransferPremium"
+    }
+  }
+}

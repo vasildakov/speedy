@@ -1,0 +1,37 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:payment:model:Payout",
+  "properties" : {
+    "date" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "docId" : {
+      "type" : "integer"
+    },
+    "docType" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:payment:model:CODProcessingType"
+    },
+    "paymentType" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:payment:model:PaymentType"
+    },
+    "payee" : {
+      "type" : "string"
+    },
+    "currency" : {
+      "type" : "string"
+    },
+    "amount" : {
+      "type" : "number"
+    },
+    "details" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:payment:model:PayoutDetails"
+      }
+    }
+  }
+}

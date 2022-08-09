@@ -1,0 +1,33 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:print:model:LabelInfo",
+  "properties" : {
+    "parcelId" : {
+      "type" : "string"
+    },
+    "hubId" : {
+      "type" : "integer"
+    },
+    "officeId" : {
+      "type" : "integer"
+    },
+    "deadlineDay" : {
+      "type" : "integer"
+    },
+    "deadlineMonth" : {
+      "type" : "integer"
+    },
+    "tourId" : {
+      "type" : "integer"
+    },
+    "fullBarcode" : {
+      "type" : "string"
+    },
+    "officeName" : {
+      "type" : "string"
+    },
+    "exportPriority" : {
+      "type" : "integer"
+    }
+  }
+}

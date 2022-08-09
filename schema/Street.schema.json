@@ -1,0 +1,39 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:model:Street",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "actualId" : {
+      "type" : "integer"
+    },
+    "siteId" : {
+      "type" : "integer"
+    },
+    "type" : {
+      "type" : "string"
+    },
+    "typeEn" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "nameEn" : {
+      "type" : "string"
+    },
+    "actualType" : {
+      "type" : "string"
+    },
+    "actualTypeEn" : {
+      "type" : "string"
+    },
+    "actualName" : {
+      "type" : "string"
+    },
+    "actualNameEn" : {
+      "type" : "string"
+    }
+  }
+}

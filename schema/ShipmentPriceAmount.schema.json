@@ -1,0 +1,15 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPriceAmount",
+  "properties" : {
+    "amount" : {
+      "type" : "number"
+    },
+    "percent" : {
+      "type" : "number"
+    },
+    "vatPercent" : {
+      "type" : "number"
+    }
+  }
+}

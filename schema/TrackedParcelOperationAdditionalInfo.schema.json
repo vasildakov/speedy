@@ -1,0 +1,24 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperationAdditionalInfo",
+  "properties" : {
+    "officeURL" : {
+      "type" : "string"
+    },
+    "recipient" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperationAdditionalInfoRecipient"
+    },
+    "unsuccessfulDeliveryStickerImageURL" : {
+      "type" : "string"
+    },
+    "pickupOfficeType" : {
+      "type" : "string",
+      "enum" : [ "OFFICE", "APT" ]
+    },
+    "predict" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperationAdditionalInfoPredict"
+    }
+  }
+}
