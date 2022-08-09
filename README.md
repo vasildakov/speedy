@@ -9,24 +9,32 @@ This library is compliant with [PSR-7: HTTP message interfaces](https://www.php-
 
 ## Installation
 
+Using Composer: 
+
 ```
-$ composer require vasildakov\speedy
+$ composer require vasildakov/speedy
 ```
 
 ## Usage
 
 
 ```php
+<?php declare(strict_types=1);
 
 use VasilDakov\Speedy\Speedy;
 use GuzzleHttp\Client;
 use Laminas\Diactoros\RequestFactory;
 
-$speedy = new Speedy(
-    new Configuration('username', 'password', 'language'), 
-    new Client(), 
-    new RequestFactory()
-);
+/** @var Configuration $configuration */
+$configuration = new Configuration('username', 'password', 'language');
+
+/** @var \Psr\Http\Client\ClientInterface $client */
+$client = new Client();
+
+/** @var \Psr\Http\Message\RequestFactoryInterface $factory */
+$factory = new RequestFactory();
+
+$speedy = new Speedy($configuration, $client, $factory);
 
 $response = $speedy->getContractClient(new GetContractClientsRequest());
 
@@ -34,16 +42,30 @@ $response = $speedy->getContractClient(new GetContractClientsRequest());
 
 ## Services
 
-Shipment Service
-- Create Shipment
-- Cancel Shipment
-- Add parcel
-- Finalize Pending Shipment
-- Shipment Information
+### Calculation Service
 
+### Client Service
 
+```php
 
-### Create Shipment Request
+use VasilDakov\Speedy\Client;
+
+/** @var Client\GetContractClientsRequest $request */
+$request = new Client\GetContractClientsRequest();
+
+/** @var Client\GetContractClientsResponse $response */
+$response = $speedy->getContractClients($request);
+
+/** @var Client\Client[] $clients */
+$clients = $response->getClients();
+
+```
+
+### Location Service
+
+### Print Service
+
+### Shipment Service
 
 ```php
 
@@ -62,6 +84,11 @@ $parcels = $response->getParcels();
 $shipmentPrice = $response->getShipmentPrice();
 
 ```
+
+### Track Service
+
+### Create Shipment Request
+
 
 
 ## Docker
