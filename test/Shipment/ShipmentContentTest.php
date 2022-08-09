@@ -25,10 +25,10 @@ class ShipmentContentTest extends TestCase
         $this->contents = "Some content";
         $this->package = "Package";
         $this->parcel = $this->createMock(ShipmentParcel::class);
-        $this->palletized = True;
-        $this->documents = True;
-        $this->pendingParcels = True;
-        $this->exciseGoods = True;
+        $this->palletized = true;
+        $this->documents = true;
+        $this->pendingParcels = true;
+        $this->exciseGoods = true;
 
         parent::setUp();
     }
