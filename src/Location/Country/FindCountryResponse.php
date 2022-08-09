@@ -14,5 +14,24 @@ namespace VasilDakov\Speedy\Location\Country;
  */
 class FindCountryResponse
 {
+    /**
+     * @var array
+     */
+    private array $countries;
 
+    /**
+     * @param array $countries
+     */
+    public function __construct(array $countries = [])
+    {
+        $this->countries = $countries;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCountries(): array
+    {
+        return $this->countries;
+    }
 }

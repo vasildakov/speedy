@@ -19,13 +19,16 @@ $ composer require vasildakov\speedy
 ```php
 
 use VasilDakov\Speedy\Speedy;
+use GuzzleHttp\Client;
+use Laminas\Diactoros\RequestFactory;
 
 $speedy = new Speedy(
+    new Configuration('username', 'password', 'language'), 
     new Client(), 
-    new Options('username', 'password', 'language')
+    new RequestFactory()
 );
 
-$response = $speedy->getContractClient();
+$response = $speedy->getContractClient(new GetContractClientsRequest());
 
 ```
 
@@ -53,6 +56,10 @@ $shipmentRequest = new Shipment\CreateShipmentRequest(
 );
 
 $response = $speedy->createShipment($shipmentRequest);
+
+$id = $response->getId();
+$parcels = $response->getParcels();
+$shipmentPrice = $response->getShipmentPrice();
 
 ```
 
