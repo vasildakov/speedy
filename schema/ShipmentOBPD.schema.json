@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentOBPD",
+  "properties" : {
+    "option" : {
+      "type" : "string",
+      "enum" : [ "OPEN", "TEST" ]
+    },
+    "returnShipmentServiceId" : {
+      "type" : "integer"
+    },
+    "returnShipmentPayer" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRole"
+    }
+  }
+}

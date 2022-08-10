@@ -1,0 +1,63 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Shipment",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "id" : {
+      "type" : "string"
+    },
+    "sender" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Sender"
+    },
+    "recipient" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Recipient"
+    },
+    "service" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentService"
+    },
+    "content" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Content"
+    },
+    "payment" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Payment"
+    },
+    "shipmentNote" : {
+      "type" : "string"
+    },
+    "ref1" : {
+      "type" : "string"
+    },
+    "ref2" : {
+      "type" : "string"
+    },
+    "price" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPrice"
+    },
+    "delivery" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentDelivery"
+    },
+    "primaryShipment" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:PrimaryShipment"
+    },
+    "returnShipmentId" : {
+      "type" : "string"
+    },
+    "redirectShipmentId" : {
+      "type" : "string"
+    },
+    "pendingShipment" : {
+      "type" : "boolean"
+    }
+  }
+}

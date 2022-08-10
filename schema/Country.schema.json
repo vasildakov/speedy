@@ -1,0 +1,56 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:model:Country",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "nameEn" : {
+      "type" : "string"
+    },
+    "isoAlpha2" : {
+      "type" : "string"
+    },
+    "isoAlpha3" : {
+      "type" : "string"
+    },
+    "currencyCode" : {
+      "type" : "string"
+    },
+    "requireState" : {
+      "type" : "boolean"
+    },
+    "addressType" : {
+      "type" : "integer"
+    },
+    "defaultOfficeId" : {
+      "type" : "integer"
+    },
+    "siteNomen" : {
+      "type" : "integer"
+    },
+    "streetTypes" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:location:model:AddressNomenclatureType"
+      }
+    },
+    "complexTypes" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:location:model:AddressNomenclatureType"
+      }
+    },
+    "postCodeFormats" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    }
+  }
+}

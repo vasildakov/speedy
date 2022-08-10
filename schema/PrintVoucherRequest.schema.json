@@ -1,0 +1,35 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:print:PrintVoucherRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "shipmentIds" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "printerName" : {
+      "type" : "string"
+    },
+    "format" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:print:PrintFormat"
+    },
+    "dpi" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:print:PrintDpi"
+    }
+  }
+}

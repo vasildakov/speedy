@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class ShipmentPhoneNumber
  *
@@ -21,7 +23,7 @@ class ShipmentPhoneNumber {
     private string $number;
     
     /**
-     * @var string
+     * @var string|null
      */
     private ?string $extension = null;
     
@@ -35,14 +37,11 @@ class ShipmentPhoneNumber {
     
     /**
      * @param string $number
-     * @return self
+     * @return void
      */
-    private function setNumber(string $number): self
+    private function setNumber(string $number): void
     {
-        // validation goes here
         $this->number = $number;
-        
-        return $this;
     }
     
     /**
@@ -63,13 +62,23 @@ class ShipmentPhoneNumber {
         
         return $this;
     }
-    
+
     /**
-     * @return string extension
+     * @return string|null
      */
     public function getExtension(): ?string 
     {
         return $this->extension;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            Speedy::NUMBER    => $this->getNumber(),
+            Speedy::EXTENSION => $this->getExtension()
+        ];
+    }
 }

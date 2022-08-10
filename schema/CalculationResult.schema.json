@@ -1,0 +1,33 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationResult",
+  "properties" : {
+    "serviceId" : {
+      "type" : "integer"
+    },
+    "price" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPrice"
+    },
+    "pickupDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "deliveryDeadline" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "deliveryDeadlineWorkDayType" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:calculation:WorkDayType"
+    },
+    "additionalServices" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAdditionalServices"
+    },
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    }
+  }
+}

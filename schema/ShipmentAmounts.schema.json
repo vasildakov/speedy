@@ -1,0 +1,99 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAmounts",
+  "properties" : {
+    "insuranceBase" : {
+      "type" : "number"
+    },
+    "insurancePremium" : {
+      "type" : "number"
+    },
+    "net" : {
+      "type" : "number"
+    },
+    "discountFixed" : {
+      "type" : "number"
+    },
+    "discountRetShipment" : {
+      "type" : "number"
+    },
+    "discountToOffice" : {
+      "type" : "number"
+    },
+    "discountToBeCalled" : {
+      "type" : "number"
+    },
+    "discountAdditional" : {
+      "type" : "number"
+    },
+    "packings" : {
+      "type" : "number"
+    },
+    "tro" : {
+      "type" : "number"
+    },
+    "fixedTimeDelivery" : {
+      "type" : "number"
+    },
+    "fuelSurcharge" : {
+      "type" : "number"
+    },
+    "islandSurcharge" : {
+      "type" : "number"
+    },
+    "codBase" : {
+      "type" : "number"
+    },
+    "codPremium" : {
+      "type" : "number"
+    },
+    "vat" : {
+      "type" : "number"
+    },
+    "total" : {
+      "type" : "number"
+    },
+    "discPcntFixed" : {
+      "type" : "number"
+    },
+    "discPcntRetShipment" : {
+      "type" : "number"
+    },
+    "discPcntToOffice" : {
+      "type" : "number"
+    },
+    "discPcntToBeCalled" : {
+      "type" : "number"
+    },
+    "discPcntAdditional" : {
+      "type" : "number"
+    },
+    "pcntFuelSurcharge" : {
+      "type" : "number"
+    },
+    "specialDelivery" : {
+      "type" : "number"
+    },
+    "moneyTransferPremium" : {
+      "type" : "number"
+    },
+    "testBeforePayment" : {
+      "type" : "number"
+    },
+    "deliveryToFloor" : {
+      "type" : "number"
+    },
+    "heavyPackageFee" : {
+      "type" : "number"
+    },
+    "addrPickupSurcharge" : {
+      "type" : "number"
+    },
+    "addrDeliverySurcharge" : {
+      "type" : "number"
+    },
+    "nonStandardDeliveryDateSurcharge" : {
+      "type" : "number"
+    }
+  }
+}

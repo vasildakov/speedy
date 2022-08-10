@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:pickup:terms:PickupTermsResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "cutoffs" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string",
+        "format" : "date-time"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:model:State",
+  "properties" : {
+    "id" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "nameEn" : {
+      "type" : "string"
+    },
+    "stateAlpha" : {
+      "type" : "string"
+    },
+    "countryId" : {
+      "type" : "integer"
+    }
+  }
+}

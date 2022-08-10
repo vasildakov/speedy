@@ -1,0 +1,24 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:validation:ValidatePhoneRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "number" : {
+      "type" : "string"
+    },
+    "ext" : {
+      "type" : "string"
+    }
+  }
+}

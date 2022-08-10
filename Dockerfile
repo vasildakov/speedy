@@ -12,9 +12,16 @@ RUN curl -sS https://getcomposer.org/installer \
 ###
 
 ## Install intl library and extension
-RUN apt-get install --yes libicu-dev \
+RUN apt-get install -y libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
+
+RUN apt-get install -y \
+        libzip-dev \
+        unzip \
+        zip \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip
 
 ###
 ## Optional PHP extensions

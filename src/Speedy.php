@@ -5,6 +5,41 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Client\ClientExceptionInterface;
+use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
+use Psr\Http\Client\ClientInterface;
+use VasilDakov\Speedy\Calculation\CalculationRequest;
+use VasilDakov\Speedy\Calculation\CalculationResponse;
+use VasilDakov\Speedy\Client\Address;
+use VasilDakov\Speedy\Client\Client;
+use VasilDakov\Speedy\Client\GetContractClientsRequest;
+use VasilDakov\Speedy\Client\GetContractClientsResponse;
+use VasilDakov\Speedy\Client\GetContractClientsResponseFactory;
+use VasilDakov\Speedy\Location\Complex\FindComplexRequest;
+use VasilDakov\Speedy\Location\Complex\FindComplexResponse;
+use VasilDakov\Speedy\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Location\Country\FindCountryResponseFactory;
+use VasilDakov\Speedy\Location\FindCountry;
+use VasilDakov\Speedy\Location\Office\FindOfficeRequest;
+use VasilDakov\Speedy\Location\Office\FindOfficeResponse;
+use VasilDakov\Speedy\Location\Site\FindSiteRequest;
+use VasilDakov\Speedy\Location\Site\FindSiteResponse;
+use VasilDakov\Speedy\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Location\State\FindStateResponse;
+use VasilDakov\Speedy\Location\Street\FindStreetRequest;
+use VasilDakov\Speedy\Location\Street\FindStreetResponse;
+use VasilDakov\Speedy\Printing\PrintRequest;
+use VasilDakov\Speedy\Printing\PrintResponse;
+use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
+use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
+use VasilDakov\Speedy\Track\TrackRequest;
+use VasilDakov\Speedy\Track\TrackResponse;
+
 /**
  * Class Speedy
  *
@@ -145,65 +180,195 @@ final class Speedy
     public const LABEL = 'label';
     public const SHIPMENT_IDS = 'shipmentIds';
     public const LAST_OPERATION_ONLY = 'lastOperationOnly';
+    public const CONSOLIDATION_REF = 'consolidationRef';
+    public const REQUIRE_UNSUCCESSFUL_DELIVERY_STICKER_IMAGE = 'requireUnsuccessfulDeliveryStickerImage';
+    public const EXCISE_GOODS = 'exciseGoods';
+    public const SENDER_BANK_ACCOUNT = 'senderBankAccount';
+    public const IBAN = 'iban';
+    public const ACCOUNT_HOLDER = 'accountHolder';
 
     /**
-     * @var string
+     * @var Configuration
      */
-    private string $username;
+    private Configuration $configuration;
 
     /**
-     * @var string
+     * PSR-18: HTTP Client
+     * @var ClientInterface
      */
-    private string $password;
+    private ClientInterface $client;
 
     /**
-     * @var string
+     * PSR-17: HTTP Factories
+     * @var RequestFactoryInterface
      */
-    private string $language;
+    private RequestFactoryInterface $factory;
 
     /**
-     * @param string $username
-     * @param string $password
-     * @param string $language
+     * @param Configuration $configuration
+     * @param ClientInterface $client
+     * @param RequestFactoryInterface $factory
      */
-    public function __construct(string $username, string $password, string $language)
-    {
-        $this->username = $username;
-        $this->password = $password;
-        $this->language = $language;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLanguage(): string
-    {
-        return $this->language;
+    public function __construct(
+        Configuration $configuration,
+        ClientInterface $client,
+        RequestFactoryInterface $factory
+    ) {
+        $this->configuration = $configuration;
+        $this->client  = $client;
+        $this->factory = $factory;
     }
 
     /**
      * @param string $method
      * @param string $uri
      * @param array $data
+     * @return RequestInterface
      */
-    private function request(string $method, string $uri, array $data)
+    private function createRequest(string $method, string $uri, array $data): RequestInterface
     {
+        $request = $this->factory->createRequest($method, $uri);
 
+        $request = $request->withAddedHeader('Content-Type', 'application/json');
+
+        $request->getBody()->write(\json_encode($data));
+
+        return $request;
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    private function createPayload(array $data): array
+    {
+        $config = $this->configuration->toArray();
+
+        return \array_merge($config, $data);
+    }
+
+    /**
+     * @param GetContractClientsRequest $object
+     * @return GetContractClientsResponse
+     * @throws ClientExceptionInterface
+     */
+    public function getContractClient(GetContractClientsRequest $object): GetContractClientsResponse
+    {
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL.'/client/contract',
+            $payload
+        );
+
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
+
+        return (new GetContractClientsResponseFactory())($json);
+    }
+
+    /**
+     * @param FindCountryRequest $object
+     * @return FindCountryResponse
+     * @throws ClientExceptionInterface
+     */
+    public function findCountry(FindCountryRequest $object): FindCountryResponse
+    {
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            'POST',
+            self::API_URL.'/location/country',
+            $payload
+        );
+
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
+
+        //var_dump($json); exit();
+
+        return (new FindCountryResponseFactory())($json);
+    }
+
+    /**
+     * @param FindStateRequest $request
+     * @return FindStateResponse
+     */
+    public function findState(FindStateRequest $request): FindStateResponse
+    {
+        return new FindStateResponse();
+    }
+
+    /**
+     * @param FindOfficeRequest $request
+     * @return FindOfficeResponse
+     */
+    public function findOffice(FindOfficeRequest $request): FindOfficeResponse
+    {
+        return new FindOfficeResponse();
+    }
+
+    /**
+     * @param FindSiteRequest $request
+     * @return FindSiteResponse
+     */
+    public function findSite(FindSiteRequest $request): FindSiteResponse
+    {
+        return new FindSiteResponse();
+    }
+
+    /**
+     * @param FindComplexRequest $request
+     * @return FindComplexResponse
+     */
+    public function findComplex(FindComplexRequest $request): FindComplexResponse
+    {
+        return new FindComplexResponse();
+    }
+
+    /**
+     * @param FindStreetRequest $request
+     * @return FindStreetResponse
+     */
+    public function findStreet(FindStreetRequest $request): FindStreetResponse
+    {
+        return new FindStreetResponse();
+    }
+
+    /**
+     * @param CalculationRequest $request
+     * @return CalculationResponse
+     */
+    public function calculation(CalculationRequest $request): CalculationResponse
+    {
+        return new CalculationResponse();
+    }
+
+    /**
+     * @param TrackRequest $request
+     * @return TrackResponse
+     */
+    public function track(TrackRequest $request): TrackResponse
+    {
+        return new TrackResponse();
+    }
+
+    /**
+     * @param PrintRequest $request
+     * @return PrintResponse
+     */
+    public function print(PrintRequest $request): PrintResponse
+    {
+        return new PrintResponse();
+    }
+
+    /**
+     * @param CreateShipmentRequest $request
+     * @return CreateShipmentResponse
+     */
+    public function createShipment(CreateShipmentRequest $request): CreateShipmentResponse
+    {
+        return new CreateShipmentResponse();
     }
 }

@@ -1,0 +1,15 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcelSize",
+  "properties" : {
+    "width" : {
+      "type" : "integer"
+    },
+    "height" : {
+      "type" : "integer"
+    },
+    "depth" : {
+      "type" : "integer"
+    }
+  }
+}

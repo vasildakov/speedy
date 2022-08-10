@@ -1,0 +1,31 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:AddParcelRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "shipmentId" : {
+      "type" : "string"
+    },
+    "declaredValueAmount" : {
+      "type" : "number"
+    },
+    "codAmount" : {
+      "type" : "number"
+    },
+    "parcel" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcel"
+    }
+  }
+}

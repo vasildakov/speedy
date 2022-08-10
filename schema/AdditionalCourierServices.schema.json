@@ -1,0 +1,50 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierServices",
+  "properties" : {
+    "cod" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "obpd" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "declaredValue" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "fixedTimeDelivery" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "specialDelivery" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "deliveryToFloor" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "rod" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "returnReceipt" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "swap" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "rop" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    },
+    "returnVoucher" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService"
+    }
+  }
+}

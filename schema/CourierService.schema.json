@@ -1,0 +1,29 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:services:model:CourierService",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "nameEn" : {
+      "type" : "string"
+    },
+    "additionalServices" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierServices"
+    },
+    "cargoType" : {
+      "type" : "string",
+      "enum" : [ "PARCEL", "PALLET", "TYRE" ]
+    },
+    "requireParcelWeight" : {
+      "type" : "boolean"
+    },
+    "requireParcelSize" : {
+      "type" : "boolean"
+    }
+  }
+}

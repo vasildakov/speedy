@@ -1,0 +1,12 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentROPAdditionalServiceLine",
+  "properties" : {
+    "serviceId" : {
+      "type" : "integer"
+    },
+    "parcelsCount" : {
+      "type" : "integer"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:payment:model:PayoutDetails",
+  "properties" : {
+    "lineNo" : {
+      "type" : "integer"
+    },
+    "shipmentId" : {
+      "type" : "string"
+    },
+    "pickupDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "primaryShipmentPickupDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "deliveryDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "sender" : {
+      "type" : "string"
+    },
+    "recipient" : {
+      "type" : "string"
+    },
+    "note" : {
+      "type" : "string"
+    },
+    "ref1" : {
+      "type" : "string"
+    },
+    "ref2" : {
+      "type" : "string"
+    },
+    "currency" : {
+      "type" : "string"
+    },
+    "order" : {
+      "type" : "integer"
+    },
+    "amount" : {
+      "type" : "number"
+    }
+  }
+}

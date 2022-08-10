@@ -1,0 +1,19 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationSender",
+  "properties" : {
+    "clientId" : {
+      "type" : "integer"
+    },
+    "privatePerson" : {
+      "type" : "boolean"
+    },
+    "addressLocation" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:calculation:model:AddressLocation"
+    },
+    "dropoffOfficeId" : {
+      "type" : "integer"
+    }
+  }
+}

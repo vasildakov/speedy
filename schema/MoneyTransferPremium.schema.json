@@ -1,0 +1,16 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:MoneyTransferPremium",
+  "properties" : {
+    "amount" : {
+      "type" : "number"
+    },
+    "amountLocal" : {
+      "type" : "number"
+    },
+    "payer" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRole"
+    }
+  }
+}
