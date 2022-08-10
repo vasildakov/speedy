@@ -9,7 +9,7 @@ use VasilDakov\Speedy\Shipment\ShipmentService;
 use VasilDakov\Speedy\Speedy;
 
 /**
- * Class SipmentServiceTest
+ * Class ShipmentServiceTest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
@@ -77,6 +77,7 @@ class ShipmentServiceTest extends TestCase
         $object->setAdditionalServices($this->additionalServices);
         $object->setDeferredDays($this->deferredDays);
         $object->setSaturdayDelivery($this->saturdayDelivery);
+        $object->setPickupDate($this->pickupDate);
 
         $array = $object->toArray();
 
@@ -84,5 +85,6 @@ class ShipmentServiceTest extends TestCase
         $this->assertArrayHasKey(Speedy::ADDITIONAL_SERVICES, $array);
         $this->assertArrayHasKey(Speedy::DEFERRED_DAYS, $array);
         $this->assertArrayHasKey(Speedy::SATURDAY_DELIVERY, $array);
+        $this->assertArrayHasKey(Speedy::PICKUP_DATE, $array);
     }
 }

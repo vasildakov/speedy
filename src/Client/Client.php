@@ -9,7 +9,7 @@ namespace VasilDakov\Speedy\Client;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-class Client implements \Serializable
+class Client
 {
     public int $clientId;
 
@@ -87,41 +87,5 @@ class Client implements \Serializable
     public function getPrivatePerson()
     {
         return $this->privatePerson;
-    }
-
-    public function serialize()
-    {
-        return serialize([
-            $this->clientId,
-            $this->clientName,
-            $this->objectName,
-            $this->contactName,
-            $this->address,
-            $this->email,
-            $this->privatePerson
-        ]);
-    }
-
-    public function unserialize($data)
-    {
-        list(
-            $this->clientId,
-            $this->clientName,
-            $this->objectName,
-            $this->contactName,
-            $this->address,
-            $this->email,
-            $this->privatePerson
-            ) = unserialize($data);
-    }
-
-    public function __serialize()
-    {
-        return $this->serialize();
-    }
-
-    public function __unserialize($data)
-    {
-        $this->unserialize($data);
     }
 }

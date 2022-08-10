@@ -74,6 +74,9 @@ class Country
      */
     private int $siteNomen;
 
+    /**
+     * @param int $id
+     */
     public function setId(int $id)
     {
         $this->id = $id;
@@ -92,5 +95,25 @@ class Country
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function setIsoAlpha2($isoAlpha2)
+    {
+        $this->isoAlpha2 = $isoAlpha2;
+    }
+
+    public function setIsoAlpha3($isoAlpha3)
+    {
+        $this->isoAlpha3 = $isoAlpha3;
+    }
+
+    public function setCurrencyCode($currencyCode)
+    {
+        $this->currencyCode = $currencyCode;
+    }
+
+    public function getCurrencyCode()
+    {
+        return $this->currencyCode;
     }
 }

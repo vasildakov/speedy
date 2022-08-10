@@ -51,7 +51,7 @@ class ShipmentService
      */
     public function __construct(int $serviceId)
     {
-        $this->serviceId = $serviceId;
+        $this->setServiceId($serviceId);
     }
 
     /**
@@ -170,10 +170,10 @@ class ShipmentService
      */
     public function toArray(): array
     {
-        $data = [Speedy::SERVICE_ID => $this->getServiceId(),
-            Speedy::AUTO_ADJUST_PICKUP_DATE => $this->autoAdjustPickupDate,
-            Speedy::SATURDAY_DELIVERY => $this->saturdayDelivery
-
+        $data = [
+            Speedy::SERVICE_ID => $this->getServiceId(),
+            Speedy::AUTO_ADJUST_PICKUP_DATE => $this->isAutoAdjustPickupDate(),
+            Speedy::SATURDAY_DELIVERY => $this->isSaturdayDelivery()
         ];
 
         if (null !== $this->pickupDate) {

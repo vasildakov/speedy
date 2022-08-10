@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Location\Country;
 
+use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
 use VasilDakov\Speedy\Client\Address;
@@ -38,19 +39,17 @@ class FindCountryResponseFactory
         }
 
         foreach ($array['countries'] as $item) {
-            $hydrator = new ReflectionHydrator();
-
-            // strategy for streetTypes
+            $hydrator = new ClassMethodsHydrator();
             $hydrator->addStrategy(
                 'streetTypes',
                 new HydratorStrategy(new ReflectionHydrator(),AddressNomenclatureType::class)
             );
 
-            // strategy for complexTypes
             $hydrator->addStrategy(
                 'complexTypes',
                 new HydratorStrategy(new ReflectionHydrator(),AddressNomenclatureType::class)
             );
+
             $this->countries[] = $hydrator->hydrate($item, new Country());
         }
 

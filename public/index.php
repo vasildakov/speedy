@@ -29,7 +29,6 @@ $guzzleHttp = new GuzzleHttp();
 $speedy = new Speedy($configuration, $curlHttp, $factory);
 
 //$response = $speedy->getContractClient(new GetContractClientsRequest());
-$response = $speedy->findCountry(new FindCountryRequest('Fr'));
+$response = $speedy->findCountry(new FindCountryRequest('BULGARIA'));
 
 echo '<pre>'; var_dump($response);
-
