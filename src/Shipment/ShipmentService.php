@@ -51,11 +51,8 @@ class ShipmentService
      */
     public function __construct(int $serviceId)
     {
-<<<<<<< HEAD
-        $this->serviceId = $serviceId;
-=======
         $this->setServiceId($serviceId);
->>>>>>> f4d4f1eefd6284af98e318ba25b767bdfa437af9
+
     }
 
     /**
