@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
@@ -24,7 +21,6 @@ use VasilDakov\Speedy\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Location\Country\FindCountryResponse;
 use VasilDakov\Speedy\Location\Country\FindCountryResponseFactory;
-use VasilDakov\Speedy\Location\FindCountry;
 use VasilDakov\Speedy\Location\Office\FindOfficeRequest;
 use VasilDakov\Speedy\Location\Office\FindOfficeResponse;
 use VasilDakov\Speedy\Location\Site\FindSiteRequest;
