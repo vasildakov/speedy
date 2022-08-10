@@ -1,0 +1,13 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:PrimaryShipment",
+  "properties" : {
+    "id" : {
+      "type" : "string"
+    },
+    "type" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:PrimaryShipmentType"
+    }
+  }
+}

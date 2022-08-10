@@ -1,0 +1,40 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Content",
+  "properties" : {
+    "parcelsCount" : {
+      "type" : "integer"
+    },
+    "declaredWeight" : {
+      "type" : "number"
+    },
+    "measuredWeight" : {
+      "type" : "number"
+    },
+    "calculationWeight" : {
+      "type" : "number"
+    },
+    "contents" : {
+      "type" : "string"
+    },
+    "documents" : {
+      "type" : "boolean"
+    },
+    "palletized" : {
+      "type" : "boolean"
+    },
+    "parcels" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Parcel"
+      }
+    },
+    "pendingParcels" : {
+      "type" : "boolean"
+    },
+    "package" : {
+      "type" : "string"
+    }
+  }
+}

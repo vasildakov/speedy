@@ -1,0 +1,16 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:print:PrintVoucherResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "pdf" : {
+      "type" : "array",
+      "items" : {
+        "type" : "integer"
+      }
+    }
+  }
+}

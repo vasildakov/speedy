@@ -1,0 +1,36 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:model:PointOfInterest",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "siteId" : {
+      "type" : "integer"
+    },
+    "type" : {
+      "type" : "string"
+    },
+    "typeEn" : {
+      "type" : "string"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "nameEn" : {
+      "type" : "string"
+    },
+    "address" : {
+      "type" : "string"
+    },
+    "addressEn" : {
+      "type" : "string"
+    },
+    "x" : {
+      "type" : "number"
+    },
+    "y" : {
+      "type" : "number"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:calculation:model:AddressLocation",
+  "properties" : {
+    "countryId" : {
+      "type" : "integer"
+    },
+    "stateId" : {
+      "type" : "string"
+    },
+    "siteId" : {
+      "type" : "integer"
+    },
+    "siteType" : {
+      "type" : "string"
+    },
+    "siteName" : {
+      "type" : "string"
+    },
+    "postCode" : {
+      "type" : "string"
+    }
+  }
+}

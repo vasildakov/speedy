@@ -1,0 +1,15 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentDeclaredValueAdditionalService",
+  "properties" : {
+    "amount" : {
+      "type" : "number"
+    },
+    "fragile" : {
+      "type" : "boolean"
+    },
+    "ignoreIfNotApplicable" : {
+      "type" : "boolean"
+    }
+  }
+}

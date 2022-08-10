@@ -1,0 +1,27 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentSWAPAdditionalService",
+  "properties" : {
+    "serviceId" : {
+      "type" : "integer"
+    },
+    "parcelsCount" : {
+      "type" : "integer"
+    },
+    "declaredValue" : {
+      "type" : "number"
+    },
+    "fragile" : {
+      "type" : "boolean"
+    },
+    "returnToClientId" : {
+      "type" : "integer"
+    },
+    "returnToOfficeId" : {
+      "type" : "integer"
+    },
+    "thirdPartyPayer" : {
+      "type" : "boolean"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:model:BulkTrackingDataFile",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "url" : {
+      "type" : "string"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:site:FindSiteResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "sites" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:location:model:Site"
+      }
+    }
+  }
+}

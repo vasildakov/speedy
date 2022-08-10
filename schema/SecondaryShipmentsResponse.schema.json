@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:SecondaryShipmentsResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "shipments" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:SecondaryShipment"
+      }
+    }
+  }
+}

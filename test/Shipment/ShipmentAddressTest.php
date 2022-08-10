@@ -226,4 +226,5 @@ class ShipmentAddressTest extends TestCase
         $this->assertArrayHasKey(Speedy::X, $array);
         $this->assertArrayHasKey(Speedy::Y, $array);
     }
+
 }

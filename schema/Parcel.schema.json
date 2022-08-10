@@ -1,0 +1,48 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:Parcel",
+  "properties" : {
+    "id" : {
+      "type" : "string"
+    },
+    "seqNo" : {
+      "type" : "integer"
+    },
+    "packageUniqueNumber" : {
+      "type" : "integer"
+    },
+    "declaredSize" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcelSize"
+    },
+    "measuredSize" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcelSize"
+    },
+    "calculationSize" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcelSize"
+    },
+    "declaredWeight" : {
+      "type" : "number"
+    },
+    "measuredWeight" : {
+      "type" : "number"
+    },
+    "calculationWeight" : {
+      "type" : "number"
+    },
+    "externalCarrierParcelNumbers" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "baseType" : {
+      "type" : "string"
+    },
+    "size" : {
+      "type" : "string"
+    }
+  }
+}

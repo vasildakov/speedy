@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:street:GetStreetResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "street" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:location:model:Street"
+    }
+  }
+}

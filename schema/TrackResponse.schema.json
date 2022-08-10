@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:TrackResponse",
+  "properties" : {
+    "parcels" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcel"
+      }
+    },
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    }
+  }
+}

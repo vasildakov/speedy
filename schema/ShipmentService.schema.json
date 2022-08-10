@@ -1,0 +1,30 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentService",
+  "properties" : {
+    "pickupDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "serviceId" : {
+      "type" : "integer"
+    },
+    "additionalServices" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAdditionalServices"
+    },
+    "deferredDays" : {
+      "type" : "integer"
+    },
+    "saturdayDelivery" : {
+      "type" : "boolean"
+    },
+    "autoAdjustPickupDate" : {
+      "type" : "boolean"
+    },
+    "deliveryLimitViolationAutoAdjustment" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:omgm:skylogistics:web:myspeedy:consignment:shipment_limits:DeliveryLimitViolationAutoAdjustment"
+    }
+  }
+}

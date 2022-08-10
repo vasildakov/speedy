@@ -1,0 +1,44 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:print:PrintRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "format" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:print:PrintFormat"
+    },
+    "paperSize" : {
+      "type" : "string",
+      "enum" : [ "A4", "A6", "A4_4xA6" ]
+    },
+    "parcels" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:print:model:ParcelToPrint"
+      }
+    },
+    "printerName" : {
+      "type" : "string"
+    },
+    "dpi" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:print:PrintDpi"
+    },
+    "additionalWaybillSenderCopy" : {
+      "type" : "string",
+      "enum" : [ "NONE", "ON_SAME_PAGE", "ON_SINGLE_PAGE" ]
+    }
+  }
+}

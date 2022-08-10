@@ -1,0 +1,38 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:FindParcelsByRefRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "ref" : {
+      "type" : "string"
+    },
+    "searchInRef" : {
+      "type" : "integer"
+    },
+    "shipmentsOnly" : {
+      "type" : "boolean"
+    },
+    "includeReturns" : {
+      "type" : "boolean"
+    },
+    "fromDateTime" : {
+      "type" : "integer",
+      "format" : "utc-millisec"
+    },
+    "toDateTime" : {
+      "type" : "integer",
+      "format" : "utc-millisec"
+    }
+  }
+}

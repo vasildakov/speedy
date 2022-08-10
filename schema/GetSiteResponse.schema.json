@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:site:GetSiteResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "site" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:location:model:Site"
+    }
+  }
+}

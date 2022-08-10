@@ -1,0 +1,20 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentDelivery",
+  "properties" : {
+    "deadline" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "deliveryDateTime" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "consignee" : {
+      "type" : "string"
+    },
+    "deliveryNote" : {
+      "type" : "string"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:BulkTrackingDataFilesResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "files" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:track:model:BulkTrackingDataFile"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcel",
+  "properties" : {
+    "parcelId" : {
+      "type" : "string"
+    },
+    "externalCarrierParcelNumbers" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "operations" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperation"
+      }
+    },
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "ref" : {
+      "type" : "string"
+    },
+    "trackPhase" : {
+      "type" : "string",
+      "enum" : [ "HANDED_FOR_DELIVERY", "IN_TRANSIT", "AT_DELIVERY_CENTER", "PREPARED_FOR_SELF_COLLECTING_CONSIGNEE", "OUT_FOR_DELIVERY", "DELIVERED", "RETURN_TO_SENDER", "DELIVERED_BACK_TO_SENDER" ]
+    },
+    "externalCarrierParcelNumbersDetails" : {
+      "type" : "object",
+      "additionalProperties" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:track:model:ExternalCarrierParcelNumberDetails"
+      }
+    }
+  }
+}

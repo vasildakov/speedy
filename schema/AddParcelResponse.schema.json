@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:AddParcelResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "parcel" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:CreatedShipmentParcel"
+    }
+  }
+}

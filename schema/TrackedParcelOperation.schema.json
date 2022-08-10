@@ -1,0 +1,44 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperation",
+  "properties" : {
+    "dateTime" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "operationCode" : {
+      "type" : "integer"
+    },
+    "place" : {
+      "type" : "string"
+    },
+    "description" : {
+      "type" : "string"
+    },
+    "comment" : {
+      "type" : "string"
+    },
+    "exceptionCodes" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "returnShipmentId" : {
+      "type" : "string"
+    },
+    "redirectShipmentId" : {
+      "type" : "string"
+    },
+    "consignee" : {
+      "type" : "string"
+    },
+    "podImageURL" : {
+      "type" : "string"
+    },
+    "additionalInfo" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperationAdditionalInfo"
+    }
+  }
+}

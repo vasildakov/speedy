@@ -1,0 +1,43 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentSender",
+  "properties" : {
+    "clientId" : {
+      "type" : "integer"
+    },
+    "phone1" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPhoneNumber"
+    },
+    "phone2" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPhoneNumber"
+    },
+    "phone3" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPhoneNumber"
+    },
+    "clientName" : {
+      "type" : "string"
+    },
+    "contactName" : {
+      "type" : "string"
+    },
+    "objectName" : {
+      "type" : "string"
+    },
+    "email" : {
+      "type" : "string"
+    },
+    "privatePerson" : {
+      "type" : "boolean"
+    },
+    "address" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAddress"
+    },
+    "dropoffOfficeId" : {
+      "type" : "integer"
+    }
+  }
+}

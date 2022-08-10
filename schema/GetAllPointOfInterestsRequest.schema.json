@@ -1,0 +1,21 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:poi:GetAllPointOfInterestsRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "countryId" : {
+      "type" : "integer"
+    }
+  }
+}
