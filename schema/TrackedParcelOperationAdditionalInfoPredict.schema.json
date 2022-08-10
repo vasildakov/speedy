@@ -1,0 +1,20 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperationAdditionalInfoPredict",
+  "properties" : {
+    "predictedVisitDateTimeFrom" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "predictedVisitDateTimeTo" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "includedDelayInMinutes" : {
+      "type" : "integer"
+    },
+    "canceled" : {
+      "type" : "boolean"
+    }
+  }
+}

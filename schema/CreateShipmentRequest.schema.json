@@ -1,0 +1,56 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:CreateShipmentRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "service" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentService"
+    },
+    "content" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentContent"
+    },
+    "payment" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPayment"
+    },
+    "sender" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentSender"
+    },
+    "recipient" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRecipient"
+    },
+    "pendingShipment" : {
+      "type" : "boolean"
+    },
+    "shipmentNote" : {
+      "type" : "string"
+    },
+    "ref1" : {
+      "type" : "string"
+    },
+    "ref2" : {
+      "type" : "string"
+    },
+    "consolidationRef" : {
+      "type" : "string"
+    },
+    "requireUnsuccessfulDeliveryStickerImage" : {
+      "type" : "boolean"
+    }
+  }
+}

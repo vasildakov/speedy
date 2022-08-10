@@ -1,0 +1,13 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:CODPayment",
+  "properties" : {
+    "date" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "totalPayedOutAmount" : {
+      "type" : "number"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:client:GetContactByExternalIdResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "client" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:client:Client"
+    }
+  }
+}

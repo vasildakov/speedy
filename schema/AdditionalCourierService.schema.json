@@ -1,0 +1,10 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:services:model:AdditionalCourierService",
+  "properties" : {
+    "allowance" : {
+      "type" : "string",
+      "enum" : [ "FORBIDDEN", "ALLOWED", "REQUIRED" ]
+    }
+  }
+}

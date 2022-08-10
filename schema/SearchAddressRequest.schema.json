@@ -1,0 +1,42 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:address:SearchAddressRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "siteId" : {
+      "type" : "integer"
+    },
+    "complexId" : {
+      "type" : "integer"
+    },
+    "streetId" : {
+      "type" : "integer"
+    },
+    "poiId" : {
+      "type" : "integer"
+    },
+    "blockNo" : {
+      "type" : "string"
+    },
+    "streetNo" : {
+      "type" : "string"
+    },
+    "entranceNo" : {
+      "type" : "string"
+    },
+    "returnSiteCenterIfNoAddress" : {
+      "type" : "boolean"
+    }
+  }
+}

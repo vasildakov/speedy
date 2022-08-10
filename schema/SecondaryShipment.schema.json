@@ -1,0 +1,23 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:SecondaryShipment",
+  "properties" : {
+    "id" : {
+      "type" : "string"
+    },
+    "type" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:PrimaryShipmentType"
+    },
+    "pickupDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "serviceId" : {
+      "type" : "integer"
+    },
+    "hasScans" : {
+      "type" : "boolean"
+    }
+  }
+}

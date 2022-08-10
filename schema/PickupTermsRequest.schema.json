@@ -1,0 +1,32 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:pickup:terms:PickupTermsRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "startingDate" : {
+      "type" : "integer",
+      "format" : "utc-millisec"
+    },
+    "serviceId" : {
+      "type" : "integer"
+    },
+    "sender" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationSender"
+    },
+    "senderHasPayment" : {
+      "type" : "boolean"
+    }
+  }
+}

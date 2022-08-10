@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:location:office:GetOfficeResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "office" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:location:office:Office"
+    }
+  }
+}

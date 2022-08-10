@@ -1,0 +1,45 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:pickup:PickupRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "pickupDateTime" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "pickupScope" : {
+      "type" : "string",
+      "enum" : [ "EXPLICIT_SHIPMENT_ID_LIST", "ALL_CREATED_BY_LOGGED_USER", "ALL_CREATED_BY_SAME_CLIENT", "ALL_CREATED_BY_SAME_CONTRACT_USERS", "ALL_CREATED_BY_LOGGEDED_USER" ]
+    },
+    "explicitShipmentIdList" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "visitEndTime" : {
+      "type" : "string"
+    },
+    "contactName" : {
+      "type" : "string"
+    },
+    "phoneNumber" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPhoneNumber"
+    },
+    "autoAdjustPickupDate" : {
+      "type" : "boolean"
+    }
+  }
+}

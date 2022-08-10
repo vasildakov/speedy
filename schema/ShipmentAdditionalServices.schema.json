@@ -1,0 +1,31 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAdditionalServices",
+  "properties" : {
+    "cod" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentCODAdditionalService"
+    },
+    "declaredValue" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentDeclaredValueAdditionalService"
+    },
+    "fixedTimeDelivery" : {
+      "type" : "integer"
+    },
+    "returns" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentReturnAdditionalServices"
+    },
+    "specialDeliveryId" : {
+      "type" : "integer"
+    },
+    "deliveryToFloor" : {
+      "type" : "integer"
+    },
+    "obpd" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentOBPD"
+    }
+  }
+}

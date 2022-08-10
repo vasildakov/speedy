@@ -1,0 +1,32 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:FinalizePendingShipmentResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "id" : {
+      "type" : "string"
+    },
+    "parcels" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:CreatedShipmentParcel"
+      }
+    },
+    "pickupDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "price" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPrice"
+    },
+    "deliveryDeadline" : {
+      "type" : "string",
+      "format" : "date-time"
+    }
+  }
+}

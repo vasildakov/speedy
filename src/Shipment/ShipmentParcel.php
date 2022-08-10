@@ -212,6 +212,7 @@ class ShipmentParcel
         return $this;
     }
 
+
     /**
      * @return array
      */
