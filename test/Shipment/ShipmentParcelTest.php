@@ -66,7 +66,7 @@ class ShipmentParcelTest extends TestCase
         $this->seqNo = 5;
         $this->packageUniqueNumber = 6;
         $this->size = $this->createMock(ShipmentParcelSize::class);
-        $this->weught = 6.1;
+        $this->weight = 6.1;
         $this->externalCarrierParcelNumber = "externalCarrierParcelNumber";
         $this->ref1 = 'ref1';
         $this->ref2 = 'ref2';
