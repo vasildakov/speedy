@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Location\Country;
 
@@ -33,5 +30,32 @@ class FindCountryResponse
     public function getCountries(): array
     {
         return $this->countries;
+    }
+
+    /**
+     * @param int $id
+     * @return Country|null
+     */
+    public function findCountryById(int $id): ?Country
+    {
+        foreach ($this->getCountries() as $country) {
+            if ($id === $country->getId()) {
+                return $country;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param string $name
+     * @return Country|null
+     */
+    public function findCountryByName(string $name): ?Country
+    {
+        $array = \array_filter($this->countries, function ($country) use ($name) {
+            return (0 === \strcasecmp(\mb_strtoupper($name, 'UTF-8'), $country->name));
+        });
+
+        return (!empty($array)) ? $array[0] : null;
     }
 }
