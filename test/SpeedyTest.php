@@ -187,6 +187,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Country\FindCountryResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanFindState()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -196,7 +199,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(State\FindStateResponse::class, $response);
     }
 
-
+    /**
+     * @group client
+     */
     public function testItCanFindOffice()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -206,6 +211,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Office\FindOfficeResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanFindSite()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -215,6 +223,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Site\FindSiteResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanFindComplex()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -224,6 +235,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Complex\FindComplexResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanFindStreet()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -233,6 +247,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Street\FindStreetResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanCalculate()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -242,6 +259,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Calculation\CalculationResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanTrack()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -251,6 +271,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Track\TrackResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanPrint()
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
@@ -260,6 +283,9 @@ class SpeedyTest extends TestCase
         $this->assertInstanceOf(Printing\PrintResponse::class, $response);
     }
 
+    /**
+     * @group client
+     */
     public function testItCanCreateShipment()
     {
         $request = $this->createMock(Shipment\CreateShipmentRequest::class);
