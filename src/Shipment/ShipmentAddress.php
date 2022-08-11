@@ -1,12 +1,9 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
-use PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics\NestingLevelSniff;
 use VasilDakov\Speedy\Speedy;
-use VasilDakov\Speedy\ValueObject\CountryCode;
+use VasilDakov\Speedy\Location\Country\CountryCode;
 
 /**
  * Class ShipmentAddress

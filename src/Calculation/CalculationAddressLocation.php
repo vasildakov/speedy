@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Calculation;
 
-use VasilDakov\Speedy\ValueObject\CountryCode;
+use VasilDakov\Speedy\Location\Country\CountryCode;
 
 /**
  * Class CalculationAddressLocation

@@ -11,81 +11,150 @@ namespace VasilDakov\Speedy\Client;
  */
 class Client
 {
+    /**
+     * @var int
+     */
     public int $clientId;
 
+    /**
+     * @var string
+     */
     public string $clientName;
 
+    /**
+     * @var string
+     */
     public string $objectName;
 
+    /**
+     * @var string
+     */
     public string $contactName;
 
+    /**
+     * @var Address
+     */
     public Address $address;
 
+    /**
+     * @var string
+     */
     public string $email;
 
+    /**
+     * @var bool
+     */
     public bool $privatePerson;
 
-    /* public function __construct(
-        $clientId,
-        $clientName,
-        $objectName,
-        $contactName,
-        Address $address,
-        $email,
-        $privatePerson
-    ) {
-        $this->clientId    = $clientId;
-        $this->clientName  = $clientName;
-        $this->objectName  = $objectName;
-        $this->contactName = $contactName;
-        $this->address     = $address;
-        $this->email = $email;
-        $this->privatePerson = $privatePerson;
-    } */
-
-
-    public function setClientId(int $clientId)
-    {
-        $this->clientId = $clientId;
-    }
-
-    public function getClientId()
+    /**
+     * @return int
+     */
+    public function getClientId(): int
     {
         return $this->clientId;
     }
 
-    public function getClientName()
+    /**
+     * @param int $clientId
+     */
+    public function setClientId(int $clientId): void
+    {
+        $this->clientId = $clientId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClientName(): string
     {
         return $this->clientName;
     }
 
-    public function getObjectName()
+    /**
+     * @param string $clientName
+     */
+    public function setClientName(string $clientName): void
+    {
+        $this->clientName = $clientName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getObjectName(): string
     {
         return $this->objectName;
     }
 
-    public function getContactName()
+    /**
+     * @param string $objectName
+     */
+    public function setObjectName(string $objectName): void
+    {
+        $this->objectName = $objectName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContactName(): string
     {
         return $this->contactName;
     }
 
-    public function setAddress(Address $address)
+    /**
+     * @param string $contactName
+     */
+    public function setContactName(string $contactName): void
     {
-        $this->address = $address;
+        $this->contactName = $contactName;
     }
 
-    public function getAddress()
+    /**
+     * @return Address
+     */
+    public function getAddress(): Address
     {
         return $this->address;
     }
 
-    public function getEmail()
+    /**
+     * @param Address $address
+     */
+    public function setAddress(Address $address): void
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function getPrivatePerson()
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPrivatePerson(): bool
     {
         return $this->privatePerson;
+    }
+
+    /**
+     * @param bool $privatePerson
+     */
+    public function setPrivatePerson(bool $privatePerson): void
+    {
+        $this->privatePerson = $privatePerson;
     }
 }

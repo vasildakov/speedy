@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -14,147 +11,270 @@ namespace VasilDakov\Speedy\Shipment;
  */
 class ShipmentPrice
 {
+    /**
+     * @var float
+     */
     private float $amount;
+    /**
+     * @var float
+     */
     private float $vat;
+    /**
+     * @var float
+     */
     private float $total;
+    /**
+     * @var string
+     */
     private string $currency;
+    /**
+     * @var ShipmentPriceAmount
+     */
     private ShipmentPriceAmount $details;
+    /**
+     * @var float
+     */
     private float $amountLocal;
+    /**
+     * @var float
+     */
     private float $vatLocal;
+    /**
+     * @var float
+     */
     private float $totalLocal;
+    /**
+     * @var string
+     */
     private string $currencyLocal;
+    /**
+     * @var ShipmentPriceAmount
+     */
     private ShipmentPriceAmount $detailsLocal;
+    /**
+     * @var int
+     */
     private int $currencyExchangeRateUnit;
+    /**
+     * @var float
+     */
     private float $currencyExchangeRate;
+    /**
+     * @var ReturnAmounts
+     */
     private ReturnAmounts $returnAmounts;
 
-    public function setAmount(float $amount)
-    {
-        $this->amount = $amount;
-    }
-
-    public function getAmount()
+    /**
+     * @return float
+     */
+    public function getAmount(): float
     {
         return $this->amount;
     }
 
-    public function setVat(float $vat)
+    /**
+     * @param float $amount
+     */
+    public function setAmount(float $amount): void
     {
-        $this->vat = $vat;
+        $this->amount = $amount;
     }
 
-    public function getVat()
+    /**
+     * @return float
+     */
+    public function getVat(): float
     {
         return $this->vat;
     }
 
-    public function setTotal(float $total)
+    /**
+     * @param float $vat
+     */
+    public function setVat(float $vat): void
     {
-        $this->total = $total;
+        $this->vat = $vat;
     }
 
-    public function getTotal()
+    /**
+     * @return float
+     */
+    public function getTotal(): float
     {
         return $this->total;
     }
 
-    public function setCurrency(string $currency)
+    /**
+     * @param float $total
+     */
+    public function setTotal(float $total): void
     {
-        $this->currency = $currency;
+        $this->total = $total;
     }
 
-    public function getCurrency()
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    public function setDetails(ShipmentPriceAmount $details)
+    /**
+     * @param string $currency
+     */
+    public function setCurrency(string $currency): void
     {
-        $this->details = $details;
+        $this->currency = $currency;
     }
 
-    public function getDetails()
+    /**
+     * @codeCoverageIgnore
+     * @return ShipmentPriceAmount
+     */
+    public function getDetails(): ShipmentPriceAmount
     {
         return $this->details;
     }
 
-    public function setAmountLocal(float $amountLocal)
+    /**
+     * @codeCoverageIgnore
+     * @param ShipmentPriceAmount $details
+     */
+    public function setDetails(ShipmentPriceAmount $details): void
     {
-        $this->amountLocal = $amountLocal;
+        $this->details = $details;
     }
 
-    public function getAmountLocal()
+    /**
+     * @return float
+     */
+    public function getAmountLocal(): float
     {
         return $this->amountLocal;
     }
 
-    public function setVatLocal(float $vatLocal)
+    /**
+     * @param float $amountLocal
+     */
+    public function setAmountLocal(float $amountLocal): void
     {
-        $this->vatLocal = $vatLocal;
+        $this->amountLocal = $amountLocal;
     }
 
-    public function getVatLocal()
+    /**
+     * @return float
+     */
+    public function getVatLocal(): float
     {
         return $this->vatLocal;
     }
 
-    public function setTotalLocal(float $totalLocal)
+    /**
+     * @param float $vatLocal
+     */
+    public function setVatLocal(float $vatLocal): void
     {
-        $this->totalLocal = $totalLocal;
+        $this->vatLocal = $vatLocal;
     }
 
-    public function getTotalLocal()
+    /**
+     * @return float
+     */
+    public function getTotalLocal(): float
     {
         return $this->totalLocal;
     }
 
-    public function setCurrencyLocal(string $currencyLocal)
+    /**
+     * @param float $totalLocal
+     */
+    public function setTotalLocal(float $totalLocal): void
     {
-        $this->currencyLocal = $currencyLocal;
+        $this->totalLocal = $totalLocal;
     }
 
-    public function getCurrencyLocal()
+    /**
+     * @return string
+     */
+    public function getCurrencyLocal(): string
     {
         return $this->currencyLocal;
     }
 
-    public function setDetailsLocal(ShipmentPriceAmount $detailsLocal)
+    /**
+     * @param string $currencyLocal
+     */
+    public function setCurrencyLocal(string $currencyLocal): void
     {
-        $this->detailsLocal = $detailsLocal;
+        $this->currencyLocal = $currencyLocal;
     }
 
-    public function getDetailsLocal()
+    /**
+     * @codeCoverageIgnore
+     * @return ShipmentPriceAmount
+     */
+    public function getDetailsLocal(): ShipmentPriceAmount
     {
         return $this->detailsLocal;
     }
 
-    public function setCurrencyExchangeRateUnit(int $currencyExchangeRateUnit)
+    /**
+     * @codeCoverageIgnore
+     * @param ShipmentPriceAmount $detailsLocal
+     */
+    public function setDetailsLocal(ShipmentPriceAmount $detailsLocal): void
     {
-        $this->currencyExchangeRateUnit = $currencyExchangeRateUnit;
+        $this->detailsLocal = $detailsLocal;
     }
 
-    public function getCurrencyExchangeRateUnit()
+    /**
+     * @return int
+     */
+    public function getCurrencyExchangeRateUnit(): int
     {
         return $this->currencyExchangeRateUnit;
     }
 
-    public function setCurrencyExchangeRate(float $currencyExchangeRate)
+    /**
+     * @param int $currencyExchangeRateUnit
+     */
+    public function setCurrencyExchangeRateUnit(int $currencyExchangeRateUnit): void
     {
-        $this->currencyExchangeRate = $currencyExchangeRate;
+        $this->currencyExchangeRateUnit = $currencyExchangeRateUnit;
     }
 
-    public function getCurrencyExchangeRate()
+    /**
+     * @return float
+     */
+    public function getCurrencyExchangeRate(): float
     {
         return $this->currencyExchangeRate;
     }
 
-    public function setReturnAmounts(ReturnAmounts $returnAmounts)
+    /**
+     * @param float $currencyExchangeRate
+     */
+    public function setCurrencyExchangeRate(float $currencyExchangeRate): void
     {
-        $this->returnAmounts = $returnAmounts;
+        $this->currencyExchangeRate = $currencyExchangeRate;
     }
 
-    public function getReturnAmounts()
+    /**
+     * @codeCoverageIgnore
+     * @return ReturnAmounts
+     */
+    public function getReturnAmounts(): ReturnAmounts
     {
         return $this->returnAmounts;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @param ReturnAmounts $returnAmounts
+     */
+    public function setReturnAmounts(ReturnAmounts $returnAmounts): void
+    {
+        $this->returnAmounts = $returnAmounts;
     }
 }

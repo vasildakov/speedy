@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTest\Calculation;
 
 use PHPUnit\Framework\MockObject\MockObject;
-use VasilDakov\Speedy\ValueObject\CountryCode;
+use VasilDakov\Speedy\Location\Country\CountryCode;
 use VasilDakov\Speedy\Calculation\CalculationAddressLocation;
 use PHPUnit\Framework\TestCase;
 

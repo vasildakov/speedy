@@ -16,11 +16,17 @@ class GetContractClientsResponse
      */
     private array $clients;
 
+    /**
+     * @param array $clients
+     */
     public function __construct(array $clients = [])
     {
         $this->clients = $clients;
     }
 
+    /**
+     * @return array|Client[]
+     */
     public function getClients(): array
     {
         return $this->clients;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\Speedy\ValueObject;
+namespace VasilDakov\Speedy\Location\Country;
 
 /**
  * Class CountryCode
@@ -30,7 +30,7 @@ class CountryCode
     private int $code;
     
     /**
-     * @param string $code
+     * @param int $code
      */
     public function __construct(int $code)
     {
@@ -73,8 +73,6 @@ class CountryCode
 
     public function toArray(): array
     {
-        return [
-
-        ];
+        return [ ];
     }
 }

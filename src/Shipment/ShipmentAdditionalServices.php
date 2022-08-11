@@ -5,6 +5,7 @@ namespace VasilDakov\Speedy\Shipment;
 /**
  * Class ShipmentAdditionalServices
  *
+ * @codeCoverageIgnore
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version

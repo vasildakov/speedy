@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTest\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequestFactory;
 
 /**
@@ -19,9 +20,11 @@ class CreateShipmentRequestFactoryTest extends TestCase
 {
     public function testItCanDoSomething()
     {
-        $factory = new CreateShipmentRequestFactory();
+        $array = $this->getArray();
 
-        var_dump($factory($this->getArray()));
+        $instance = (new CreateShipmentRequestFactory())($array);
+
+        $this->assertInstanceOf(CreateShipmentRequest::class, $instance);
     }
 
     private function getArray(): array

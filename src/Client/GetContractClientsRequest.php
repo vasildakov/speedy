@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Client;
 
@@ -14,6 +11,9 @@ namespace VasilDakov\Speedy\Client;
  */
 class GetContractClientsRequest
 {
+    /**
+     * @var string|null
+     */
     private ?string $clientSystemId = null;
 
     public function toArray(): array
@@ -25,5 +25,21 @@ class GetContractClientsRequest
         }
 
         return $array;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getClientSystemId(): ?string
+    {
+        return $this->clientSystemId;
+    }
+
+    /**
+     * @param string|null $clientSystemId
+     */
+    public function setClientSystemId(?string $clientSystemId): void
+    {
+        $this->clientSystemId = $clientSystemId;
     }
 }
