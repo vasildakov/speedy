@@ -37,9 +37,9 @@ class ShipmentContent
     private string $package;
 
     /**
-     * @var ShipmentParcel
+     * @var ShipmentParcel|null
      */
-    private ShipmentParcel $parcel;
+    private ?ShipmentParcel $parcel = null;
 
     /**
      * @var bool
@@ -66,9 +66,9 @@ class ShipmentContent
      * @param float $totalWeight
      * @param string $contents
      * @param string $package
-     * @param ShipmentParcel $parcel
+     * @param ShipmentParcel|null $parcel
      */
-    public function __construct(int $parcelsCount, float $totalWeight, string $contents, string $package, ShipmentParcel $parcel)
+    public function __construct(int $parcelsCount, float $totalWeight, string $contents, string $package, ?ShipmentParcel $parcel)
     {
         $this->setParcelsCount($parcelsCount);
         $this->setTotalWeight($totalWeight);
@@ -142,9 +142,9 @@ class ShipmentContent
     }
 
     /**
-     * @param ShipmentParcel $parcel
+     * @param ShipmentParcel|null $parcel
      */
-    public function setParcel(ShipmentParcel $parcel): void
+    public function setParcel(?ShipmentParcel $parcel): void
     {
         $this->parcel = $parcel;
     }
