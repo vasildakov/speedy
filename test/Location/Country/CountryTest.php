@@ -1,12 +1,8 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Location\Country;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
-use Laminas\Hydrator\ReflectionHydrator;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Location\Country\Country;
 
@@ -21,7 +17,7 @@ class CountryTest extends TestCase
 {
     public function testItCanBeConstructed()
     {
-        $array = $this->getCountryArray();
+        $array = $this->getArray();
 
         $hydrator = new ClassMethodsHydrator();
         $country = $hydrator->hydrate($array, new Country());
@@ -31,7 +27,7 @@ class CountryTest extends TestCase
 
     public function testItCanGetData()
     {
-        $array = $this->getCountryArray();
+        $array = $this->getArray();
 
         $hydrator = new ClassMethodsHydrator();
         $country = $hydrator->hydrate($array, new Country());
@@ -50,15 +46,15 @@ class CountryTest extends TestCase
         $this->assertEquals($array['defaultOfficeId'], $country->getDefaultOfficeId());
     }
 
-    private function getCountryArray(): array
+    private function getArray(): array
     {
-        $json = $this->getCountryJson();
+        $json = $this->getJson();
 
         return \json_decode($json, true);
     }
 
 
-    private function getCountryJson(): string
+    private function getJson(): string
     {
         $json = \file_get_contents("./test/Assets/Country.json");
 

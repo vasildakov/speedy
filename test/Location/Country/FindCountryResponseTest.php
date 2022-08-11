@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Location\Country;
 
@@ -49,7 +46,6 @@ class FindCountryResponseTest extends TestCase
     {
         return \json_decode($this->getCountriesJson(), true);
     }
-
 
     private function getCountriesJson(): string
     {
