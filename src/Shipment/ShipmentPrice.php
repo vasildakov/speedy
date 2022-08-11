@@ -3,10 +3,12 @@
 namespace VasilDakov\Speedy\Shipment;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class ShipmentPrice
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
@@ -15,56 +17,67 @@ class ShipmentPrice
 {
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $amount;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $vat;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $total;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $currency;
 
     /**
      * @var ArrayCollection
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Shipment\ShipmentPriceAmount>")
      */
     private ArrayCollection $details;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $amountLocal;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $vatLocal;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $totalLocal;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $currencyLocal;
 
     /**
      * @var ArrayCollection
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Shipment\ShipmentPriceAmount>")
      */
     private ArrayCollection $detailsLocal;
 
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     private int $currencyExchangeRateUnit;
 
@@ -82,6 +95,7 @@ class ShipmentPrice
     public function __construct()
     {
         $this->details = new ArrayCollection();
+        $this->detailsLocal = new ArrayCollection();
     }
 
 

@@ -1,15 +1,14 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use JMS\Serializer\Annotation as Serializer;
 use DateTime;
 
 /**
  * Class CreateShipmentResponse
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
@@ -18,26 +17,32 @@ class CreateShipmentResponse
 {
     /**
      * @var string
+     * @Serializer\Type("string")
+     * @Serializer\Accessor(getter="getId",setter="setId")
      */
     private string $id;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      */
     private array $parcels;
 
     /**
      * @var ShipmentPrice
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentPrice")
      */
     private ShipmentPrice $price;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private DateTime $pickupDate;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime")
      */
     private DateTime $deliveryDeadline;
 
@@ -46,12 +51,23 @@ class CreateShipmentResponse
      */
     private $error;
 
-
+    /**
+     * @param $id
+     * @return $this
+     */
     public function setId($id): self
     {
         $this->id = $id;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     /**

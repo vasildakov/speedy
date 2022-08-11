@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
+use JMS\Serializer;
 use Laminas\Hydrator\ReflectionHydrator;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
@@ -20,6 +21,23 @@ use VasilDakov\Speedy\Shipment\ShipmentPriceAmount;
  */
 class CreateShipmentResponseTest extends TestCase
 {
+    public function testItCanBeDeserialized()
+    {
+        $json = $this->getJson();
+
+        $serializer = Serializer\SerializerBuilder::create()
+            ->setPropertyNamingStrategy(
+                new Serializer\Naming\SerializedNameAnnotationStrategy(
+                    new Serializer\Naming\IdenticalPropertyNamingStrategy()
+                )
+            )
+            ->build();
+
+        $instance = $serializer->deserialize($json, CreateShipmentResponse::class, 'json');
+
+        $this->assertInstanceOf(CreateShipmentResponse::class, $instance);
+    }
+
 
     public function testItCanBeConstructed()
     {
