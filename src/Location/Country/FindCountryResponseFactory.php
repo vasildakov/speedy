@@ -1,16 +1,11 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Location\Country;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
-use VasilDakov\Speedy\Client\Address;
 use VasilDakov\Speedy\Client\Client;
-use VasilDakov\Speedy\Client\GetContractClientsResponse;
 
 /**
  * Class FindCountryResponseFactory
@@ -39,16 +34,16 @@ class FindCountryResponseFactory
         }
 
         foreach ($array['countries'] as $item) {
-            $hydrator = new ClassMethodsHydrator();
-            $hydrator->addStrategy(
+
+            $hydrator = new ReflectionHydrator();
+            /* $hydrator->addStrategy(
                 'streetTypes',
                 new HydratorStrategy(new ReflectionHydrator(),AddressNomenclatureType::class)
             );
-
             $hydrator->addStrategy(
                 'complexTypes',
                 new HydratorStrategy(new ReflectionHydrator(),AddressNomenclatureType::class)
-            );
+            ); */
 
             $this->countries[] = $hydrator->hydrate($item, new Country());
         }
