@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
+use Laminas\Hydrator\ReflectionHydrator;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Shipment\ShipmentPrice;
@@ -22,6 +23,8 @@ class CreateShipmentResponseTest extends TestCase
 
     public function testItCanBeConstructed()
     {
+        $hydrator = new ReflectionHydrator();
+
         $array = $this->getArray();
 
         $response = new CreateShipmentResponse();
@@ -37,17 +40,8 @@ class CreateShipmentResponseTest extends TestCase
         $response->setPrice($price);
 
         foreach ($array['price']['details'] as $key => $value) {
-            $spa = new ShipmentPriceAmount();
-            if (array_key_exists('amount', $value)) {
-                $spa->setAmount($value['amount']);
-            }
-            if (array_key_exists('percent', $value)) {
-                $spa->setPercent($value['percent']);
-            }
-            if (array_key_exists('vatPercent', $value)) {
-                $spa->setVatPercent($value['vatPercent']);
-            }
-            $response->getPrice()->getDetails()->set($key, $spa);
+            $priceAmount = $hydrator->hydrate($value, new ShipmentPriceAmount());
+            $response->getPrice()->getDetails()->set($key, $priceAmount);
         }
 
         $this->assertInstanceOf(CreateShipmentResponse::class, $response);
