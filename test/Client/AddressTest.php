@@ -29,6 +29,27 @@ class AddressTest extends TestCase
 
         $this->assertEquals($array['countryId'], $instance->getCountryId());
         $this->assertEquals($array['siteId'], $instance->getSiteId());
+        $this->assertEquals($array['siteType'], $instance->getSiteType());
+        $this->assertEquals($array['siteName'], $instance->getSiteName());
+        $this->assertEquals($array['postCode'], $instance->getPostCode());
+        $this->assertEquals($array['streetId'], $instance->getStreetId());
+
+        $this->assertEquals($array['streetType'], $instance->getStreetType());
+        $this->assertEquals($array['streetNo'], $instance->getStreetNo());
+        $this->assertEquals($array['streetName'], $instance->getStreetName());
+        $this->assertEquals($array['entranceNo'], $instance->getEntranceNo());
+        $this->assertEquals($array['floorNo'], $instance->getFloorNo());
+
+        $this->assertEquals($array['x'], $instance->getX());
+        $this->assertEquals($array['y'], $instance->getY());
+
+        $this->assertEquals($array['apartmentNo'], $instance->getApartmentNo());
+
+        $this->assertEquals($array['fullAddressString'], $instance->getFullAddressString());
+        $this->assertEquals($array['siteAddressString'], $instance->getSiteAddressString());
+        $this->assertEquals($array['localAddressString'], $instance->getLocalAddressString());
+
+        $this->assertIsArray($instance->toArray());
     }
 
     private function getArray(): array

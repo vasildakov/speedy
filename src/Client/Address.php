@@ -11,229 +11,365 @@ namespace VasilDakov\Speedy\Client;
  */
 class Address
 {
-    /**
-     * @var int
-     */
-    private int $countryId;
 
     /**
-     * @var int
+     * @var int|null
      */
-    private int $siteId;
+    private ?int $countryId = null;
 
     /**
-     * @var string
+     * @return int|null
      */
-    private string $siteType;
-
-    /**
-     * @var string
-     */
-    private string $siteName;
-
-    /**
-     * @var string
-     */
-    private string $postCode;
-
-    /**
-     * @var int
-     */
-    private int $streetId;
-
-    /**
-     * @var string
-     */
-    private string $streetType;
-
-    /**
-     * @var string
-     */
-    private string $streetName;
-
-    /**
-     * @var string
-     */
-    private string $streetNo;
-
-    /**
-     * @var string
-     */
-    private string $entranceNo;
-
-    /**
-     * @var string
-     */
-    private string $floorNo;
-
-    /**
-     * @var float|null
-     */
-    private float $x;
-
-    /**
-     * @var float|null
-     */
-    private float $y;
-
-    /**
-     * @var string
-     */
-    private string $apartmentNo;
-
-    /**
-     * @var string
-     */
-    private string $fullAddressString;
-
-    /**
-     * @var string
-     */
-    private string $siteAddressString;
-
-    /**
-     * @var string
-     */
-    private string $localAddressString;
-
-
-    /* public function __construct(
-        int $countryId,
-        int $siteId,
-        string $siteType,
-        string $siteName,
-        string $postCode,
-        int $streetId,
-        string $streetType,
-        string $streetName,
-        string $streetNo,
-        string $entranceNo,
-        string $floorNo,
-        string $apartmentNo,
-        float $x,
-        float $y,
-        string $fullAddressString,
-        string $siteAddressString,
-        string $localAddressString
-    ) {
-        $this->countryId = $countryId;
-        $this->siteId = $siteId;
-        $this->siteType = $siteType;
-        $this->siteName = $siteName;
-        $this->postCode = $postCode;
-        $this->streetId = $streetId;
-        $this->streetType = $streetType;
-        $this->streetName = $streetName;
-        $this->streetNo = $streetNo;
-        $this->entranceNo = $entranceNo;
-        $this->floorNo = $floorNo;
-        $this->apartmentNo = $apartmentNo;
-        $this->x = $x;
-        $this->y = $y;
-        $this->fullAddressString = $fullAddressString;
-        $this->siteAddressString = $siteAddressString;
-        $this->localAddressString = $localAddressString;
-    } */
-
-    public function setCountryId(int $countryId)
-    {
-        $this->countryId = $countryId;
-    }
-
-    public function getCountryId(): int
+    public function getCountryId(): ?int
     {
         return $this->countryId;
     }
 
-    public function setSiteId(int $siteId)
+    /**
+     * @param int|null $countryId
+     */
+    public function setCountryId(?int $countryId): void
     {
-        $this->siteId = $siteId;
+        $this->countryId = $countryId;
     }
 
-    public function getSiteId(): int
+    /**
+     * @return int|null
+     */
+    public function getSiteId(): ?int
     {
         return $this->siteId;
     }
 
-    public function setSiteType(string $siteType)
+    /**
+     * @param int|null $siteId
+     */
+    public function setSiteId(?int $siteId): void
     {
-        $this->siteType = $siteType;
+        $this->siteId = $siteId;
     }
 
-    public function getSiteType(): string
+    /**
+     * @return string|null
+     */
+    public function getSiteType(): ?string
     {
         return $this->siteType;
     }
 
-    public function getSiteName()
+    /**
+     * @param string|null $siteType
+     */
+    public function setSiteType(?string $siteType): void
+    {
+        $this->siteType = $siteType;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSiteName(): ?string
     {
         return $this->siteName;
     }
 
-    public function getPostCode()
+    /**
+     * @param string|null $siteName
+     */
+    public function setSiteName(?string $siteName): void
+    {
+        $this->siteName = $siteName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPostCode(): ?string
     {
         return $this->postCode;
     }
 
-    public function getStreetId()
+    /**
+     * @param string|null $postCode
+     */
+    public function setPostCode(?string $postCode): void
+    {
+        $this->postCode = $postCode;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getStreetId(): ?int
     {
         return $this->streetId;
     }
 
-    public function getStreetType()
+    /**
+     * @param int|null $streetId
+     */
+    public function setStreetId(?int $streetId): void
+    {
+        $this->streetId = $streetId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStreetType(): ?string
     {
         return $this->streetType;
     }
 
-    public function getStreetName()
+    /**
+     * @param string|null $streetType
+     */
+    public function setStreetType(?string $streetType): void
+    {
+        $this->streetType = $streetType;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStreetName(): ?string
     {
         return $this->streetName;
     }
 
-    public function getStreetNo()
+    /**
+     * @param string|null $streetName
+     */
+    public function setStreetName(?string $streetName): void
+    {
+        $this->streetName = $streetName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStreetNo(): ?string
     {
         return $this->streetNo;
     }
 
-    public function getEntranceNo()
+    /**
+     * @param string|null $streetNo
+     */
+    public function setStreetNo(?string $streetNo): void
+    {
+        $this->streetNo = $streetNo;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEntranceNo(): ?string
     {
         return $this->entranceNo;
     }
 
-    public function getFloorNo()
+    /**
+     * @param string|null $entranceNo
+     */
+    public function setEntranceNo(?string $entranceNo): void
+    {
+        $this->entranceNo = $entranceNo;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFloorNo(): ?string
     {
         return $this->floorNo;
     }
 
-    public function getApartmentNo()
+    /**
+     * @param string|null $floorNo
+     */
+    public function setFloorNo(?string $floorNo): void
     {
-        return $this->apartmentNo;
+        $this->floorNo = $floorNo;
     }
 
-    public function getX()
+    /**
+     * @return float|null
+     */
+    public function getX(): ?float
     {
         return $this->x;
     }
 
-    public function getY()
+    /**
+     * @param float|null $x
+     */
+    public function setX(?float $x): void
+    {
+        $this->x = $x;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getY(): ?float
     {
         return $this->y;
     }
 
-    public function getFullAddressString()
+    /**
+     * @param float|null $y
+     */
+    public function setY(?float $y): void
+    {
+        $this->y = $y;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getApartmentNo(): ?string
+    {
+        return $this->apartmentNo;
+    }
+
+    /**
+     * @param string|null $apartmentNo
+     */
+    public function setApartmentNo(?string $apartmentNo): void
+    {
+        $this->apartmentNo = $apartmentNo;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFullAddressString(): ?string
     {
         return $this->fullAddressString;
     }
 
-    public function getSiteAddressString()
+    /**
+     * @param string|null $fullAddressString
+     */
+    public function setFullAddressString(?string $fullAddressString): void
+    {
+        $this->fullAddressString = $fullAddressString;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSiteAddressString(): ?string
     {
         return $this->siteAddressString;
     }
 
-    public function getLocalAddressString()
+    /**
+     * @param string|null $siteAddressString
+     */
+    public function setSiteAddressString(?string $siteAddressString): void
+    {
+        $this->siteAddressString = $siteAddressString;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLocalAddressString(): ?string
     {
         return $this->localAddressString;
     }
+
+    /**
+     * @param string|null $localAddressString
+     */
+    public function setLocalAddressString(?string $localAddressString): void
+    {
+        $this->localAddressString = $localAddressString;
+    }
+
+    /**
+     * @var int|null
+     */
+    private ?int $siteId;
+
+    /**
+     * @var string|null
+     */
+    private ?string $siteType;
+
+    /**
+     * @var string|null
+     */
+    private ?string $siteName = null;
+
+    /**
+     * @var string|null
+     */
+    private ?string $postCode;
+
+    /**
+     * @var int|null
+     */
+    private ?int $streetId;
+
+    /**
+     * @var string|null
+     */
+    private ?string $streetType;
+
+    /**
+     * @var string|null
+     */
+    private ?string $streetName;
+
+    /**
+     * @var string|null
+     */
+    private ?string $streetNo;
+
+    /**
+     * @var string|null
+     */
+    private ?string $entranceNo;
+
+    /**
+     * @var string|null
+     */
+    private ?string $floorNo;
+
+    /**
+     * @var float|null
+     */
+    private ?float $x;
+
+    /**
+     * @var float|null
+     */
+    private ?float $y;
+
+    /**
+     * @var string|null
+     */
+    private ?string $apartmentNo;
+
+    /**
+     * @var string|null
+     */
+    private ?string $fullAddressString;
+
+    /**
+     * @var string|null
+     */
+    private ?string $siteAddressString;
+
+    /**
+     * @var string|null
+     */
+    private ?string $localAddressString;
+
+
 
     public function toArray()
     {
