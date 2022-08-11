@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Location\Country;
 
@@ -17,62 +14,62 @@ class Country
     /**
      * @var int
      */
-    private int $id;
+    public int $id;
 
     /**
      * @var string
      */
-    private string $name;
+    public string $name;
 
     /**
      * @var string
      */
-    private string $isoAlpha2;
+    public string $isoAlpha2;
 
     /**
      * @var string
      */
-    private string $isoAlpha3;
+    public string $isoAlpha3;
 
     /**
      * @var array
      */
-    private array $postCodeFormats;
+    public array $postCodeFormats;
 
     /**
      * @var string
      */
-    private string $requireState;
+    public string $currencyCode;
+
+    /**
+     * @var bool
+     */
+    public bool $requireState;
 
     /**
      * @var int
      */
-    private int $addressType;
-
-    /**
-     * @var string
-     */
-    private string $currencyCode;
+    public int $addressType;
 
     /**
      * @var int
      */
-    private int $defaultOfficeId;
+    public int $siteNomen;
 
     /**
-     * @var AddressNomenclatureType
+     * @var int|null
      */
-    private AddressNomenclatureType $streetTypes;
+    public ?int $defaultOfficeId = null;
 
     /**
-     * @var AddressNomenclatureType
+     * @var array
      */
-    private AddressNomenclatureType $complexTypes;
+    public array $streetTypes;
 
     /**
-     * @var int
+     * @var array
      */
-    private int $siteNomen;
+    public array $complexTypes;
 
     /**
      * @param int $id
@@ -82,38 +79,181 @@ class Country
         $this->id = $id;
     }
 
+    /**
+     * @return int
+     */
     public function getId(): int
     {
         return $this->id;
     }
 
+    /**
+     * @param string $name
+     */
     public function setName(string $name)
     {
         $this->name = $name;
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    public function setIsoAlpha2($isoAlpha2)
+    /**
+     * @param string $isoAlpha2
+     */
+    public function setIsoAlpha2(string $isoAlpha2)
     {
         $this->isoAlpha2 = $isoAlpha2;
     }
 
-    public function setIsoAlpha3($isoAlpha3)
+    /**
+     * @return string
+     */
+    public function getIsoAlpha2(): string
+    {
+        return $this->isoAlpha2;
+    }
+
+    /**
+     * @param string $isoAlpha3
+     */
+    public function setIsoAlpha3(string $isoAlpha3)
     {
         $this->isoAlpha3 = $isoAlpha3;
     }
 
-    public function setCurrencyCode($currencyCode)
+    /**
+     * @return string
+     */
+    public function getIsoAlpha3(): string
+    {
+        return $this->isoAlpha3;
+    }
+
+    /**
+     * @param string $currencyCode
+     */
+    public function setCurrencyCode(string $currencyCode)
     {
         $this->currencyCode = $currencyCode;
     }
 
-    public function getCurrencyCode()
+    /**
+     * @return string
+     */
+    public function getCurrencyCode(): string
     {
         return $this->currencyCode;
+    }
+
+    /**
+     * @param bool $requireState
+     */
+    public function setRequireState(bool $requireState)
+    {
+        $this->requireState = $requireState;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getRequireState(): bool
+    {
+        return $this->requireState;
+    }
+
+    /**
+     * @param int $addressType
+     */
+    public function setAddressType(int $addressType)
+    {
+        $this->addressType = $addressType;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAddressType(): int
+    {
+        return $this->addressType;
+    }
+
+    /**
+     * @param int $siteNomen
+     */
+    public function setSiteNomen(int $siteNomen)
+    {
+        $this->siteNomen = $siteNomen;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSiteNomen(): int
+    {
+        return $this->siteNomen;
+    }
+
+    /**
+     * @param array $streetTypes
+     */
+    public function setStreetTypes(array $streetTypes)
+    {
+        $this->streetTypes = $streetTypes;
+    }
+
+    public function getStreetTypes(): array
+    {
+        return $this->streetTypes;
+    }
+
+    /**
+     * @param array $complexTypes
+     */
+    public function setComplexTypes(array $complexTypes)
+    {
+        $this->complexTypes = $complexTypes;
+    }
+
+    public function getComplexTypes(): array
+    {
+        return $this->complexTypes;
+    }
+
+    /**
+     * @param array $postCodeFormats
+     */
+    public function setPostCodeFormats(array $postCodeFormats)
+    {
+        $this->postCodeFormats = $postCodeFormats;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPostCodeFormats(): array
+    {
+        return $this->postCodeFormats;
+    }
+
+    /**
+     * @param int $defaultOfficeId
+     */
+    public function setDefaultOfficeId(int $defaultOfficeId)
+    {
+        $this->defaultOfficeId = $defaultOfficeId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDefaultOfficeId(): ?int
+    {
+        return $this->defaultOfficeId;
     }
 }
