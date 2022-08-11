@@ -2,6 +2,8 @@
 
 namespace VasilDakov\Speedy\Shipment;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Class ShipmentPrice
  *
@@ -15,54 +17,73 @@ class ShipmentPrice
      * @var float
      */
     private float $amount;
+
     /**
      * @var float
      */
     private float $vat;
+
     /**
      * @var float
      */
     private float $total;
+
     /**
      * @var string
      */
     private string $currency;
+
     /**
-     * @var ShipmentPriceAmount
+     * @var ArrayCollection
      */
-    private ShipmentPriceAmount $details;
+    private ArrayCollection $details;
+
     /**
      * @var float
      */
     private float $amountLocal;
+
     /**
      * @var float
      */
     private float $vatLocal;
+
     /**
      * @var float
      */
     private float $totalLocal;
+
     /**
      * @var string
      */
     private string $currencyLocal;
+
     /**
-     * @var ShipmentPriceAmount
+     * @var ArrayCollection
      */
-    private ShipmentPriceAmount $detailsLocal;
+    private ArrayCollection $detailsLocal;
+
     /**
      * @var int
      */
     private int $currencyExchangeRateUnit;
+
     /**
      * @var float
      */
     private float $currencyExchangeRate;
+
     /**
      * @var ReturnAmounts
      */
     private ReturnAmounts $returnAmounts;
+
+
+    public function __construct()
+    {
+        $this->details = new ArrayCollection();
+    }
+
 
     /**
      * @return float
@@ -130,18 +151,18 @@ class ShipmentPrice
 
     /**
      * @codeCoverageIgnore
-     * @return ShipmentPriceAmount
+     * @return ArrayCollection
      */
-    public function getDetails(): ShipmentPriceAmount
+    public function getDetails(): ArrayCollection
     {
         return $this->details;
     }
 
     /**
      * @codeCoverageIgnore
-     * @param ShipmentPriceAmount $details
+     * @param ArrayCollection $details
      */
-    public function setDetails(ShipmentPriceAmount $details): void
+    public function setDetails(ArrayCollection $details): void
     {
         $this->details = $details;
     }
@@ -212,18 +233,18 @@ class ShipmentPrice
 
     /**
      * @codeCoverageIgnore
-     * @return ShipmentPriceAmount
+     * @return ArrayCollection
      */
-    public function getDetailsLocal(): ShipmentPriceAmount
+    public function getDetailsLocal(): ArrayCollection
     {
         return $this->detailsLocal;
     }
 
     /**
      * @codeCoverageIgnore
-     * @param ShipmentPriceAmount $detailsLocal
+     * @param ArrayCollection $detailsLocal
      */
-    public function setDetailsLocal(ShipmentPriceAmount $detailsLocal): void
+    public function setDetailsLocal(ArrayCollection $detailsLocal): void
     {
         $this->detailsLocal = $detailsLocal;
     }

@@ -26,10 +26,10 @@ class ClientTest extends TestCase
         $array = $this->getArray();
 
         $hydrator = new ClassMethodsHydrator();
-         $hydrator->addStrategy(
-             'address',
-             new HydratorStrategy(new ReflectionHydrator(), Address::class)
-         );
+        $hydrator->addStrategy(
+            'address',
+            new HydratorStrategy(new ReflectionHydrator(), Address::class)
+        );
 
         $instance = $hydrator->hydrate($array, new Client());
 

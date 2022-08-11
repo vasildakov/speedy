@@ -65,7 +65,7 @@ class CreateShipmentResponse
     /**
      * @param array $parcels
      */
-    public function setParcels(array $parcels): void
+    public function setParcels(array $parcels = []): void
     {
         $this->parcels = $parcels;
     }
@@ -129,7 +129,7 @@ class CreateShipmentResponse
     /**
      * @param mixed $error
      */
-    public function setError($error): void
+    public function setError($error = null): void
     {
         $this->error = $error;
     }
