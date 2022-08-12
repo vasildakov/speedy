@@ -31,7 +31,7 @@ class CreateShipmentRequestFactory
             ),
             new ShipmentService(100),
             new ShipmentContent(1, 1.5, 'FURNITURE', 'BOX', null),
-            new ShipmentPayment(new Payer('RECIPIENT'))
+            new ShipmentPayment('RECIPIENT')
         );
 
         return $request;

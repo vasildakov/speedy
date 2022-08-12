@@ -1,10 +1,12 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
+
+use JMS\Serializer;
+use JMS\Serializer\SerializationContext;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
+use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Shipment\ShipmentContent;
 use VasilDakov\Speedy\Shipment\ShipmentPayment;
 use VasilDakov\Speedy\Shipment\ShipmentRecipient;
@@ -228,9 +230,48 @@ class CreateShipmentRequestTest extends TestCase
         $this->assertArrayHasKey(Speedy::SERVICE, $array);
         $this->assertArrayHasKey(Speedy::CONTENT, $array);
         $this->assertArrayHasKey(Speedy::PAYMENT, $array);
-        $this->assertArrayHasKey(Speedy::SHIPMENT_NOTE, $array);
-        $this->assertArrayHasKey(Speedy::REF_1, $array);
-        $this->assertArrayHasKey(Speedy::REF_2, $array);
+        //$this->assertArrayHasKey(Speedy::SHIPMENT_NOTE, $array);
+        //$this->assertArrayHasKey(Speedy::REF_1, $array);
+        //$this->assertArrayHasKey(Speedy::REF_2, $array);
     }
 
+    public function testItCanBeDeserialized()
+    {
+        $json = $this->getJson();
+
+        $serializer = Serializer\SerializerBuilder::create()
+            ->setPropertyNamingStrategy(
+                new Serializer\Naming\SerializedNameAnnotationStrategy(
+                    new Serializer\Naming\IdenticalPropertyNamingStrategy()
+                )
+            )
+            ->build();
+
+        /* $serializer = Serializer\SerializerBuilder::create()
+            ->setSerializationContextFactory(function () {
+                return SerializationContext::create()
+                    ->setSerializeNull(true)
+                    ;
+            })
+            ->build()
+        ; */
+
+        $instance = $serializer->deserialize($json, CreateShipmentRequest::class, 'json');
+        $this->assertInstanceOf(CreateShipmentRequest::class, $instance);
+    }
+
+    private function getArray(): array
+    {
+        $json = $this->getJson();
+
+        return \json_decode($json, true);
+    }
+
+
+    private function getJson(): string
+    {
+        $json = \file_get_contents("./test/Assets/CreateShipmentRequest.json");
+
+        return $json;
+    }
 }

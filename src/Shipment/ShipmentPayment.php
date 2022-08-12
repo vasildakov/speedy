@@ -1,15 +1,15 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
 use VasilDakov\Speedy\Model\BankAccount;
 use VasilDakov\Speedy\Speedy;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class ShipmentPayment
  *
+ * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
@@ -17,58 +17,71 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentPayment
 {
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    private string $courierServicePayer;
 
     /**
-     * @var Payer
+     * @var string|null
+     * @Serializer\Type("string")
      */
-    private Payer $courierServicePayer;
+    private ?string $declaredValuePayer = '';
 
     /**
-     * @var Payer|null
+     * @var string|null
+     * @Serializer\Type("string")
      */
-    private ?Payer $declaredValuePayer = null;
-
-    /**
-     * @var Payer|null
-     */
-    private ?Payer $packagePayer = null;
+    private ?string $packagePayer = '';
 
     /**
      * @var int|null
+     * @Serializer\Type("integer")
      */
     private ?int $thirdPartyClientId = null;
 
     /**
      * @var ShipmentDiscountCardId|null
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentDiscountCardId")
      */
     private ?ShipmentDiscountCardId $discountCardId = null;
 
     /**
      * @var BankAccount|null
+     * @Serializer\Type("VasilDakov\Speedy\Model\BankAccount")
      */
     private ?BankAccount $senderBankAccount = null;
 
     /**
-     * @param Payer $courierServicePayer
+     * @param string|null $courierServicePayer
      */
-    public function __construct(Payer $courierServicePayer)
+    public function __construct(string $courierServicePayer)
+    {
+        $this->setCourierServicePayer($courierServicePayer);
+    }
+
+    /**
+     * @param string
+     */
+    public function setCourierServicePayer(string $courierServicePayer)
     {
         $this->courierServicePayer = $courierServicePayer;
     }
 
     /**
-     * @return Payer
+     * @return string
      */
-    public function getCourierServicePayer(): Payer
+    public function getCourierServicePayer(): string
     {
         return $this->courierServicePayer;
     }
 
     /**
-     * @param Payer $declaredValuePayer
+     * @param string|null $declaredValuePayer
      * @return $this
      */
-    public function setDeclaredValuePayer(Payer $declaredValuePayer): self
+    public function setDeclaredValuePayer(?string $declaredValuePayer = null): self
     {
         $this->declaredValuePayer = $declaredValuePayer;
 
@@ -76,36 +89,36 @@ class ShipmentPayment
     }
 
     /**
-     * @return Payer|null
+     * @return string|null
      */
-    public function getDeclaredValuePayer(): ?Payer
+    public function getDeclaredValuePayer(): ?string
     {
         return $this->declaredValuePayer;
     }
 
     /**
-     * @param Payer $packagePayer
+     * @param string $packagePayer
      * @return $this
      */
-    public function setPackagePayer(Payer $packagePayer) :self
+    public function setPackagePayer(string $packagePayer) :self
     {
         $this->packagePayer = $packagePayer;
 
         return $this;
     }
     /**
-     * @return Payer|null
+     * @return string|null
      */
-    public function getPackagePayer(): ?Payer
+    public function getPackagePayer(): ?string
     {
         return $this->packagePayer;
     }
 
     /**
-     * @param int $thirdPartyClientId
+     * @param int|null $thirdPartyClientId
      * @return $this
      */
-    public function setThirdPartyClientId(int $thirdPartyClientId) : self
+    public function setThirdPartyClientId(?int $thirdPartyClientId) : self
     {
         $this->thirdPartyClientId = $thirdPartyClientId;
 
@@ -121,10 +134,10 @@ class ShipmentPayment
     }
 
     /**
-     * @param ShipmentDiscountCardId $discountCardId
+     * @param ShipmentDiscountCardId|null $discountCardId
      * @return ShipmentPayment
      */
-    public function setDiscountCardId(ShipmentDiscountCardId $discountCardId): self
+    public function setDiscountCardId(ShipmentDiscountCardId $discountCardId = null): self
     {
         $this->discountCardId = $discountCardId;
 
@@ -140,10 +153,10 @@ class ShipmentPayment
     }
 
     /**
-     * @param BankAccount $bankAccount
+     * @param BankAccount|null $bankAccount
      * @return $this
      */
-    public function setSenderBankAccount(BankAccount $bankAccount): self
+    public function setSenderBankAccount(BankAccount $bankAccount = null): self
     {
         $this->senderBankAccount = $bankAccount;
 
@@ -164,11 +177,8 @@ class ShipmentPayment
     public function toArray(): array
     {
         $data = [
-            Speedy::COURIER_SERVICE_PAYER =>  (string) $this->getCourierServicePayer()
+            Speedy::COURIER_SERVICE_PAYER => $this->getCourierServicePayer()
         ];
-
-        // short hand ternary operator
-        // $data[Speedy::DECLARED_VALUE_PAYER] = ($this->declaredValuePayer) ?: null;
 
         if (null !== $this->declaredValuePayer) {
             $data[Speedy::DECLARED_VALUE_PAYER] = $this->getDeclaredValuePayer();
@@ -179,7 +189,7 @@ class ShipmentPayment
         }
 
         if (null !== $this->thirdPartyClientId) {
-        $data[Speedy::THIRD_PARTY_CLIENT_ID] = $this->getThirdPartyClientId();
+            $data[Speedy::THIRD_PARTY_CLIENT_ID] = $this->getThirdPartyClientId();
         }
 
         if (null !== $this->discountCardId) {

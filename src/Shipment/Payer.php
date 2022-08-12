@@ -1,11 +1,13 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
+
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Payer
  *
+ * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
@@ -23,6 +25,7 @@ class Payer
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $value;
 
@@ -38,7 +41,7 @@ class Payer
      * @param string $value
      * @return void
      */
-    private function setValue(string $value): void
+    public function setValue(string $value): void
     {
         if (!in_array($value, self::OPTIONS, true)) {
             throw new \InvalidArgumentException();

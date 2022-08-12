@@ -19,9 +19,9 @@ use VasilDakov\Speedy\Speedy;
 class ShipmentPaymentTest extends TestCase
 {
     /**
-     * @var Payer
+     * @var string
      */
-    protected Payer $payer;
+    protected string $payer;
 
     /**
      * @var int
@@ -40,7 +40,7 @@ class ShipmentPaymentTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->payer = $this->createMock(Payer::class);
+        $this->payer = 'RECIPIENT';
 
         $this->thirdParty = 10;
         $this->discount = $this->createMock(ShipmentDiscountCardId::class);
@@ -68,8 +68,8 @@ class ShipmentPaymentTest extends TestCase
     {
         $object = new ShipmentPayment($this->payer);
 
-        $object->setDeclaredValuePayer($this->payer);
-        $object->setPackagePayer($this->payer);
+        $object->setDeclaredValuePayer('THIRD_PARTY');
+        $object->setPackagePayer('SENDER');
         $object->setThirdPartyClientId($this->thirdParty);
         $object->setDiscountCardId($this->discount);
         $object->setSenderBankAccount($this->account);

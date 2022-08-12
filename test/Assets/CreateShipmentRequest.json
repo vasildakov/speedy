@@ -1,6 +1,4 @@
 {
-  "userName":"testUser",
-  "password":"password",
   "service":{
     "serviceId":2002,
     "additionalServices":{
@@ -28,7 +26,7 @@
     "package":"BOX"
   },
   "payment":{
-    "courierServicePayer":"SENDER"
+    "courierServicePayer": "SENDER"
   },
   "recipient":{
     "phone1":{
