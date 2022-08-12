@@ -7,6 +7,7 @@ use JMS\Serializer\SerializationContext;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
+use VasilDakov\Speedy\Shipment\ShipmentAddress;
 use VasilDakov\Speedy\Shipment\ShipmentContent;
 use VasilDakov\Speedy\Shipment\ShipmentPayment;
 use VasilDakov\Speedy\Shipment\ShipmentRecipient;
@@ -248,9 +249,20 @@ class CreateShipmentRequestTest extends TestCase
             ->build();
 
         $instance = $serializer->deserialize($json, CreateShipmentRequest::class, 'json');
-        var_dump($instance); exit();
 
         $this->assertInstanceOf(CreateShipmentRequest::class, $instance);
+        $this->assertInstanceOf(ShipmentContent::class, $instance->getContent());
+        $this->assertInstanceOf(ShipmentPayment::class, $instance->getPayment());
+        $this->assertInstanceOf(ShipmentRecipient::class, $instance->getRecipient());
+        $this->assertInstanceOf(ShipmentAddress::class, $instance->getRecipient()->getAddress());
+
+        $this->assertEquals(2002, $instance->getService()->getServiceId());
+        $this->assertEquals(1, $instance->getContent()->getParcelsCount());
+        $this->assertEquals(20.0, $instance->getContent()->getTotalWeight());
+        $this->assertEquals('FURNITURE', $instance->getContent()->getContents());
+        $this->assertEquals('BOX', $instance->getContent()->getPackage());
+        $this->assertEquals('Sofia', $instance->getRecipient()->getAddress()->getSiteName());
+        $this->assertEquals('Vitosha Blvd', $instance->getRecipient()->getAddress()->getStreetName());
     }
 
     private function getArray(): array

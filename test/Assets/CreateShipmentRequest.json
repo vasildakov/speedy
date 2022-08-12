@@ -37,9 +37,9 @@
     "contactName":"TEST",
     "email":"a@b.c",
     "address":{
-      "siteName":"Sibiu",
+      "siteName":"Sofia",
       "streetType":"str.",
-      "streetName":"ACILIU",
+      "streetName":"Vitosha Blvd",
       "streetNo":"3"
     }
   },
