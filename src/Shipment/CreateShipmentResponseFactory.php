@@ -27,7 +27,8 @@ class CreateShipmentResponseFactory
             )
             ->build();
 
-        return $serializer->deserialize($json, CreateShipmentResponse::class, 'json');
+        $response = $serializer->deserialize($json, CreateShipmentResponse::class, 'json');
 
+        return $response;
     }
 }

@@ -49,6 +49,5 @@ class CreateShipmentRequestFactory
         ); */
 
         //$object = $hydrator->hydrate($array, new CreateShipmentRequest());
-
     }
 }

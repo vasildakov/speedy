@@ -83,11 +83,13 @@ class ShipmentPrice
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $currencyExchangeRate;
 
     /**
      * @var ReturnAmounts
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ReturnAmounts")
      */
     private ReturnAmounts $returnAmounts;
 

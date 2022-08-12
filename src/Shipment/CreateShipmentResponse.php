@@ -31,6 +31,7 @@ class CreateShipmentResponse
     /**
      * @var ShipmentPrice
      * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentPrice")
+     * @Serializer\Accessor(getter="getPrice",setter="setPrice")
      */
     private ShipmentPrice $price;
 
