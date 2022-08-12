@@ -41,7 +41,7 @@ class ShipmentPrice
 
     /**
      * @var ArrayCollection
-     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Shipment\ShipmentPriceAmount>")
+     * @Serializer\Type("ArrayCollection<string, VasilDakov\Speedy\Shipment\ShipmentPriceAmount>")
      */
     private ArrayCollection $details;
 
@@ -71,7 +71,7 @@ class ShipmentPrice
 
     /**
      * @var ArrayCollection
-     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Shipment\ShipmentPriceAmount>")
+     * @Serializer\Type("ArrayCollection<string, VasilDakov\Speedy\Shipment\ShipmentPriceAmount>")
      */
     private ArrayCollection $detailsLocal;
 
@@ -96,7 +96,7 @@ class ShipmentPrice
 
     public function __construct()
     {
-        $this->details = new ArrayCollection();
+        $this->details      = new ArrayCollection();
         $this->detailsLocal = new ArrayCollection();
     }
 

@@ -2,9 +2,12 @@
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponseFactory;
+use VasilDakov\Speedy\Shipment\ShipmentPrice;
+use VasilDakov\Speedy\Shipment\ShipmentPriceAmount;
 
 /**
  * Class CreateShipmentResponseFactory
@@ -21,8 +24,21 @@ class CreateShipmentResponseFactoryTest extends TestCase
         $json = $this->getJson();
 
         $instance = (new CreateShipmentResponseFactory())($json);
-
         $this->assertInstanceOf(CreateShipmentResponse::class, $instance);
+
+    }
+
+    public function testInstanceHasRequiredProperties()
+    {
+        $json = $this->getJson();
+
+        $instance = (new CreateShipmentResponseFactory())($json);
+
+        $this->assertInstanceOf(ShipmentPrice::class, $instance->getPrice());
+        $this->assertInstanceOf(ArrayCollection::class, $instance->getPrice()->getDetails());
+        $this->assertInstanceOf(ArrayCollection::class, $instance->getPrice()->getDetailsLocal());
+        $this->assertInstanceOf(ShipmentPriceAmount::class, $instance->getPrice()->getDetails()->get('netAmount'));
+        $this->assertInstanceOf(ShipmentPriceAmount::class, $instance->getPrice()->getDetailsLocal()->get('netAmount'));
     }
 
     private function getJson(): string

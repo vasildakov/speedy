@@ -18,7 +18,7 @@ class CreateShipmentResponse
     /**
      * @var string
      * @Serializer\Type("string")
-     * @Serializer\Accessor(getter="getId",setter="setId")
+     * @Serializer\Accessor(getter="getId", setter="setId")
      */
     private string $id;
 
@@ -31,7 +31,7 @@ class CreateShipmentResponse
     /**
      * @var ShipmentPrice
      * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentPrice")
-     * @Serializer\Accessor(getter="getPrice",setter="setPrice")
+     * @Serializer\Accessor(getter="getPrice", setter="setPrice")
      */
     private ShipmentPrice $price;
 
