@@ -14,5 +14,8 @@ namespace VasilDakov\Speedy\Model;
  */
 class Sender
 {
-
+    /**
+     * @var int
+     */
+    private int $dropoffOfficeId;
 }

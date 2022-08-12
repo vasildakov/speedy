@@ -14,5 +14,8 @@ namespace VasilDakov\Speedy\Model;
  */
 class Recipient
 {
-
+    /**
+     * @var int
+     */
+    private int $pickupOfficeId;
 }
