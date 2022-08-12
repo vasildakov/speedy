@@ -3,7 +3,7 @@
 namespace VasilDakov\Speedy\Shipment;
 
 use VasilDakov\Speedy\Speedy;
-use VasilDakov\Speedy\Location\Country\CountryCode;
+use VasilDakov\Speedy\Model\CountryCode;
 
 /**
  * Class ShipmentAddress

@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\SpeedyTest\Location\Country;
+namespace VasilDakov\SpeedyTest\Model;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Location\Country\CountryCode;
+use VasilDakov\Speedy\Model\CountryCode;
 
 
 /**

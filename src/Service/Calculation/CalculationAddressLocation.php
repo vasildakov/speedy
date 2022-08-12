@@ -3,7 +3,7 @@
 namespace VasilDakov\Speedy\Service\Calculation;
 
 use JMS\Serializer\Annotation as Serializer;
-use VasilDakov\Speedy\Location\Country\CountryCode;
+use VasilDakov\Speedy\Model\CountryCode;
 
 /**
  * Class CalculationAddressLocation

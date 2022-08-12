@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Location\Country;
+namespace VasilDakov\SpeedyTest\Model;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Location\Country\Country;
+use VasilDakov\Speedy\Model\Country;
 
 /**
  * Class CountryTest

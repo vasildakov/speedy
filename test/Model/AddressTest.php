@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\SpeedyTest\Client;
+namespace VasilDakov\SpeedyTest\Model;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Client\Address;
+use VasilDakov\Speedy\Model\Address;
 
 /**
  * Class AddressTest
@@ -23,7 +23,7 @@ class AddressTest extends TestCase
         $array = $this->getArray();
 
         $hydrator = new ClassMethodsHydrator();
-        $instance = $hydrator->hydrate($array, new Address());
+        $instance = $hydrator->hydrate($array, new Address(4436));
 
         $this->assertInstanceOf(Address::class, $instance);
 

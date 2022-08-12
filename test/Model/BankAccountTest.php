@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Shipment;
+namespace VasilDakov\SpeedyTest\Model;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Shipment\BankAccount;
+use VasilDakov\Speedy\Model\BankAccount;
 use VasilDakov\Speedy\Speedy;
 
 /**

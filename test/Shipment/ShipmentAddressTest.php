@@ -5,7 +5,7 @@ namespace VasilDakov\SpeedyTest\Shipment;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\ShipmentAddress;
 use VasilDakov\Speedy\Speedy;
-use VasilDakov\Speedy\Location\Country\CountryCode;
+use VasilDakov\Speedy\Model\CountryCode;
 
 /**
  * Class ShipmentAddressTest

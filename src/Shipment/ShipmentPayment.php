@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Model\BankAccount;
 use VasilDakov\Speedy\Speedy;
 
 /**

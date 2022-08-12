@@ -3,7 +3,7 @@
 namespace VasilDakov\SpeedyTest\Shipment;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Shipment\BankAccount;
+use VasilDakov\Speedy\Model\BankAccount;
 use VasilDakov\Speedy\Shipment\Payer;
 use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
 use VasilDakov\Speedy\Shipment\ShipmentPayment;
