@@ -12,7 +12,7 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use VasilDakov\Speedy\Calculation;
+use VasilDakov\Speedy\Service\Calculation;
 use VasilDakov\Speedy\Client;
 use VasilDakov\Speedy\Configuration;
 use VasilDakov\Speedy\Location\Complex;

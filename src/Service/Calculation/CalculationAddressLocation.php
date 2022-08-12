@@ -1,19 +1,18 @@
-<?php 
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
+namespace VasilDakov\Speedy\Service\Calculation;
 
-namespace VasilDakov\Speedy\Calculation;
-
+use JMS\Serializer\Annotation as Serializer;
 use VasilDakov\Speedy\Location\Country\CountryCode;
 
 /**
  * Class CalculationAddressLocation
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
- * @todo https://api.speedy.bg/web-api.html#href-ds-calculation-address-location
  */
 class CalculationAddressLocation
 {
@@ -179,6 +178,5 @@ class CalculationAddressLocation
     private function setPostCode(string $postCode): void
     {
         $this->postCode = $postCode;
-
     }
 }

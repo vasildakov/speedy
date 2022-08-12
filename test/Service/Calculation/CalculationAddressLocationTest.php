@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Calculation;
+namespace VasilDakov\SpeedyTest\Service\Calculation;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use VasilDakov\Speedy\Location\Country\CountryCode;
-use VasilDakov\Speedy\Calculation\CalculationAddressLocation;
+use VasilDakov\Speedy\Service\Calculation\CalculationAddressLocation;
 use PHPUnit\Framework\TestCase;
 
 

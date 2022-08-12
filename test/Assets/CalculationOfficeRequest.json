@@ -1,0 +1,40 @@
+{
+  "userName" : "xxxxxx",
+  "password" : "yyyyyy",
+  "language" : "EN",
+  "sender" : {
+    "clientId" : 1234567890
+  },
+  "recipient" : {
+    "privatePerson" : true,
+    "pickupOfficeId" : 77
+  },
+  "service" : {
+    "autoAdjustPickupDate" : true,
+    "serviceIds" : [ 505 ],
+    "additionalServices" : {
+      "cod" : {
+        "amount" : 100.0,
+        "processingType" : "CASH"
+      },
+      "declaredValue" : {
+        "amount" : 100.0,
+        "fragile" : true,
+        "ignoreIfNotApplicable" : true
+      },
+      "obpd" : {
+        "option" : "OPEN",
+        "returnShipmentServiceId" : 505,
+        "returnShipmentPayer" : "SENDER"
+      }
+    }
+
+  },
+  "content" : {
+    "parcelsCount" : 1,
+    "totalWeight" : 0.6
+  },
+  "payment" : {
+    "courierServicePayer" : "RECIPIENT"
+  }
+}
