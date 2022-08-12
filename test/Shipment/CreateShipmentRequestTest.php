@@ -247,16 +247,9 @@ class CreateShipmentRequestTest extends TestCase
             )
             ->build();
 
-        /* $serializer = Serializer\SerializerBuilder::create()
-            ->setSerializationContextFactory(function () {
-                return SerializationContext::create()
-                    ->setSerializeNull(true)
-                    ;
-            })
-            ->build()
-        ; */
-
         $instance = $serializer->deserialize($json, CreateShipmentRequest::class, 'json');
+        var_dump($instance); exit();
+
         $this->assertInstanceOf(CreateShipmentRequest::class, $instance);
     }
 
