@@ -30,7 +30,6 @@ class CreateShipmentRequestFactoryTest extends TestCase
         return \json_decode($json, true);
     }
 
-
     private function getJson(): string
     {
         $json = \file_get_contents("./test/Assets/CreateShipmentRequest.json");

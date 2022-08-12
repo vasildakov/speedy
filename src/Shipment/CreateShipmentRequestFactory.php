@@ -3,7 +3,7 @@
 namespace VasilDakov\Speedy\Shipment;
 
 use Laminas\Hydrator\ReflectionHydrator;
-use VasilDakov\Speedy\Location\Country\Country;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Speedy;
 
 /**
@@ -15,9 +15,19 @@ use VasilDakov\Speedy\Speedy;
  */
 class CreateShipmentRequestFactory
 {
+    /**
+     * @param array $array
+     * @return CreateShipmentRequest
+     */
     public function __invoke(array $array): CreateShipmentRequest
     {
-        //var_dump($array); exit();
+        $serializer = (new SerializerFactory())();
+
+        $json = \json_encode($array);
+
+        return $serializer->deserialize($json, CreateShipmentRequest::class, 'json');
+
+        /*
         $request = new CreateShipmentRequest(
             new ShipmentSender(
                 new ShipmentPhoneNumber('0000000000'),
@@ -34,20 +44,7 @@ class CreateShipmentRequestFactory
             new ShipmentPayment('RECIPIENT')
         );
 
-        return $request;
+        return $request; */
 
-        //$service =  $hydrator->hydrate($array, new ShipmentService($array['service']['serviceId']));
-
-        /* $hydrator->addStrategy(
-            'streetTypes',
-            new HydratorStrategy(new ReflectionHydrator(), AddressNomenclatureType::class)
-        );
-
-        $hydrator->addStrategy(
-            'complexTypes',
-            new HydratorStrategy(new ReflectionHydrator(), AddressNomenclatureType::class)
-        ); */
-
-        //$object = $hydrator->hydrate($array, new CreateShipmentRequest());
     }
 }
