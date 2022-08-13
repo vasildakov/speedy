@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a5e827a7d9e079a5b95cc1262e49594",
+    "content-hash": "2ba545308bfe44c32f7fccb376c37a13",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -5605,6 +5605,155 @@
             "time": "2022-07-20T14:45:30+00:00"
         },
         {
+            "name": "theseer/directoryscanner",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theseer/DirectoryScanner.git",
+                "reference": "4cdce31c1b5120779a01225b5b0968f9321342d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theseer/DirectoryScanner/zipball/4cdce31c1b5120779a01225b5b0968f9321342d6",
+                "reference": "4cdce31c1b5120779a01225b5b0968f9321342d6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Arne Blankerts",
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A recursive directory scanner and filter",
+            "support": {
+                "issues": "https://github.com/theseer/DirectoryScanner/issues",
+                "source": "https://github.com/theseer/DirectoryScanner/tree/1.3.3"
+            },
+            "time": "2021-07-24T18:41:34+00:00"
+        },
+        {
+            "name": "theseer/fdomdocument",
+            "version": "1.6.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theseer/fDOMDocument.git",
+                "reference": "5cddd4f9076a9a2b85c5135935bba2dcb3ed7574"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theseer/fDOMDocument/zipball/5cddd4f9076a9a2b85c5135935bba2dcb3ed7574",
+                "reference": "5cddd4f9076a9a2b85c5135935bba2dcb3ed7574",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "lib-libxml": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "php": ">=7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Arne Blankerts",
+                    "email": "arne@blankerts.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
+            "homepage": "https://github.com/theseer/fDOMDocument",
+            "support": {
+                "issues": "https://github.com/theseer/fDOMDocument/issues",
+                "source": "https://github.com/theseer/fDOMDocument/tree/1.6.7"
+            },
+            "abandoned": true,
+            "time": "2022-01-25T23:10:35+00:00"
+        },
+        {
+            "name": "theseer/phpdox",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theseer/phpdox.git",
+                "reference": "eb943cb77d05b640a52145e877bf006f878e5bbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theseer/phpdox/zipball/eb943cb77d05b640a52145e877bf006f878e5bbf",
+                "reference": "eb943cb77d05b640a52145e877bf006f878e5bbf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-fileinfo": "*",
+                "ext-iconv": "*",
+                "ext-mbstring": "*",
+                "ext-tokenizer": "*",
+                "ext-xsl": "*",
+                "nikic/php-parser": "^4.2",
+                "php": ">=7.1",
+                "phpunit/php-timer": "^5.0",
+                "theseer/directoryscanner": "^1.3.0",
+                "theseer/fdomdocument": "^1.6"
+            },
+            "default-branch": true,
+            "bin": [
+                "phpdox"
+            ],
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Arne Blankerts",
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A fast Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT) with event based processing",
+            "support": {
+                "issues": "https://github.com/theseer/phpdox/issues",
+                "source": "https://github.com/theseer/phpdox/tree/master"
+            },
+            "time": "2021-03-20T17:21:39+00:00"
+        },
+        {
             "name": "theseer/tokenizer",
             "version": "1.2.1",
             "source": {
@@ -5671,7 +5820,8 @@
         "jms/serializer": 20,
         "doctrine/cache": 20,
         "php-coveralls/php-coveralls": 20,
-        "squizlabs/php_codesniffer": 20
+        "squizlabs/php_codesniffer": 20,
+        "theseer/phpdox": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
