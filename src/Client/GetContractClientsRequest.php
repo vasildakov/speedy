@@ -2,6 +2,8 @@
 
 namespace VasilDakov\Speedy\Client;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class GetContractClientsRequest
  *
@@ -13,6 +15,7 @@ class GetContractClientsRequest
 {
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $clientSystemId = null;
 

@@ -11,7 +11,6 @@ namespace VasilDakov\Speedy\Client;
  */
 class Address
 {
-
     /**
      * @var int|null
      */

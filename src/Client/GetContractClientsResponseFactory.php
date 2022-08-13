@@ -4,6 +4,7 @@ namespace VasilDakov\Speedy\Client;
 
 use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class GetContractResponseFactory
@@ -31,16 +32,7 @@ final class GetContractClientsResponseFactory
             throw new \InvalidArgumentException('Invalid or malformed JSON');
         }
 
-        foreach ($array['clients'] as $item) {
-            $hydrator = new ReflectionHydrator();
-            $hydrator->addStrategy(
-                'address',
-                new HydratorStrategy(new ReflectionHydrator(),Address::class)
-            );
-
-            $this->clients[] = $hydrator->hydrate($item, new Client());
-        }
-
-        return new GetContractClientsResponse($this->clients);
+        $serializer = (new SerializerFactory())();
+        return $serializer->deserialize($json, GetContractClientsResponse::class, 'json');
     }
 }

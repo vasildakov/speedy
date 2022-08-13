@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Client;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Client\GetContractClientsResponse;
 
@@ -19,11 +20,13 @@ class GetContractClientsResponseTest extends TestCase
 {
     public function testItCanBeConstructed()
     {
-        $array = $this->getArray();
+        //$array = $this->getArray();
 
-        $instance = new GetContractClientsResponse($array);
+        $instance = new GetContractClientsResponse();
 
-        $this->assertIsArray($instance->getClients());
+        $instance->setClients(new ArrayCollection());
+
+        $this->assertInstanceOf(ArrayCollection::class, $instance->getClients());
     }
 
 
