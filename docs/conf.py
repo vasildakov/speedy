@@ -8,7 +8,7 @@ lexers['php-annotations'] = PhpLexer(startinline=True, linenos=1)
 primary_domain = 'php'
 
 extensions = []
-#templates_path = ['_templates']
+templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
 project = u'Speedy'
@@ -17,5 +17,5 @@ version = '1'
 html_title = "Speedy API Client Documentation"
 html_short_title = "Speedy API"
 
-#exclude_patterns = ['_build']
-#html_static_path = ['_static']
+exclude_patterns = ['_build']
+html_static_path = ['_static']
