@@ -32,7 +32,8 @@ class BankAccountTest extends TestCase
         $this->assertEquals($array['iban'], $instance->getIban());
         $this->assertEquals($array['accountHolder'], $instance->getAccountHolder());
 
-
+        $this->assertIsArray($instance->toArray());
+        
     }
     /**
      * @group model

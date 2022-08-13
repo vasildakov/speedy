@@ -1,4 +1,4 @@
 {
-  "$iban":"iban",
-  "$accountHolder":"accountHolder"
+  "iban":"iban",
+  "accountHolder":"accountHolder"
 }
