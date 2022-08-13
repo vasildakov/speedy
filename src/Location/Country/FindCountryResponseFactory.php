@@ -6,6 +6,7 @@ use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
 use VasilDakov\Speedy\Client\Client;
+use VasilDakov\Speedy\Model\Country;
 
 /**
  * Class FindCountryResponseFactory

@@ -1,17 +1,17 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
 use VasilDakov\Speedy\Speedy;
 use InvalidArgumentException;
+use JMS\Serializer\Annotation as Serializer;
 
 use function strlen;
 
 /**
  * Class CreateShipmentRequest
  *
+ * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
@@ -21,54 +21,61 @@ class CreateShipmentRequest
 {
     /**
      * @var ShipmentRecipient
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentRecipient")
      */
     private ShipmentRecipient $recipient;
 
     /**
      * @var ShipmentService
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentService")
      */
     private ShipmentService $service;
 
     /**
      * @var ShipmentContent
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentContent")
      */
     private ShipmentContent $content;
 
     /**
      * @var ShipmentPayment
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentPayment")
      */
     private ShipmentPayment $payment;
 
     /**
      * @var ShipmentSender
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentSender")
      */
     private ShipmentSender $sender;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
-    private ?string $shipmentNote = null;
+    private ?string $shipmentNote;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
-
-    private ?string $ref1 = null;
+    private ?string $ref1;
 
     /**
      * @var string|null
-     *
+     * @Serializer\Type("string")
      */
-    private ?string $ref2 = null;
+    private ?string $ref2;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
-
-    private ?string $consolidationRef = null;
+    private ?string $consolidationRef;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $requireUnsuccessfulDeliveryStickerImage = false;
 
@@ -105,7 +112,7 @@ class CreateShipmentRequest
      * @param ShipmentRecipient $recipient
      * @return void
      */
-    private function setRecipient(ShipmentRecipient $recipient): void
+    public function setRecipient(ShipmentRecipient $recipient): void
     {
         $this->recipient = $recipient;
 
@@ -123,7 +130,7 @@ class CreateShipmentRequest
      * @param ShipmentService $service
      * @return void
      */
-    private function setService(ShipmentService $service): void
+    public function setService(ShipmentService $service): void
     {
         $this->service = $service;
 
@@ -141,7 +148,7 @@ class CreateShipmentRequest
      * @param ShipmentContent $content
      * @return void
      */
-    private function setContent(ShipmentContent $content): void
+    public function setContent(ShipmentContent $content): void
     {
         $this->content = $content;
 
@@ -159,7 +166,7 @@ class CreateShipmentRequest
      * @param ShipmentPayment $payment
      * @return void
      */
-    private function setPayment(ShipmentPayment $payment): void
+    public function setPayment(ShipmentPayment $payment): void
     {
         $this->payment = $payment;
 
@@ -265,14 +272,13 @@ class CreateShipmentRequest
     }
 
     /**
-     * @param string $consolidationRef
+     * @param ?string $consolidationRef
      * @return $this
      */
-    public function setConsolidationRef(string $consolidationRef): self
+    public function setConsolidationRef(string $consolidationRef): void
     {
         $this->consolidationRef = $consolidationRef;
 
-        return $this;
     }
 
     /**
@@ -305,11 +311,11 @@ class CreateShipmentRequest
             Speedy::SERVICE       => $this->service->toArray(),
             Speedy::CONTENT       => $this->content->toArray(),
             Speedy::PAYMENT       => $this->payment->toArray(),
-            Speedy::SHIPMENT_NOTE => $this->getShipmentNote(),
-            Speedy::REF_1         => $this->getRef1(),
-            Speedy::REF_2         => $this->getRef2(),
-            Speedy::CONSOLIDATION_REF => '',
-            Speedy::REQUIRE_UNSUCCESSFUL_DELIVERY_STICKER_IMAGE => '',
+            //Speedy::SHIPMENT_NOTE => $this->getShipmentNote(),
+            //Speedy::REF_1         => $this->getRef1(),
+            //Speedy::REF_2         => $this->getRef2(),
+            //Speedy::CONSOLIDATION_REF => '',
+            //Speedy::REQUIRE_UNSUCCESSFUL_DELIVERY_STICKER_IMAGE => '',
         ];
     }
 }

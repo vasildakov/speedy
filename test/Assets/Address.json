@@ -1,0 +1,19 @@
+{
+  "countryId":100,
+  "siteId":68314,
+  "siteType": "type",
+  "siteName": "name",
+  "postCode": "1000",
+  "streetType":"bul.",
+  "streetName":"VITOSKA",
+  "streetNo":"55",
+  "entranceNo":"1",
+  "floorNo": "8",
+  "apartmentNo": "39",
+  "streetId": null,
+  "x": 0.0,
+  "y": 0.0,
+  "fullAddressString": "full address string",
+  "siteAddressString": "site address string",
+  "localAddressString": "local address string"
+}

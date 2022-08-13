@@ -84,6 +84,16 @@
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-stdlib" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-json" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-serializer" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/theseer/fdomdocument" />
+      <path value="$PROJECT_DIR$/vendor/theseer/phpdox" />
+      <path value="$PROJECT_DIR$/vendor/theseer/directoryscanner" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

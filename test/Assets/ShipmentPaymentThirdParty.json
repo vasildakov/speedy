@@ -1,0 +1,10 @@
+{
+  "courierServicePayer":"SENDER",
+  "declaredValuePayer":"THIRD_PARTY",
+  "packagePayer":"RECIPIENT",
+  "thirdPartyClientId":1234567,
+  "discountCardId":{
+    "contractId":666666,
+    "cardId":3
+  }
+}

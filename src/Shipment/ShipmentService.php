@@ -52,6 +52,7 @@ class ShipmentService
     public function __construct(int $serviceId)
     {
         $this->setServiceId($serviceId);
+
     }
 
     /**
@@ -164,6 +165,7 @@ class ShipmentService
 
         return $this;
     }
+
 
     /**
      * @return array

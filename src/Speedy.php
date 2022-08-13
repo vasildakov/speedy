@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
@@ -12,8 +9,8 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Client\ClientInterface;
-use VasilDakov\Speedy\Calculation\CalculationRequest;
-use VasilDakov\Speedy\Calculation\CalculationResponse;
+use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
+use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
 use VasilDakov\Speedy\Client\Address;
 use VasilDakov\Speedy\Client\Client;
 use VasilDakov\Speedy\Client\GetContractClientsRequest;
@@ -24,7 +21,6 @@ use VasilDakov\Speedy\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Location\Country\FindCountryResponse;
 use VasilDakov\Speedy\Location\Country\FindCountryResponseFactory;
-use VasilDakov\Speedy\Location\FindCountry;
 use VasilDakov\Speedy\Location\Office\FindOfficeRequest;
 use VasilDakov\Speedy\Location\Office\FindOfficeResponse;
 use VasilDakov\Speedy\Location\Site\FindSiteRequest;
@@ -264,6 +260,8 @@ final class Speedy
 
         $response = $this->client->sendRequest($request);
         $json = $response->getBody()->getContents();
+
+        //var_dump($json); exit();
 
         return (new GetContractClientsResponseFactory())($json);
     }

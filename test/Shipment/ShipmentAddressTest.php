@@ -1,13 +1,11 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\ShipmentAddress;
 use VasilDakov\Speedy\Speedy;
-use VasilDakov\Speedy\ValueObject\CountryCode;
+use VasilDakov\Speedy\Model\CountryCode;
 
 /**
  * Class ShipmentAddressTest

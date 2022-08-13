@@ -3,7 +3,7 @@
 namespace VasilDakov\SpeedyTest\Location\Country;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Location\Country\Country;
+use VasilDakov\Speedy\Model\Country;
 use VasilDakov\Speedy\Location\Country\FindCountryResponse;
 use VasilDakov\Speedy\Location\Country\FindCountryResponseFactory;
 

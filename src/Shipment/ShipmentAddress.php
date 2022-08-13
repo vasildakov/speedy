@@ -1,12 +1,9 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
-use PHP_CodeSniffer\Standards\Generic\Sniffs\Metrics\NestingLevelSniff;
 use VasilDakov\Speedy\Speedy;
-use VasilDakov\Speedy\ValueObject\CountryCode;
+use VasilDakov\Speedy\Model\CountryCode;
 
 /**
  * Class ShipmentAddress
@@ -170,7 +167,7 @@ class ShipmentAddress
 
     /**
      * @param string $stateId
-     * @return $this
+     * @return self
      */
     public function setStateId(string $stateId): self
     {
@@ -522,7 +519,6 @@ class ShipmentAddress
     public function toArray(): array
     {
         $data = [Speedy::SITE_ID => $this->getSiteId()
-
         ];
 
         if (null !== $this->countryId) {

@@ -78,4 +78,7 @@ class ShipmentDiscountCardIdTest extends TestCase
         $this->assertArrayHasKey(Speedy::CONTRACT_ID, $array);
         $this->assertArrayHasKey(Speedy::CARD_ID, $array);
     }
+
+
+
 }

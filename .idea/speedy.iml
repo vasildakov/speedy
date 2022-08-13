@@ -83,6 +83,16 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-stdlib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-json" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-serializer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpstan/phpdoc-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/metadata" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/serializer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/fdomdocument" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/phpdox" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/directoryscanner" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -2,6 +2,8 @@
 
 namespace VasilDakov\Speedy\Location\Country;
 
+use VasilDakov\Speedy\Model\Country;
+
 /**
  * Class FindCountryResponse
  *

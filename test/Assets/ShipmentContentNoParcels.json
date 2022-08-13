@@ -1,0 +1,18 @@
+{
+  "contents":"FURNITURE",
+  "package":"BOX",
+  "parcels":[
+    {
+      "seqNo":1,
+      "weight":80.0
+    },
+    {
+      "seqNo":2,
+      "weight":83.0
+    },
+    {
+      "seqNo":3,
+      "weight":85.0
+    }
+  ]
+}

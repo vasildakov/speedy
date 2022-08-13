@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -14,5 +11,24 @@ namespace VasilDakov\Speedy\Shipment;
  */
 class ReturnAmounts
 {
+    /**
+     * @var MoneyTransferPremium
+     */
     private MoneyTransferPremium $moneyTransfer;
+
+    /**
+     * @return MoneyTransferPremium
+     */
+    public function getMoneyTransfer(): MoneyTransferPremium
+    {
+        return $this->moneyTransfer;
+    }
+
+    /**
+     * @param MoneyTransferPremium $moneyTransfer
+     */
+    public function setMoneyTransfer(MoneyTransferPremium $moneyTransfer): void
+    {
+        $this->moneyTransfer = $moneyTransfer;
+    }
 }

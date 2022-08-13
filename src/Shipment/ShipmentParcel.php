@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class ShipmentParcel
  *
@@ -40,9 +42,9 @@ class ShipmentParcel
     private ?float $weight = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $externalCarrierParcelNumber;
+    private ?string $externalCarrierParcelNumber = null;
 
     /**
      * @var string|null
@@ -211,12 +213,40 @@ class ShipmentParcel
     }
 
 
-
     /**
      * @return array
      */
     public function toArray(): array
     {
-        return [];
+        $data = [
+            Speedy::SEQ_NO => $this->getSeqNo(),
+            Speedy::SIZE   => $this->getSize(),
+        ];
+
+        if (null !== $this->id) {
+            $data[Speedy::ID]  = $this->getId();
+        }
+
+        if (null !== $this->packageUniqueNumber) {
+            $data[Speedy::PACKAGE_UNIQUE_NUMBER]  = $this->getPackageUniqueNumber();
+        }
+
+        if (null !== $this->weight) {
+            $data[Speedy::WEIGHT]  = $this->getWeight();
+        }
+
+        if (null !== $this->externalCarrierParcelNumber) {
+            $data[Speedy::EXTERNAL_CARRIER_PARCEL_NUMBER]  = $this->getExternalCarrierParcelNumber();
+        }
+
+        if (null !== $this->ref1) {
+            $data[Speedy::REF_1]  = $this->getRef1();
+        }
+
+        if (null !== $this->ref2) {
+            $data[Speedy::REF_2]  = $this->getRef2();
+        }
+
+        return $data;
     }
 }

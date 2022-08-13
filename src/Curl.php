@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
@@ -11,6 +8,7 @@ use Fig\Http\Message\StatusCodeInterface;
 /**
  * Class Curl
  *
+ * @codeCoverageIgnore
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
