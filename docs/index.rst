@@ -32,8 +32,8 @@ User Guide
 .. toctree::
     :maxdepth: 3
 
-    Overview
-    Installation
-    Usage
-    Model
-    Services
+    overview
+    installation
+    usage
+    model
+    services
