@@ -20,10 +20,11 @@ Create a new Configuration with Speedy `username`, `password` and `language`
 Creating a Client
 -----------------
 
-Speedy Client can be configured with any `Psr\\Http\\Client\\ClientInterface` implementation like Guzzle
-to send HTTP Request and to receive HTTP Response.
+Speedy Client can be configured with any `Psr\\Http\\Client\\ClientInterface` implementation like `Guzzle HTTP Client <https://github.com/guzzle/guzzle>`_,
+`Laminas HTTP client <https://github.com/laminas/laminas-http>`_, `Symphony HTTP Client <https://github.com/symfony/http-client>`_ , to send HTTP Request and to receive HTTP Response.
 
 .. code-block:: php
+    :linenos:
 
     use VasilDakov\Speedy\Speedy;
     use GuzzleHttp\Client;
@@ -45,6 +46,7 @@ Sending Requests
 ----------------
 
 .. code-block:: php
+    :linenos:
 
     $request = new GetContractClientsRequest();
     $response = $speedy->getContractClient($request);
@@ -53,6 +55,7 @@ Using Responses
 ---------------
 
 .. code-block:: php
+    :linenos:
 
     /** @var Client\GetContractClientsRequest $request */
     $request = new Client\GetContractClientsRequest();

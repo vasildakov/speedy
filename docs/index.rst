@@ -35,5 +35,5 @@ User Guide
     overview
     installation
     usage
-    model
     services
+    model
