@@ -1,13 +1,11 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Address;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class AddressTest
@@ -18,6 +16,9 @@ use VasilDakov\Speedy\Model\Address;
  */
 class AddressTest extends TestCase
 {
+    /**
+     * @group model
+     */
     public function testItCanBeConstructed()
     {
         $array = $this->getArray();
@@ -44,12 +45,27 @@ class AddressTest extends TestCase
         $this->assertEquals($array['y'], $instance->getY());
 
         $this->assertEquals($array['apartmentNo'], $instance->getApartmentNo());
+        $this->assertEquals($array['complexId'], $instance->getComplexId());
 
         $this->assertEquals($array['fullAddressString'], $instance->getFullAddressString());
         $this->assertEquals($array['siteAddressString'], $instance->getSiteAddressString());
         $this->assertEquals($array['localAddressString'], $instance->getLocalAddressString());
 
         $this->assertIsArray($instance->toArray());
+    }
+
+    /**
+     * @group model
+     */
+    public function testItCanBeDeserialized()
+    {
+        $json = $this->getJson();
+
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($json, Address::class, 'json');
+
+        $this->assertInstanceOf(Address::class, $instance);
     }
 
     private function getArray(): array
@@ -62,7 +78,7 @@ class AddressTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/Address.json");
+        $json = \file_get_contents("./test/Assets/AddressFull.json");
 
         return $json;
     }
