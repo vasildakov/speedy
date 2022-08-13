@@ -12,7 +12,8 @@ primary_domain = "php"
 html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
-extensions = ["sphinxcontrib.phpdomain"]
+#extensions = ["sphinxcontrib.phpdomain"]
+extensions = []
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
