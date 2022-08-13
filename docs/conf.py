@@ -7,12 +7,12 @@ from pygments.lexers.web import PhpLexer
 
 lexers['php'] = PhpLexer(startinline=True, linenos=1)
 lexers['php-annotations'] = PhpLexer(startinline=True, linenos=1)
-primary_domain = 'php'
+primary_domain = "php"
 
 html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
-extensions = []
+extensions = ["sphinxcontrib.phpdomain"]
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'

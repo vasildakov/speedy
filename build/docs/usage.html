@@ -43,8 +43,15 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-client">Creating a Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sending-requests">Sending Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-responses">Using Responses</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="model.html">Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
 </ul>
 
         </div>
@@ -73,6 +80,37 @@
              
   <section id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>You can send requests with Speedy Client using a <cite>Speedy\SpeedyInterface</cite> object.</p>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">VasilDakov\Speedy</span><span class="p">;</span>
+
+<span class="sd">/** @var Configuration $configuration */</span>
+<span class="nv">$configuration</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Configuration</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;language&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-client">
+<h2>Creating a Client<a class="headerlink" href="#creating-a-client" title="Permalink to this headline">¶</a></h2>
+<p>Speedy Client is using any <cite>Psr\Http\Client\ClientInterface</cite> implementation e.g. Guzzle to send HTTP Request
+and to receive HTTP Response.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">VasilDakov\Speedy</span><span class="p">;</span>
+
+<span class="sd">/** @var Configuration $configuration */</span>
+<span class="nv">$configuration</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Configuration</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;language&#39;</span><span class="p">);</span>
+
+<span class="nv">$speedy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Speedy</span><span class="p">(</span><span class="nv">$configuration</span><span class="p">,</span> <span class="nv">$httpClient</span><span class="p">,</span> <span class="nv">$httpFactory</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="sending-requests">
+<h2>Sending Requests<a class="headerlink" href="#sending-requests" title="Permalink to this headline">¶</a></h2>
+<p>docs goes here</p>
+</section>
+<section id="using-responses">
+<h2>Using Responses<a class="headerlink" href="#using-responses" title="Permalink to this headline">¶</a></h2>
+<p>docs goes here</p>
+</section>
 </section>
 
 
