@@ -83,6 +83,7 @@
 <p>You can send requests with Speedy Client using a <cite>Speedy\SpeedyInterface</cite> object.</p>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Create a new Configuration with Speedy <cite>username</cite>, <cite>password</cite> and <cite>language</cite></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">VasilDakov\Speedy</span><span class="p">;</span>
 
 <span class="sd">/** @var Configuration $configuration */</span>
@@ -92,12 +93,20 @@
 </section>
 <section id="creating-a-client">
 <h2>Creating a Client<a class="headerlink" href="#creating-a-client" title="Permalink to this headline">¶</a></h2>
-<p>Speedy Client is using any <cite>Psr\Http\Client\ClientInterface</cite> implementation e.g. Guzzle to send HTTP Request
-and to receive HTTP Response.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">VasilDakov\Speedy</span><span class="p">;</span>
+<p>Speedy Client can be configured with any <cite>Psr\Http\Client\ClientInterface</cite> implementation like Guzzle
+to send HTTP Request and to receive HTTP Response.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">VasilDakov\Speedy\Speedy</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laminas\Diactoros\RequestFactory</span><span class="p">;</span>
 
 <span class="sd">/** @var Configuration $configuration */</span>
 <span class="nv">$configuration</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Configuration</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;language&#39;</span><span class="p">);</span>
+
+<span class="sd">/** @var Psr\\Http\\Psr\Http\Message\\ClientInterface $httpClient */</span>
+<span class="nv">$httpClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="sd">/** @var Psr\\Http\\Message\\ClientInterface $RequestFactoryInterface */</span>
+<span class="nv">$httpFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Laminas\Diactoros\RequestFactory</span><span class="p">();</span>
 
 <span class="nv">$speedy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Speedy</span><span class="p">(</span><span class="nv">$configuration</span><span class="p">,</span> <span class="nv">$httpClient</span><span class="p">,</span> <span class="nv">$httpFactory</span><span class="p">);</span>
 </pre></div>
@@ -105,11 +114,23 @@ and to receive HTTP Response.</p>
 </section>
 <section id="sending-requests">
 <h2>Sending Requests<a class="headerlink" href="#sending-requests" title="Permalink to this headline">¶</a></h2>
-<p>docs goes here</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GetContractClientsRequest</span><span class="p">();</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$speedy</span><span class="o">-&gt;</span><span class="na">getContractClient</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+</pre></div>
+</div>
 </section>
 <section id="using-responses">
 <h2>Using Responses<a class="headerlink" href="#using-responses" title="Permalink to this headline">¶</a></h2>
-<p>docs goes here</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/** @var Client\GetContractClientsRequest $request */</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client\GetContractClientsRequest</span><span class="p">();</span>
+
+<span class="sd">/** @var Client\GetContractClientsResponse $response */</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$speedy</span><span class="o">-&gt;</span><span class="na">getContractClients</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+<span class="sd">/** @var Client\Client[] $clients */</span>
+<span class="nv">$clients</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getClients</span><span class="p">();</span>
+</pre></div>
+</div>
 </section>
 </section>
 
