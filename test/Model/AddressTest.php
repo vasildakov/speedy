@@ -19,7 +19,7 @@ class AddressTest extends TestCase
     /**
      * @group model
      */
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $array = $this->getArray();
 
