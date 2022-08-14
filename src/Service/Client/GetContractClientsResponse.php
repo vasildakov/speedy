@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Client;
+namespace VasilDakov\Speedy\Service\Client;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
@@ -17,15 +17,15 @@ class GetContractClientsResponse
 {
     /**
      * @var ArrayCollection
-     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Client\Client>")
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Model\Client>")
      */
     private ArrayCollection $clients;
 
-    public function __construct()
-    {
-    }
-
-    public function setClients(ArrayCollection $clients)
+    /**
+     * @param ArrayCollection $clients
+     * @return $this
+     */
+    public function setClients(ArrayCollection $clients): GetContractClientsResponse
     {
         $this->clients = $clients;
 

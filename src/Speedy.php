@@ -11,11 +11,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Client\ClientInterface;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
-use VasilDakov\Speedy\Client\Address;
-use VasilDakov\Speedy\Client\Client;
-use VasilDakov\Speedy\Client\GetContractClientsRequest;
-use VasilDakov\Speedy\Client\GetContractClientsResponse;
-use VasilDakov\Speedy\Client\GetContractClientsResponseFactory;
+
 use VasilDakov\Speedy\Location\Complex\FindComplexRequest;
 use VasilDakov\Speedy\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Location\Country\FindCountryRequest;
@@ -31,6 +27,9 @@ use VasilDakov\Speedy\Location\Street\FindStreetRequest;
 use VasilDakov\Speedy\Location\Street\FindStreetResponse;
 use VasilDakov\Speedy\Printing\PrintRequest;
 use VasilDakov\Speedy\Printing\PrintResponse;
+use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
+use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
+use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Track\TrackRequest;
@@ -260,8 +259,6 @@ final class Speedy
 
         $response = $this->client->sendRequest($request);
         $json = $response->getBody()->getContents();
-
-        //var_dump($json); exit();
 
         return (new GetContractClientsResponseFactory())($json);
     }

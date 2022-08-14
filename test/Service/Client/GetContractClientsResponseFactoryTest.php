@@ -1,12 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-
-namespace VasilDakov\SpeedyTest\Client;
+namespace VasilDakov\SpeedyTest\Service\Client;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Client\GetContractClientsResponseFactory;
+use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
+
 
 /**
  * Class GetContractClientsResponseFactoryTest

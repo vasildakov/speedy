@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Client;
+namespace VasilDakov\Speedy\Service\Client;
 
-use Laminas\Hydrator\ReflectionHydrator;
-use Laminas\Hydrator\Strategy\HydratorStrategy;
+use VasilDakov\Speedy\Model\Client;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
@@ -16,17 +15,12 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
 final class GetContractClientsResponseFactory
 {
     /**
-     * @var Client[]
-     */
-    private array $clients = [];
-
-    /**
      * @param string $json
      * @return GetContractClientsResponse
      */
     public function __invoke(string $json): GetContractClientsResponse
     {
-        $array = \json_decode($json, true);
+        \json_decode($json, true);
 
         if (\json_last_error() !== JSON_ERROR_NONE) {
             throw new \InvalidArgumentException('Invalid or malformed JSON');
