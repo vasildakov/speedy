@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 
 namespace VasilDakov\Speedy\Model;
-
+use JMS\Serializer\Annotation as Serializer;
 /**
  * Class Complex
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
@@ -16,56 +17,68 @@ class Complex
 {
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $id;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $siteId;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $type;
 
     /**
      * @var string
+     *  @Serializer\Type("string")
      */
     private string $typeEn;
 
     /**
      * @var string
+     * @Serializer\Type("string")
+     *
      */
     private string $name;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $nameEn;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $actualId;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $actualType;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $actualTypeEn;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $actualName;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string  $actualNameEn;
 

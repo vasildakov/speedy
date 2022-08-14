@@ -2,24 +2,28 @@
 
 namespace VasilDakov\Speedy\Model;
 use DateTime;
+use JMS\Serializer\Annotation as Serializer;
 /**
  * Class CODPayment
  *
+ * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
- * @version
+ * @version 1.0
  */
 class CODPayment
 {
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime Y-m-d")
      * @TODO. The format: (format yyyy-MM-dd'T'HH:mm:ssZ)
      */
     private DateTime $date;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $totalPayedOutAmount;
 

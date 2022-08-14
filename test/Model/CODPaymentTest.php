@@ -2,20 +2,18 @@
 
 namespace VasilDakov\SpeedyTest\Model;
 
-use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Model\BankAccount;
-use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+use VasilDakov\Speedy\Model\CODPayment;
 
 /**
- * Class BankAccountTest
+ * Class CODPaymentTest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
-class BankAccountTest extends TestCase
+class CODPaymentTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
@@ -25,28 +23,24 @@ class BankAccountTest extends TestCase
 
         $serializer = (new SerializerFactory())();
 
-        $instance = $serializer->deserialize($json, BankAccount::class, 'json');
+        $instance = $serializer->deserialize($json, CODPayment::class, 'json');
 
-        $this->assertInstanceOf(BankAccount::class, $instance);
+        $this->assertInstanceOf(CODPayment::class, $instance);
 
-        $this->assertEquals($array['iban'], $instance->getIban());
-        $this->assertEquals($array['accountHolder'], $instance->getAccountHolder());
-
-        $this->assertIsArray($instance->toArray());
+//        d
+        $this->assertEquals($array['totalPayedOutAmount'], $instance->getTotalPayedOutAmount());
 
     }
-    /**
-     * @group model
-     */
+
     public function testItCanBeDeserialized(): void
     {
         $json = $this->getJson();
 
         $serializer = (new SerializerFactory())();
 
-        $instance = $serializer->deserialize($json, BankAccount::class, 'json');
+        $instance = $serializer->deserialize($json, CODPayment::class, 'json');
 
-        $this->assertInstanceOf(BankAccount::class, $instance);
+        $this->assertInstanceOf(CODPayment::class, $instance);
     }
 
     private function getArray(): array
@@ -59,7 +53,7 @@ class BankAccountTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/BankAccount.json");
+        $json = \file_get_contents("./test/Assets/CODPayment.json");
 
         return $json;
     }

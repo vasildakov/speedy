@@ -1,0 +1,31 @@
+{
+  "parcelsCount": 1,
+  "declaredWeight": 0.618,
+  "measuredWeight": 1.618,
+  "calculationWeight": 2.618,
+  "contents": "content description",
+  "package": "Shipment package",
+  "documents": false,
+  "palletized": false,
+  "parcels":[
+    {
+      "seqNo":1,
+      "size":{
+        "width":80,
+        "depth":120,
+        "height":110
+      },
+      "weight":80.0
+    },
+    {
+      "seqNo":2,
+      "size":{
+        "width":90,
+        "depth":130,
+        "height":150
+      },
+      "weight":90.0
+    }
+  ],
+  "pendingParcels": false
+}
