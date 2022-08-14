@@ -10,7 +10,8 @@
   "parcels":[
     {
       "seqNo":1,
-      "size":{
+      "size": "string",
+      "declaredSize":{
         "width":80,
         "depth":120,
         "height":110
@@ -19,7 +20,8 @@
     },
     {
       "seqNo":2,
-      "size":{
+      "size": "string",
+      "declaredSize":{
         "width":90,
         "depth":130,
         "height":150

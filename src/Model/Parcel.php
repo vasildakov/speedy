@@ -3,10 +3,12 @@
 namespace VasilDakov\Speedy\Model;
 
 use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Parcel
  *
+ * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
@@ -15,34 +17,37 @@ class Parcel
 {
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $id;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $seqNo;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $packageUniqueNumber;
 
     /**
      * @var ShipmentParcelSize
-     * @TODO! The class is in Shipment directory!!!
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentParcelSize")
      */
     private ShipmentParcelSize $declaredSize;
 
     /**
-     * @var ShipmentParcelSize
+     * @var array
      */
-    private ShipmentParcelSize $measuredSize;
+    private array $measuredSize;
 
     /**
-     * @var ShipmentParcelSize
+     * @var array
      */
-    private ShipmentParcelSize $calculationSize;
+    private array $calculationSize;
 
     /**
      * @var float
@@ -124,14 +129,6 @@ class Parcel
     }
 
     /**
-     * @return ShipmentParcelSize
-     */
-    public function getDeclaredSize(): ShipmentParcelSize
-    {
-        return $this->declaredSize;
-    }
-
-    /**
      * @param ShipmentParcelSize $declaredSize
      */
     public function setDeclaredSize(ShipmentParcelSize $declaredSize): void
@@ -142,31 +139,40 @@ class Parcel
     /**
      * @return ShipmentParcelSize
      */
-    public function getMeasuredSize(): ShipmentParcelSize
+    public function getDeclaredSize(): ShipmentParcelSize
+    {
+        return $this->declaredSize;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getMeasuredSize(): array
     {
         return $this->measuredSize;
     }
 
     /**
-     * @param ShipmentParcelSize $measuredSize
+     * @param array $measuredSize
      */
-    public function setMeasuredSize(ShipmentParcelSize $measuredSize): void
+    public function setMeasuredSize(array $measuredSize): void
     {
         $this->measuredSize = $measuredSize;
     }
 
     /**
-     * @return ShipmentParcelSize
+     * @return array
      */
-    public function getCalculationSize(): ShipmentParcelSize
+    public function getCalculationSize(): array
     {
         return $this->calculationSize;
     }
 
     /**
-     * @param ShipmentParcelSize $calculationSize
+     * @param array $calculationSize
      */
-    public function setCalculationSize(ShipmentParcelSize $calculationSize): void
+    public function setCalculationSize(array $calculationSize): void
     {
         $this->calculationSize = $calculationSize;
     }

@@ -2,9 +2,11 @@
 
 namespace VasilDakov\SpeedyTest\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Content;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 
 /**
  * Class ContentTest
@@ -18,8 +20,7 @@ class ContentTest extends TestCase
     public function testItCanBeConstructed(): void
     {
         $array = $this->getArray();
-
-        $json = $this->getJson();
+        $json  = $this->getJson();
 
         $serializer = (new SerializerFactory())();
 
@@ -33,9 +34,14 @@ class ContentTest extends TestCase
         $this->assertEquals($array['package'], $instance->getPackage());
         $this->assertEquals($array['documents'], $instance->isDocuments());
         $this->assertEquals($array['palletized'], $instance->isPalletized());
-        $this->assertEquals($array['parcels'], $instance->getParcels());
+        $this->assertInstanceOf(ArrayCollection::class, $instance->getParcels());
         $this->assertEquals($array['pendingParcels'], $instance->isPendingParcels());
 
+        $this->assertEquals(count($array['parcels']), $instance->getParcels()->count());
+
+        foreach ($instance->getParcels() as $parcel) {
+            $this->assertInstanceOf(ShipmentParcelSize::class, $parcel->getDeclaredSize());
+        }
     }
 
     private function getArray(): array

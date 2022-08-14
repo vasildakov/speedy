@@ -1,10 +1,10 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class Content
  *
@@ -15,7 +15,6 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Content
 {
-
     /**
      * @var int
      * @Serializer\Type("int")
@@ -65,13 +64,14 @@ class Content
     private bool $palletized;
 
     /**
-     * @var Parcel
+     * @var ArrayCollection
      * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Model\Parcel>")
      */
-    private Parcel $parcels;
+    private ArrayCollection $parcels;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $pendingParcels;
 
@@ -204,17 +204,17 @@ class Content
     }
 
     /**
-     * @return Parcel
+     * @return ArrayCollection
      */
-    public function getParcels(): Parcel
+    public function getParcels(): ArrayCollection
     {
         return $this->parcels;
     }
 
     /**
-     * @param Parcel $parcels
+     * @param ArrayCollection $parcels
      */
-    public function setParcels(Parcel $parcels): void
+    public function setParcels(ArrayCollection $parcels): void
     {
         $this->parcels = $parcels;
     }
