@@ -7,7 +7,7 @@ Speedy API Client Documentation
 Speedy API Client is a PHP HTTP client that makes it easy to send HTTP requests to Speedy API.
 
 .. code-block:: php
-    <?php declare(strict_types=1);
+    :linenos:
 
     use VasilDakov\Speedy\Speedy;
     use GuzzleHttp\Client;
@@ -35,5 +35,5 @@ User Guide
     overview
     installation
     usage
-    model
     services
+    model

@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest;
 
@@ -13,7 +10,6 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use VasilDakov\Speedy\Service\Calculation;
-use VasilDakov\Speedy\Client;
 use VasilDakov\Speedy\Configuration;
 use VasilDakov\Speedy\Location\Complex;
 use VasilDakov\Speedy\Location\Country;
@@ -22,9 +18,12 @@ use VasilDakov\Speedy\Location\Site;
 use VasilDakov\Speedy\Location\State;
 use VasilDakov\Speedy\Location\Street;
 use VasilDakov\Speedy\Printing;
+use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
+use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Shipment;
 use VasilDakov\Speedy\Track;
 use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\Service;
 
 
 /**
@@ -124,9 +123,9 @@ class SpeedyTest extends TestCase
             )
         ;
 
-        $response = $speedy->getContractClient(new Client\GetContractClientsRequest());
+        $response = $speedy->getContractClient(new GetContractClientsRequest());
 
-        $this->assertInstanceOf(Client\GetContractClientsResponse::class, $response);
+        $this->assertInstanceOf(GetContractClientsResponse::class, $response);
     }
 
     /**
