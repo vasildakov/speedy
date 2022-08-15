@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\Speedy\Location\Street;
+namespace VasilDakov\Speedy\Service\Location\Street;
 
 /**
  * Class FindStreetRequest

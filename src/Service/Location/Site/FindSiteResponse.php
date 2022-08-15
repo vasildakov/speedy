@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\Speedy\Location\State;
+namespace VasilDakov\Speedy\Service\Location\Site;
 
 /**
- * Class FindStateResponse
+ * Class FindSiteResponse
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-class FindStateResponse
+class FindSiteResponse
 {
 
 }

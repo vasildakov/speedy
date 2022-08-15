@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Location\Country;
+namespace VasilDakov\SpeedyTest\Service\Location\Country;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Location\Country\AddressNomenclatureType;
+use VasilDakov\Speedy\Service\Location\Country\AddressNomenclatureType;
+
 
 /**
  * Class AddressNomenclatureTypeTest

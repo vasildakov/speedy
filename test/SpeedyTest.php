@@ -11,15 +11,21 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use VasilDakov\Speedy\Service\Calculation;
 use VasilDakov\Speedy\Configuration;
-use VasilDakov\Speedy\Location\Complex;
-use VasilDakov\Speedy\Location\Country;
-use VasilDakov\Speedy\Location\Office;
-use VasilDakov\Speedy\Location\Site;
-use VasilDakov\Speedy\Location\State;
-use VasilDakov\Speedy\Location\Street;
 use VasilDakov\Speedy\Printing;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
+use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
+use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
+use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
+use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
+use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
+use VasilDakov\Speedy\Service\Location\Street\FindStreetResponse;
 use VasilDakov\Speedy\Shipment;
 use VasilDakov\Speedy\Track;
 use VasilDakov\Speedy\Speedy;
@@ -181,9 +187,9 @@ class SpeedyTest extends TestCase
             )
         ;
 
-        $response = $speedy->findCountry(new Country\FindCountryRequest('Bulgaria'));
+        $response = $speedy->findCountry(new FindCountryRequest('Bulgaria'));
 
-        $this->assertInstanceOf(Country\FindCountryResponse::class, $response);
+        $this->assertInstanceOf(FindCountryResponse::class, $response);
     }
 
     /**
@@ -193,9 +199,9 @@ class SpeedyTest extends TestCase
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
 
-        $response = $speedy->findState(new State\FindStateRequest());
+        $response = $speedy->findState(new FindStateRequest());
 
-        $this->assertInstanceOf(State\FindStateResponse::class, $response);
+        $this->assertInstanceOf(FindStateResponse::class, $response);
     }
 
     /**
@@ -205,9 +211,9 @@ class SpeedyTest extends TestCase
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
 
-        $response = $speedy->findOffice(new Office\FindOfficeRequest());
+        $response = $speedy->findOffice(new FindOfficeRequest());
 
-        $this->assertInstanceOf(Office\FindOfficeResponse::class, $response);
+        $this->assertInstanceOf(FindOfficeResponse::class, $response);
     }
 
     /**
@@ -217,9 +223,9 @@ class SpeedyTest extends TestCase
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
 
-        $response = $speedy->findSite(new Site\FindSiteRequest());
+        $response = $speedy->findSite(new FindSiteRequest());
 
-        $this->assertInstanceOf(Site\FindSiteResponse::class, $response);
+        $this->assertInstanceOf(FindSiteResponse::class, $response);
     }
 
     /**
@@ -229,9 +235,9 @@ class SpeedyTest extends TestCase
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
 
-        $response = $speedy->findComplex(new Complex\FindComplexRequest());
+        $response = $speedy->findComplex(new FindComplexRequest());
 
-        $this->assertInstanceOf(Complex\FindComplexResponse::class, $response);
+        $this->assertInstanceOf(FindComplexResponse::class, $response);
     }
 
     /**
@@ -241,9 +247,9 @@ class SpeedyTest extends TestCase
     {
         $speedy = new Speedy($this->configuration, $this->client, $this->factory);
 
-        $response = $speedy->findStreet(new Street\FindStreetRequest());
+        $response = $speedy->findStreet(new FindStreetRequest());
 
-        $this->assertInstanceOf(Street\FindStreetResponse::class, $response);
+        $this->assertInstanceOf(FindStreetResponse::class, $response);
     }
 
     /**
