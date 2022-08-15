@@ -12,7 +12,7 @@ use DateTime;
 class OfficeWorkingSchedule
 {
     /**
-     * @var \DateTime
+     * @var DateTime
      * @TODO! The format: (format: ""yyyy-MM-dd"").
      */
     private DateTime $date;

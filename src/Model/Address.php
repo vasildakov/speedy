@@ -17,24 +17,28 @@ class Address
     /**
      * @var int|null
      * @Serializer\Type("integer")
+     * TODO Validate for valid country code.
      */
     private ?int $countryId = null;
 
     /**
      * @var string|null
      * @Serializer\Type("string")
+     * TODO Validate for valid country state
      */
     private ?string $stateId = null;
 
     /**
      * @var int
      * @Serializer\Type("integer")
+     *
      */
     private int $siteId;
 
     /**
      * @var string|null
      * @Serializer\Type("string")
+     * TODO Validate for valid site and value is required.
      */
     private ?string $siteType = null;
 
@@ -47,12 +51,14 @@ class Address
     /**
      * @var string|null
      * @Serializer\Type("string")
+     * TODO Validated for valid postcode in site and country.
      */
     private ?string $postCode = null;
 
     /**
      * @var int|null
      * @Serializer\Type("integer")
+     * TODO Validate for valid street.
      */
     private ?int $streetId = null;
 
@@ -77,6 +83,7 @@ class Address
     /**
      * @var int|null
      * @Serializer\Type("integer")
+     * TODO Validate for valid complex.
      */
     private ?int $complexId = null;
 
@@ -119,6 +126,7 @@ class Address
     /**
      * @var int|null
      * @Serializer\Type("string")
+     * TODO Validate for valid point of interest
      */
     private ?int $poiId = null;
 

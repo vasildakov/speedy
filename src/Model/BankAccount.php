@@ -24,6 +24,7 @@ class BankAccount
     /**
      * @var string
      * @Serializer\Type("string")
+     * TODO Validated according to IBAN standards
      */
     private string $accountHolder;
 

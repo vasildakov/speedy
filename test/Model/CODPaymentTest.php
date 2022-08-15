@@ -27,7 +27,7 @@ class CODPaymentTest extends TestCase
 
         $this->assertInstanceOf(CODPayment::class, $instance);
 
-//        d
+//        $this->assertEquals($array['date'], $instance->getDate());
         $this->assertEquals($array['totalPayedOutAmount'], $instance->getTotalPayedOutAmount());
 
     }

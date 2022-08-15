@@ -1,0 +1,35 @@
+{
+  "id": "id",
+  "seqNo": 12,
+  "packageUniqueNumber": 123,
+  "declaredSize": [
+    {
+      "width": 80,
+      "depth": 120,
+      "height": 100
+    }
+  ],
+  "measuredSize": [
+    {
+      "width": 80,
+      "depth": 120,
+      "height": 100
+    }
+  ],
+  "calculationSize": [
+    {
+      "width": 80,
+      "depth": 120,
+      "height": 100
+    }
+  ],
+  "declaredWeight": 0.618,
+  "measuredWeight": 1.618,
+  "calculationWeight": 2.618,
+  "externalCarrierParcelNumbers":[
+    "1",
+    "2"
+  ],
+  "baseType": "type",
+  "size": "name"
+}

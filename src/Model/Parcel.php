@@ -2,6 +2,7 @@
 
 namespace VasilDakov\Speedy\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 use JMS\Serializer\Annotation as Serializer;
 
@@ -34,49 +35,57 @@ class Parcel
     private int $packageUniqueNumber;
 
     /**
-     * @var ShipmentParcelSize
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentParcelSize")
+     * @var ArrayCollection
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Shipment\ShipmentParcel>")
      */
-    private ShipmentParcelSize $declaredSize;
+    private ArrayCollection $declaredSize;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      */
     private array $measuredSize;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      */
     private array $calculationSize;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $declaredWeight;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $measuredWeight;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $calculationWeight;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      * In documentation the data type is described as "String[]"
      */
     private array $externalCarrierParcelNumbers;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $baseType;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $size;
 

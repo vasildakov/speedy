@@ -36,10 +36,9 @@ class CountryCode
     }
 
     /**
-     * @todo Implement the logic for checking if $this and $other are equals
-     *
      * @param CountryCode $other
      * @return bool
+     * @todo Implement the logic for checking if $this and $other are equals
      */
     public function equals(CountryCode $other): bool
     {
