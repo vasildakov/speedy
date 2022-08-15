@@ -35,22 +35,22 @@ class Parcel
     private int $packageUniqueNumber;
 
     /**
-     * @var ArrayCollection
-     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Shipment\ShipmentParcel>")
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size>")
      */
-    private ArrayCollection $declaredSize;
+    private Size $declaredSize;
 
     /**
-     * @var array
-     * @Serializer\Type("array")
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size")
      */
-    private array $measuredSize;
+    private Size $measuredSize;
 
     /**
-     * @var array
-     * @Serializer\Type("array")
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size")
      */
-    private array $calculationSize;
+    private Size $calculationSize;
 
     /**
      * @var float
@@ -138,40 +138,40 @@ class Parcel
     }
 
     /**
-     * @param ShipmentParcelSize $declaredSize
+     * @param Size $declaredSize
      */
-    public function setDeclaredSize(ShipmentParcelSize $declaredSize): void
+    public function setDeclaredSize(Size $declaredSize): void
     {
         $this->declaredSize = $declaredSize;
     }
 
     /**
-     * @return ShipmentParcelSize
+     * @return Size
      */
-    public function getDeclaredSize(): ShipmentParcelSize
+    public function getDeclaredSize(): Size
     {
         return $this->declaredSize;
     }
 
 
     /**
-     * @return array
+     * @return Size
      */
-    public function getMeasuredSize(): array
+    public function getMeasuredSize(): Size
     {
         return $this->measuredSize;
     }
 
     /**
-     * @param array $measuredSize
+     * @param Size $measuredSize
      */
-    public function setMeasuredSize(array $measuredSize): void
+    public function setMeasuredSize(Size $measuredSize): void
     {
         $this->measuredSize = $measuredSize;
     }
 
     /**
-     * @return array
+     * @return Size
      */
     public function getCalculationSize(): array
     {
@@ -179,9 +179,9 @@ class Parcel
     }
 
     /**
-     * @param array $calculationSize
+     * @param Size $calculationSize
      */
-    public function setCalculationSize(array $calculationSize): void
+    public function setCalculationSize(Size $calculationSize): void
     {
         $this->calculationSize = $calculationSize;
     }
@@ -282,4 +282,11 @@ class Parcel
         $this->size = $size;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [];
+    }
 }

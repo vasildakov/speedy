@@ -234,7 +234,4 @@ class Content
     {
         $this->pendingParcels = $pendingParcels;
     }
-
-
-
 }

@@ -18,21 +18,26 @@ class ParcelTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
-        $array = $this->getArray();
-        $json = $this->getJson();
+        $serializer = (new SerializerFactory())();
+        $instance = $serializer->deserialize($this->getJson(), Parcel::class, 'json');
+        $this->assertInstanceOf(Parcel::class, $instance);
+    }
 
+
+    public function testInstancePropertiesAreDeserialized()
+    {
+        $array = $this->getArray();
         $serializer = (new SerializerFactory())();
 
-        $instance = $serializer->deserialize($json, Parcel::class, 'json');
-
-        $this->assertInstanceOf(Parcel::class, $instance);
+        $instance = $serializer->deserialize($this->getJson(), Parcel::class, 'json');
 
         $this->assertEquals($array['id'], $instance->getId());
         $this->assertEquals($array['seqNo'], $instance->getSeqNo());
         $this->assertEquals($array['packageUniqueNumber'], $instance->getPackageUniqueNumber());
-        $this->assertEquals($array['declaredSize'], $instance->getDeclaredSize());
-
+        // continue with the assertions here
     }
+
+
     private function getArray(): array
     {
         $json = $this->getJson();
