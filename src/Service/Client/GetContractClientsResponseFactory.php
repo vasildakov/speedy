@@ -2,7 +2,8 @@
 
 namespace VasilDakov\Speedy\Service\Client;
 
-use VasilDakov\Speedy\Model\Client;
+use VasilDakov\Speedy\Exception\InvalidArgumentException;
+use VasilDakov\Speedy\Exception\ServiceNotCreatedException;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
@@ -20,13 +21,17 @@ final class GetContractClientsResponseFactory
      */
     public function __invoke(string $json): GetContractClientsResponse
     {
-        \json_decode($json, true);
+        try {
+            \json_decode($json, true);
 
-        if (\json_last_error() !== JSON_ERROR_NONE) {
-            throw new \InvalidArgumentException('Invalid or malformed JSON');
+            if (\json_last_error() !== JSON_ERROR_NONE) {
+                throw new InvalidArgumentException('Invalid or malformed JSON');
+            }
+
+            $serializer = (new SerializerFactory())();
+            return $serializer->deserialize($json, GetContractClientsResponse::class, 'json');
+        } catch (\Throwable $e) {
+            throw $e;
         }
-
-        $serializer = (new SerializerFactory())();
-        return $serializer->deserialize($json, GetContractClientsResponse::class, 'json');
     }
 }

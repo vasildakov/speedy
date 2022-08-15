@@ -4,6 +4,7 @@ namespace VasilDakov\Speedy\Serializer;
 
 use JMS\Serializer;
 use JMS\Serializer\SerializerInterface;
+use VasilDakov\Speedy\Exception\ServiceNotCreatedException;
 
 /**
  * Class SerializerFactory
@@ -12,17 +13,24 @@ use JMS\Serializer\SerializerInterface;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-class SerializerFactory
+final class SerializerFactory
 {
+    /**
+     * @return SerializerInterface
+     */
     public function __invoke(): SerializerInterface
     {
-        return Serializer\SerializerBuilder::create()
-            ->setPropertyNamingStrategy(
-                new Serializer\Naming\SerializedNameAnnotationStrategy(
-                    new Serializer\Naming\IdenticalPropertyNamingStrategy()
+        try {
+            return Serializer\SerializerBuilder::create()
+                ->setPropertyNamingStrategy(
+                    new Serializer\Naming\SerializedNameAnnotationStrategy(
+                        new Serializer\Naming\IdenticalPropertyNamingStrategy()
+                    )
                 )
-            )
-            ->build()
-        ;
+                ->build()
+            ;
+        } catch (\Throwable $e) {
+            throw new ServiceNotCreatedException();
+        }
     }
 }
