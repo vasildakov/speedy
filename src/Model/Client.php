@@ -1,10 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Client;
+namespace VasilDakov\Speedy\Model;
+
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Client
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
@@ -13,36 +16,43 @@ class Client
 {
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     public int $clientId;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $clientName;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $objectName;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $contactName;
 
     /**
      * @var Address
+     * @Serializer\Type("VasilDakov\Speedy\Model\Address")
      */
     public Address $address;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $email;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     public bool $privatePerson;
 

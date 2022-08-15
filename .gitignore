@@ -5,3 +5,6 @@
 .phpunut.result.cache
 public/.env
 /public
+/build/coverage
+/build/docs
+/build/logs

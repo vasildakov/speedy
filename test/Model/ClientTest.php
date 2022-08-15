@@ -1,16 +1,15 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-
-namespace VasilDakov\SpeedyTest\Client;
+namespace VasilDakov\SpeedyTest\Model;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Client\Address;
-use VasilDakov\Speedy\Client\Client;
+
+use VasilDakov\Speedy\Model\Address;
+use VasilDakov\Speedy\Model\Client;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class ClientTest
@@ -41,6 +40,17 @@ class ClientTest extends TestCase
         $this->assertEquals($array['contactName'], $instance->getContactName());
         $this->assertFalse($instance->isPrivatePerson());
         $this->assertInstanceOf(Address::class, $instance->getAddress());
+    }
+
+    public function testItCanBeDeserialized()
+    {
+        $json = $this->getJson();
+
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($json, Client::class, 'json');
+
+        $this->assertInstanceOf(Client::class, $instance);
     }
 
     private function getArray(): array
