@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
+
 use DateTime;
 use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class OfficeWorkingTimeSchedule
  *
@@ -15,25 +17,25 @@ class OfficeWorkingTimeSchedule
 {
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'Y-m-d>")
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private DateTime $date;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeFrom;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeTo;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $sameDayDepartureCutoff;
 
