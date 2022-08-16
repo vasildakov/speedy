@@ -456,14 +456,16 @@ class Office
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getType(): string
     {
-        return self::TYPES[$this->type];
+        return $this->type;
     }
 
-
+    /**
+     * @param string $type
+     */
     public function setType(string $type): void
     {
         if (!in_array($type,self::TYPES)) {
