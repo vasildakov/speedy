@@ -16,8 +16,7 @@ class CODPayment
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime Y-m-d")
-     * @TODO. The format: (format yyyy-MM-dd'T'HH:mm:ssZ)
+     * @Serializer\Type("DateTime<'Y-m-d\TH:i:sP'>")
      */
     private DateTime $date;
 

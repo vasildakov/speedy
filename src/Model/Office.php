@@ -1,15 +1,14 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 use DateTime;
 use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Office
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
@@ -18,82 +17,97 @@ class Office
 {
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $id;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $name;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $nameEn;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $siteId;
 
     /**
      * @var Address
+     * @Serializer\Type("VasilDakov\Speedy\Model\Address")
      */
     private Address $address;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $workingTimeFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $workingTimeTo;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $workingTimeHalfFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $workingTimeHalfTo;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $workingTimeDayOffFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $workingTimeDayOffTo;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $sameDayDepartureCutoff;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $sameDayDepartureCutoffHalf;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
      */
     private DateTime $sameDayDepartureCutoffDayOff;
 
     /**
-     * @var ShipmentParcelSize
-     * @TODO! The class is in Shipment directory!!!
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size")
      */
-    private ShipmentParcelSize $maxParcelDimensions;
+    private Size $maxParcelDimensions;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $maxParcelWeight;
 
@@ -105,36 +119,43 @@ class Office
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $nearbyOfficeId;
 
     /**
-     * @var OfficeWorkingSchedule
+     * @var OfficeWorkingTimeSchedule
+     * @Serializer\Type("VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule")
      */
-    private OfficeWorkingSchedule $workingTimeSchedule;
+    private OfficeWorkingTimeSchedule $workingTimeSchedule;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $palletOffice;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $cardPaymentAllowed;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $cashPaymentAllowed;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'Y-m-d>")
      */
     private DateTime $validFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'Y-m-d>")
      */
     private DateTime $validTo;
 
@@ -147,11 +168,13 @@ class Office
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $pickUpAllowed;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $dropOffAllowed;
 
@@ -380,9 +403,9 @@ class Office
     }
 
     /**
-     * @return ShipmentParcelSize
+     * @return Size
      */
-    public function getMaxParcelDimensions(): ShipmentParcelSize
+    public function getMaxParcelDimensions(): Size
     {
         return $this->maxParcelDimensions;
     }
@@ -444,17 +467,17 @@ class Office
     }
 
     /**
-     * @return OfficeWorkingSchedule
+     * @return OfficeWorkingTimeSchedule
      */
-    public function getWorkingTimeSchedule(): OfficeWorkingSchedule
+    public function getWorkingTimeSchedule(): OfficeWorkingTimeSchedule
     {
         return $this->workingTimeSchedule;
     }
 
     /**
-     * @param OfficeWorkingSchedule $workingTimeSchedule
+     * @param OfficeWorkingTimeSchedule $workingTimeSchedule
      */
-    public function setWorkingTimeSchedule(OfficeWorkingSchedule $workingTimeSchedule): void
+    public function setWorkingTimeSchedule(OfficeWorkingTimeSchedule $workingTimeSchedule): void
     {
         $this->workingTimeSchedule = $workingTimeSchedule;
     }

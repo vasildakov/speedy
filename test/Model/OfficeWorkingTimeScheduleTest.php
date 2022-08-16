@@ -3,17 +3,16 @@
 namespace VasilDakov\SpeedyTest\Model;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
-use VasilDakov\Speedy\Model\CODPayment;
-
 /**
- * Class CODPaymentTest
+ * Class OfficeWorkingTimeScheduleTest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
-class CODPaymentTest extends TestCase
+class OfficeWorkingTimeScheduleTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
@@ -23,23 +22,15 @@ class CODPaymentTest extends TestCase
 
         $serializer = (new SerializerFactory())();
 
-        $instance = $serializer->deserialize($json, CODPayment::class, 'json');
+        $instance = $serializer->deserialize($json, OfficeWorkingTimeSchedule::class, 'json');
 
-        $this->assertInstanceOf(CODPayment::class, $instance);
         $this->assertInstanceOf(\DateTime::class, $instance->getDate());
-        $this->assertEquals($array['totalPayedOutAmount'], $instance->getTotalPayedOutAmount());
+        $this->assertInstanceOf(\DateTime::class, $instance->getWorkingTimeFrom());
+        $this->assertInstanceOf(\DateTime::class, $instance->getWorkingTimeTo());
+        $this->assertInstanceOf(\DateTime::class, $instance->getSameDayDepartureCutoff());
+        $this->assertEquals($array['standardSchedule'], $instance->isStandardSchedule());
 
-    }
 
-    public function testItCanBeDeserialized(): void
-    {
-        $json = $this->getJson();
-
-        $serializer = (new SerializerFactory())();
-
-        $instance = $serializer->deserialize($json, CODPayment::class, 'json');
-
-        $this->assertInstanceOf(CODPayment::class, $instance);
     }
 
     private function getArray(): array
@@ -49,10 +40,9 @@ class CODPaymentTest extends TestCase
         return \json_decode($json, true);
     }
 
-
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/CODPayment.json");
+        $json = \file_get_contents("./test/Assets/OfficeWorkingTimeSchedule.json");
 
         return $json;
     }
