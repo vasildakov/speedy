@@ -2,6 +2,8 @@
 
 namespace VasilDakov\Speedy\Model;
 use DateTime;
+use phpDocumentor\Reflection\Types\Self_;
+use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 use JMS\Serializer\Annotation as Serializer;
 
@@ -15,6 +17,25 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Office
 {
+
+    const TYPE_APT    = 1;
+    const TYPE_OFFICE = 2;
+
+    const TYPES = [
+        self::TYPE_APT    => 'APT',
+        self::TYPE_OFFICE => 'OFFICE'
+    ];
+
+    const CARGO_TYPE_PARCEL = 1;
+    const CARGO_TYPE_PALLET = 2;
+    const CARGO_TYPE_TIRE   = 3;
+
+    const CARGO_TYPES = [
+        self::CARGO_TYPE_PARCEL => 'PARCEL',
+        self::CARGO_TYPE_PALLET => 'PALLET',
+        self::CARGO_TYPE_TIRE   => 'TIRE'
+    ];
+
     /**
      * @var int
      * @Serializer\Type("int")
@@ -437,16 +458,17 @@ class Office
     /**
      * @return mixed
      */
-    public function getType()
+    public function getType(): string
     {
-        return $this->type;
+        return self::TYPES[$this->type];
     }
 
-    /**
-     * @param mixed $type
-     */
-    public function setType($type): void
+
+    public function setType(string $type): void
     {
+        if (!in_array($type,self::TYPES)) {
+            throw new InvalidArgumentException();
+        }
         $this->type = $type;
     }
 
