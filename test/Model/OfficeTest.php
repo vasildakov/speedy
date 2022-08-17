@@ -27,6 +27,21 @@ class OfficeTest extends TestCase
         $this->assertIsArray($instance->toArray());
     }
 
+
+    public function testJustAnotherExample()
+    {
+        // get the serializer
+        $serializer = (new SerializerFactory())();
+
+        // deserialize: create an instance from json, testing SETTERS
+        $instance = $serializer->deserialize($this->getJson(), Office::class, 'json');
+        $this->assertIsObject($instance);
+
+        // serialize: create a json from object, testing GETTERS
+        $json = $serializer->serialize($instance, 'json');
+        $this->assertIsString($json);
+    }
+
     public function testItCanBeConstructed(): void
     {
         $array = $this->getArray();
