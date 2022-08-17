@@ -234,6 +234,7 @@ final class Speedy
      * @param GetContractClientsRequest $object
      * @return GetContractClientsResponse
      * @throws ClientExceptionInterface
+     * @throws \Throwable
      */
     public function getContractClient(GetContractClientsRequest $object): GetContractClientsResponse
     {

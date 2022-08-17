@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-use VasilDakov\Speedy\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Configuration;
-use VasilDakov\Speedy\Client\GetContractClientsRequest;
 use Laminas\Diactoros\RequestFactory;
 use Http\Client\Curl\Client as CurlHttp;
 use GuzzleHttp\Client as GuzzleHttp;
@@ -31,4 +30,4 @@ $speedy = new Speedy($configuration, $curlHttp, $factory);
 $response = $speedy->getContractClient(new GetContractClientsRequest());
 //$response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
 
-echo '<pre>'; var_dump($response);
+//echo '<pre>'; var_dump($response);
