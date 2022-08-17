@@ -17,6 +17,80 @@ $ composer require vasildakov/speedy
 
 ## Usage
 
+### I. Making a Request
+Using PSR-17 RequestFactoryInterface to create the Request that could be sent with 
+any PSR-18 Client like Guzzle HTTP, Symfony HTTP or Laminas HTTP.
+
+**Using a simple php array:**
+
+```php
+// Creating the payload by using a simple php array 
+$array = [
+    'userName'     => 'testUser',
+    'password'     => 'password',
+    'sender'       => [],
+    'recipient'    => [],
+    'service'      => [],
+    'payment'      => [],
+    'shipmentNote' => 'Some test note'
+];
+```
+
+**... or using the model**
+
+```php
+// Creating the payload by using Speedy Model 
+$object = new CreateShipmentRequest(
+    new ShipmentSender(),
+    new ShipmentRecipient(),
+    new ShipmentService(),
+    new ShipmentPayment(),
+);
+
+// Convert the object into array
+$array = $object->toArray();
+```
+
+**Sending the request**
+
+```php
+// Any PSR-18 HTTP Client can be used
+$client = new GuzzleHttp\Client();
+
+// The factory will create a PSR-7 request
+/** @var \Psr\Http\Message\RequestInterface $request */
+$request = (new GetContractClientsRequestFactory())($array);
+
+/** @var \Psr\Http\Message\ResponseInterface $response */
+$response = $client->sendRequest($request);
+
+$json = $response->getBody()->getContents();
+
+```
+
+### II. Using Responses
+
+You can use the Speedy decorator, and then you can use object-oriented way to
+interact with the payload:
+
+```php
+$config = new Configuration('userName', 'password', 'language');
+$speedy = new Speedy($config, $client);
+    
+/** @var CreateShipmentRequest $request */
+$request = new ContractClientRequest();
+    
+/** @var CreateShipmentResponse $response */
+$response = $speedy->getContractClient($request);
+
+$id       = $response->getId();    // Shipment id
+$price    = $response->getPrice(); // Shipment Price
+$total    = $price->getTotal();    // Total amount (amount + vat) in customer’s currency.
+$currency = $price->getCurrency(); // Customer currency code
+```
+
+
+
 
 ```php
 <?php declare(strict_types=1);
