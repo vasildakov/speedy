@@ -44,38 +44,9 @@ class OfficeTest extends TestCase
 
     public function testItCanBeConstructed(): void
     {
-        $array = $this->getArray();
-        $json = $this->getJson();
         $serializer = (new SerializerFactory())();
-        $instance = $serializer->deserialize($json, Office::class, 'json');
-
-        $this->assertEquals($array['id'], $instance->getId());
-        $this->assertEquals($array['name'], $instance->getName());
-        $this->assertEquals($array['nameEn'], $instance->getNameEn());
-        $this->assertEquals($array['siteId'], $instance->getsiteId());
-        $this->assertInstanceOf(Address::class, $instance->getAddress());
-        $this->assertInstanceOf(DateTime::class, $instance->getWorkingTimeFrom());
-        $this->assertInstanceOf(DateTime::class, $instance->getWorkingTimeTo());
-        $this->assertInstanceOf(DateTime::class, $instance->getWorkingTimeHalfFrom());
-        $this->assertInstanceOf(DateTime::class, $instance->getWorkingTimeHalfTo());
-        $this->assertInstanceOf(DateTime::class, $instance->getWorkingTimeDayOffFrom());
-        $this->assertInstanceOf(DateTime::class, $instance->getWorkingTimeDayOffTo());
-        $this->assertInstanceOf(DateTime::class, $instance->getSameDayDepartureCutoff());
-        $this->assertInstanceOf(DateTime::class, $instance->getSameDayDepartureCutoffHalf());
-        $this->assertInstanceOf(DateTime::class, $instance->getSameDayDepartureCutoffDayOff());
-        $this->assertInstanceOf(Size::class, $instance->getMaxParcelDimensions());
-        $this->assertEquals($array['maxParcelWeight'], $instance->getMaxParcelWeight());
-        $this->assertEquals($array['type'], $instance->getType());
-        $this->assertEquals($array['nearbyOfficeId'], $instance->getNearbyOfficeId());
-        $this->assertInstanceOf(OfficeWorkingTimeSchedule::class, $instance->getWorkingTimeSchedule());
-        $this->assertFalse($instance->isPalletOffice());
-        $this->assertFalse($instance->isCardPaymentAllowed());
-        $this->assertFalse($instance->isCashPaymentAllowed());
-        $this->assertInstanceOf(DateTime::class, $instance->getValidFrom());
-        $this->assertInstanceOf(DateTime::class, $instance->getValidTo());
-        $this->assertEquals($array['cargoTypesAllowed'], $instance->getCargoTypesAllowed());
-        $this->assertFalse($instance->isPickUpAllowed());
-        $this->assertFalse($instance->isdropOffAllowed());
+        $instance = $serializer->deserialize($this->getJson(), Office::class, 'json');
+        $this->assertInstanceOf(Office::class, $instance);
     }
 
     public function testSetCodeThrowsAnException(): void
