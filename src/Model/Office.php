@@ -68,55 +68,55 @@ class Office
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeFrom;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeTo;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeHalfFrom;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeHalfTo;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeDayOffFrom;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeDayOffTo;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $sameDayDepartureCutoff;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $sameDayDepartureCutoffHalf;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'t'? HH [.:] MM>")
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $sameDayDepartureCutoffDayOff;
 
@@ -133,10 +133,11 @@ class Office
     private float $maxParcelWeight;
 
     /**
-     * @var
+     * @var string
+     * @Serializer\Type("string")
      * @TODO! An enum type property.
      */
-    private $type;
+    private string $type;
 
     /**
      * @var int
@@ -170,22 +171,22 @@ class Office
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'Y-m-d>")
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private DateTime $validFrom;
 
     /**
      * @var DateTime
-     * @Serializer\Type("DateTime<'Y-m-d>")
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private DateTime $validTo;
 
     /**
-     * @var
+     * @var string
+     * @Serializer\Type("string")
      * @TODO! An enum type property.
      */
-
-    private $cargoTypesAllowed;
+    private string $cargoTypesAllowed;
 
     /**
      * @var bool
@@ -432,9 +433,9 @@ class Office
     }
 
     /**
-     * @param ShipmentParcelSize $maxParcelDimensions
+     * @param Size $maxParcelDimensions
      */
-    public function setMaxParcelDimensions(ShipmentParcelSize $maxParcelDimensions): void
+    public function setMaxParcelDimensions(Size $maxParcelDimensions): void
     {
         $this->maxParcelDimensions = $maxParcelDimensions;
     }
@@ -468,9 +469,9 @@ class Office
      */
     public function setType(string $type): void
     {
-        if (!in_array($type,self::TYPES)) {
-            throw new InvalidArgumentException();
-        }
+//        if (!in_array($type,self::CARGO_TYPES)) {
+//            throw new InvalidArgumentException();
+//        }
         $this->type = $type;
     }
 
@@ -587,9 +588,9 @@ class Office
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCargoTypesAllowed()
+    public function getCargoTypesAllowed(): string
     {
         return $this->cargoTypesAllowed;
     }
@@ -599,6 +600,9 @@ class Office
      */
     public function setCargoTypesAllowed($cargoTypesAllowed): void
     {
+//        if (!in_array($cargoTypesAllowed,self::TYPES)) {
+//            throw new InvalidArgumentException();
+//        }
         $this->cargoTypesAllowed = $cargoTypesAllowed;
     }
 

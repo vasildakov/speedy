@@ -23,19 +23,19 @@
     "localAddressString":"ул. ДРАГАН ЦАНКОВ No 6 вх. Б ет. 1 ап. 2"
   },
   "workingTimeFrom": "04:08",
-  "workingTimeHalfTo" : "04:08",
-  "workingTimeDayOffFrom" : "04:08",
-  "workingTimeDayOffTo" : "04:08",
-  "sameDayDepartureCutoff" : "04:08",
-  "sameDayDepartureCutoffHalf" : "04:08",
-  "sameDayDepartureCutoffDayOff" : "04:08",
+  "workingTimeHalfTo" : "04:09",
+  "workingTimeDayOffFrom" : "04:10",
+  "workingTimeDayOffTo" : "04:11",
+  "sameDayDepartureCutoff" : "04:12",
+  "sameDayDepartureCutoffHalf" : "04:13",
+  "sameDayDepartureCutoffDayOff" : "04:14",
   "maxParcelDimensions":{
     "width":80,
     "depth":120,
     "height":100
   },
   "maxParcelWeight": 1.236,
-  "type": "ENUM",
+  "type": "Type",
   "nearbyOfficeId": 11,
   "workingTimeSchedule": {
     "date": "2005-08-15",
@@ -49,7 +49,7 @@
   "cashPaymentAllowed": false,
   "validFrom": "2005-08-15",
   "validTo": "2005-08-15",
-  "cargoTypesAllowed": "ENUM!!!!",
+  "cargoTypesAllowed": "CargoTypeAllowed",
   "pickUpAllowed": false,
   "dropOffAllowed": false
 }
