@@ -19,6 +19,14 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  */
 class OfficeTest extends TestCase
 {
+    public function testItCanBeTestedJustByCallingToArray()
+    {
+        $serializer = (new SerializerFactory())();
+        $instance = $serializer->deserialize($this->getJson(), Office::class, 'json');
+
+        $this->assertIsArray($instance->toArray());
+    }
+
     public function testItCanBeConstructed(): void
     {
         $array = $this->getArray();
@@ -53,19 +61,19 @@ class OfficeTest extends TestCase
         $this->assertEquals($array['cargoTypesAllowed'], $instance->getCargoTypesAllowed());
         $this->assertFalse($instance->isPickUpAllowed());
         $this->assertFalse($instance->isdropOffAllowed());
-
-
-
     }
+
     public function testSetCodeThrowsAnException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-
-        $instance = new Office();
-        $instance->setType("NotSame");
-        $instance->setCargoTypesAllowed("NotExact");
+        (new Office())->setType("NotSame");
     }
 
+    public function testCargoTypesAllowedThrowsAnException(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        (new Office())->setCargoTypesAllowed("NotExact");
+    }
 
     private function getJson(): string
     {

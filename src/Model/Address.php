@@ -595,6 +595,10 @@ class Address
      */
     public function toArray(): array
     {
-        return [];
+        return [
+            'countryId' => $this->getComplexId(),
+            'stateId' => $this->getStateId(),
+            'siteId' => $this->getSiteId(),
+        ];
     }
 }

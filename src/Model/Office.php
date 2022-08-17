@@ -638,4 +638,17 @@ class Office
         $this->dropOffAllowed = $dropOffAllowed;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'nameEn' => $this->getNameEn(),
+            'address' => $this->getAddress()->toArray()
+        ];
+    }
+
 }
