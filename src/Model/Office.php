@@ -469,9 +469,9 @@ class Office
      */
     public function setType(string $type): void
     {
-//        if (!in_array($type,self::CARGO_TYPES)) {
-//            throw new InvalidArgumentException();
-//        }
+        if (!\in_array($type, \array_values(self::TYPES))) {
+            throw new InvalidArgumentException();
+        }
         $this->type = $type;
     }
 
@@ -598,11 +598,11 @@ class Office
     /**
      * @param mixed $cargoTypesAllowed
      */
-    public function setCargoTypesAllowed($cargoTypesAllowed): void
+    public function setCargoTypesAllowed(string $cargoTypesAllowed): void
     {
-//        if (!in_array($cargoTypesAllowed,self::TYPES)) {
-//            throw new InvalidArgumentException();
-//        }
+        if (!\in_array($cargoTypesAllowed, \array_values(self::CARGO_TYPES))) {
+            throw new InvalidArgumentException();
+        }
         $this->cargoTypesAllowed = $cargoTypesAllowed;
     }
 

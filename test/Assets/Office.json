@@ -35,7 +35,7 @@
     "height":100
   },
   "maxParcelWeight": 1.236,
-  "type": "Type",
+  "type": "APT",
   "nearbyOfficeId": 11,
   "workingTimeSchedule": {
     "date": "2005-08-15",
@@ -49,7 +49,7 @@
   "cashPaymentAllowed": false,
   "validFrom": "2005-08-15",
   "validTo": "2005-08-15",
-  "cargoTypesAllowed": "CargoTypeAllowed",
+  "cargoTypesAllowed": "PARCEL",
   "pickUpAllowed": false,
   "dropOffAllowed": false
 }
