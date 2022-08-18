@@ -17,6 +17,18 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  */
 class BankAccountTest extends TestCase
 {
+    protected string $iban;
+
+    protected string $accountHolder;
+
+    protected function setUp(): void
+    {
+        $this->iban = 'Iban';
+        $this->accountHolder = 'Holder';
+
+        parent::setUp();
+    }
+
     public function testItCanBeConstructed(): void
     {
         $array = $this->getArray();
@@ -35,6 +47,14 @@ class BankAccountTest extends TestCase
         $this->assertIsArray($instance->toArray());
 
     }
+
+        public function testItCanBeCreated() :void
+    {
+        $object = new BankAccount($this->iban, $this->accountHolder);
+
+        $this->assertInstanceOf(BankAccount::class, $object);
+    }
+
     /**
      * @group model
      */
