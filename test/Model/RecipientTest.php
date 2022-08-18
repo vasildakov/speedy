@@ -4,22 +4,22 @@ namespace VasilDakov\SpeedyTest\Model;
 
 use JsonException;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Model\Parcel;
+use VasilDakov\Speedy\Model\Recipient;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
- * Class ParcelTest
+ * Class RecipientTest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
-class ParcelTest extends TestCase
+class RecipientTest extends TestCase
 {
     public function testItCanSetAndGet(): void
     {
         $serializer = (new SerializerFactory())();
-        $instance = $serializer->deserialize($this->getJson(), Parcel::class, 'json');
+        $instance = $serializer->deserialize($this->getJson(), Recipient::class, 'json');
         $this->assertIsObject($instance);
 
         $json = $serializer->serialize($instance, 'json');
@@ -39,8 +39,6 @@ class ParcelTest extends TestCase
 
     private function getJson(): string
     {
-        return \file_get_contents("./test/Assets/Parcel.json");
+        return \file_get_contents("./test/Assets/Recipient.json");
     }
-
-
 }

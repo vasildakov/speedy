@@ -3,7 +3,6 @@
 namespace VasilDakov\Speedy\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
