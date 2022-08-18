@@ -3,6 +3,7 @@
 namespace VasilDakov\SpeedyTest\Model;
 
 use DateTime;
+use JsonException;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Address;
 use VasilDakov\Speedy\Model\Office;
@@ -19,7 +20,7 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  */
 class OfficeTest extends TestCase
 {
-    public function testItCanBeTestedJustByCallingToArray()
+    public function testItCanBeConvertedToArray(): void
     {
         $serializer = (new SerializerFactory())();
         $instance = $serializer->deserialize($this->getJson(), Office::class, 'json');
@@ -28,7 +29,7 @@ class OfficeTest extends TestCase
     }
 
 
-    public function testJustAnotherExample()
+    public function testItCanSetAndGet(): void
     {
         // get the serializer
         $serializer = (new SerializerFactory())();
@@ -66,11 +67,14 @@ class OfficeTest extends TestCase
         return \file_get_contents("./test/Assets/Office.json");
     }
 
+    /**
+     * @throws JsonException
+     */
     private function getArray()
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true);
+        return \json_decode($json, true, 512,JSON_THROW_ON_ERROR);
     }
 
 }

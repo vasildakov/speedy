@@ -173,7 +173,7 @@ class Parcel
     /**
      * @return Size
      */
-    public function getCalculationSize(): array
+    public function getCalculationSize(): Size
     {
         return $this->calculationSize;
     }

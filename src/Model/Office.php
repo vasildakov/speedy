@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
+
 use DateTime;
-use phpDocumentor\Reflection\Types\Self_;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 use JMS\Serializer\Annotation as Serializer;

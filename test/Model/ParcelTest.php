@@ -5,7 +5,6 @@ namespace VasilDakov\SpeedyTest\Model;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Parcel;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
-use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 
 /**
  * Class ParcelTest
@@ -16,41 +15,30 @@ use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
  */
 class ParcelTest extends TestCase
 {
-    public function testItCanBeConstructed(): void
+    public function testItCanSetAndGet(): void
     {
         $serializer = (new SerializerFactory())();
         $instance = $serializer->deserialize($this->getJson(), Parcel::class, 'json');
-        $this->assertInstanceOf(Parcel::class, $instance);
+        $this->assertIsObject($instance);
+
+        $json = $serializer->serialize($instance, 'json');
+        $this->assertIsString($json);
     }
 
-
-    public function testInstancePropertiesAreDeserialized()
-    {
-        $array = $this->getArray();
-        $serializer = (new SerializerFactory())();
-
-        $instance = $serializer->deserialize($this->getJson(), Parcel::class, 'json');
-
-        $this->assertEquals($array['id'], $instance->getId());
-        $this->assertEquals($array['seqNo'], $instance->getSeqNo());
-        $this->assertEquals($array['packageUniqueNumber'], $instance->getPackageUniqueNumber());
-        // continue with the assertions here
-    }
-
-
+    /**
+     * @throws \JsonException
+     */
     private function getArray(): array
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true);
+        return \json_decode($json, true, 512,JSON_THROW_ON_ERROR);
     }
 
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/Parcel.json");
-
-        return $json;
+        return \file_get_contents("./test/Assets/Parcel.json");
     }
 
 
