@@ -18,19 +18,19 @@ use JMS\Serializer\Annotation as Serializer;
 class Office
 {
 
-    const TYPE_APT    = 1;
-    const TYPE_OFFICE = 2;
+    public const TYPE_APT    = 1;
+    public const TYPE_OFFICE = 2;
 
-    const TYPES = [
+    public const TYPES = [
         self::TYPE_APT    => 'APT',
         self::TYPE_OFFICE => 'OFFICE'
     ];
 
-    const CARGO_TYPE_PARCEL = 1;
-    const CARGO_TYPE_PALLET = 2;
-    const CARGO_TYPE_TIRE   = 3;
+    public const CARGO_TYPE_PARCEL = 1;
+    public const CARGO_TYPE_PALLET = 2;
+    public const CARGO_TYPE_TIRE   = 3;
 
-    const CARGO_TYPES = [
+    public const CARGO_TYPES = [
         self::CARGO_TYPE_PARCEL => 'PARCEL',
         self::CARGO_TYPE_PALLET => 'PALLET',
         self::CARGO_TYPE_TIRE   => 'TIRE'

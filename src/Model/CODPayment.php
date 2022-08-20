@@ -58,4 +58,11 @@ class CODPayment
         $this->totalPayedOutAmount = $totalPayedOutAmount;
     }
 
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
+
 }

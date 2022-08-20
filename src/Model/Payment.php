@@ -1,97 +1,135 @@
 <?php
-
 declare(strict_types=1);
-
 
 namespace VasilDakov\Speedy\Model;
 
+use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Payment
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
 class Payment
 {
-    /**
-     * @var
-     * @TODO! This is the Payer class in Shipment directory. Enum data type.
-     */
-    private $courierServicePayer;
+    public const SENDER = 1;
+    public const RECIPIENT = 2;
+    public const THIRD_PARTY = 3;
+
+    public const COURIER_SERVICE_PAYERS = [
+        self::SENDER => 'SENDER',
+        self::RECIPIENT => 'RECIPIENT',
+        self::THIRD_PARTY => 'THIRD_PARTY'
+
+    ];
+
+    public const DECLARED_VALUE_PAYERS = [
+        self::SENDER => 'SENDER',
+        self::RECIPIENT => 'RECIPIENT',
+        self::THIRD_PARTY => 'THIRD_PARTY'
+
+    ];
+
+    public const PACKAGE_PAYERS = [
+        self::SENDER => 'SENDER',
+        self::RECIPIENT => 'RECIPIENT',
+        self::THIRD_PARTY => 'THIRD_PARTY'
+
+    ];
 
     /**
-     * @var
-     * @TODO! This is the Payer class in Shipment directory. Enum data type.
+     * @var string
+     * @Serializer\Type("string")
      */
-    private $declaredValuePayer;
+    private string $courierServicePayer;
 
     /**
-     * @var
-     * @TODO! This is the Payer class in Shipment directory. Enum data type.
+     * @var string
+     * @Serializer\Type("string")
      */
-    private $packagePayer;
+    private string $declaredValuePayer;
 
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     */
+    private string $packagePayer;
+
+    /**
+     * @var int
+     * @Serializer\Type("int")
+     */
     private int $thirdPartyClientId;
 
     /**
      * @var ShipmentDiscountCardId
-     * @TODO! The ShipmentDiscountCardId class is in Shipment directory.
+     * @Serializer\Type("ShipmentDiscountCardId")
      */
     private ShipmentDiscountCardId $discountCardId;
 
     /**
      * @var CODPayment
+     * @Serializer\Type("CODPayment")
      */
     private CODPayment $codPayment;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCourierServicePayer()
+    public function getCourierServicePayer(): string
     {
         return $this->courierServicePayer;
     }
 
     /**
-     * @param mixed $courierServicePayer
+     * @param string $courierServicePayer
      */
-    public function setCourierServicePayer($courierServicePayer): void
+    public function setCourierServicePayer(string $courierServicePayer): void
     {
+//        if (!\in_array($courierServicePayer, \array_values(self::COURIER_SERVICE_PAYERS))) {
+//            throw new InvalidArgumentException();}
+
         $this->courierServicePayer = $courierServicePayer;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getDeclaredValuePayer()
+    public function getDeclaredValuePayer(): string
     {
         return $this->declaredValuePayer;
     }
 
     /**
-     * @param mixed $declaredValuePayer
+     * @param string $declaredValuePayer
      */
-    public function setDeclaredValuePayer($declaredValuePayer): void
+    public function setDeclaredValuePayer(string $declaredValuePayer): void
     {
+//        if (!\in_array($declaredValuePayer, \array_values(self::DECLARED_VALUE_PAYERS))) {
+//            throw new InvalidArgumentException();}
         $this->declaredValuePayer = $declaredValuePayer;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getPackagePayer()
+    public function getPackagePayer(): string
     {
         return $this->packagePayer;
     }
 
     /**
-     * @param mixed $packagePayer
+     * @param string $packagePayer
      */
-    public function setPackagePayer($packagePayer): void
+    public function setPackagePayer(string $packagePayer): void
     {
+//        if (!\in_array($packagePayer, \array_values(self::PACKAGE_PAYERS), true)) {
+//            throw new InvalidArgumentException();}
         $this->packagePayer = $packagePayer;
     }
 
@@ -143,4 +181,15 @@ class Payment
         $this->codPayment = $codPayment;
     }
 
+    public function toArray(): array
+    {
+        return [
+            'courierServicePayer' => $this->getCourierServicePayer(),
+            'declaredValuePayer' => $this->getDeclaredValuePayer(),
+            'packagePayer' => $this->getPackagePayer(),
+            'thirdPartyClientId' => $this->getThirdPartyClientId(),
+            'discountCardId' => $this->getDiscountCardId()->toArray(),
+            'codPayment' => $this->getCodPayment()->toArray()
+        ];
+    }
 }
