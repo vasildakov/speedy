@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
@@ -17,71 +16,58 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Payment
 {
-    public const SENDER = 1;
-    public const RECIPIENT = 2;
+    public const SENDER      = 1;
+
+    public const RECIPIENT   = 2;
+
     public const THIRD_PARTY = 3;
 
-    public const COURIER_SERVICE_PAYERS = [
-        self::SENDER => 'SENDER',
-        self::RECIPIENT => 'RECIPIENT',
+    public const PAYER_OPTIONS = [
+        self::SENDER      => 'SENDER',
+        self::RECIPIENT   => 'RECIPIENT',
         self::THIRD_PARTY => 'THIRD_PARTY'
-
-    ];
-
-    public const DECLARED_VALUE_PAYERS = [
-        self::SENDER => 'SENDER',
-        self::RECIPIENT => 'RECIPIENT',
-        self::THIRD_PARTY => 'THIRD_PARTY'
-
-    ];
-
-    public const PACKAGE_PAYERS = [
-        self::SENDER => 'SENDER',
-        self::RECIPIENT => 'RECIPIENT',
-        self::THIRD_PARTY => 'THIRD_PARTY'
-
     ];
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    private string $courierServicePayer;
+    private ?string $courierServicePayer = null;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    private string $declaredValuePayer;
+    private ?string $declaredValuePayer = null;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    private string $packagePayer;
+    private ?string $packagePayer = null;
 
     /**
-     * @var int
+     * @var int|null
      * @Serializer\Type("int")
      */
-    private int $thirdPartyClientId;
+    private ?int $thirdPartyClientId = null;
 
     /**
-     * @var ShipmentDiscountCardId
-     * @Serializer\Type("ShipmentDiscountCardId")
+     * @var ShipmentDiscountCardId|null
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentDiscountCardId")
      */
-    private ShipmentDiscountCardId $discountCardId;
+    private ?ShipmentDiscountCardId $discountCardId = null;
 
     /**
      * @var CODPayment
-     * @Serializer\Type("CODPayment")
+     * @Serializer\Type("VasilDakov\Speedy\Model\CODPayment")
      */
     private CODPayment $codPayment;
 
     /**
      * @return string
      */
-    public function getCourierServicePayer(): string
+    public function getCourierServicePayer(): ?string
     {
         return $this->courierServicePayer;
     }
@@ -91,16 +77,16 @@ class Payment
      */
     public function setCourierServicePayer(string $courierServicePayer): void
     {
-//        if (!\in_array($courierServicePayer, \array_values(self::COURIER_SERVICE_PAYERS))) {
-//            throw new InvalidArgumentException();}
-
+        if (!$this->isValidPayer($courierServicePayer)) {
+            throw new InvalidArgumentException();
+        }
         $this->courierServicePayer = $courierServicePayer;
     }
 
     /**
      * @return string
      */
-    public function getDeclaredValuePayer(): string
+    public function getDeclaredValuePayer(): ?string
     {
         return $this->declaredValuePayer;
     }
@@ -110,15 +96,16 @@ class Payment
      */
     public function setDeclaredValuePayer(string $declaredValuePayer): void
     {
-//        if (!\in_array($declaredValuePayer, \array_values(self::DECLARED_VALUE_PAYERS))) {
-//            throw new InvalidArgumentException();}
+        if (!$this->isValidPayer($declaredValuePayer)) {
+            throw new InvalidArgumentException();
+        }
         $this->declaredValuePayer = $declaredValuePayer;
     }
 
     /**
      * @return string
      */
-    public function getPackagePayer(): string
+    public function getPackagePayer(): ?string
     {
         return $this->packagePayer;
     }
@@ -128,15 +115,16 @@ class Payment
      */
     public function setPackagePayer(string $packagePayer): void
     {
-//        if (!\in_array($packagePayer, \array_values(self::PACKAGE_PAYERS), true)) {
-//            throw new InvalidArgumentException();}
+        if (!$this->isValidPayer($packagePayer)) {
+            throw new InvalidArgumentException();
+        }
         $this->packagePayer = $packagePayer;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getThirdPartyClientId(): int
+    public function getThirdPartyClientId(): ?int
     {
         return $this->thirdPartyClientId;
     }
@@ -150,9 +138,9 @@ class Payment
     }
 
     /**
-     * @return ShipmentDiscountCardId
+     * @return ShipmentDiscountCardId|null
      */
-    public function getDiscountCardId(): ShipmentDiscountCardId
+    public function getDiscountCardId(): ?ShipmentDiscountCardId
     {
         return $this->discountCardId;
     }
@@ -181,15 +169,36 @@ class Payment
         $this->codPayment = $codPayment;
     }
 
+    /**
+     * @param string $payer
+     * @return bool
+     */
+    private function isValidPayer(string $payer): bool
+    {
+        if (\in_array($payer, \array_values(self::PAYER_OPTIONS), true)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
-        return [
+        $array = [
             'courierServicePayer' => $this->getCourierServicePayer(),
-            'declaredValuePayer' => $this->getDeclaredValuePayer(),
-            'packagePayer' => $this->getPackagePayer(),
-            'thirdPartyClientId' => $this->getThirdPartyClientId(),
-            'discountCardId' => $this->getDiscountCardId()->toArray(),
-            'codPayment' => $this->getCodPayment()->toArray()
+            'declaredValuePayer'  => $this->getDeclaredValuePayer(),
+            'packagePayer'        => $this->getPackagePayer(),
+            'thirdPartyClientId'  => $this->getThirdPartyClientId(),
         ];
+
+        if ($this->getDiscountCardId() instanceof ShipmentDiscountCardId) {
+            $array['discountCardId'] = $this->getDiscountCardId()->toArray();
+        }
+
+        //'codPayment' => $this->getCodPayment()->toArray()
+
+        return $array;
     }
 }

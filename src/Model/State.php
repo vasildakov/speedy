@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 
 namespace VasilDakov\Speedy\Model;
@@ -14,6 +12,31 @@ namespace VasilDakov\Speedy\Model;
  */
 class State
 {
+    /**
+     * @var string|null
+     */
+    private ?string $id = null;
+
+    /**
+     * @var string
+     */
+    private string $name;
+
+    /**
+     * @var string
+     */
+    private string $nameEn;
+
+    /**
+     * @var string
+     */
+    private string $stateAlpha;
+
+    /**
+     * @var int
+     */
+    private int $countryId;
+
     /**
      * @return string
      */
@@ -93,29 +116,4 @@ class State
     {
         $this->countryId = $countryId;
     }
-
-    /**
-     * @var string
-     */
-    private string $id;
-
-    /**
-     * @var string
-     */
-    private string $name;
-
-    /**
-     * @var string
-     */
-    private string $nameEn;
-
-    /**
-     * @var string
-     */
-    private string $stateAlpha;
-
-    /**
-     * @var int
-     */
-    private int $countryId;
 }

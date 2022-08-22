@@ -1,7 +1,4 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
@@ -15,9 +12,9 @@ namespace VasilDakov\Speedy\Model;
 class Site
 {
     /**
-     * @var int
+     * @var int|null
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @var int

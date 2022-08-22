@@ -4,6 +4,7 @@ namespace VasilDakov\SpeedyTest\Model;
 
 use JsonException;
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Model\Payment;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
@@ -17,7 +18,6 @@ use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
  */
 class PaymentTest extends TestCase
 {
-
     public function testItCanSetAndGet(): void
     {
         $serializer = (new SerializerFactory())();
@@ -28,6 +28,34 @@ class PaymentTest extends TestCase
         $json = $serializer->serialize($instance, 'json');
         $this->assertIsString($json);
     }
+
+
+    public function testCourierServicePayerValidation()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $instance = new Payment();
+        $instance->setCourierServicePayer('Invalid Value');
+    }
+
+
+    public function testDeclaredValuePayerValidation()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        (new Payment())->setDeclaredValuePayer('Invalid Value');
+    }
+
+    public function testPackagePayerValidation()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        (new Payment())->setPackagePayer('Invalid Value');
+    }
+
+    public function testItCanBeExportedToArray()
+    {
+        $this->assertIsArray((new Payment())->toArray());
+    }
+
     private function getJson(): string
     {
         return \file_get_contents("./test/Assets/Payment.json");
@@ -42,5 +70,4 @@ class PaymentTest extends TestCase
 
         return \json_decode($json, true, 512,JSON_THROW_ON_ERROR);
     }
-
 }

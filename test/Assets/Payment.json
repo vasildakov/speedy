@@ -1,7 +1,7 @@
 {
-  "courierServicePayer": "Service Payer",
-  "declaredValuePayer": "Value Payer",
-  "packagePayer": "Package Payer",
+  "courierServicePayer": "RECIPIENT",
+  "declaredValuePayer": "RECIPIENT",
+  "packagePayer": "RECIPIENT",
   "thirdPartyClientId": 1,
   "discountCardId": {
     "contractId":12345678,
