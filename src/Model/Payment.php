@@ -59,10 +59,10 @@ class Payment
     private ?ShipmentDiscountCardId $discountCardId = null;
 
     /**
-     * @var CODPayment
+     * @var CODPayment|null
      * @Serializer\Type("VasilDakov\Speedy\Model\CODPayment")
      */
-    private CODPayment $codPayment;
+    private ?CODPayment $codPayment = null;
 
     /**
      * @return string
@@ -154,9 +154,9 @@ class Payment
     }
 
     /**
-     * @return CODPayment
+     * @return CODPayment|null
      */
-    public function getCodPayment(): CODPayment
+    public function getCodPayment(): ?CODPayment
     {
         return $this->codPayment;
     }
@@ -196,6 +196,12 @@ class Payment
         if ($this->getDiscountCardId() instanceof ShipmentDiscountCardId) {
             $array['discountCardId'] = $this->getDiscountCardId()->toArray();
         }
+
+        if ($this->getCodPayment() instanceof CODPayment)
+        {
+            $array['codPayment'] = $this->getCodPayment()->toArray();
+        }
+
 
         //'codPayment' => $this->getCodPayment()->toArray()
 

@@ -30,7 +30,7 @@ class PaymentTest extends TestCase
     }
 
 
-    public function testCourierServicePayerValidation()
+    public function testCourierServicePayerValidation(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -39,19 +39,19 @@ class PaymentTest extends TestCase
     }
 
 
-    public function testDeclaredValuePayerValidation()
+    public function testDeclaredValuePayerValidation(): void
     {
         $this->expectException(InvalidArgumentException::class);
         (new Payment())->setDeclaredValuePayer('Invalid Value');
     }
 
-    public function testPackagePayerValidation()
+    public function testPackagePayerValidation(): void
     {
         $this->expectException(InvalidArgumentException::class);
         (new Payment())->setPackagePayer('Invalid Value');
     }
 
-    public function testItCanBeExportedToArray()
+    public function testItCanBeExportedToArray(): void
     {
         $this->assertIsArray((new Payment())->toArray());
     }
