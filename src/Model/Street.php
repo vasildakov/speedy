@@ -245,4 +245,14 @@ class Street
         $this->actualNameEn = $actualNameEn;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
+
 }

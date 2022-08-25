@@ -42,6 +42,11 @@ class CODPaymentTest extends TestCase
         $this->assertInstanceOf(CODPayment::class, $instance);
     }
 
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new CODPayment())->toArray());
+    }
+
     private function getArray(): array
     {
         $json = $this->getJson();

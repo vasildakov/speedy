@@ -167,4 +167,11 @@ class Client
     {
         $this->privatePerson = $privatePerson;
     }
+
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
 }

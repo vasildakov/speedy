@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Model;
 
 /**
@@ -115,5 +114,15 @@ class State
     public function setCountryId(int $countryId): void
     {
         $this->countryId = $countryId;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+
+        ];
     }
 }

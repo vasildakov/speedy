@@ -124,4 +124,14 @@ class OfficeWorkingTimeSchedule
     {
         $this->standardSchedule = $standardSchedule;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
 }

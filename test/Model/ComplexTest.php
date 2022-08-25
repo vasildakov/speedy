@@ -38,6 +38,11 @@ class ComplexTest extends TestCase
         $this->assertEquals($array['actualNameEn'], $instance->getActualNameEn());
 
     }
+
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new Complex())->toArray());
+    }
     private function getArray(): array
     {
         $json = $this->getJson();

@@ -38,4 +38,14 @@ class Recipient
     {
         $this->pickupOfficeId = $pickupOfficeId;
     }
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
+
 }

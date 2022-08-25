@@ -46,6 +46,11 @@ class CountryTest extends TestCase
         $this->assertEquals($array['defaultOfficeId'], $country->getDefaultOfficeId());
     }
 
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new Country())->toArray());
+    }
+
     private function getArray(): array
     {
         $json = $this->getJson();

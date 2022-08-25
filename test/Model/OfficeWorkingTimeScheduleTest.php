@@ -33,6 +33,10 @@ class OfficeWorkingTimeScheduleTest extends TestCase
 
     }
 
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new OfficeWorkingTimeSchedule())->toArray());
+    }
     private function getArray(): array
     {
         $json = $this->getJson();

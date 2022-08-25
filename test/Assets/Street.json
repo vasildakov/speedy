@@ -1,0 +1,13 @@
+{
+ "id": 1,
+  "siteId": 2,
+  "type": "Type",
+  "typeEn": "Type in English",
+  "name": "Name",
+  "nameEn": "Name in English",
+  "actualId": 3,
+  "actualType": "Actual Type",
+  "actualTypeEn": "Actual Type in English",
+  "actualName": "Actual Name",
+  "actualNameEn": "Actual name in English"
+}

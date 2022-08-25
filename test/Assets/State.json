@@ -1,0 +1,7 @@
+{
+  "id": "State Id",
+  "name": "State name",
+  "nameEn": "Name in English",
+  "stateAlpha": "ISO alpha code",
+  "countryId": 1
+}

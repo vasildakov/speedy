@@ -4,22 +4,24 @@ namespace VasilDakov\SpeedyTest\Model;
 
 use JsonException;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Model\Recipient;
+use VasilDakov\Speedy\Model\Street;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
- * Class RecipientTest
+ * Class StreetTest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
-class RecipientTest extends TestCase
+class StreetTest extends TestCase
+
 {
     public function testItCanSetAndGet(): void
     {
         $serializer = (new SerializerFactory())();
-        $instance = $serializer->deserialize($this->getJson(), Recipient::class, 'json');
+
+        $instance = $serializer->deserialize($this->getJson(), Street::class, 'json');
         $this->assertIsObject($instance);
 
         $json = $serializer->serialize($instance, 'json');
@@ -28,22 +30,21 @@ class RecipientTest extends TestCase
 
     public function testItCanBeExportedToArray(): void
     {
-        $this->assertIsArray((new Recipient())->toArray());
+        $this->assertIsArray((new Street())->toArray());
+    }
+
+    private function getJson(): string
+    {
+        return \file_get_contents("./test/Assets/Site.json");
     }
 
     /**
      * @throws JsonException
      */
-    private function getArray(): array
+    private function getArray()
     {
         $json = $this->getJson();
 
         return \json_decode($json, true, 512,JSON_THROW_ON_ERROR);
-    }
-
-
-    private function getJson(): string
-    {
-        return \file_get_contents("./test/Assets/Recipient.json");
     }
 }

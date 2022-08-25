@@ -76,4 +76,14 @@ class Email implements \JsonSerializable
     {
         return $this->value;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
 }

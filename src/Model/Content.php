@@ -234,4 +234,15 @@ class Content
     {
         $this->pendingParcels = $pendingParcels;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
+
 }

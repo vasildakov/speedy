@@ -45,6 +45,11 @@ class ContentTest extends TestCase
         }
     }
 
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new Content())->toArray());
+    }
+
     private function getArray(): array
     {
         $json = $this->getJson();

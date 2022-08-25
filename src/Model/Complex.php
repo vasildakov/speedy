@@ -258,5 +258,13 @@ class Complex
         $this->actualNameEn = $actualNameEn;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
 
+        ];
+    }
 }
