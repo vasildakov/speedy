@@ -15,156 +15,163 @@ use JMS\Serializer\Annotation as Serializer;
 class Client
 {
     /**
-     * @var int
+     * @var int|null
      * @Serializer\Type("integer")
      */
-    public int $clientId;
+    public ?int $clientId = null;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    public string $clientName;
+    public ?string $clientName = null;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    public string $objectName;
+    public ?string $objectName = null;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    public string $contactName;
+    public ?string $contactName = null;
 
     /**
-     * @var Address
+     * @var Address|null
      * @Serializer\Type("VasilDakov\Speedy\Model\Address")
      */
-    public Address $address;
+    public ?Address $address = null;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    public string $email;
+    public ?string $email = null;
 
     /**
-     * @var bool
+     * @var bool|null
      * @Serializer\Type("bool")
      */
-    public bool $privatePerson;
+    public ?bool $privatePerson = null;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getClientId(): int
+    public function getClientId(): ?int
     {
         return $this->clientId;
     }
 
     /**
-     * @param int $clientId
+     * @param int|null $clientId
      */
-    public function setClientId(int $clientId): void
+    public function setClientId(?int $clientId): void
     {
         $this->clientId = $clientId;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getClientName(): string
+    public function getClientName():?string
     {
         return $this->clientName;
     }
 
     /**
-     * @param string $clientName
+     * @param string|null $clientName
      */
-    public function setClientName(string $clientName): void
+    public function setClientName(?string $clientName): void
     {
         $this->clientName = $clientName;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getObjectName(): string
+    public function getObjectName(): ?string
     {
         return $this->objectName;
     }
 
     /**
-     * @param string $objectName
+     * @param string|null $objectName
      */
-    public function setObjectName(string $objectName): void
+    public function setObjectName(?string $objectName): void
     {
         $this->objectName = $objectName;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getContactName(): string
+    public function getContactName(): ?string
     {
         return $this->contactName;
     }
 
     /**
-     * @param string $contactName
+     * @param string|null $contactName
      */
-    public function setContactName(string $contactName): void
+    public function setContactName(?string $contactName): void
     {
         $this->contactName = $contactName;
     }
 
     /**
-     * @return Address
+     * @return Address|null
      */
-    public function getAddress(): Address
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
 
     /**
-     * @param Address $address
+     * @param Address|null $address
      */
-    public function setAddress(Address $address): void
+    public function setAddress(?Address $address): void
     {
         $this->address = $address;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      */
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isPrivatePerson(): bool
+    public function isPrivatePerson(): ?bool
     {
         return $this->privatePerson;
     }
 
     /**
-     * @param bool $privatePerson
+     * @param bool|null $privatePerson
      */
-    public function setPrivatePerson(bool $privatePerson): void
+    public function setPrivatePerson(?bool $privatePerson): void
     {
         $this->privatePerson = $privatePerson;
+    }
+
+    public function toArray(): array
+    {
+        return [
+
+        ];
     }
 }

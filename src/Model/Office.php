@@ -1,157 +1,202 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
+
 use DateTime;
+use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Office
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
 class Office
 {
+
+    public const TYPE_APT    = 1;
+    public const TYPE_OFFICE = 2;
+
+    public const TYPES = [
+        self::TYPE_APT    => 'APT',
+        self::TYPE_OFFICE => 'OFFICE'
+    ];
+
+    public const CARGO_TYPE_PARCEL = 1;
+    public const CARGO_TYPE_PALLET = 2;
+    public const CARGO_TYPE_TIRE   = 3;
+
+    public const CARGO_TYPES = [
+        self::CARGO_TYPE_PARCEL => 'PARCEL',
+        self::CARGO_TYPE_PALLET => 'PALLET',
+        self::CARGO_TYPE_TIRE   => 'TIRE'
+    ];
+
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $id;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $name;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $nameEn;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $siteId;
 
     /**
      * @var Address
+     * @Serializer\Type("VasilDakov\Speedy\Model\Address")
      */
     private Address $address;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeTo;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeHalfFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeHalfTo;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeDayOffFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $workingTimeDayOffTo;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $sameDayDepartureCutoff;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $sameDayDepartureCutoffHalf;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'H:s'>")
      */
     private DateTime $sameDayDepartureCutoffDayOff;
 
     /**
-     * @var ShipmentParcelSize
-     * @TODO! The class is in Shipment directory!!!
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size")
      */
-    private ShipmentParcelSize $maxParcelDimensions;
+    private Size $maxParcelDimensions;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $maxParcelWeight;
 
     /**
-     * @var
+     * @var string
+     * @Serializer\Type("string")
      * @TODO! An enum type property.
      */
-    private $type;
+    private string $type;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $nearbyOfficeId;
 
     /**
-     * @var OfficeWorkingSchedule
+     * @var OfficeWorkingTimeSchedule
+     * @Serializer\Type("VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule")
      */
-    private OfficeWorkingSchedule $workingTimeSchedule;
+    private OfficeWorkingTimeSchedule $workingTimeSchedule;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $palletOffice;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $cardPaymentAllowed;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $cashPaymentAllowed;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private DateTime $validFrom;
 
     /**
      * @var DateTime
+     * @Serializer\Type("DateTime<'Y-m-d'>")
      */
     private DateTime $validTo;
 
     /**
-     * @var
+     * @var string
+     * @Serializer\Type("string")
      * @TODO! An enum type property.
      */
-
-    private $cargoTypesAllowed;
+    private string $cargoTypesAllowed;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $pickUpAllowed;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $dropOffAllowed;
 
@@ -380,17 +425,17 @@ class Office
     }
 
     /**
-     * @return ShipmentParcelSize
+     * @return Size
      */
-    public function getMaxParcelDimensions(): ShipmentParcelSize
+    public function getMaxParcelDimensions(): Size
     {
         return $this->maxParcelDimensions;
     }
 
     /**
-     * @param ShipmentParcelSize $maxParcelDimensions
+     * @param Size $maxParcelDimensions
      */
-    public function setMaxParcelDimensions(ShipmentParcelSize $maxParcelDimensions): void
+    public function setMaxParcelDimensions(Size $maxParcelDimensions): void
     {
         $this->maxParcelDimensions = $maxParcelDimensions;
     }
@@ -412,18 +457,21 @@ class Office
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * @param mixed $type
+     * @param string $type
      */
-    public function setType($type): void
+    public function setType(string $type): void
     {
+        if (!\in_array($type, \array_values(self::TYPES))) {
+            throw new InvalidArgumentException();
+        }
         $this->type = $type;
     }
 
@@ -444,17 +492,17 @@ class Office
     }
 
     /**
-     * @return OfficeWorkingSchedule
+     * @return OfficeWorkingTimeSchedule
      */
-    public function getWorkingTimeSchedule(): OfficeWorkingSchedule
+    public function getWorkingTimeSchedule(): OfficeWorkingTimeSchedule
     {
         return $this->workingTimeSchedule;
     }
 
     /**
-     * @param OfficeWorkingSchedule $workingTimeSchedule
+     * @param OfficeWorkingTimeSchedule $workingTimeSchedule
      */
-    public function setWorkingTimeSchedule(OfficeWorkingSchedule $workingTimeSchedule): void
+    public function setWorkingTimeSchedule(OfficeWorkingTimeSchedule $workingTimeSchedule): void
     {
         $this->workingTimeSchedule = $workingTimeSchedule;
     }
@@ -540,9 +588,9 @@ class Office
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCargoTypesAllowed()
+    public function getCargoTypesAllowed(): string
     {
         return $this->cargoTypesAllowed;
     }
@@ -550,8 +598,11 @@ class Office
     /**
      * @param mixed $cargoTypesAllowed
      */
-    public function setCargoTypesAllowed($cargoTypesAllowed): void
+    public function setCargoTypesAllowed(string $cargoTypesAllowed): void
     {
+        if (!\in_array($cargoTypesAllowed, \array_values(self::CARGO_TYPES))) {
+            throw new InvalidArgumentException();
+        }
         $this->cargoTypesAllowed = $cargoTypesAllowed;
     }
 
@@ -585,6 +636,19 @@ class Office
     public function setDropOffAllowed(bool $dropOffAllowed): void
     {
         $this->dropOffAllowed = $dropOffAllowed;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'nameEn' => $this->getNameEn(),
+            'address' => $this->getAddress()->toArray()
+        ];
     }
 
 }

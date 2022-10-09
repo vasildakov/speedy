@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -14,7 +13,6 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentDiscountCardId
 {
-
     /**
      * @var int
      */
@@ -70,7 +68,6 @@ class ShipmentDiscountCardId
         $this->cardId = $cardId;
     }
 
-
     /**
      * @return int[]
      */
@@ -81,6 +78,4 @@ class ShipmentDiscountCardId
             Speedy::CARD_ID       => $this->getCardId()
         ];
     }
-
-
 }

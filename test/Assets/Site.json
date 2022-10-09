@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "countryId": 2,
+  "mainSiteId": 3,
+  "type": "Type",
+  "typeEn": "Type in English",
+  "name": "Name",
+  "nameEn": "Name in English",
+  "municipality": "Municipality",
+  "municipalityEn": "municipality in English",
+  "region": "Region",
+  "regionEn": "Region in English",
+  "postCode": "8800",
+  "addressNomenclature": 4,
+  "x": 0.618,
+  "y": 1.618,
+  "servingDays": "1111100",
+  "servingOfficeId": 5,
+  "servingHubOfficeId": 6
+}

@@ -1,0 +1,14 @@
+{
+  "courierServicePayer": "RECIPIENT",
+  "declaredValuePayer": "RECIPIENT",
+  "packagePayer": "RECIPIENT",
+  "thirdPartyClientId": 1,
+  "discountCardId": {
+    "contractId":12345678,
+    "cardId":3
+  },
+  "codPayment": {
+    "date":"2005-08-15T15:52:01+00:00",
+    "totalPayedOutAmount": 0.618
+  }
+}

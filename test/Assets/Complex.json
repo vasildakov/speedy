@@ -1,0 +1,13 @@
+{
+  "id": 123,
+  "siteId": 321,
+  "type": "Street type",
+  "typeEn": "Street typeEn",
+  "name": "Street  name",
+  "nameEn": "Street  nameEn",
+  "actualId": 333,
+  "actualType": "Actual street type",
+  "actualTypeEn": "Actual street typeEn",
+  "actualName": "actual street name",
+  "actualNameEn": "actual street nameEn"
+}

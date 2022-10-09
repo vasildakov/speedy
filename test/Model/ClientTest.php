@@ -53,6 +53,11 @@ class ClientTest extends TestCase
         $this->assertInstanceOf(Client::class, $instance);
     }
 
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new Client())->toArray());
+    }
+
     private function getArray(): array
     {
         $json = $this->getJson();

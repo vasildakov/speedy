@@ -256,4 +256,14 @@ class Country
     {
         return $this->defaultOfficeId;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+
+        ];
+    }
 }

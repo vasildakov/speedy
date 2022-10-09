@@ -84,4 +84,9 @@ class CountryCodeTest extends TestCase
 
         $this->assertFalse($object->equals($other));
     }
+
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new CountryCode(100))->toArray());
+    }
 }

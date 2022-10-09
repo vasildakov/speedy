@@ -48,4 +48,9 @@ class EmailTest extends TestCase
 
         $this->assertIsString(\json_encode($email, JSON_PRETTY_PRINT));
     }
+
+    public function testItCanBeExportedToArray(): void
+    {
+        $this->assertIsArray((new Email('vasildakov@gmail.com'))->toArray());
+    }
 }

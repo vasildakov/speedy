@@ -2,9 +2,11 @@
 
 namespace VasilDakov\SpeedyTest\Model;
 
+use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\BankAccount;
 use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class BankAccountTest
@@ -15,30 +17,38 @@ use VasilDakov\Speedy\Speedy;
  */
 class BankAccountTest extends TestCase
 {
-    /**
-     * @var string
-     */
     protected string $iban;
 
-    /**
-     * @var string
-     */
     protected string $accountHolder;
 
-    /**
-     * @return void
-     */
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $this->iban   = 'iban';
-        $this->accountHolder = 'accountHolder';
+        $this->iban = 'Iban';
+        $this->accountHolder = 'Holder';
+
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
-    public function testItCanBeCreated() :void
+    public function testItCanBeConstructed(): void
+    {
+        $array = $this->getArray();
+
+        $json = $this->getJson();
+
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($json, BankAccount::class, 'json');
+
+        $this->assertInstanceOf(BankAccount::class, $instance);
+
+        $this->assertEquals($array['iban'], $instance->getIban());
+        $this->assertEquals($array['accountHolder'], $instance->getAccountHolder());
+
+        $this->assertIsArray($instance->toArray());
+
+    }
+
+        public function testItCanBeCreated() :void
     {
         $object = new BankAccount($this->iban, $this->accountHolder);
 
@@ -46,35 +56,31 @@ class BankAccountTest extends TestCase
     }
 
     /**
-     * @return void
+     * @group model
      */
-    public function testCanRetrieveTheIban():void
+    public function testItCanBeDeserialized(): void
     {
-        $object = new BankAccount($this->iban, $this->accountHolder);
+        $json = $this->getJson();
 
-        $this->assertEquals($this->iban, $object->getIban());
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($json, BankAccount::class, 'json');
+
+        $this->assertInstanceOf(BankAccount::class, $instance);
     }
 
-    /**
-     * @return void
-     */
-    public function testCanRetrieveTheAccountHolder():void
+    private function getArray(): array
     {
-        $object = new BankAccount($this->iban, $this->accountHolder);
+        $json = $this->getJson();
 
-        $this->assertEquals($this->accountHolder, $object->getAccountHolder());
+        return \json_decode($json, true);
     }
 
-    /**
-     * @return void
-     */
-    public function testExportedArrayHasRequiredKeys(): void
+
+    private function getJson(): string
     {
-        $object = new BankAccount($this->iban, $this->accountHolder);
+        $json = \file_get_contents("./test/Assets/BankAccount.json");
 
-        $array = $object->toArray();
-
-        $this->assertArrayHasKey(Speedy::IBAN, $array);
-        $this->assertArrayHasKey(Speedy::ACCOUNT_HOLDER, $array);
+        return $json;
     }
 }

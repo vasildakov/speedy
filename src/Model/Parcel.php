@@ -2,11 +2,13 @@
 
 namespace VasilDakov\Speedy\Model;
 
-use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
+use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Parcel
  *
+ * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
@@ -15,63 +17,74 @@ class Parcel
 {
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $id;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $seqNo;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $packageUniqueNumber;
 
     /**
-     * @var ShipmentParcelSize
-     * @TODO! The class is in Shipment directory!!!
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size>")
      */
-    private ShipmentParcelSize $declaredSize;
+    private Size $declaredSize;
 
     /**
-     * @var ShipmentParcelSize
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size")
      */
-    private ShipmentParcelSize $measuredSize;
+    private Size $measuredSize;
 
     /**
-     * @var ShipmentParcelSize
+     * @var Size
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size")
      */
-    private ShipmentParcelSize $calculationSize;
+    private Size $calculationSize;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $declaredWeight;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $measuredWeight;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $calculationWeight;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      * In documentation the data type is described as "String[]"
      */
     private array $externalCarrierParcelNumbers;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $baseType;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $size;
 
@@ -124,49 +137,50 @@ class Parcel
     }
 
     /**
-     * @return ShipmentParcelSize
+     * @param Size $declaredSize
      */
-    public function getDeclaredSize(): ShipmentParcelSize
-    {
-        return $this->declaredSize;
-    }
-
-    /**
-     * @param ShipmentParcelSize $declaredSize
-     */
-    public function setDeclaredSize(ShipmentParcelSize $declaredSize): void
+    public function setDeclaredSize(Size $declaredSize): void
     {
         $this->declaredSize = $declaredSize;
     }
 
     /**
-     * @return ShipmentParcelSize
+     * @return Size
      */
-    public function getMeasuredSize(): ShipmentParcelSize
+    public function getDeclaredSize(): Size
+    {
+        return $this->declaredSize;
+    }
+
+
+    /**
+     * @return Size
+     */
+    public function getMeasuredSize(): Size
     {
         return $this->measuredSize;
     }
 
     /**
-     * @param ShipmentParcelSize $measuredSize
+     * @param Size $measuredSize
      */
-    public function setMeasuredSize(ShipmentParcelSize $measuredSize): void
+    public function setMeasuredSize(Size $measuredSize): void
     {
         $this->measuredSize = $measuredSize;
     }
 
     /**
-     * @return ShipmentParcelSize
+     * @return Size
      */
-    public function getCalculationSize(): ShipmentParcelSize
+    public function getCalculationSize(): Size
     {
         return $this->calculationSize;
     }
 
     /**
-     * @param ShipmentParcelSize $calculationSize
+     * @param Size $calculationSize
      */
-    public function setCalculationSize(ShipmentParcelSize $calculationSize): void
+    public function setCalculationSize(Size $calculationSize): void
     {
         $this->calculationSize = $calculationSize;
     }
@@ -267,4 +281,11 @@ class Parcel
         $this->size = $size;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [];
+    }
 }

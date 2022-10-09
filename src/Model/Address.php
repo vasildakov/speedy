@@ -1,11 +1,13 @@
 <?php declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Model;
+
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Address
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
@@ -14,116 +16,147 @@ class Address
 {
     /**
      * @var int|null
+     * @Serializer\Type("integer")
+     * TODO Validate for valid country code.
      */
     private ?int $countryId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
+     * TODO Validate for valid country state
      */
     private ?string $stateId = null;
 
     /**
      * @var int
+     * @Serializer\Type("integer")
+     *
      */
     private int $siteId;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
+     * TODO Validate for valid site and value is required.
      */
     private ?string $siteType = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $siteName = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
+     * TODO Validated for valid postcode in site and country.
      */
     private ?string $postCode = null;
 
     /**
      * @var int|null
+     * @Serializer\Type("integer")
+     * TODO Validate for valid street.
      */
     private ?int $streetId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $streetType = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $streetName = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $streetNo = null;
 
     /**
      * @var int|null
+     * @Serializer\Type("integer")
+     * TODO Validate for valid complex.
      */
     private ?int $complexId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $complexType = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $complexName = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $blockNo = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $entranceNo = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $floorNo = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $apartmentNo = null;
 
     /**
      * @var int|null
+     * @Serializer\Type("string")
+     * TODO Validate for valid point of interest
      */
     private ?int $poiId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $addressNote = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $addressLine1 = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $addressLine2 = null;
 
     /**
      * @var float|null
+     * @Serializer\Type("float")
      */
     private ?float $x = null;
 
     /**
      * @var float|null
+     * @Serializer\Type("float")
      */
     private ?float $y = null;
 
@@ -562,6 +595,10 @@ class Address
      */
     public function toArray(): array
     {
-        return [];
+        return [
+            'countryId' => $this->getComplexId(),
+            'stateId' => $this->getStateId(),
+            'siteId' => $this->getSiteId(),
+        ];
     }
 }

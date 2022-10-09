@@ -1,104 +1,130 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
+use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Payment
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
 class Payment
 {
-    /**
-     * @var
-     * @TODO! This is the Payer class in Shipment directory. Enum data type.
-     */
-    private $courierServicePayer;
+    public const SENDER      = 1;
+
+    public const RECIPIENT   = 2;
+
+    public const THIRD_PARTY = 3;
+
+    public const PAYER_OPTIONS = [
+        self::SENDER      => 'SENDER',
+        self::RECIPIENT   => 'RECIPIENT',
+        self::THIRD_PARTY => 'THIRD_PARTY'
+    ];
 
     /**
-     * @var
-     * @TODO! This is the Payer class in Shipment directory. Enum data type.
+     * @var string|null
+     * @Serializer\Type("string")
      */
-    private $declaredValuePayer;
+    private ?string $courierServicePayer = null;
 
     /**
-     * @var
-     * @TODO! This is the Payer class in Shipment directory. Enum data type.
+     * @var string|null
+     * @Serializer\Type("string")
      */
-    private $packagePayer;
-
-    private int $thirdPartyClientId;
+    private ?string $declaredValuePayer = null;
 
     /**
-     * @var ShipmentDiscountCardId
-     * @TODO! The ShipmentDiscountCardId class is in Shipment directory.
+     * @var string|null
+     * @Serializer\Type("string")
      */
-    private ShipmentDiscountCardId $discountCardId;
+    private ?string $packagePayer = null;
 
     /**
-     * @var CODPayment
+     * @var int|null
+     * @Serializer\Type("int")
      */
-    private CODPayment $codPayment;
+    private ?int $thirdPartyClientId = null;
 
     /**
-     * @return mixed
+     * @var ShipmentDiscountCardId|null
+     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentDiscountCardId")
      */
-    public function getCourierServicePayer()
+    private ?ShipmentDiscountCardId $discountCardId = null;
+
+    /**
+     * @var CODPayment|null
+     * @Serializer\Type("VasilDakov\Speedy\Model\CODPayment")
+     */
+    private ?CODPayment $codPayment = null;
+
+    /**
+     * @return string
+     */
+    public function getCourierServicePayer(): ?string
     {
         return $this->courierServicePayer;
     }
 
     /**
-     * @param mixed $courierServicePayer
+     * @param string $courierServicePayer
      */
-    public function setCourierServicePayer($courierServicePayer): void
+    public function setCourierServicePayer(string $courierServicePayer): void
     {
+        if (!$this->isValidPayer($courierServicePayer)) {
+            throw new InvalidArgumentException();
+        }
         $this->courierServicePayer = $courierServicePayer;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getDeclaredValuePayer()
+    public function getDeclaredValuePayer(): ?string
     {
         return $this->declaredValuePayer;
     }
 
     /**
-     * @param mixed $declaredValuePayer
+     * @param string $declaredValuePayer
      */
-    public function setDeclaredValuePayer($declaredValuePayer): void
+    public function setDeclaredValuePayer(string $declaredValuePayer): void
     {
+        if (!$this->isValidPayer($declaredValuePayer)) {
+            throw new InvalidArgumentException();
+        }
         $this->declaredValuePayer = $declaredValuePayer;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getPackagePayer()
+    public function getPackagePayer(): ?string
     {
         return $this->packagePayer;
     }
 
     /**
-     * @param mixed $packagePayer
+     * @param string $packagePayer
      */
-    public function setPackagePayer($packagePayer): void
+    public function setPackagePayer(string $packagePayer): void
     {
+        if (!$this->isValidPayer($packagePayer)) {
+            throw new InvalidArgumentException();
+        }
         $this->packagePayer = $packagePayer;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getThirdPartyClientId(): int
+    public function getThirdPartyClientId(): ?int
     {
         return $this->thirdPartyClientId;
     }
@@ -112,9 +138,9 @@ class Payment
     }
 
     /**
-     * @return ShipmentDiscountCardId
+     * @return ShipmentDiscountCardId|null
      */
-    public function getDiscountCardId(): ShipmentDiscountCardId
+    public function getDiscountCardId(): ?ShipmentDiscountCardId
     {
         return $this->discountCardId;
     }
@@ -128,9 +154,9 @@ class Payment
     }
 
     /**
-     * @return CODPayment
+     * @return CODPayment|null
      */
-    public function getCodPayment(): CODPayment
+    public function getCodPayment(): ?CODPayment
     {
         return $this->codPayment;
     }
@@ -143,4 +169,42 @@ class Payment
         $this->codPayment = $codPayment;
     }
 
+    /**
+     * @param string $payer
+     * @return bool
+     */
+    private function isValidPayer(string $payer): bool
+    {
+        if (\in_array($payer, \array_values(self::PAYER_OPTIONS), true)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        $array = [
+            'courierServicePayer' => $this->getCourierServicePayer(),
+            'declaredValuePayer'  => $this->getDeclaredValuePayer(),
+            'packagePayer'        => $this->getPackagePayer(),
+            'thirdPartyClientId'  => $this->getThirdPartyClientId(),
+        ];
+
+        if ($this->getDiscountCardId() instanceof ShipmentDiscountCardId) {
+            $array['discountCardId'] = $this->getDiscountCardId()->toArray();
+        }
+
+        if ($this->getCodPayment() instanceof CODPayment)
+        {
+            $array['codPayment'] = $this->getCodPayment()->toArray();
+        }
+
+
+        //'codPayment' => $this->getCodPayment()->toArray()
+
+        return $array;
+    }
 }

@@ -3,10 +3,12 @@
 namespace VasilDakov\Speedy\Model;
 
 use VasilDakov\Speedy\Speedy;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class BankAccount
  *
+ * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
@@ -15,11 +17,14 @@ class BankAccount
 {
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $iban;
 
     /**
      * @var string
+     * @Serializer\Type("string")
+     * TODO Validated according to IBAN standards
      */
     private string $accountHolder;
 

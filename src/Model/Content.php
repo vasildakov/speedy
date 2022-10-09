@@ -1,62 +1,77 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Content
  *
+ * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
 class Content
 {
-
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $parcelsCount;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $declaredWeight;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $measuredWeight;
 
     /**
      * @var float
+     * @Serializer\Type("float")
      */
     private float $calculationWeight;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $contents;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $package;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $documents;
 
     /**
-     * @var Parcel
+     * @var bool
+     * @Serializer\Type("bool")
      */
-    private Parcel $parcel;
+    private bool $palletized;
+
+    /**
+     * @var ArrayCollection
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Model\Parcel>")
+     */
+    private ArrayCollection $parcels;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     private bool $pendingParcels;
 
@@ -173,19 +188,35 @@ class Content
     }
 
     /**
-     * @return Parcel
+     * @return bool
      */
-    public function getParcel(): Parcel
+    public function isPalletized(): bool
     {
-        return $this->parcel;
+        return $this->palletized;
     }
 
     /**
-     * @param Parcel $parcel
+     * @param bool $palletized
      */
-    public function setParcel(Parcel $parcel): void
+    public function setPalletized(bool $palletized): void
     {
-        $this->parcel = $parcel;
+        $this->palletized = $palletized;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getParcels(): ArrayCollection
+    {
+        return $this->parcels;
+    }
+
+    /**
+     * @param ArrayCollection $parcels
+     */
+    public function setParcels(ArrayCollection $parcels): void
+    {
+        $this->parcels = $parcels;
     }
 
     /**
@@ -204,6 +235,14 @@ class Content
         $this->pendingParcels = $pendingParcels;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
 
+        ];
+    }
 
 }
