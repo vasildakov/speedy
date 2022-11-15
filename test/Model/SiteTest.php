@@ -21,7 +21,8 @@ class SiteTest extends TestCase
         $serializer = (new SerializerFactory())();
 
         $instance = $serializer->deserialize($this->getJson(), Site::class, 'json');
-        $this->assertIsObject($instance);
+
+        $this->assertInstanceOf(Site::class, $instance);
 
         $json = $serializer->serialize($instance, 'json');
         $this->assertIsString($json);

@@ -8,9 +8,11 @@ namespace VasilDakov\Speedy\Location\Site;
 /**
  * Class FindSiteRequest
  *
- * @author Vasil Dakov <vasildakov@gmail.com>
+ * @author    Vasil Dakov <vasildakov@gmail.com>
+ * @author    Valentin Valkanov <email@email.com>
  * @copyright 2009-2022 Neutrino.bg
- * @version 1.0
+ * @version   1.0
+ * @see       https://services.speedy.bg/api/api_examples.html#FindSiteRequest
  */
 class FindSiteRequest
 {
