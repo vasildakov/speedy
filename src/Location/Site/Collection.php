@@ -16,58 +16,46 @@ class Collection
     /**
      * @var array
      */
-    private array $items = array();
+    private array $items = [];
 
     /**
      * @param $obj
      * @return void
      */
-    public function addItem($obj): void
+    public function addItem($key, $item)
     {
-        if (!in_array( $obj,$this->items, true)) {
-            $this->items[] = $obj;
+        if (!array_key_exists($key, $this->items) ) {
+            $this->items[$key] = $item;
+
+            return true;
         }
-        else {
-            throw new \InvalidArgumentException("Site $obj is already in use.");
-        }
+        throw new \Exception('Key is alredy used');
     }
 
     /**
      * @param $obj
      * @return void
      */
-    public function deleteItem($obj): void
+    public function deleteItem($key)
     {
-        if (in_array( $obj,$this->items, true))
-        {
-            $index = array_search($obj, $this->items, true);
-            unset($this->items[$index]);
+        if (array_key_exists($key, $this->items) ) {
+            unset($this->items[$key]);
 
+            return true;
         }
-        else {
-            throw new \InvalidArgumentException("There is no such $obj.");
-        }
+        throw new \Exception('Key does not exist!');
     }
 
     /**
      * @param $obj
      * @return Site
      */
-    public function getItem($obj): Site
+    public function getItem($key)
     {
-        if (in_array( $obj, $this->items, true)) {
-            $value=0;
-            foreach ($this->items as $item)
-            {
-                if ($item === $obj){
-                    $value = $obj;
-                }
-            }
-
-            return $value;
+        if (array_key_exists($key, $this->items) ) {
+            return $this->items[$key];
         }
-
-        throw new \InvalidArgumentException("There is not a such site $obj.");
+        throw new \Exception('Item with ... does not exist!');
     }
 
     /**
@@ -92,8 +80,20 @@ class Collection
 
         throw new \InvalidArgumentException("There is not any site.");
     }
+
+
+    public function getItems(): array 
+    {
+        return $this->items;
+    }
+
+    public function count(): int
+    {
+        return count($this->items);
+    }
+
+    public function isEmpty() 
+    {
+        return $this->count() > 0 ? false : true;
+    }
 }
-
-
-
-

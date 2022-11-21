@@ -16,9 +16,9 @@ use VasilDakov\Speedy\Model\Site;
 class FindSiteResponse
 {
     /**
-     * @var Collection|null
+     * @var Collection
      */
-    private ?Collection $sites = null;
+    private Collection $sites;
 
     /**
      * @var Error|null
@@ -29,26 +29,28 @@ class FindSiteResponse
      * @param Collection $sites
      * @param Error $error
      */
-    public function __construct(Collection $sites, Error $error)
+    public function __construct(Error $error = null)
     {
         $this->sites = new Collection();
         $this->error = $error;
     }
 
-    /**
-     * @return Collection|null
-     */
-    public function getSites(): ?Collection
+    public function addSite($site) 
     {
-        return $this->sites;
+        $this->sites->addItem($site->getId(), $site);
+    }
+
+    public function getSite($id) 
+    {
+        return $this->sites->getItem($id);
     }
 
     /**
-     * @param Collection|null $sites
+     * @return Collection
      */
-    public function setSites(?Collection $sites): void
+    public function getSites(): Collection
     {
-        $this->sites = $sites;
+        return $this->sites;
     }
 
     /**
@@ -70,7 +72,8 @@ class FindSiteResponse
     public function toArray(): array
     {
         return [
-
+            'sites' => $this->getSites(),
+            'error' => $this->getError()
         ];
     }
 
