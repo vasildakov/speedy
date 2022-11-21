@@ -15,31 +15,40 @@ use VasilDakov\Speedy\Model\Site;
  */
 class FindSiteResponse
 {
+    /**
+     * @var Collection|null
+     */
+    private ?Collection $sites = null;
 
-    private ?Site $site = null;
+    /**
+     * @var Error|null
+     */
+    private ?Error $error = null;
 
-    private ?Error $error =null;
-
-    public function __construct(?Site $site, ?Error $error)
+    /**
+     * @param Collection $sites
+     * @param Error $error
+     */
+    public function __construct(Collection $sites, Error $error)
     {
-        $this->setSite($site);
-        $this->setError($error);
+        $this->sites = new Collection();
+        $this->error = $error;
     }
 
     /**
-     * @return Site|null
+     * @return Collection|null
      */
-    public function getSite(): ?Site
+    public function getSites(): ?Collection
     {
-        return $this->site;
+        return $this->sites;
     }
 
     /**
-     * @param Site|null $site
+     * @param Collection|null $sites
      */
-    public function setSite(?Site $site): void
+    public function setSites(?Collection $sites): void
     {
-        $this->site = $site;
+        $this->sites = $sites;
     }
 
     /**
