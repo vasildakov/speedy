@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\Speedy\Location\Complex;
+namespace VasilDakov\Speedy\Service\Location\Complex;
 
 /**
  * Class FindComplexRequest

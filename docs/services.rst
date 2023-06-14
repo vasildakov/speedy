@@ -112,3 +112,22 @@ Location Service
 ****************
 Location Service
 
+Find Country
+============
+
+.. code-block:: php
+    :linenos:
+
+    $request = new FindCountry('Bulgaria');
+
+    /** @var FindCountryResponse $countries */
+    $response = $speedy->findCountry($request);
+
+    /** @var ArrayCollection $countries */
+    $countries = $response->getCountries();
+
+    /** @var Model\Country $country */
+    $country = $countries->first();
+
+    $countryId = $country->getId(); // int 100
+    $countryName = $country->getName(); // string BULGARIA

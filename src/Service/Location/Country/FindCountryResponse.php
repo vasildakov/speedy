@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Location\Country;
+namespace VasilDakov\Speedy\Service\Location\Country;
 
 use VasilDakov\Speedy\Model\Country;
 

@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Location\Site;
+namespace VasilDakov\Speedy\Service\Location\Site;
 
+use Exception;
 use VasilDakov\Speedy\Model\Site;
 
 /**
@@ -18,44 +19,44 @@ class Collection
      */
     private array $items = [];
 
+
     /**
-     * @param $obj
-     * @return void
+     * @throws Exception
      */
-    public function addItem($key, $item)
+    public function addItem($key, $item): bool
     {
         if (!array_key_exists($key, $this->items) ) {
             $this->items[$key] = $item;
 
             return true;
         }
-        throw new \Exception('Key is alredy used');
+        throw new Exception('Key is already used');
     }
 
+
     /**
-     * @param $obj
-     * @return void
+     * @throws Exception
      */
-    public function deleteItem($key)
+    public function deleteItem($key): bool
     {
         if (array_key_exists($key, $this->items) ) {
             unset($this->items[$key]);
 
             return true;
         }
-        throw new \Exception('Key does not exist!');
+        throw new Exception('Key does not exist!');
     }
 
+
     /**
-     * @param $obj
-     * @return Site
+     * @throws Exception
      */
     public function getItem($key)
     {
         if (array_key_exists($key, $this->items) ) {
             return $this->items[$key];
         }
-        throw new \Exception('Item with ... does not exist!');
+        throw new Exception('Item with ... does not exist!');
     }
 
     /**
@@ -92,8 +93,8 @@ class Collection
         return count($this->items);
     }
 
-    public function isEmpty() 
+    public function isEmpty(): bool
     {
-        return $this->count() > 0 ? false : true;
+        return !($this->count() > 0);
     }
 }

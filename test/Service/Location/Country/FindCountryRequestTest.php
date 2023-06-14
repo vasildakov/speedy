@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Location\Country;
+namespace VasilDakov\SpeedyTest\Service\Location\Country;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 
 /**
  * Class FindCountryRequestTest

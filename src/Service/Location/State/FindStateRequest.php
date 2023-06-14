@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\Speedy\Location\Complex;
+namespace VasilDakov\Speedy\Service\Location\State;
 
 /**
- * Class FindComplexResponse
+ * Class FindStateRequest
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-class FindComplexResponse
+class FindStateRequest
 {
 
 }

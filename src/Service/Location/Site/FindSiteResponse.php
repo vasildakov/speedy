@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Location\Site;
+
+namespace VasilDakov\Speedy\Service\Location\Site;
+
 use VasilDakov\Speedy\Error;
 use VasilDakov\Speedy\Model\Site;
+
 
 /**
  * Class FindSiteResponse
@@ -17,20 +20,13 @@ use VasilDakov\Speedy\Model\Site;
  */
 class FindSiteResponse
 {
-    /**
-     * @var Collection
-     */
+
     private Collection $sites;
 
-    /**
-     * @var Error|null
-     */
+
     private ?Error $error = null;
 
-    /**
-     * @param Collection $sites
-     * @param Error $error
-     */
+
     public function __construct(Error $error = null)
     {
         $this->sites = new Collection();
@@ -78,6 +74,4 @@ class FindSiteResponse
             'error' => $this->getError()
         ];
     }
-
 }
-

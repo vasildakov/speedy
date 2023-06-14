@@ -12,24 +12,12 @@ use Psr\Http\Client\ClientInterface;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
 
-use VasilDakov\Speedy\Location\Complex\FindComplexRequest;
-use VasilDakov\Speedy\Location\Complex\FindComplexResponse;
-use VasilDakov\Speedy\Location\Country\FindCountryRequest;
-use VasilDakov\Speedy\Location\Country\FindCountryResponse;
-use VasilDakov\Speedy\Location\Country\FindCountryResponseFactory;
-use VasilDakov\Speedy\Location\Office\FindOfficeRequest;
-use VasilDakov\Speedy\Location\Office\FindOfficeResponse;
-use VasilDakov\Speedy\Location\Site\FindSiteRequest;
-use VasilDakov\Speedy\Location\Site\FindSiteResponse;
-use VasilDakov\Speedy\Location\State\FindStateRequest;
-use VasilDakov\Speedy\Location\State\FindStateResponse;
-use VasilDakov\Speedy\Location\Street\FindStreetRequest;
-use VasilDakov\Speedy\Location\Street\FindStreetResponse;
 use VasilDakov\Speedy\Printing\PrintRequest;
 use VasilDakov\Speedy\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
+use VasilDakov\Speedy\Service\Location;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Track\TrackRequest;
@@ -246,6 +234,7 @@ final class Speedy
      * @param GetContractClientsRequest $object
      * @return GetContractClientsResponse
      * @throws ClientExceptionInterface
+     * @throws \Throwable
      */
     public function getContractClient(GetContractClientsRequest $object): GetContractClientsResponse
     {
@@ -264,11 +253,11 @@ final class Speedy
     }
 
     /**
-     * @param FindCountryRequest $object
-     * @return FindCountryResponse
+     * @param Location\Country\FindCountryRequest $object
+     * @return Location\Country\FindCountryResponse
      * @throws ClientExceptionInterface
      */
-    public function findCountry(FindCountryRequest $object): FindCountryResponse
+    public function findCountry(Location\Country\FindCountryRequest $object): Location\Country\FindCountryResponse
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -282,52 +271,52 @@ final class Speedy
         $json = $response->getBody()->getContents();
         //var_dump($json); exit();
 
-        return (new FindCountryResponseFactory())($json);
+        return (new Location\Country\FindCountryResponseFactory())($json);
     }
 
     /**
-     * @param FindStateRequest $request
-     * @return FindStateResponse
+     * @param Location\State\FindStateRequest $request
+     * @return Location\State\FindStateResponse
      */
-    public function findState(FindStateRequest $request): FindStateResponse
+    public function findState(Location\State\FindStateRequest $request): Location\State\FindStateResponse
     {
-        return new FindStateResponse();
+        return new Location\State\FindStateResponse();
     }
 
     /**
-     * @param FindOfficeRequest $request
-     * @return FindOfficeResponse
+     * @param Location\Office\FindOfficeRequest $request
+     * @return Location\Office\FindOfficeResponse
      */
-    public function findOffice(FindOfficeRequest $request): FindOfficeResponse
+    public function findOffice(Location\Office\FindOfficeRequest $request): Location\Office\FindOfficeResponse
     {
-        return new FindOfficeResponse();
+        return new Location\Office\FindOfficeResponse();
     }
 
     /**
-     * @param FindSiteRequest $request
-     * @return FindSiteResponse
+     * @param Location\Site\FindSiteRequest $request
+     * @return Location\Site\FindSiteResponse
      */
-    public function findSite(FindSiteRequest $request): FindSiteResponse
+    public function findSite(Location\Site\FindSiteRequest $request): Location\Site\FindSiteResponse
     {
-        return new FindSiteResponse();
+        return new Location\Site\FindSiteResponse();
     }
 
     /**
-     * @param FindComplexRequest $request
-     * @return FindComplexResponse
+     * @param Location\Complex\FindComplexRequest $request
+     * @return Location\Complex\FindComplexResponse
      */
-    public function findComplex(FindComplexRequest $request): FindComplexResponse
+    public function findComplex(Location\Complex\FindComplexRequest $request): Location\Complex\FindComplexResponse
     {
-        return new FindComplexResponse();
+        return new Location\Complex\FindComplexResponse();
     }
 
     /**
-     * @param FindStreetRequest $request
-     * @return FindStreetResponse
+     * @param Location\Street\FindStreetRequest $request
+     * @return Location\Street\FindStreetResponse
      */
-    public function findStreet(FindStreetRequest $request): FindStreetResponse
+    public function findStreet(Location\Street\FindStreetRequest $request): Location\Street\FindStreetResponse
     {
-        return new FindStreetResponse();
+        return new Location\Street\FindStreetResponse();
     }
 
     /**

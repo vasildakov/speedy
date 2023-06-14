@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 
-namespace VasilDakov\Speedy\Location\Site;
+namespace VasilDakov\Speedy\Service\Location\Site;
 
 /**
  * Class FindSiteRequest
