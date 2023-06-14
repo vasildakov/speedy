@@ -12,12 +12,23 @@ use VasilDakov\Speedy\Speedy;
 /**
  * Class ShipmentContentTest
  *
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
 class ShipmentContentTest extends TestCase
 {
+    protected int $parcelsCount;
+    protected float $totalWeight;
+    protected string $contents;
+    protected string $package;
+    protected ShipmentParcel $parcel;
+    protected bool $palletized;
+    protected bool $documents;
+    protected bool $pendingParcels;
+    protected bool $exciseGoods;
+
     protected function setUp(): void
     {
         $this->parcelsCount = 1;
@@ -105,7 +116,13 @@ class ShipmentContentTest extends TestCase
      */
     public function testItCanRetrieveIsDocument() :void
     {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+        $object = new ShipmentContent(
+            $this->parcelsCount,
+            $this->totalWeight,
+            $this->contents,
+            $this->package,
+            $this->parcel
+        );
 
         $object->setDocuments();
 
@@ -118,7 +135,13 @@ class ShipmentContentTest extends TestCase
      */
     public function testItCanRetrieveIsPalletized() :void
     {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+        $object = new ShipmentContent(
+            $this->parcelsCount,
+            $this->totalWeight,
+            $this->contents,
+            $this->package,
+            $this->parcel
+        );
 
         $object->setPalletized();
 

@@ -17,14 +17,10 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentPhoneNumberTest extends TestCase 
 {
-    /**
-     * @var string
-     */
-    protected string $number;
 
-    /**
-     * @param string
-     */
+    protected string $number;
+    protected string $extension;
+
     protected function setUp(): void 
     {
         $this->number = '0888302050';
@@ -38,8 +34,6 @@ class ShipmentPhoneNumberTest extends TestCase
     {
         $object = new ShipmentPhoneNumber($this->number);
         $this->assertInstanceOf(ShipmentPhoneNumber::class, $object);
-        
-        //$this->assertSame($this->number, $shipmentPhoneNumber->getNumber());
     }
     
     public function testItCanRetrieveTheNumber() 

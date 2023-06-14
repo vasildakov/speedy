@@ -18,6 +18,7 @@ final class GetContractClientsResponseFactory
     /**
      * @param string $json
      * @return GetContractClientsResponse
+     * @throws \Throwable
      */
     public function __invoke(string $json): GetContractClientsResponse
     {
@@ -30,6 +31,7 @@ final class GetContractClientsResponseFactory
 
             $serializer = (new SerializerFactory())();
             return $serializer->deserialize($json, GetContractClientsResponse::class, 'json');
+
         } catch (\Throwable $e) {
             throw $e;
         }

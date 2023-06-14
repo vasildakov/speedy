@@ -5,7 +5,7 @@ namespace VasilDakov\SpeedyTest\Location\Site;
 use PHPUnit\Framework\TestCase;
 
 // the class that will be tested
-use VasilDakov\Speedy\Location\Site\Collection;
+use VasilDakov\Speedy\Service\Location\Site\Collection;
 
 class CollectionTest extends TestCase
 {

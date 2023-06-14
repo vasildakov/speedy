@@ -18,36 +18,32 @@ use VasilDakov\Speedy\Speedy;
 /**
  * Class CreateShipmentRequestTest
  *
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
 class CreateShipmentRequestTest extends TestCase
 {
-    /**
-     * @var ShipmentRecipient
-     */
     protected ShipmentRecipient $recipient;
 
-    /**
-     * @var ShipmentService
-     */
     protected ShipmentService $service;
 
-    /**
-     * @var ShipmentContent
-     */
     protected ShipmentContent $content;
 
-    /**
-     * @var ShipmentPayment
-     */
     protected ShipmentPayment $payment;
 
-    /**
-     * @var ShipmentSender
-     */
     protected ShipmentSender $sender;
+
+    protected string $shipmentNote;
+
+    protected string $ref1;
+
+    protected string $ref2;
+
+    protected string $consolidationRef;
+
+    protected bool $requireUnsuccessfulDeliveryStickerImage;
 
     /**
      * @return void
@@ -59,7 +55,6 @@ class CreateShipmentRequestTest extends TestCase
         $this->service   = $this->createMock(ShipmentService::class);
         $this->content   = $this->createMock(ShipmentContent::class);
         $this->payment   = $this->createMock(ShipmentPayment::class);
-
         $this->shipmentNote = "Shipment Note";
 
         $this->ref1 = "10";
@@ -275,8 +270,8 @@ class CreateShipmentRequestTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/CreateShipmentRequest.json");
-
-        return $json;
+        return \file_get_contents(
+            "./test/Assets/CreateShipmentRequest.json"
+        );
     }
 }

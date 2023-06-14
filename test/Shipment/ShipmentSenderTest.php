@@ -13,62 +13,33 @@ use VasilDakov\Speedy\Speedy;
 /**
  * Class ShipmentSenderTest
  *
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
 class ShipmentSenderTest extends TestCase
 {
-    /**
-     * @var ShipmentPhoneNumber
-     */
     protected ShipmentPhoneNumber $phone1;
 
-    /**
-     * @var ShipmentPhoneNumber
-     */
     protected ShipmentPhoneNumber $phone2;
 
-    /**
-     * @var ShipmentPhoneNumber
-     */
     protected ShipmentPhoneNumber $phone3;
 
-    /**
-     * @var string
-     */
     protected string $clientName;
 
-    /**
-     * @var string
-     */
     protected string $contactName;
 
-    /**
-     * @var string
-     */
     protected string $email;
 
-    /**
-     * @var bool
-     */
     protected bool $privatePerson = false;
-
-    /**
-     * @var ShipmentAddress
-     */
 
     protected ShipmentAddress $address;
 
-    /**
-     * @var int
-     */
-
     protected int $dropoffOfficeId;
 
-    /**
-     * @return void
-     */
+    protected int $pickupOfficeId;
+
     protected function setUp():void
     {
         $this->phone1 = $this->createMock(ShipmentPhoneNumber::class);
@@ -82,7 +53,6 @@ class ShipmentSenderTest extends TestCase
         $this->pickupOfficeId = 4;
 
         parent::setUp();
-
     }
 
     /**
@@ -98,7 +68,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveThePhone1():void
     {
@@ -111,7 +81,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveThePhone2():void
     {
@@ -124,7 +94,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveThePhone3():void
     {
@@ -137,7 +107,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveTheClientName():void
     {
@@ -150,7 +120,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveTheContactName():void
     {
@@ -163,7 +133,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveTheEmail():void
     {
@@ -176,7 +146,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveThePrivatePerson():void
     {
@@ -189,7 +159,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveTheAddress():void
     {
@@ -202,7 +172,7 @@ class ShipmentSenderTest extends TestCase
 
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanRetrieveThePickupOfficeId():void
     {
@@ -214,7 +184,7 @@ class ShipmentSenderTest extends TestCase
     }
     /**
      * @return void
-     * &group ShipmentSender
+     * @group ShipmentSender
      */
     public function testItCanBeConvertedAsArray(): void
     {
@@ -232,14 +202,6 @@ class ShipmentSenderTest extends TestCase
         $this->assertArrayHasKey(Speedy::PHONE_1, $array);
         $this->assertArrayHasKey(Speedy::CLIENT_NAME, $array);
         $this->assertArrayHasKey(Speedy::EMAIL, $array);
-//        $this->assertArrayHasKey(Speedy::PHONE_2, $array);
-//        $this->assertarrayHasKey(Speedy::PHONE_3, $array);
-//        $this->assertArrayHasKey(Speedy::CONTACT_NAME, $array);
-//        $this->assertArrayHasKey(Speedy::PRIVATE_PERSON, $array);
-//        $this->assertArrayHasKey(Speedy::ADDRESS, $array);
-//        $this->assertArrayHasKey(Speedy::PICKUP_OFFICE_ID, $array);
     }
-
-
 }
 
