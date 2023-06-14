@@ -512,13 +512,13 @@ class ShipmentAddress
         $this->y = $y;
     }
 
-
     /**
      * @return array
      */
     public function toArray(): array
     {
-        $data = [Speedy::SITE_ID => $this->getSiteId()
+        $data = [
+            Speedy::SITE_ID => $this->getSiteId()
         ];
 
         if (null !== $this->countryId) {
@@ -603,6 +603,7 @@ class ShipmentAddress
         if (null !== $this->x) {
             $data[Speedy::X] = $this->getX();
         }
+
         if (null !== $this->y) {
             $data[Speedy::Y] = $this->getY();
         }
@@ -611,4 +612,3 @@ class ShipmentAddress
         return $data;
     }
 }
-

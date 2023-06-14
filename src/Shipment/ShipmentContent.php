@@ -68,8 +68,13 @@ class ShipmentContent
      * @param string $package
      * @param ShipmentParcel|null $parcel
      */
-    public function __construct(int $parcelsCount, float $totalWeight, string $contents, string $package, ?ShipmentParcel $parcel)
-    {
+    public function __construct(
+        int $parcelsCount,
+        float $totalWeight,
+        string $contents,
+        string $package,
+        ?ShipmentParcel $parcel
+    ) {
         $this->setParcelsCount($parcelsCount);
         $this->setTotalWeight($totalWeight);
         $this->setContents($contents);
@@ -233,14 +238,14 @@ class ShipmentContent
     public function toArray(): array
     {
         return [
-            Speedy::PARCEL              =>$this->parcel->toArray(),
-            Speedy::PARCELS_COUNT       =>$this->getParcelsCount(),
-            Speedy::TOTAL_WEIGHT        =>$this->getTotalWeight(),
-            Speedy::CONTENTS            =>$this->getContents(),
-            Speedy::PACKAGE             =>$this->getPackage(),
-            Speedy::DOCUMENTS           =>$this->isDocuments(),
-            Speedy::PALLETIZED          =>$this->isPalletized(),
-            Speedy::PENDING_PARCELS     =>$this->isPendingParcels(),
+            Speedy::PARCEL              => $this->parcel->toArray(),
+            Speedy::PARCELS_COUNT       => $this->getParcelsCount(),
+            Speedy::TOTAL_WEIGHT        => $this->getTotalWeight(),
+            Speedy::CONTENTS            => $this->getContents(),
+            Speedy::PACKAGE             => $this->getPackage(),
+            Speedy::DOCUMENTS           => $this->isDocuments(),
+            Speedy::PALLETIZED          => $this->isPalletized(),
+            Speedy::PENDING_PARCELS     => $this->isPendingParcels(),
         ];
     }
 
