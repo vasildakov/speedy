@@ -1,0 +1,21 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRODAdditionalService",
+  "properties" : {
+    "enabled" : {
+      "type" : "boolean"
+    },
+    "comment" : {
+      "type" : "string"
+    },
+    "returnToClientId" : {
+      "type" : "integer"
+    },
+    "returnToOfficeId" : {
+      "type" : "integer"
+    },
+    "thirdPartyPayer" : {
+      "type" : "boolean"
+    }
+  }
+}

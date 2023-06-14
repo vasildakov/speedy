@@ -1,0 +1,14 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:print:model:ParcelToPrint",
+  "properties" : {
+    "additionalBarcode" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:print:model:ParcelToPrintAdditionalBarcode"
+    },
+    "parcelId" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcelRef"
+    }
+  }
+}

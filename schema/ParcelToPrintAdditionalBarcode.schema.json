@@ -1,0 +1,16 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:print:model:ParcelToPrintAdditionalBarcode",
+  "properties" : {
+    "value" : {
+      "type" : "string"
+    },
+    "label" : {
+      "type" : "string"
+    },
+    "format" : {
+      "type" : "string",
+      "enum" : [ "CODE128", "EAN13", "EAN8", "UPC-A", "UPC-E" ]
+    }
+  }
+}

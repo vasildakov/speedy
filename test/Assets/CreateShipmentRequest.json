@@ -1,0 +1,49 @@
+{
+  "service":{
+    "serviceId":2002,
+    "additionalServices":{
+      "declaredValue":{
+        "amount":100.0
+      },
+      "returns":{
+        "rod":{
+          "enabled":true
+        },
+        "returnReceipt":{
+          "enabled":true
+        },
+        "swap":{
+          "serviceId":2002,
+          "parcelsCount":1
+        }
+      }
+    }
+  },
+  "content":{
+    "parcelsCount":1,
+    "totalWeight":20.0,
+    "contents":"FURNITURE",
+    "package":"BOX"
+  },
+  "payment":{
+    "courierServicePayer": "SENDER"
+  },
+  "recipient":{
+    "phone1":{
+      "number":"0999123321"
+    },
+    "privatePerson":true,
+    "clientName":"TEST",
+    "contactName":"TEST",
+    "email":"a@b.c",
+    "address":{
+      "siteName":"Sofia",
+      "streetType":"str.",
+      "streetName":"Vitosha Blvd",
+      "streetNo":"3"
+    }
+  },
+  "shipmentNote":"Test note",
+  "ref1":"R1",
+  "ref2":"R2"
+}

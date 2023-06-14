@@ -1,0 +1,51 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:client:CreateContactRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "externalContactId" : {
+      "type" : "string"
+    },
+    "secretKey" : {
+      "type" : "string"
+    },
+    "phone1" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPhoneNumber"
+    },
+    "phone2" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPhoneNumber"
+    },
+    "clientName" : {
+      "type" : "string"
+    },
+    "objectName" : {
+      "type" : "string"
+    },
+    "contactName" : {
+      "type" : "string"
+    },
+    "email" : {
+      "type" : "string"
+    },
+    "privatePerson" : {
+      "type" : "boolean"
+    },
+    "address" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAddress"
+    }
+  }
+}

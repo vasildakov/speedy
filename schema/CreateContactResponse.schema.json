@@ -1,0 +1,13 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:client:CreateContactResponse",
+  "properties" : {
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "clientId" : {
+      "type" : "integer"
+    }
+  }
+}

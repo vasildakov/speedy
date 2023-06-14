@@ -1,0 +1,12 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentDiscountCardId",
+  "properties" : {
+    "contractId" : {
+      "type" : "integer"
+    },
+    "cardId" : {
+      "type" : "integer"
+    }
+  }
+}

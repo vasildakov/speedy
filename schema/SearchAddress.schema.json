@@ -1,0 +1,30 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:address:SearchAddress",
+  "properties" : {
+    "text" : {
+      "type" : "string"
+    },
+    "coordX" : {
+      "type" : "number"
+    },
+    "coordY" : {
+      "type" : "number"
+    },
+    "microregionId" : {
+      "type" : "integer"
+    },
+    "distanceToSiteCenter" : {
+      "type" : "number"
+    },
+    "actual" : {
+      "type" : "boolean"
+    },
+    "coordType" : {
+      "type" : "integer"
+    },
+    "additionalAddressProcessing" : {
+      "type" : "integer"
+    }
+  }
+}

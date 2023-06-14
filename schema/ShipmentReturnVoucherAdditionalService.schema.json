@@ -1,0 +1,19 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentReturnVoucherAdditionalService",
+  "properties" : {
+    "serviceId" : {
+      "type" : "integer"
+    },
+    "payer" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentRole"
+    },
+    "validityPeriod" : {
+      "type" : "integer"
+    },
+    "externalReturnVoucherId" : {
+      "type" : "string"
+    }
+  }
+}

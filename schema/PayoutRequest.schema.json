@@ -1,0 +1,29 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:payment:PayoutRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "fromDate" : {
+      "type" : "integer",
+      "format" : "utc-millisec"
+    },
+    "toDate" : {
+      "type" : "integer",
+      "format" : "utc-millisec"
+    },
+    "includeDetails" : {
+      "type" : "boolean"
+    }
+  }
+}

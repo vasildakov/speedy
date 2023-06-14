@@ -1,0 +1,29 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationService",
+  "properties" : {
+    "pickupDate" : {
+      "type" : "string",
+      "format" : "date-time"
+    },
+    "autoAdjustPickupDate" : {
+      "type" : "boolean"
+    },
+    "serviceIds" : {
+      "type" : "array",
+      "items" : {
+        "type" : "integer"
+      }
+    },
+    "additionalServices" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAdditionalServices"
+    },
+    "deferredDays" : {
+      "type" : "integer"
+    },
+    "saturdayDelivery" : {
+      "type" : "boolean"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:model:ExternalCarrierParcelNumberDetails",
+  "properties" : {
+    "externalCarrierId" : {
+      "type" : "integer"
+    },
+    "externalCarrierName" : {
+      "type" : "string"
+    },
+    "trackAndTraceUrl" : {
+      "type" : "string"
+    }
+  }
+}

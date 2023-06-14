@@ -1,0 +1,18 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:track:model:TrackedParcelOperationAdditionalInfoRecipient",
+  "properties" : {
+    "countryId" : {
+      "type" : "integer"
+    },
+    "phone1" : {
+      "type" : "string"
+    },
+    "phone2" : {
+      "type" : "string"
+    },
+    "phone3" : {
+      "type" : "string"
+    }
+  }
+}

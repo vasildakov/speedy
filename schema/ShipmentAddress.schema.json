@@ -1,0 +1,75 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentAddress",
+  "properties" : {
+    "countryId" : {
+      "type" : "integer"
+    },
+    "stateId" : {
+      "type" : "string"
+    },
+    "siteId" : {
+      "type" : "integer"
+    },
+    "siteType" : {
+      "type" : "string"
+    },
+    "siteName" : {
+      "type" : "string"
+    },
+    "postCode" : {
+      "type" : "string"
+    },
+    "streetId" : {
+      "type" : "integer"
+    },
+    "streetType" : {
+      "type" : "string"
+    },
+    "streetName" : {
+      "type" : "string"
+    },
+    "streetNo" : {
+      "type" : "string"
+    },
+    "complexId" : {
+      "type" : "integer"
+    },
+    "complexType" : {
+      "type" : "string"
+    },
+    "complexName" : {
+      "type" : "string"
+    },
+    "blockNo" : {
+      "type" : "string"
+    },
+    "entranceNo" : {
+      "type" : "string"
+    },
+    "floorNo" : {
+      "type" : "string"
+    },
+    "apartmentNo" : {
+      "type" : "string"
+    },
+    "poiId" : {
+      "type" : "integer"
+    },
+    "addressNote" : {
+      "type" : "string"
+    },
+    "addressLine1" : {
+      "type" : "string"
+    },
+    "addressLine2" : {
+      "type" : "string"
+    },
+    "x" : {
+      "type" : "number"
+    },
+    "y" : {
+      "type" : "number"
+    }
+  }
+}

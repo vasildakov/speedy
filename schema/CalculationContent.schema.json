@@ -1,0 +1,25 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationContent",
+  "properties" : {
+    "parcelsCount" : {
+      "type" : "integer"
+    },
+    "totalWeight" : {
+      "type" : "number"
+    },
+    "documents" : {
+      "type" : "boolean"
+    },
+    "palletized" : {
+      "type" : "boolean"
+    },
+    "parcels" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentParcel"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:Error",
+  "properties" : {
+    "context" : {
+      "type" : "string"
+    },
+    "message" : {
+      "type" : "string"
+    },
+    "id" : {
+      "type" : "string"
+    },
+    "code" : {
+      "type" : "integer"
+    },
+    "component" : {
+      "type" : "string"
+    }
+  }
+}

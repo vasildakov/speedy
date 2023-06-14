@@ -1,0 +1,23 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:print:ExtendedPrintResponse",
+  "properties" : {
+    "data" : {
+      "type" : "array",
+      "items" : {
+        "type" : "integer"
+      }
+    },
+    "error" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:Error"
+    },
+    "printLabelsInfo" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "$ref" : "urn:jsonschema:com:speedy:api:rest:print:model:LabelInfo"
+      }
+    }
+  }
+}

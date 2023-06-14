@@ -1,0 +1,38 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:com:speedy:api:rest:calculation:CalculationRequest",
+  "properties" : {
+    "userName" : {
+      "type" : "string"
+    },
+    "password" : {
+      "type" : "string"
+    },
+    "language" : {
+      "type" : "string"
+    },
+    "clientSystemId" : {
+      "type" : "integer"
+    },
+    "sender" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationSender"
+    },
+    "recipient" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationRecipient"
+    },
+    "service" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationService"
+    },
+    "content" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:calculation:model:CalculationContent"
+    },
+    "payment" : {
+      "type" : "object",
+      "$ref" : "urn:jsonschema:com:speedy:api:rest:shipment:model:ShipmentPayment"
+    }
+  }
+}
