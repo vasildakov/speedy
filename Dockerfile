@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2.4-fpm
 
 ## Update package information
 RUN apt-get update
@@ -12,16 +12,22 @@ RUN curl -sS https://getcomposer.org/installer \
 ###
 
 ## Install intl library and extension
-RUN apt-get install -y libicu-dev \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-install intl
-
 RUN apt-get install -y \
-        libzip-dev \
-        unzip \
-        zip \
-    && docker-php-ext-configure zip \
-    && docker-php-ext-install zip
+    libicu-dev \
+    libxslt-dev \
+    libzip-dev \
+    curl \
+    unzip \
+    zip
+
+RUN docker-php-ext-install intl  \
+    && docker-php-ext-configure intl
+
+RUN docker-php-ext-install xsl  \
+    && docker-php-ext-configure xsl
+
+RUN docker-php-ext-install zip  \
+    && docker-php-ext-configure zip
 
 ###
 ## Optional PHP extensions

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Country;
 
@@ -7,6 +9,10 @@ use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
 use VasilDakov\Speedy\Model\Client;
 use VasilDakov\Speedy\Model\Country;
+
+use function json_encode;
+use function json_decode;
+use function json_last_error;
 
 /**
  * Class FindCountryResponseFactory
@@ -28,9 +34,9 @@ class FindCountryResponseFactory
      */
     public function __invoke(string $json): FindCountryResponse
     {
-        $array = \json_decode($json, true);
+        $array = json_decode($json, true);
 
-        if (\json_last_error() !== JSON_ERROR_NONE) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw new \InvalidArgumentException('Invalid or malformed JSON');
         }
 
