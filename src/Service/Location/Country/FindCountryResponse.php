@@ -1,8 +1,17 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Country;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\Common\Collections\Expr\Comparison;
 use VasilDakov\Speedy\Model\Country;
+
+use function array_filter;
+use function strcasecmp;
+use function mb_strtoupper;
 
 /**
  * Class FindCountryResponse
@@ -13,40 +22,53 @@ use VasilDakov\Speedy\Model\Country;
  */
 class FindCountryResponse
 {
-    /**
-     * @var array
-     */
-    private array $countries;
+    private ArrayCollection $countries;
 
-    /**
-     * @param array $countries
-     */
-    public function __construct(array $countries = [])
+    public function __construct(ArrayCollection $countries)
     {
         $this->countries = $countries;
     }
 
     /**
-     * @return array
+     * @return ArrayCollection
      */
-    public function getCountries(): array
+    public function getCountries(): ArrayCollection
     {
         return $this->countries;
     }
 
-    /**
-     * @param int $id
-     * @return Country|null
-     */
+
     public function findCountryById(int $id): ?Country
     {
-        foreach ($this->getCountries() as $country) {
-            if ($id === $country->getId()) {
-                return $country;
-            }
+        $collection = $this->getCountries()->filter(function (Country $country) use ($id) {
+            return $country->getId() === $id;
+        });
+
+        if ($collection->isEmpty()) {
+            return null;
         }
-        return null;
+
+        /** @var Country */
+        return $collection->first();
     }
+
+
+
+    public function findCountryArrayByName(string $name): ?Country
+    {
+        $countries = (array)$this->countries;
+        $array = array_filter($countries, function (Country $country) use ($name) {
+            return (0 === strcasecmp(mb_strtoupper($name, 'UTF-8'), $country->getName() ));
+        });
+
+        if (empty($array)) {
+            return null;
+
+        }
+        /** @var Country */
+        return $array[0];
+    }
+
 
     /**
      * @param string $name
@@ -54,10 +76,35 @@ class FindCountryResponse
      */
     public function findCountryByName(string $name): ?Country
     {
-        $array = \array_filter($this->countries, function ($country) use ($name) {
-            return (0 === \strcasecmp(\mb_strtoupper($name, 'UTF-8'), $country->name));
+        $name = mb_strtoupper($name, 'UTF-8');
+
+        $collection = $this->countries->filter(function (Country $country) use ($name) {
+            return $country->getName() === $name;
         });
 
-        return (!empty($array)) ? $array[0] : null;
+        if ($collection->isEmpty()) {
+            return null;
+        }
+
+        /** @var Country */
+        return $collection->first();
+    }
+
+    /**
+     * @param string $isoAlpha2
+     * @return Country|null
+     */
+    public function findCountryByIsoAlpha2(string $isoAlpha2): ?Country
+    {
+        $collection =  $this->getCountries()->filter(function (Country $country) use ($isoAlpha2) {
+            return $country->getIsoAlpha2() === $isoAlpha2;
+        });
+
+        if ($collection->isEmpty()) {
+            return null;
+        }
+
+        /** @var Country */
+        return $collection->first();
     }
 }

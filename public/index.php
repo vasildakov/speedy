@@ -10,7 +10,6 @@ use Laminas\Diactoros\RequestFactory;
 use Http\Client\Curl\Client as CurlHttp;
 use GuzzleHttp\Client as GuzzleHttp;
 
-
 chdir(dirname(__DIR__));
 include __DIR__ . '/../vendor/autoload.php';
 
@@ -26,12 +25,17 @@ $configuration = new Configuration(
 
 $factory = new \Laminas\Diactoros\RequestFactory();
 
-$curlHttp   = new CurlHttp();
+// $curlHttp   = new CurlHttp();
 $guzzleHttp = new GuzzleHttp();
 
 $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 
-//$response = $speedy->getContractClient(new GetContractClientsRequest());
-$response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
+// $response = $speedy->getContractClient(new GetContractClientsRequest());
+// $response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
+$response = $speedy->findCountry(new FindCountryRequest('BULGARIA'));
 
-echo '<pre>'; var_dump($response);
+
+echo '<pre>';
+//var_dump($response->findCountryByIsoAlpha2('BG'));
+//var_dump($response->findCountryByName('БЪЛГАРИЯ'));
+var_dump($response->findCountryById(100));

@@ -1,10 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Client;
 
+use Throwable;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
-use VasilDakov\Speedy\Exception\ServiceNotCreatedException;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+
+use function json_decode;
+use function json_last_error;
 
 /**
  * Class GetContractResponseFactory
@@ -12,28 +17,28 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @psalm-suppress UnusedFunctionCall
  */
 final class GetContractClientsResponseFactory
 {
     /**
      * @param string $json
      * @return GetContractClientsResponse
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function __invoke(string $json): GetContractClientsResponse
     {
-        try {
-            \json_decode($json, true);
+        json_decode($json, true);
 
-            if (\json_last_error() !== JSON_ERROR_NONE) {
-                throw new InvalidArgumentException('Invalid or malformed JSON');
-            }
-
-            $serializer = (new SerializerFactory())();
-            return $serializer->deserialize($json, GetContractClientsResponse::class, 'json');
-
-        } catch (\Throwable $e) {
-            throw $e;
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new InvalidArgumentException('Invalid or malformed JSON');
         }
+
+        $serializer = (new SerializerFactory())();
+
+        /** @var GetContractClientsResponse $response */
+        $response = $serializer->deserialize($json, GetContractClientsResponse::class, 'json');
+
+        return $response;
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Country;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
@@ -23,9 +24,6 @@ use function json_last_error;
  */
 class FindCountryResponseFactory
 {
-    /**
-     * @var Client[]
-     */
     private array $countries = [];
 
     /**
@@ -45,6 +43,8 @@ class FindCountryResponseFactory
             $this->countries[] = $hydrator->hydrate($item, new Country());
         }
 
-        return new FindCountryResponse($this->countries);
+        return new FindCountryResponse(
+            new ArrayCollection($this->countries)
+        );
     }
 }

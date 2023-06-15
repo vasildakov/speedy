@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Country;
 
@@ -37,7 +39,7 @@ class FindCountryRequest
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -53,7 +55,7 @@ class FindCountryRequest
     /**
      * @param string $isoAlpha2
      */
-    public function setIsoAlpha2(string $isoAlpha2)
+    public function setIsoAlpha2(string $isoAlpha2): void
     {
         $this->isoAlpha2 = $isoAlpha2;
     }
@@ -69,7 +71,7 @@ class FindCountryRequest
     /**
      * @param string $isoAlpha3
      */
-    public function setIsoAlpha3(string $isoAlpha3)
+    public function setIsoAlpha3(string $isoAlpha3): void
     {
         $this->isoAlpha3 = $isoAlpha3;
     }

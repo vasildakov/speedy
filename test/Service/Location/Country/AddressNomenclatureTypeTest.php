@@ -15,7 +15,7 @@ use VasilDakov\Speedy\Service\Location\Country\AddressNomenclatureType;
  */
 class AddressNomenclatureTypeTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $object = new AddressNomenclatureType();
         $object->setName('Name');

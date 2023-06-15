@@ -41,6 +41,7 @@ use VasilDakov\Speedy\Service;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @psalm-suppress MissingConstructor
  */
 class SpeedyTest extends TestCase
 {
@@ -129,7 +130,7 @@ class SpeedyTest extends TestCase
             ->expects($this->once())
             ->method('getContents')
             ->willReturn(
-                json_encode([
+                \json_encode([
                     'clients' => [
                         ['clientId' => 1, 'address' => ['countryId' => 1, 'siteId' => 2]],
                         ['clientId' => 2, 'address' => ['countryId' => 3, 'siteId' => 4]]

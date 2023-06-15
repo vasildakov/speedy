@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
@@ -74,7 +76,7 @@ class Country
     /**
      * @param int $id
      */
-    public function setId(int $id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -90,7 +92,7 @@ class Country
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -106,7 +108,7 @@ class Country
     /**
      * @param string $isoAlpha2
      */
-    public function setIsoAlpha2(string $isoAlpha2)
+    public function setIsoAlpha2(string $isoAlpha2): void
     {
         $this->isoAlpha2 = $isoAlpha2;
     }
@@ -122,7 +124,7 @@ class Country
     /**
      * @param string $isoAlpha3
      */
-    public function setIsoAlpha3(string $isoAlpha3)
+    public function setIsoAlpha3(string $isoAlpha3): void
     {
         $this->isoAlpha3 = $isoAlpha3;
     }
@@ -138,7 +140,7 @@ class Country
     /**
      * @param string $currencyCode
      */
-    public function setCurrencyCode(string $currencyCode)
+    public function setCurrencyCode(string $currencyCode): void
     {
         $this->currencyCode = $currencyCode;
     }
@@ -154,7 +156,7 @@ class Country
     /**
      * @param bool $requireState
      */
-    public function setRequireState(bool $requireState)
+    public function setRequireState(bool $requireState): void
     {
         $this->requireState = $requireState;
     }
@@ -170,7 +172,7 @@ class Country
     /**
      * @param int $addressType
      */
-    public function setAddressType(int $addressType)
+    public function setAddressType(int $addressType): void
     {
         $this->addressType = $addressType;
     }
@@ -186,7 +188,7 @@ class Country
     /**
      * @param int $siteNomen
      */
-    public function setSiteNomen(int $siteNomen)
+    public function setSiteNomen(int $siteNomen): void
     {
         $this->siteNomen = $siteNomen;
     }
@@ -202,7 +204,7 @@ class Country
     /**
      * @param array $streetTypes
      */
-    public function setStreetTypes(array $streetTypes)
+    public function setStreetTypes(array $streetTypes): void
     {
         $this->streetTypes = $streetTypes;
     }
@@ -215,7 +217,7 @@ class Country
     /**
      * @param array $complexTypes
      */
-    public function setComplexTypes(array $complexTypes)
+    public function setComplexTypes(array $complexTypes): void
     {
         $this->complexTypes = $complexTypes;
     }
@@ -228,7 +230,7 @@ class Country
     /**
      * @param array $postCodeFormats
      */
-    public function setPostCodeFormats(array $postCodeFormats)
+    public function setPostCodeFormats(array $postCodeFormats): void
     {
         $this->postCodeFormats = $postCodeFormats;
     }
@@ -244,7 +246,7 @@ class Country
     /**
      * @param int $defaultOfficeId
      */
-    public function setDefaultOfficeId(int $defaultOfficeId)
+    public function setDefaultOfficeId(int $defaultOfficeId): void
     {
         $this->defaultOfficeId = $defaultOfficeId;
     }

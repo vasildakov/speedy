@@ -11,6 +11,7 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Client\ClientInterface;
+use Throwable;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
 use VasilDakov\Speedy\Printing\PrintRequest;
@@ -239,7 +240,7 @@ final class Speedy
      * @param GetContractClientsRequest $object
      * @return GetContractClientsResponse
      * @throws ClientExceptionInterface
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function getContractClient(GetContractClientsRequest $object): GetContractClientsResponse
     {

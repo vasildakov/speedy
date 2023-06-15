@@ -25,4 +25,20 @@ class CalculationResponse
      * @var Error
      */
     private Error $error;
+
+    /**
+     * @return array
+     */
+    public function getCalculations(): array
+    {
+        return $this->calculations;
+    }
+
+    /**
+     * @return Error
+     */
+    public function getError(): Error
+    {
+        return $this->error;
+    }
 }

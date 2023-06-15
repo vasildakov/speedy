@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTest\Service\Client;
 
 use PHPUnit\Framework\TestCase;
+use Throwable;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
 
@@ -18,7 +19,7 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
 class GetContractClientsResponseFactoryTest extends TestCase
 {
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function testItThrowsAnExceptionForInvalidJson(): void
     {

@@ -7,7 +7,6 @@
   </component>
   <component name="MessDetectorOptionsConfiguration">
     <option name="design" value="true" />
-    <option name="naming" value="true" />
     <option name="unusedCode" value="true" />
     <option name="transferred" value="true" />
   </component>
