@@ -23,6 +23,10 @@ use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Track\TrackRequest;
 use VasilDakov\Speedy\Track\TrackResponse;
 
+use function json_encode;
+use function json_decode;
+use function array_merge;
+
 /**
  * Class Speedy
  *
@@ -214,7 +218,7 @@ final class Speedy
 
         $request = $request->withAddedHeader('Content-Type', 'application/json');
 
-        $request->getBody()->write(\json_encode($data));
+        $request->getBody()->write(json_encode($data));
 
         return $request;
     }
@@ -227,7 +231,7 @@ final class Speedy
     {
         $config = $this->configuration->toArray();
 
-        return \array_merge($config, $data);
+        return array_merge($config, $data);
     }
 
     /**
@@ -262,14 +266,13 @@ final class Speedy
         $payload = $this->createPayload($object->toArray());
 
         $request = $this->createRequest(
-            'POST',
+            RequestMethodInterface::METHOD_POST,
             self::API_URL.'/location/country',
             $payload
         );
 
         $response = $this->client->sendRequest($request);
         $json = $response->getBody()->getContents();
-        //var_dump($json); exit();
 
         return (new Location\Country\FindCountryResponseFactory())($json);
     }

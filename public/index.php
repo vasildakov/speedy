@@ -1,11 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
+use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Configuration;
 use Laminas\Diactoros\RequestFactory;
 use Http\Client\Curl\Client as CurlHttp;
 use GuzzleHttp\Client as GuzzleHttp;
+
 
 chdir(dirname(__DIR__));
 include __DIR__ . '/../vendor/autoload.php';
@@ -22,12 +26,12 @@ $configuration = new Configuration(
 
 $factory = new \Laminas\Diactoros\RequestFactory();
 
-$curlHttp = new CurlHttp();
+$curlHttp   = new CurlHttp();
 $guzzleHttp = new GuzzleHttp();
 
-$speedy = new Speedy($configuration, $curlHttp, $factory);
+$speedy = new Speedy($configuration, $guzzleHttp, $factory);
 
-$response = $speedy->getContractClient(new GetContractClientsRequest());
-//$response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
+//$response = $speedy->getContractClient(new GetContractClientsRequest());
+$response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
 
-//echo '<pre>'; var_dump($response);
+echo '<pre>'; var_dump($response);
