@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
@@ -11,7 +13,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Client\ClientInterface;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
-
 use VasilDakov\Speedy\Printing\PrintRequest;
 use VasilDakov\Speedy\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
@@ -246,7 +247,7 @@ final class Speedy
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
-            self::API_URL.'/client/contract',
+            self::API_URL . '/client/contract',
             $payload
         );
 
@@ -267,7 +268,7 @@ final class Speedy
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
-            self::API_URL.'/location/country',
+            self::API_URL . '/location/country',
             $payload
         );
 

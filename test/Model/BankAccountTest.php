@@ -1,16 +1,17 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
-use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\BankAccount;
-use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class BankAccountTest
  *
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
@@ -45,10 +46,9 @@ class BankAccountTest extends TestCase
         $this->assertEquals($array['accountHolder'], $instance->getAccountHolder());
 
         $this->assertIsArray($instance->toArray());
-
     }
 
-        public function testItCanBeCreated() :void
+    public function testItCanBeCreated(): void
     {
         $object = new BankAccount($this->iban, $this->accountHolder);
 

@@ -1,11 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Service\Client;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
-
 
 /**
  * Class GetContractClientsResponseFactoryTest
@@ -16,7 +17,10 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
  */
 class GetContractClientsResponseFactoryTest extends TestCase
 {
-    public function testItThrowsAnExceptionForInvalidJson()
+    /**
+     * @throws \Throwable
+     */
+    public function testItThrowsAnExceptionForInvalidJson(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid or malformed JSON');

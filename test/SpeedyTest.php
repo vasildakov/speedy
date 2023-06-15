@@ -1,9 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest;
 
 use Fig\Http\Message\RequestMethodInterface;
+use JsonException;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
@@ -31,7 +35,6 @@ use VasilDakov\Speedy\Track;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Service;
 
-
 /**
  * Class SpeedyTest
  *
@@ -41,7 +44,7 @@ use VasilDakov\Speedy\Service;
  */
 class SpeedyTest extends TestCase
 {
-    protected Configuration $configuration;
+    protected Configuration $config;
     protected ClientInterface $client;
     protected RequestFactoryInterface $factory;
     protected RequestInterface $request;
@@ -50,20 +53,25 @@ class SpeedyTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->configuration = $this->createMock(Configuration::class);
-        $this->client        = $this->createMock(ClientInterface::class);
-        $this->factory       = $this->createMock(RequestFactoryInterface::class);
-        $this->stream        = $this->createMock(StreamInterface::class);
-        $this->request       = $this->createMock(RequestInterface::class);
-        $this->response      = $this->createMock(ResponseInterface::class);
+        $this->config   = $this->createMock(Configuration::class);
+        $this->client   = $this->createMock(ClientInterface::class);
+        $this->factory  = $this->createMock(RequestFactoryInterface::class);
+        $this->stream   = $this->createMock(StreamInterface::class);
+        $this->request  = $this->createMock(RequestInterface::class);
+        $this->response = $this->createMock(ResponseInterface::class);
+    }
+
+    private function getClient(): Speedy
+    {
+        return new Speedy($this->config, $this->client, $this->factory);
     }
 
     /**
      * @group client
      */
-    public function testItCanBeInstantiated()
+    public function testItCanBeInstantiated(): void
     {
-        $client = new Speedy($this->configuration, $this->client, $this->factory);
+        $client = $this->getClient();
 
         $this->assertInstanceOf(Speedy::class, $client);
     }
@@ -71,16 +79,17 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanGetContractClient()
+    public function testItCanGetContractClient(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $this->factory
             ->expects($this->once())
             ->method('createRequest')
             ->with(
                 RequestMethodInterface::METHOD_POST,
-                'https://api.speedy.bg/v1/client/contract')
+                'https://api.speedy.bg/v1/client/contract'
+            )
             ->willReturn($this->request)
         ;
 
@@ -122,10 +131,10 @@ class SpeedyTest extends TestCase
             ->willReturn(
                 json_encode([
                     'clients' => [
-                        ['clientId' => 1, 'address' => ['countryId' => 1, 'siteId' => 2] ],
-                        ['clientId' => 2, 'address' => ['countryId' => 3, 'siteId' => 4] ]
+                        ['clientId' => 1, 'address' => ['countryId' => 1, 'siteId' => 2]],
+                        ['clientId' => 2, 'address' => ['countryId' => 3, 'siteId' => 4]]
                     ]
-                ])
+                ], JSON_THROW_ON_ERROR)
             )
         ;
 
@@ -136,11 +145,11 @@ class SpeedyTest extends TestCase
 
     /**
      * @group client
-     * @throws \Psr\Http\Client\ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
-    public function testItCanFindCountry()
+    public function testItCanFindCountry(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $this->client
             ->expects($this->once())
@@ -181,9 +190,9 @@ class SpeedyTest extends TestCase
             ->willReturn(
                 json_encode([
                     'countries' => [
-                        ['id' => 100, 'name' =>  'Bulgaria']
+                        ['id' => 100, 'name' => 'Bulgaria']
                     ]
-                ])
+                ], JSON_THROW_ON_ERROR)
             )
         ;
 
@@ -195,9 +204,9 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanFindState()
+    public function testItCanFindState(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->findState(new FindStateRequest());
 
@@ -207,9 +216,9 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanFindOffice()
+    public function testItCanFindOffice(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->findOffice(new FindOfficeRequest());
 
@@ -219,9 +228,9 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanFindSite()
+    public function testItCanFindSite(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->findSite(new FindSiteRequest());
 
@@ -231,9 +240,9 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanFindComplex()
+    public function testItCanFindComplex(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->findComplex(new FindComplexRequest());
 
@@ -243,9 +252,9 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanFindStreet()
+    public function testItCanFindStreet(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->findStreet(new FindStreetRequest());
 
@@ -255,9 +264,9 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanCalculate()
+    public function testItCanCalculate(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->calculation(new Calculation\CalculationRequest());
 
@@ -267,9 +276,10 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanTrack()
+    public function testItCanTrack(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
+        ;
 
         $response = $speedy->track(new Track\TrackRequest());
 
@@ -279,9 +289,9 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanPrint()
+    public function testItCanPrint(): void
     {
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->print(new Printing\PrintRequest());
 
@@ -291,11 +301,11 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanCreateShipment()
+    public function testItCanCreateShipment(): void
     {
         $request = $this->createMock(Shipment\CreateShipmentRequest::class);
 
-        $speedy = new Speedy($this->configuration, $this->client, $this->factory);
+        $speedy = $this->getClient();
 
         $response = $speedy->createShipment($request);
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Service\Client;
 
@@ -15,7 +17,7 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
  */
 class GetContractClientsResponseTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $instance = new GetContractClientsResponse();
 
@@ -35,8 +37,6 @@ class GetContractClientsResponseTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/Client.json");
-
-        return $json;
+        return \file_get_contents("./test/Assets/Client.json");
     }
 }

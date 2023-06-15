@@ -1,10 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Service\Client;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
-
 
 /**
  * Class GetContractClientsRequestTest
@@ -15,7 +16,7 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
  */
 class GetContractClientsRequestTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $instance = new GetContractClientsRequest();
         $instance->setClientSystemId('SomeClientSystemId');

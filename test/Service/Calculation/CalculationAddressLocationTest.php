@@ -9,7 +9,6 @@ use VasilDakov\Speedy\Model\CountryCode;
 use VasilDakov\Speedy\Service\Calculation\CalculationAddressLocation;
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * Class CalculationAddressLocationTest
  *
@@ -48,12 +47,12 @@ class CalculationAddressLocationTest extends TestCase
     /**
      * @var CountryCode|MockObject
      */
-    protected CountryCode $countryId;
+    protected CountryCode|MockObject $countryId;
 
     /**
      * @return void
      */
-    protected function setUp():void
+    protected function setUp(): void
     {
         $this->siteId    = 100;
         $this->stateId   = 'StateId';
@@ -64,7 +63,7 @@ class CalculationAddressLocationTest extends TestCase
 
         parent::setUp();
     }
-    
+
     /**
      * @group CalculationAddressLocation
      */
@@ -74,11 +73,11 @@ class CalculationAddressLocationTest extends TestCase
 
         $this->assertInstanceOf(CalculationAddressLocation::class, $object);
     }
-    
+
     /**
      * @group CalculationAddressLocation
      */
-    public function testItCanRetrieveCountryId() :void
+    public function testItCanRetrieveCountryId(): void
     {
         $object = new CalculationAddressLocation($this->siteId, $this->postCode);
 

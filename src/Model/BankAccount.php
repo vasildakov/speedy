@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
@@ -34,8 +36,8 @@ class BankAccount
      */
     public function __construct(string $iban, string $accountHolder)
     {
-        $this->setIban($iban);
-        $this->setAccountHolder($accountHolder);
+        $this->iban = $iban;
+        $this->accountHolder = $accountHolder;
     }
 
     /**

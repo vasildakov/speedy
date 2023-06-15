@@ -2,10 +2,11 @@
 
 namespace VasilDakov\SpeedyTest\Model;
 
-use Laminas\Hydrator\ClassMethodsHydrator;
+
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Address;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+use Laminas\Hydrator\ClassMethodsHydrator;
 
 /**
  * Class AddressTest

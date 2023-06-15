@@ -29,7 +29,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.2",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-xsl": "*",
@@ -52,10 +52,17 @@
         "phpunit/phpunit": "^9.5",
         "php-coveralls/php-coveralls": "dev-master",
         "squizlabs/php_codesniffer": "4.0.x-dev",
-        "theseer/phpdox": "dev-master"
+        "theseer/phpdox": "dev-master",
+        "vimeo/psalm": "4.x-dev",
+        "psalm/plugin-phpunit": "dev-master",
+        "friendsofphp/php-cs-fixer": "dev-master",
+        "phpmd/phpmd": "dev-master"
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit --coverage-html ./build/coverage"
+        "test": "./vendor/bin/phpunit --coverage-html ./build/coverage",
+        "cs-check": "vendor/bin/phpcs",
+        "cs-fix": "vendor/bin/phpcbf",
+        "static-analysis": "vendor/bin/psalm --shepherd --stats"
     },
     "config": {
         "allow-plugins": {

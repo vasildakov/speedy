@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Location\Site;
 
@@ -12,7 +14,7 @@ class CollectionTest extends TestCase
     /**
      * @group collection
      */
-    public function testItCanBeInitialized() 
+    public function testItCanBeInitialized(): void
     {
         $this->assertInstanceOf(Collection::class, new Collection());
     }
@@ -20,7 +22,7 @@ class CollectionTest extends TestCase
     /**
      * @group collection
      */
-    public function testTheCollectionIsEmpty() 
+    public function testTheCollectionIsEmpty(): void
     {
         $collection = new Collection();
 
@@ -30,7 +32,7 @@ class CollectionTest extends TestCase
     /**
      * @group collection
      */
-    public function testItemsCanBeAddedToCollection() 
+    public function testItemsCanBeAddedToCollection(): void
     {
         $collection = new Collection();
 
@@ -47,7 +49,7 @@ class CollectionTest extends TestCase
     /**
      * @group collection
      */
-    public function testItemCanBeDeletedFromCollection() 
+    public function testItemCanBeDeletedFromCollection(): void
     {
         // the collection is empty
         $collection = new Collection(); // $items = []
@@ -75,14 +77,14 @@ class CollectionTest extends TestCase
     /**
      * @group collection
      */
-    public function testItemCanBeRetreivedFromCollection() 
+    public function testItemCanBeRetrievedFromCollection(): void
     {
         $collection = new Collection(); // $items = []
 
         $object = new \stdClass();
         $object->name = 'Vasil Dakov';
 
-        $collection->addItem(999, $object); 
+        $collection->addItem(999, $object);
 
         $item = $collection->getItem(999);
         $this->assertInstanceOf(\stdClass::class, $item);
