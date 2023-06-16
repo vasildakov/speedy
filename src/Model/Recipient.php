@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Model;
 
 use JMS\Serializer\Annotation as Serializer;
@@ -43,9 +42,6 @@ class Recipient
      */
     public function toArray(): array
     {
-        return [
-
-        ];
+        return [];
     }
-
 }

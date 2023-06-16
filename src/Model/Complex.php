@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Model;
+
 use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class Complex
  *
@@ -12,6 +13,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @psalm-suppress MissingConstructor
  */
 class Complex
 {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
@@ -8,98 +10,28 @@ namespace VasilDakov\Speedy\Model;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @psalm-suppress MissingConstructor
  */
 class Site
 {
-    /**
-     * @var int|null
-     */
-    private ?int $id = null;
-
-    /**
-     * @var int|null
-     */
-    private ?int $countryId = null;
-
-    /**
-     * @var int|null
-     */
-    private ?int $mainSiteId = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $type = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $typeEn = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $name = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $nameEn = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $municipality = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $municipalityEn = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $region = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $regionEn = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $postCode = null;
-
-    /**
-     * @var int|null
-     */
-    private ?int $addressNomenclature = null;
-
-    /**
-     * @var float|int
-     */
-    private ?float $x = null;
-
-    /**
-     * @var float|null
-     */
-    private ?float $y = null;
-
-    /**
-     * @var string|null
-     */
-    private ?string $servingDays = null;
-
-    /**
-     * @var int|null
-     */
-    private ?int $servingOfficeId = null;
-
-    /**
-     * @var int|null
-     */
-    private ?int $servingHubOfficeId = null;
+    private ?int $id;
+    private ?int $countryId;
+    private ?int $mainSiteId;
+    private ?string $type;
+    private ?string $typeEn;
+    private ?string $name;
+    private ?string $nameEn;
+    private ?string $municipality;
+    private ?string $municipalityEn;
+    private ?string $region;
+    private ?string $regionEn;
+    private ?string $postCode;
+    private ?int $addressNomenclature;
+    private ?float $x;
+    private ?float $y;
+    private ?string $servingDays;
+    private ?int $servingOfficeId;
+    private ?int $servingHubOfficeId;
 
     /**
      * @return int|null
@@ -394,8 +326,6 @@ class Site
      */
     public function toArray(): array
     {
-        return [
-
-        ];
+        return [ ];
     }
 }

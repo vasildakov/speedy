@@ -1,10 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Service\Location\Country;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
+
+use function file_get_contents;
+use function json_decode;
 
 /**
  * Class FindCountryRequestTest
@@ -28,11 +33,11 @@ class FindCountryRequestTest extends TestCase
 
     private function getArray(): array
     {
-        return \json_decode($this->getJson(), true);
+        return json_decode($this->getJson(), true);
     }
 
     private function getJson(): string
     {
-        return \file_get_contents("./test/Assets/FindCountryRequest.json");
+        return file_get_contents("./test/Assets/FindCountryRequest.json");
     }
 }

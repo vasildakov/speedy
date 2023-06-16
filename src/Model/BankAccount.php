@@ -14,6 +14,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
+ * @psalm-suppress MissingConstructor
  */
 class BankAccount
 {

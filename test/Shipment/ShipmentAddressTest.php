@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
@@ -13,6 +15,7 @@ use VasilDakov\Speedy\Model\CountryCode;
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
+ * @psalm-suppress MissingConstructor
  */
 class ShipmentAddressTest extends TestCase
 {
@@ -163,7 +166,7 @@ class ShipmentAddressTest extends TestCase
         parent::setUp();
     }
 
-    public function testItCanExportToArrayWithMandatoryProperty(): void // Indirectly testing the construct
+    public function testItCanExportToArrayWithMandatoryProperty(): void
     {
         $object = new ShipmentAddress($this->siteId);
 
@@ -224,5 +227,5 @@ class ShipmentAddressTest extends TestCase
         $this->assertArrayHasKey(Speedy::X, $array);
         $this->assertArrayHasKey(Speedy::Y, $array);
     }
-
 }
+

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
@@ -65,7 +67,7 @@ class Payment
     private ?CODPayment $codPayment = null;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCourierServicePayer(): ?string
     {
@@ -84,7 +86,7 @@ class Payment
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDeclaredValuePayer(): ?string
     {
@@ -103,7 +105,7 @@ class Payment
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPackagePayer(): ?string
     {
@@ -201,7 +203,6 @@ class Payment
         {
             $array['codPayment'] = $this->getCodPayment()->toArray();
         }
-
 
         //'codPayment' => $this->getCodPayment()->toArray()
 

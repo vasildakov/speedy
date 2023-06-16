@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
@@ -9,6 +11,8 @@ use VasilDakov\Speedy\Shipment\CreateShipmentResponseFactory;
 use VasilDakov\Speedy\Shipment\ShipmentPrice;
 use VasilDakov\Speedy\Shipment\ShipmentPriceAmount;
 
+use function file_get_contents;
+
 /**
  * Class CreateShipmentResponseFactory
  *
@@ -18,8 +22,7 @@ use VasilDakov\Speedy\Shipment\ShipmentPriceAmount;
  */
 class CreateShipmentResponseFactoryTest extends TestCase
 {
-
-    public function testItCanCreateInstance()
+    public function testItCanCreateInstance(): void
     {
         $json = $this->getJson();
 
@@ -28,7 +31,7 @@ class CreateShipmentResponseFactoryTest extends TestCase
 
     }
 
-    public function testInstanceHasRequiredProperties()
+    public function testInstanceHasRequiredProperties(): void
     {
         $json = $this->getJson();
 
@@ -43,8 +46,6 @@ class CreateShipmentResponseFactoryTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/CreateShipmentResponse.json");
-
-        return $json;
+        return file_get_contents("./test/Assets/CreateShipmentResponse.json");
     }
 }

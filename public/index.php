@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
+use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Configuration;
 use Laminas\Diactoros\RequestFactory;
@@ -30,12 +32,21 @@ $guzzleHttp = new GuzzleHttp();
 
 $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 
-// $response = $speedy->getContractClient(new GetContractClientsRequest());
-// $response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
-$response = $speedy->findCountry(new FindCountryRequest('BULGARIA'));
+# 1. Client
+# $response = $speedy->getContractClient(new GetContractClientsRequest());
 
+# 2. Find Country
+// $response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
+// $response = $speedy->findCountry(new FindCountryRequest('BULGARIA'));
+// $country = $response->findCountryByIsoAlpha2('BG');
+// $country = $response->findCountryById(100);
+// $country = $response->findCountryByName('БЪЛГАРИЯ');
+
+# 3. Find State (us)
+// $response = $speedy->findState(new FindStateRequest(840, 'AL'));
+
+# 4. Find Site
+$response = $speedy->findSite(new FindSiteRequest(100, 'SL'));
 
 echo '<pre>';
-//var_dump($response->findCountryByIsoAlpha2('BG'));
-//var_dump($response->findCountryByName('БЪЛГАРИЯ'));
-var_dump($response->findCountryById(100));
+var_dump($response);

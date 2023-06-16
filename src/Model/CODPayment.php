@@ -1,8 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
+
 use DateTime;
 use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class CODPayment
  *
@@ -10,6 +14,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version 1.0
+ * @psalm-suppress MissingConstructor
  */
 class CODPayment
 {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
@@ -14,6 +16,9 @@ use VasilDakov\Speedy\Shipment\ShipmentRecipient;
 use VasilDakov\Speedy\Shipment\ShipmentSender;
 use VasilDakov\Speedy\Shipment\ShipmentService;
 use VasilDakov\Speedy\Speedy;
+
+use function file_get_contents;
+use function json_decode;
 
 /**
  * Class CreateShipmentRequestTest
@@ -231,7 +236,7 @@ class CreateShipmentRequestTest extends TestCase
         //$this->assertArrayHasKey(Speedy::REF_2, $array);
     }
 
-    public function testItCanBeDeserialized()
+    public function testItCanBeDeserialized(): void
     {
         $json = $this->getJson();
 
@@ -264,13 +269,13 @@ class CreateShipmentRequestTest extends TestCase
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true);
+        return json_decode($json, true);
     }
 
 
     private function getJson(): string
     {
-        return \file_get_contents(
+        return file_get_contents(
             "./test/Assets/CreateShipmentRequest.json"
         );
     }

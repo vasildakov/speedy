@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Service\Location\Site;
 
 /**
@@ -45,12 +44,19 @@ class FindSiteRequest
     /**
      * @var string|null
      */
-    private ?string $type =null;
+    private ?string $type = null;
 
     /**
      * @var string|null
      */
     private ?string $municipality = null;
+
+
+    public function __construct(int $countryId, string $name)
+    {
+        $this->countryId = $countryId;
+        $this->name = $name;
+    }
 
     /**
      * @return string|null
@@ -163,12 +169,12 @@ class FindSiteRequest
     {
         $this->municipality = $municipality;
     }
+
     public function toArray(): array
     {
         return [
-
+            'countryId' => $this->countryId,
+            'name' => $this->name,
         ];
     }
-
-
 }

@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Service\Location\Site;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use VasilDakov\Speedy\Error;
 use VasilDakov\Speedy\Model\Site;
-
 
 /**
  * Class FindSiteResponse
@@ -20,33 +19,20 @@ use VasilDakov\Speedy\Model\Site;
  */
 class FindSiteResponse
 {
-
-    private Collection $sites;
-
+    private ArrayCollection $sites;
 
     private ?Error $error = null;
 
-
     public function __construct(Error $error = null)
     {
-        $this->sites = new Collection();
+        $this->sites = new ArrayCollection();
         $this->error = $error;
     }
 
-    public function addSite($site) 
-    {
-        $this->sites->addItem($site->getId(), $site);
-    }
-
-    public function getSite($id) 
-    {
-        return $this->sites->getItem($id);
-    }
-
     /**
-     * @return Collection
+     * @return ArrayCollection
      */
-    public function getSites(): Collection
+    public function getSites(): ArrayCollection
     {
         return $this->sites;
     }

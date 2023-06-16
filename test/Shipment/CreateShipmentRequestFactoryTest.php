@@ -1,10 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequestFactory;
+
+use function file_get_contents;
+use function json_decode;
 
 /**
  * Class CreateShipmentRequestFactoryTest
@@ -15,7 +20,7 @@ use VasilDakov\Speedy\Shipment\CreateShipmentRequestFactory;
  */
 class CreateShipmentRequestFactoryTest extends TestCase
 {
-    public function testItCanDoSomething()
+    public function testItCanDoSomething(): void
     {
         $array = $this->getArray();
 
@@ -27,12 +32,11 @@ class CreateShipmentRequestFactoryTest extends TestCase
     private function getArray(): array
     {
         $json = $this->getJson();
-        return \json_decode($json, true);
+        return json_decode($json, true);
     }
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/CreateShipmentRequest.json");
-        return $json;
+        return file_get_contents("./test/Assets/CreateShipmentRequest.json");
     }
 }

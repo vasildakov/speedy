@@ -1,10 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Service\Location\Country;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponseFactory;
-
 
 /**
  * Class FindCountryResponseFactoryTest

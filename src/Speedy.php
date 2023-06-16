@@ -20,6 +20,7 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
 use VasilDakov\Speedy\Service\Location;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Track\TrackRequest;
@@ -242,8 +243,9 @@ final class Speedy
      * @throws ClientExceptionInterface
      * @throws Throwable
      */
-    public function getContractClient(GetContractClientsRequest $object): GetContractClientsResponse
-    {
+    public function getContractClient(
+        GetContractClientsRequest $object
+    ): GetContractClientsResponse {
         $payload = $this->createPayload($object->toArray());
 
         $request = $this->createRequest(
@@ -263,8 +265,9 @@ final class Speedy
      * @return Location\Country\FindCountryResponse
      * @throws ClientExceptionInterface
      */
-    public function findCountry(Location\Country\FindCountryRequest $object): Location\Country\FindCountryResponse
-    {
+    public function findCountry(
+        Location\Country\FindCountryRequest $object
+    ): Location\Country\FindCountryResponse {
         $payload = $this->createPayload($object->toArray());
 
         $request = $this->createRequest(
@@ -282,11 +285,45 @@ final class Speedy
     /**
      * @param Location\State\FindStateRequest $request
      * @return Location\State\FindStateResponse
+     * @throws ClientExceptionInterface
      */
-    public function findState(Location\State\FindStateRequest $request): Location\State\FindStateResponse
-    {
-        return new Location\State\FindStateResponse();
+    public function findState(
+        Location\State\FindStateRequest $request
+    ): Location\State\FindStateResponse {
+        $payload = $this->createPayload($request->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/location/state',
+            $payload
+        );
+
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
+
+        return (new Location\State\FindStateResponseFactory())($json);
     }
+
+
+    /**
+     * @throws ClientExceptionInterface
+     */
+    public function findSite(Location\Site\FindSiteRequest $object): Location\Site\FindSiteResponse
+    {
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/location/site',
+            $payload
+        );
+
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
+
+        return (new Location\Site\FindSiteResponseFactory())($json);
+    }
+
 
     /**
      * @param Location\Office\FindOfficeRequest $request
@@ -297,14 +334,6 @@ final class Speedy
         return new Location\Office\FindOfficeResponse();
     }
 
-    /**
-     * @param Location\Site\FindSiteRequest $request
-     * @return Location\Site\FindSiteResponse
-     */
-    public function findSite(Location\Site\FindSiteRequest $request): Location\Site\FindSiteResponse
-    {
-        return new Location\Site\FindSiteResponse();
-    }
 
     /**
      * @param Location\Complex\FindComplexRequest $request

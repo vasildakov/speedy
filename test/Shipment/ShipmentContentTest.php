@@ -44,77 +44,22 @@ class ShipmentContentTest extends TestCase
         parent::setUp();
     }
 
-    /**
-     * @return void
-     * * &group ShipmentContent
-     */
-    public function testItCanBeCreated() :void
+    private function getShipmentContent(): ShipmentContent
     {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
-
-        $this->assertInstanceOf(ShipmentContent::class, $object);
+        return new ShipmentContent(
+            $this->parcelsCount,
+            $this->totalWeight,
+            $this->contents,
+            $this->package,
+            $this->parcel
+        );
     }
 
     /**
      * @return void
-     * * &group ShipmentContent
+     * @group ShipmentContent
      */
-    public function testItCanRetrieveTheParcelsCount() :void
-    {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
-
-        $this->assertEquals($this->parcelsCount, $object->getParcelsCount());
-    }
-
-    /**
-     * @return void
-     * * &group ShipmentContent
-     */
-    public function testItCanRetrieveTheTotalWeight() :void
-    {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
-
-        $this->assertEquals($this->totalWeight, $object->getTotalWeight());
-    }
-
-    /**
-     * @return void
-     * * &group ShipmentContent
-     */
-    public function testItCanRetrieveTheContents() :void
-    {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
-
-        $this->assertEquals($this->contents, $object->getContents());
-    }
-
-    /**
-     * @return void
-     * * &group ShipmentContent
-     */
-    public function testItCanRetrieveThePackage() :void
-    {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
-
-        $this->assertEquals($this->package, $object->getPackage());
-    }
-
-    /**
-     * @return void
-     * * &group ShipmentContent
-     */
-    public function testItCanRetrieveTheParcel() :void
-    {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
-
-        $this->assertEquals($this->parcel, $object->getParcel());
-    }
-
-    /**
-     * @return void
-     * * &group ShipmentContent
-     */
-    public function testItCanRetrieveIsDocument() :void
+    public function testItCanBeCreated(): void
     {
         $object = new ShipmentContent(
             $this->parcelsCount,
@@ -123,6 +68,72 @@ class ShipmentContentTest extends TestCase
             $this->package,
             $this->parcel
         );
+
+        $this->assertInstanceOf(ShipmentContent::class, $object);
+    }
+
+    /**
+     * @return void
+     * @group ShipmentContent
+     */
+    public function testItCanRetrieveTheParcelsCount(): void
+    {
+        $object = $this->getShipmentContent();
+
+        $this->assertEquals($this->parcelsCount, $object->getParcelsCount());
+    }
+
+    /**
+     * @return void
+     * @group ShipmentContent
+     */
+    public function testItCanRetrieveTheTotalWeight(): void
+    {
+        $object = $this->getShipmentContent();
+
+        $this->assertEquals($this->totalWeight, $object->getTotalWeight());
+    }
+
+    /**
+     * @return void
+     * @group ShipmentContent
+     */
+    public function testItCanRetrieveTheContents(): void
+    {
+        $object = $this->getShipmentContent();
+
+        $this->assertEquals($this->contents, $object->getContents());
+    }
+
+    /**
+     * @return void
+     * @group ShipmentContent
+     */
+    public function testItCanRetrieveThePackage(): void
+    {
+        $object = $this->getShipmentContent();
+
+        $this->assertEquals($this->package, $object->getPackage());
+    }
+
+    /**
+     * @return void
+     * @group ShipmentContent
+     */
+    public function testItCanRetrieveTheParcel(): void
+    {
+        $object = $this->getShipmentContent();
+
+        $this->assertEquals($this->parcel, $object->getParcel());
+    }
+
+    /**
+     * @return void
+     * @group ShipmentContent
+     */
+    public function testItCanRetrieveIsDocument(): void
+    {
+        $object = $this->getShipmentContent();
 
         $object->setDocuments();
 
@@ -131,17 +142,11 @@ class ShipmentContentTest extends TestCase
 
     /**
      * @return void
-     * * &group ShipmentContent
+     * @group ShipmentContent
      */
-    public function testItCanRetrieveIsPalletized() :void
+    public function testItCanRetrieveIsPalletized(): void
     {
-        $object = new ShipmentContent(
-            $this->parcelsCount,
-            $this->totalWeight,
-            $this->contents,
-            $this->package,
-            $this->parcel
-        );
+        $object = $this->getShipmentContent();
 
         $object->setPalletized();
 
@@ -150,11 +155,11 @@ class ShipmentContentTest extends TestCase
 
     /**
      * @return void
-     * * &group ShipmentContent
+     * @group ShipmentContent
      */
-    public function testItCanRetrieveIsPendingParcels() :void
+    public function testItCanRetrieveIsPendingParcels(): void
     {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+        $object = $this->getShipmentContent();
 
         $object->setPendingParcels();
 
@@ -163,11 +168,11 @@ class ShipmentContentTest extends TestCase
 
     /**
      * @return void
-     * * &group ShipmentContent
+     * @group ShipmentContent
      */
-    public function testItCanRetrieveIsExciseGoods() :void
+    public function testItCanRetrieveIsExciseGoods(): void
     {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+        $object = $this->getShipmentContent();
 
         $object->setExciseGoods();
 
@@ -176,22 +181,22 @@ class ShipmentContentTest extends TestCase
 
     /**
      * @return void
-     * * &group ShipmentContent
+     * @group ShipmentContent
      */
     public function testItCanBeConvertedAsArray(): void
     {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+        $object = $this->getShipmentContent();
 
         $this->assertIsArray($object->toArray());
     }
 
     /**
      * @return void
-     * * &group ShipmentContent
+     * @group ShipmentContent
      */
     public function testExportedArrayHasRequiredKeys(): void
     {
-        $object = new ShipmentContent($this->parcelsCount, $this->totalWeight, $this->contents, $this->package, $this->parcel);
+        $object = $this->getShipmentContent();
 
         $array = $object->toArray();
 
@@ -201,8 +206,7 @@ class ShipmentContentTest extends TestCase
         $this->assertArrayHasKey(Speedy::CONTENTS, $array);
         $this->assertArrayHasKey(Speedy::PACKAGE, $array);
         $this->assertArrayHasKey(Speedy::PALLETIZED, $array);
-        $this->assertArrayHasKey(Speedy:: DOCUMENTS, $array);
+        $this->assertArrayHasKey(Speedy::DOCUMENTS, $array);
         $this->assertArrayHasKey(Speedy::PENDING_PARCELS, $array);
     }
-
 }

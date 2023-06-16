@@ -32,6 +32,7 @@ class FindCountryResponseFactory
      */
     public function __invoke(string $json): FindCountryResponse
     {
+        /** @var array $array */
         $array = json_decode($json, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
