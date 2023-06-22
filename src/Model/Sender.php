@@ -4,43 +4,38 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class Sender
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @psalm-suppress MissingConstructor
  */
 class Sender extends Client
 {
-    /**
-     * @var int
-     */
-    private int $dropoffOfficeId;
+    use ToArray;
 
     /**
-     * @return int
+     * @var int|null
      */
-    public function getDropoffOfficeId(): int
+    private ?int $dropoffOfficeId = null;
+
+    /**
+     * @return ?int
+     */
+    public function getDropoffOfficeId(): ?int
     {
         return $this->dropoffOfficeId;
     }
 
     /**
-     * @param int $dropoffOfficeId
+     * @param ?int $dropoffOfficeId
      */
-    public function setDropoffOfficeId(int $dropoffOfficeId): void
+    public function setDropoffOfficeId(?int $dropoffOfficeId): void
     {
         $this->dropoffOfficeId = $dropoffOfficeId;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-
-        ];
     }
 }

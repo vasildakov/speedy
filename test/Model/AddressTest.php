@@ -1,12 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
-
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Address;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use Laminas\Hydrator\ClassMethodsHydrator;
+
+use function json_decode;
+use function file_get_contents;
 
 /**
  * Class AddressTest
@@ -73,14 +77,12 @@ class AddressTest extends TestCase
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true);
+        return json_decode($json, true);
     }
 
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/AddressFull.json");
-
-        return $json;
+        return file_get_contents("./test/Assets/AddressFull.json");
     }
 }

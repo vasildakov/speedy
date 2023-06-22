@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
@@ -57,8 +59,6 @@ class CODPaymentTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/CODPayment.json");
-
-        return $json;
+        return \file_get_contents("./test/Assets/CODPayment.json");
     }
 }

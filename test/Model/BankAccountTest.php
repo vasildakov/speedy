@@ -8,6 +8,9 @@ use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\BankAccount;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
+use function json_decode;
+use function file_get_contents;
+
 /**
  * Class BankAccountTest
  *
@@ -73,14 +76,11 @@ class BankAccountTest extends TestCase
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true);
+        return json_decode($json, true);
     }
-
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/BankAccount.json");
-
-        return $json;
+        return file_get_contents("./test/Assets/BankAccount.json");
     }
 }

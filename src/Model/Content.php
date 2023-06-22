@@ -243,8 +243,6 @@ class Content
      */
     public function toArray(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

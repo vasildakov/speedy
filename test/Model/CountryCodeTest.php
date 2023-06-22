@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\SpeedyTest\Model;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\CountryCode;
-
 
 /**
  * Class CountryCodeTest

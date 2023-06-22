@@ -13,11 +13,11 @@ namespace VasilDakov\Speedy\Model;
  */
 class CountryCode
 {
-    const BGR = 100;
-    const ROU = 642;
-    const GBR = 826;
+    public const BGR = 100;
+    public const ROU = 642;
+    public const GBR = 826;
 
-    const CODES = [
+    public const CODES = [
         self::BGR,
         self::ROU,
         self::GBR,
@@ -28,7 +28,7 @@ class CountryCode
      * @var int
      */
     private int $code;
-    
+
     /**
      * @param int $code
      */
@@ -47,7 +47,7 @@ class CountryCode
         // you can try make it with one line of code
         return $this->getCode() === $other->getCode();
     }
-    
+
     /**
      * @param int $code
      * @return self
@@ -61,7 +61,7 @@ class CountryCode
 
         return $this;
     }
-    
+
     /**
      * @return int code
      */

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Site;
 
@@ -25,7 +27,7 @@ class Collection
      */
     public function addItem($key, $item): bool
     {
-        if (!array_key_exists($key, $this->items) ) {
+        if (!array_key_exists($key, $this->items)) {
             $this->items[$key] = $item;
 
             return true;
@@ -39,7 +41,7 @@ class Collection
      */
     public function deleteItem($key): bool
     {
-        if (array_key_exists($key, $this->items) ) {
+        if (array_key_exists($key, $this->items)) {
             unset($this->items[$key]);
 
             return true;
@@ -53,7 +55,7 @@ class Collection
      */
     public function getItem($key)
     {
-        if (array_key_exists($key, $this->items) ) {
+        if (array_key_exists($key, $this->items)) {
             return $this->items[$key];
         }
         throw new Exception('Item with ... does not exist!');
@@ -66,12 +68,11 @@ class Collection
     public function findItemById($id): int
     {
         if (!empty($this->items)) {
-            $value=0;
+            $value = 0;
             foreach ($this->items as $item) {
                 if ($item->getId() === $id) {
                     $value = $id;
-                }
-                else{
+                } else {
                     throw new \InvalidArgumentException("There is not a such ID.");
                 }
             }
@@ -83,7 +84,7 @@ class Collection
     }
 
 
-    public function getItems(): array 
+    public function getItems(): array
     {
         return $this->items;
     }

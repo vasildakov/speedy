@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
 
 /**
  * Class Client
@@ -17,6 +18,8 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Client
 {
+    use ToArray;
+
     /**
      * @var int|null
      * @Serializer\Type("integer")
@@ -171,10 +174,4 @@ class Client
         $this->privatePerson = $privatePerson;
     }
 
-    public function toArray(): array
-    {
-        return [
-
-        ];
-    }
 }

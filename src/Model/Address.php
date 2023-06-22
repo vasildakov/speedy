@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
 
 /**
  * Class Address
@@ -17,31 +18,30 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Address
 {
+    use ToArray;
+
     /**
      * @var int|null
      * @Serializer\Type("integer")
-     * TODO Validate for valid country code.
      */
     private ?int $countryId = null;
 
     /**
      * @var string|null
      * @Serializer\Type("string")
-     * TODO Validate for valid country state
      */
     private ?string $stateId = null;
 
     /**
-     * @var int
+     * @var int|null
      * @Serializer\Type("integer")
      *
      */
-    private int $siteId;
+    private ?int $siteId = null;
 
     /**
      * @var string|null
      * @Serializer\Type("string")
-     * TODO Validate for valid site and value is required.
      */
     private ?string $siteType = null;
 
@@ -54,14 +54,12 @@ class Address
     /**
      * @var string|null
      * @Serializer\Type("string")
-     * TODO Validated for valid postcode in site and country.
      */
     private ?string $postCode = null;
 
     /**
      * @var int|null
      * @Serializer\Type("integer")
-     * TODO Validate for valid street.
      */
     private ?int $streetId = null;
 
@@ -86,7 +84,6 @@ class Address
     /**
      * @var int|null
      * @Serializer\Type("integer")
-     * TODO Validate for valid complex.
      */
     private ?int $complexId = null;
 
@@ -163,18 +160,27 @@ class Address
      */
     private ?float $y = null;
 
-    private string $fullAddressString;
+    /**
+     * @var string|null
+     */
+    private ?string $fullAddressString = null;
 
-    private string $siteAddressString;
+    /**
+     * @var string|null
+     */
+    private ?string $siteAddressString = null;
 
-    private string $localAddressString;
+    /**
+     * @var string|null
+     */
+    private ?string $localAddressString = null;
 
     /**
      * @param int $siteId
      */
     public function __construct(int $siteId)
     {
-        $this->setSiteId($siteId);
+        $this->siteId = $siteId;
     }
 
     /**
@@ -546,41 +552,41 @@ class Address
     }
 
     /**
-     * @return string
+     * @param string|null $fullAddressString
      */
-    public function getFullAddressString(): string
-    {
-        return $this->fullAddressString;
-    }
-
-    /**
-     * @param string $fullAddressString
-     */
-    public function setFullAddressString(string $fullAddressString): void
+    public function setFullAddressString(?string $fullAddressString): void
     {
         $this->fullAddressString = $fullAddressString;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSiteAddressString(): string
+    public function getFullAddressString(): ?string
+    {
+        return $this->fullAddressString;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSiteAddressString(): ?string
     {
         return $this->siteAddressString;
     }
 
     /**
-     * @param string $siteAddressString
+     * @param ?string $siteAddressString
      */
-    public function setSiteAddressString(string $siteAddressString): void
+    public function setSiteAddressString(?string $siteAddressString): void
     {
         $this->siteAddressString = $siteAddressString;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLocalAddressString(): string
+    public function getLocalAddressString(): ?string
     {
         return $this->localAddressString;
     }
@@ -591,17 +597,5 @@ class Address
     public function setLocalAddressString(string $localAddressString): void
     {
         $this->localAddressString = $localAddressString;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-            'countryId' => $this->getComplexId(),
-            'stateId' => $this->getStateId(),
-            'siteId' => $this->getSiteId(),
-        ];
     }
 }

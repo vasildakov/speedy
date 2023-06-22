@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
@@ -20,7 +22,7 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  */
 class ClientTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $array = $this->getArray();
 
@@ -68,8 +70,6 @@ class ClientTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/Client.json");
-
-        return $json;
+        return \file_get_contents("./test/Assets/Client.json");
     }
 }

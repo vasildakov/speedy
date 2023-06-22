@@ -1,6 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
+
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Complex;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
@@ -14,7 +17,6 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  */
 class ComplexTest extends TestCase
 {
-
     public function testItCanBeConstructed(): void
     {
         $array = $this->getArray();
@@ -52,8 +54,6 @@ class ComplexTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents("./test/Assets/Complex.json");
-
-        return $json;
+        return \file_get_contents("./test/Assets/Complex.json");
     }
 }

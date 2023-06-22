@@ -48,5 +48,12 @@ $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 # 4. Find Site
 $response = $speedy->findSite(new FindSiteRequest(100, 'SL'));
 
+
+$address = new \VasilDakov\Speedy\Model\Address(2483);
+$address->setCountryId(100);
+var_dump($address->toArray());
+exit();
+
+
 echo '<pre>';
 var_dump($response);

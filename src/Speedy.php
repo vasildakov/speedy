@@ -33,9 +33,9 @@ use function array_merge;
 /**
  * Class Speedy
  *
- * @author Vasil Dakov <vasildakov@gmail.com>
+ * @author    Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
- * @version 1.0
+ * @version   1.0
  */
 final class Speedy
 {
