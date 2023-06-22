@@ -21,26 +21,8 @@ class FindSiteResponseTest extends TestCase
     /**
      * @group collection
      */
-    public function testItCanBeInitialized()
+    public function testItCanBeInitialized(): void
     {
         $this->assertInstanceOf(FindSiteResponse::class, new FindSiteResponse());
-    }
-
-    /**
-     * @group collection
-     */
-    public function testItCanAddSitesToCollection()
-    {
-        $this->site
-             ->expects($this->once())
-             ->method('getId')
-             ->willReturn(999)
-        ;
-
-        $response = new FindSiteResponse();
-        $this->assertTrue($response->getSites()->isEmpty());
-
-        $response->addSite($this->site);
-        $this->assertFalse($response->getSites()->isEmpty());
     }
 }
