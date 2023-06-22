@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "099c30ab92c847b257cd91c3e6ddb440",
+    "content-hash": "58bdc16a390647fc19c9fd5a6b828c25",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1115,12 +1115,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "01e67df9b82eee72972f386a35455f264bcd950f"
+                "reference": "72a24a33e17295e9350dbfa4832f0e951b16dd81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/01e67df9b82eee72972f386a35455f264bcd950f",
-                "reference": "01e67df9b82eee72972f386a35455f264bcd950f",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/72a24a33e17295e9350dbfa4832f0e951b16dd81",
+                "reference": "72a24a33e17295e9350dbfa4832f0e951b16dd81",
                 "shasum": ""
             },
             "require": {
@@ -1204,7 +1204,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-10T07:48:39+00:00"
+            "time": "2023-06-17T12:52:16+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -1634,12 +1634,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "69e1a26f51fb4c5c7f2e5f0903f83c6229df269b"
+                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/69e1a26f51fb4c5c7f2e5f0903f83c6229df269b",
-                "reference": "69e1a26f51fb4c5c7f2e5f0903f83c6229df269b",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
+                "reference": "1856a119a0b0ba8da8b5c33c080aa7af8fac25b4",
                 "shasum": ""
             },
             "require": {
@@ -1703,9 +1703,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.x"
+                "source": "https://github.com/php-http/discovery/tree/1.19.0"
             },
-            "time": "2023-05-24T08:03:57+00:00"
+            "time": "2023-06-19T08:45:36+00:00"
         },
         {
             "name": "php-http/httplug",
@@ -3407,12 +3407,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "a7bbaa14c75806d62c668a079abcaae3d7233729"
+                "reference": "31b1a2a9d8f870191bdd5771d5dbcaa25a8d01d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/a7bbaa14c75806d62c668a079abcaae3d7233729",
-                "reference": "a7bbaa14c75806d62c668a079abcaae3d7233729",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/31b1a2a9d8f870191bdd5771d5dbcaa25a8d01d3",
+                "reference": "31b1a2a9d8f870191bdd5771d5dbcaa25a8d01d3",
                 "shasum": ""
             },
             "require": {
@@ -3496,7 +3496,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-14T20:50:04+00:00"
+            "time": "2023-06-20T19:43:23+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3726,12 +3726,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "f58b36c8deaff8481a7e7712bc453c0b9a4b12db"
+                "reference": "855eff23b6399678fede7a29923ca01b27e343b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/f58b36c8deaff8481a7e7712bc453c0b9a4b12db",
-                "reference": "f58b36c8deaff8481a7e7712bc453c0b9a4b12db",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/855eff23b6399678fede7a29923ca01b27e343b8",
+                "reference": "855eff23b6399678fede7a29923ca01b27e343b8",
                 "shasum": ""
             },
             "require": {
@@ -3782,7 +3782,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-12T09:10:15+00:00"
+            "time": "2023-06-20T19:52:02+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -4169,12 +4169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "957fe4bacc91e6be8f0a4094547a81e762bfe65c"
+                "reference": "fbcde3889c83707427fe092d4359683f95fb867b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/957fe4bacc91e6be8f0a4094547a81e762bfe65c",
-                "reference": "957fe4bacc91e6be8f0a4094547a81e762bfe65c",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/fbcde3889c83707427fe092d4359683f95fb867b",
+                "reference": "fbcde3889c83707427fe092d4359683f95fb867b",
                 "shasum": ""
             },
             "require": {
@@ -4246,7 +4246,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-26T14:35:33+00:00"
+            "time": "2023-06-20T18:33:35+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -4254,12 +4254,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "100663232669bdacd3ac18f4cc12c38beec9aff1"
+                "reference": "b99350b5b43439295d740bce1425fba31fa7c22d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/100663232669bdacd3ac18f4cc12c38beec9aff1",
-                "reference": "100663232669bdacd3ac18f4cc12c38beec9aff1",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/b99350b5b43439295d740bce1425fba31fa7c22d",
+                "reference": "b99350b5b43439295d740bce1425fba31fa7c22d",
                 "shasum": ""
             },
             "require": {
@@ -4324,7 +4324,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-25T06:20:28+00:00"
+            "time": "2023-06-19T06:40:06+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -4573,12 +4573,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a9aceaf20a682aeacf28d582654a1670d8826778"
+                "reference": "26ad1b9e87ef46650e951945c7d48659788f0950"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a9aceaf20a682aeacf28d582654a1670d8826778",
-                "reference": "a9aceaf20a682aeacf28d582654a1670d8826778",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/26ad1b9e87ef46650e951945c7d48659788f0950",
+                "reference": "26ad1b9e87ef46650e951945c7d48659788f0950",
                 "shasum": ""
             },
             "require": {
@@ -4652,7 +4652,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.9"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6"
             },
             "funding": [
                 {
@@ -4668,7 +4668,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-11T06:13:56+00:00"
+            "time": "2023-06-19T06:33:11+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
@@ -5990,12 +5990,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "845f20181c7f11ca9564490cc791c2fe91d443ef"
+                "reference": "c7082ff6400cc82b0e950ee31e8e77d76232af1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/845f20181c7f11ca9564490cc791c2fe91d443ef",
-                "reference": "845f20181c7f11ca9564490cc791c2fe91d443ef",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c7082ff6400cc82b0e950ee31e8e77d76232af1f",
+                "reference": "c7082ff6400cc82b0e950ee31e8e77d76232af1f",
                 "shasum": ""
             },
             "require": {
@@ -6072,7 +6072,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-30T17:17:10+00:00"
+            "time": "2023-06-20T10:30:43+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -6080,12 +6080,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "d97f9201503c57e6a101d40f193ab1d55c0be4cd"
+                "reference": "965d2e75f03eb5520dca8a220af714378b177a90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/d97f9201503c57e6a101d40f193ab1d55c0be4cd",
-                "reference": "d97f9201503c57e6a101d40f193ab1d55c0be4cd",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/965d2e75f03eb5520dca8a220af714378b177a90",
+                "reference": "965d2e75f03eb5520dca8a220af714378b177a90",
                 "shasum": ""
             },
             "require": {
@@ -6153,7 +6153,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-06T10:12:27+00:00"
+            "time": "2023-06-21T12:09:04+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -7503,12 +7503,13 @@
         "theseer/phpdox": 20,
         "vimeo/psalm": 20,
         "psalm/plugin-phpunit": 20,
-        "friendsofphp/php-cs-fixer": 20
+        "friendsofphp/php-cs-fixer": 20,
+        "phpmd/phpmd": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4",
+        "php": ">=8.2",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-xsl": "*"
