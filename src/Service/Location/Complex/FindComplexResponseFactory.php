@@ -11,23 +11,20 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Service\Location\Office;
+namespace VasilDakov\Speedy\Service\Location\Complex;
 
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
-use function json_decode;
-use function json_last_error;
-
 /**
- * Class FindOfficeResponseFactory
+ * Class FindComplexResponseFactory
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
  * @version 1.0
  */
-class FindOfficeResponseFactory
+class FindComplexResponseFactory
 {
-    public function __invoke(string $json): FindOfficeResponse
+    public function __invoke(string $json): FindComplexResponse
     {
         /** @var array $array */
         json_decode($json, true);
@@ -38,7 +35,7 @@ class FindOfficeResponseFactory
 
         $serializer = (new SerializerFactory())();
 
-        /**  @var FindOfficeResponse $response */
-        return $serializer->deserialize($json, FindOfficeResponse::class, 'json');
+        /**  @var FindComplexResponse $response */
+        return $serializer->deserialize($json, FindComplexResponse::class, 'json');
     }
 }

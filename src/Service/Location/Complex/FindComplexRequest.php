@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Complex;
 
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class FindComplexRequest
  *
@@ -13,5 +15,37 @@ namespace VasilDakov\Speedy\Service\Location\Complex;
  */
 class FindComplexRequest
 {
+    use ToArray;
 
+    /**
+     * @var int
+     */
+    private int $siteId;
+
+    /**
+     * @var string
+     */
+    private string $name;
+
+    public function __construct(int $siteId, string $name)
+    {
+        $this->siteId = $siteId;
+        $this->name = $name;
+    }
+
+    /**
+     * @param int $siteId
+     */
+    public function setSiteId(int $siteId): void
+    {
+        $this->siteId = $siteId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSiteId(): int
+    {
+        return $this->siteId;
+    }
 }

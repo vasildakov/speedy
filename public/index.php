@@ -51,10 +51,10 @@ $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 
 
 # 5. Find Office
-$response = $speedy->findOffice(new FindOfficeRequest(67338));
-var_dump($response->getOffices());
-var_dump($response->getOffices()->first()->getAddress()); exit();
+// $response = $speedy->findOffice(new FindOfficeRequest(67338));
 
+# 6. Find Complex
+$response = $speedy->findComplex(new \VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest(68134, "KRASN"));
 
 echo '<pre>';
-var_dump($response->getOffices());
+var_dump($response);

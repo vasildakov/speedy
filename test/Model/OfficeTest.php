@@ -13,6 +13,8 @@ use VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule;
 use VasilDakov\Speedy\Model\Size;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
+use function json_decode;
+
 /**
  * Class OfficeTest
  *
@@ -42,6 +44,7 @@ class OfficeTest extends TestCase
 
         // serialize: create a json from object, testing GETTERS
         $json = $serializer->serialize($instance, 'json');
+
         $this->assertIsString($json);
     }
 
@@ -71,6 +74,6 @@ class OfficeTest extends TestCase
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        return json_decode($json, true, 512, JSON_THROW_ON_ERROR);
     }
 }

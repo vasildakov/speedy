@@ -303,11 +303,7 @@ class SpeedyTest extends TestCase
             ->expects($this->once())
             ->method('getContents')
             ->willReturn(
-                json_encode([
-                    'sites' => [
-                        []
-                    ]
-                ], JSON_THROW_ON_ERROR)
+                json_encode(['sites' => [[]]], JSON_THROW_ON_ERROR)
             )
         ;
 
@@ -360,11 +356,7 @@ class SpeedyTest extends TestCase
             ->expects($this->once())
             ->method('getContents')
             ->willReturn(
-                json_encode([
-                    'offices' => [
-                        []
-                    ]
-                ], JSON_THROW_ON_ERROR)
+                json_encode(['offices' => [[]]], JSON_THROW_ON_ERROR)
             )
         ;
 
@@ -381,7 +373,48 @@ class SpeedyTest extends TestCase
     {
         $speedy = $this->getClient();
 
-        $response = $speedy->findComplex(new FindComplexRequest());
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects($this->once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/location/complex')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(
+                json_encode(['complexes' => [[]]], JSON_THROW_ON_ERROR)
+            )
+        ;
+
+        $response = $speedy->findComplex(new FindComplexRequest(68134, "KRASN"));
 
         $this->assertInstanceOf(FindComplexResponse::class, $response);
     }
@@ -416,7 +449,6 @@ class SpeedyTest extends TestCase
     public function testItCanTrack(): void
     {
         $speedy = $this->getClient();
-        ;
 
         $response = $speedy->track(new Track\TrackRequest());
 

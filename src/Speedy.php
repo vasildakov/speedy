@@ -20,6 +20,10 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
 use VasilDakov\Speedy\Service\Location;
+use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
+use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
@@ -306,6 +310,8 @@ final class Speedy
 
 
     /**
+     * @param Location\Site\FindSiteRequest $object
+     * @return FindSiteResponse
      * @throws ClientExceptionInterface
      */
     public function findSite(Location\Site\FindSiteRequest $object): Location\Site\FindSiteResponse
@@ -326,10 +332,11 @@ final class Speedy
 
 
     /**
-     * @param Location\Office\FindOfficeRequest $request
-     * @return Location\Office\FindOfficeResponse
+     * @param FindOfficeRequest $object
+     * @return FindOfficeResponse
+     * @throws ClientExceptionInterface
      */
-    public function findOffice(Location\Office\FindOfficeRequest $object)
+    public function findOffice(Location\Office\FindOfficeRequest $object): FindOfficeResponse
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -342,19 +349,29 @@ final class Speedy
         $response = $this->client->sendRequest($request);
         $json = $response->getBody()->getContents();
 
-        //var_dump($json); exit();
-
         return (new Location\Office\FindOfficeResponseFactory())($json);
     }
 
 
     /**
-     * @param Location\Complex\FindComplexRequest $request
-     * @return Location\Complex\FindComplexResponse
+     * @param FindComplexRequest $object
+     * @return FindComplexResponse
+     * @throws ClientExceptionInterface
      */
-    public function findComplex(Location\Complex\FindComplexRequest $request): Location\Complex\FindComplexResponse
+    public function findComplex(Location\Complex\FindComplexRequest $object) : Location\Complex\FindComplexResponse
     {
-        return new Location\Complex\FindComplexResponse();
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/location/complex',
+            $payload
+        );
+
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
+
+        return (new Location\Complex\FindComplexResponseFactory())($json);
     }
 
     /**
