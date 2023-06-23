@@ -1,5 +1,7 @@
 # Speedy API Client
 
+![example workflow](https://github.com/vasildakov/speedy/actions/workflows/php.yml/badge.svg)
+
 Documentation
 
 ## Features
