@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a2ea56902e8e98df75873c44fdfaa25f",
+    "content-hash": "3414a5cbbb36e486196b1f4fc2d019c4",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -3371,12 +3371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "31b1a2a9d8f870191bdd5771d5dbcaa25a8d01d3"
+                "reference": "b5d8d917ea04f817ba00ef76979b23ec1e0cccce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/31b1a2a9d8f870191bdd5771d5dbcaa25a8d01d3",
-                "reference": "31b1a2a9d8f870191bdd5771d5dbcaa25a8d01d3",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/b5d8d917ea04f817ba00ef76979b23ec1e0cccce",
+                "reference": "b5d8d917ea04f817ba00ef76979b23ec1e0cccce",
                 "shasum": ""
             },
             "require": {
@@ -3460,7 +3460,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-20T19:43:23+00:00"
+            "time": "2023-06-22T12:45:07+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -4113,12 +4113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "fbcde3889c83707427fe092d4359683f95fb867b"
+                "reference": "b4d6e1c45fa5e6f6476f228ac81b37397357c5a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/fbcde3889c83707427fe092d4359683f95fb867b",
-                "reference": "fbcde3889c83707427fe092d4359683f95fb867b",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/b4d6e1c45fa5e6f6476f228ac81b37397357c5a0",
+                "reference": "b4d6e1c45fa5e6f6476f228ac81b37397357c5a0",
                 "shasum": ""
             },
             "require": {
@@ -4190,7 +4190,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-20T18:33:35+00:00"
+            "time": "2023-06-23T12:05:08+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -7431,7 +7431,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.2",
+        "php": "^7.4|>=8.2",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-xsl": "*"
