@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
-use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -16,10 +16,10 @@ use JMS\Serializer\Annotation as Serializer;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @psalm-suppress MissingConstructor
  */
 class Office
 {
-
     public const TYPE_APT    = 1;
     public const TYPE_OFFICE = 2;
 
@@ -137,7 +137,6 @@ class Office
     /**
      * @var string
      * @Serializer\Type("string")
-     * @TODO! An enum type property.
      */
     private string $type;
 
@@ -148,10 +147,10 @@ class Office
     private int $nearbyOfficeId;
 
     /**
-     * @var OfficeWorkingTimeSchedule
-     * @Serializer\Type("VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule")
+     * @var ArrayCollection
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule>")
      */
-    private OfficeWorkingTimeSchedule $workingTimeSchedule;
+    private ArrayCollection $workingTimeSchedule;
 
     /**
      * @var bool
@@ -184,11 +183,10 @@ class Office
     private DateTime $validTo;
 
     /**
-     * @var string
-     * @Serializer\Type("string")
-     * @TODO! An enum type property.
+     * @var array
+     * @Serializer\Type("array")
      */
-    private string $cargoTypesAllowed;
+    private array $cargoTypesAllowed;
 
     /**
      * @var bool
@@ -201,6 +199,12 @@ class Office
      * @Serializer\Type("bool")
      */
     private bool $dropOffAllowed;
+
+
+    public function __construct()
+    {
+        $this->workingTimeSchedule = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -494,17 +498,17 @@ class Office
     }
 
     /**
-     * @return OfficeWorkingTimeSchedule
+     * @return ArrayCollection
      */
-    public function getWorkingTimeSchedule(): OfficeWorkingTimeSchedule
+    public function getWorkingTimeSchedule(): ArrayCollection
     {
         return $this->workingTimeSchedule;
     }
 
     /**
-     * @param OfficeWorkingTimeSchedule $workingTimeSchedule
+     * @param ArrayCollection $workingTimeSchedule
      */
-    public function setWorkingTimeSchedule(OfficeWorkingTimeSchedule $workingTimeSchedule): void
+    public function setWorkingTimeSchedule(ArrayCollection $workingTimeSchedule): void
     {
         $this->workingTimeSchedule = $workingTimeSchedule;
     }
@@ -590,21 +594,18 @@ class Office
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getCargoTypesAllowed(): string
+    public function getCargoTypesAllowed(): array
     {
         return $this->cargoTypesAllowed;
     }
 
     /**
-     * @param mixed $cargoTypesAllowed
+     * @param array $cargoTypesAllowed
      */
-    public function setCargoTypesAllowed(string $cargoTypesAllowed): void
+    public function setCargoTypesAllowed(array $cargoTypesAllowed): void
     {
-        if (!\in_array($cargoTypesAllowed, \array_values(self::CARGO_TYPES))) {
-            throw new InvalidArgumentException();
-        }
         $this->cargoTypesAllowed = $cargoTypesAllowed;
     }
 
@@ -652,5 +653,4 @@ class Office
             'address' => $this->getAddress()->toArray()
         ];
     }
-
 }

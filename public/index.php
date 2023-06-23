@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Speedy;
@@ -46,14 +47,14 @@ $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 // $response = $speedy->findState(new FindStateRequest(840, 'AL'));
 
 # 4. Find Site
-$response = $speedy->findSite(new FindSiteRequest(100, 'SL'));
+// $response = $speedy->findSite(new FindSiteRequest(100, 'SLIVEN')); var_dump($response); exit();
 
 
-$address = new \VasilDakov\Speedy\Model\Address(2483);
-$address->setCountryId(100);
-var_dump($address->toArray());
-exit();
+# 5. Find Office
+$response = $speedy->findOffice(new FindOfficeRequest(67338));
+var_dump($response->getOffices());
+var_dump($response->getOffices()->first()->getAddress()); exit();
 
 
 echo '<pre>';
-var_dump($response);
+var_dump($response->getOffices());

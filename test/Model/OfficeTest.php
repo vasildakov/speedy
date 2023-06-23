@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
@@ -56,11 +58,6 @@ class OfficeTest extends TestCase
         (new Office())->setType("NotSame");
     }
 
-    public function testCargoTypesAllowedThrowsAnException(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        (new Office())->setCargoTypesAllowed("NotExact");
-    }
 
     private function getJson(): string
     {
@@ -70,11 +67,10 @@ class OfficeTest extends TestCase
     /**
      * @throws JsonException
      */
-    private function getArray()
+    private function getArray(): array
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true, 512,JSON_THROW_ON_ERROR);
+        return \json_decode($json, true, 512, JSON_THROW_ON_ERROR);
     }
-
 }

@@ -39,19 +39,19 @@
   "maxParcelWeight": 1.236,
   "type": "APT",
   "nearbyOfficeId": 11,
-  "workingTimeSchedule": {
+  "workingTimeSchedule": [{
     "date": "2005-08-15",
     "workingTimeFrom": "04:08",
     "workingTimeTo": "04:08",
     "sameDayDepartureCutoff": "04:08",
     "standardSchedule": false
-  },
+  }],
   "palletOffice": false,
   "cardPaymentAllowed": false,
   "cashPaymentAllowed": false,
   "validFrom": "2005-08-15",
   "validTo": "2005-08-15",
-  "cargoTypesAllowed": "PARCEL",
+  "cargoTypesAllowed": ["PALLET", "PARCEL", "TYRE"],
   "pickUpAllowed": false,
   "dropOffAllowed": false
 }

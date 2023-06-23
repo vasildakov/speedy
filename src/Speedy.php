@@ -329,9 +329,22 @@ final class Speedy
      * @param Location\Office\FindOfficeRequest $request
      * @return Location\Office\FindOfficeResponse
      */
-    public function findOffice(Location\Office\FindOfficeRequest $request): Location\Office\FindOfficeResponse
+    public function findOffice(Location\Office\FindOfficeRequest $object)
     {
-        return new Location\Office\FindOfficeResponse();
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/location/office',
+            $payload
+        );
+
+        $response = $this->client->sendRequest($request);
+        $json = $response->getBody()->getContents();
+
+        //var_dump($json); exit();
+
+        return (new Location\Office\FindOfficeResponseFactory())($json);
     }
 
 

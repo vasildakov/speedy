@@ -323,7 +323,52 @@ class SpeedyTest extends TestCase
     {
         $speedy = $this->getClient();
 
-        $response = $speedy->findOffice(new FindOfficeRequest());
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects($this->once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/location/office')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(
+                json_encode([
+                    'offices' => [
+                        []
+                    ]
+                ], JSON_THROW_ON_ERROR)
+            )
+        ;
+
+        $response = $speedy->findOffice(new FindOfficeRequest(123));
 
         $this->assertInstanceOf(FindOfficeResponse::class, $response);
     }
