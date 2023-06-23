@@ -36,6 +36,9 @@ use VasilDakov\Speedy\Track;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Service;
 
+use function json_encode;
+use function json_decode;
+
 /**
  * Class SpeedyTest
  *
@@ -80,6 +83,7 @@ class SpeedyTest extends TestCase
 
     /**
      * @group client
+     * @throws JsonException
      */
     public function testItCanGetContractClient(): void
     {
@@ -108,12 +112,6 @@ class SpeedyTest extends TestCase
             ->willReturn($this->stream)
         ;
 
-        /* $this->stream
-            ->expects($this->once())
-            ->method('write')
-            ->willReturn($this->request)
-        ; */
-
         $this->client
             ->expects($this->once())
             ->method('sendRequest')
@@ -131,7 +129,7 @@ class SpeedyTest extends TestCase
             ->expects($this->once())
             ->method('getContents')
             ->willReturn(
-                \json_encode([
+                json_encode([
                     'clients' => [
                         ['clientId' => 1, 'address' => ['countryId' => 1, 'siteId' => 2]],
                         ['clientId' => 2, 'address' => ['countryId' => 3, 'siteId' => 4]]
@@ -146,6 +144,10 @@ class SpeedyTest extends TestCase
     }
 
 
+    /**
+     * @throws ClientExceptionInterface
+     * @throws JsonException
+     */
     public function testItCanFindCountry(): void
     {
         $speedy = $this->getClient();
@@ -205,27 +207,56 @@ class SpeedyTest extends TestCase
      */
     public function testItCanFindState(): void
     {
-        $this->markTestIncomplete();
-
-        /*
         $speedy = $this->getClient();
+
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects($this->once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/location/state')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(
+                json_encode([
+                    'states' => [
+                        []
+                    ]
+                ], JSON_THROW_ON_ERROR)
+            )
+        ;
+
         $response = $speedy->findState(new FindStateRequest(100, 'SL'));
+
         $this->assertInstanceOf(FindStateResponse::class, $response);
-        */
-    }
-
-    /**
-     * @group client
-     */
-    public function testItCanFindOffice(): void
-    {
-        $this->markTestIncomplete();
-
-        /*
-        $speedy = $this->getClient();
-        $response = $speedy->findOffice(new FindOfficeRequest());
-        $this->assertInstanceOf(FindOfficeResponse::class, $response);
-        */
     }
 
     /**
@@ -233,12 +264,70 @@ class SpeedyTest extends TestCase
      */
     public function testItCanFindSite(): void
     {
-        $this->markTestIncomplete();
+        $speedy = $this->getClient();
 
-        /*$speedy = $this->getClient();
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects($this->once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/location/site')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(
+                json_encode([
+                    'sites' => [
+                        []
+                    ]
+                ], JSON_THROW_ON_ERROR)
+            )
+        ;
+
         $response = $speedy->findSite(new FindSiteRequest(100, 'SL'));
-        $this->assertInstanceOf(ResponseInterface::class, $response); */
+
+        $this->assertInstanceOf(FindSiteResponse::class, $response);
     }
+
+    /**
+     * @group client
+     */
+    public function testItCanFindOffice(): void
+    {
+        $speedy = $this->getClient();
+
+        $response = $speedy->findOffice(new FindOfficeRequest());
+
+        $this->assertInstanceOf(FindOfficeResponse::class, $response);
+    }
+
 
     /**
      * @group client

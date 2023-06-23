@@ -8,3 +8,4 @@ public/.env
 /build/coverage
 /build/docs
 /build/logs
+/cache

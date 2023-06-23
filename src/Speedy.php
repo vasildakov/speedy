@@ -255,7 +255,7 @@ final class Speedy
         );
 
         $response = $this->client->sendRequest($request);
-        $json = $response->getBody()->getContents();
+        $json     = $response->getBody()->getContents();
 
         return (new GetContractClientsResponseFactory())($json);
     }
