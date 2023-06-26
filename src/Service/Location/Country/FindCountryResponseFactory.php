@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Location\Country;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Laminas\Hydrator\ClassMethodsHydrator;
-use Laminas\Hydrator\ReflectionHydrator;
-use Laminas\Hydrator\Strategy\HydratorStrategy;
-use VasilDakov\Speedy\Model\Client;
 use VasilDakov\Speedy\Model\Country;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 use function json_encode;
 use function json_decode;
@@ -24,8 +21,6 @@ use function json_last_error;
  */
 class FindCountryResponseFactory
 {
-    private array $countries = [];
-
     /**
      * @param string $json
      * @return FindCountryResponse
@@ -39,13 +34,9 @@ class FindCountryResponseFactory
             throw new \InvalidArgumentException('Invalid or malformed JSON');
         }
 
-        foreach ($array['countries'] as $item) {
-            $hydrator = new ReflectionHydrator();
-            $this->countries[] = $hydrator->hydrate($item, new Country());
-        }
+        $serializer = (new SerializerFactory())();
 
-        return new FindCountryResponse(
-            new ArrayCollection($this->countries)
-        );
+        /**  @var FindCountryResponse $response */
+        return $serializer->deserialize($json, FindCountryResponse::class, 'json');
     }
 }

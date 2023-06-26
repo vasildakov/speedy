@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class Country
  *
@@ -11,66 +13,79 @@ namespace VasilDakov\Speedy\Model;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  * @psalm-suppress MissingConstructor
+ * @Serializer\AccessType("public_method")
  */
 class Country
 {
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     public int $id;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $name;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $isoAlpha2;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $isoAlpha3;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      */
     public array $postCodeFormats;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     public string $currencyCode;
 
     /**
      * @var bool
+     * @Serializer\Type("bool")
      */
     public bool $requireState;
 
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     public int $addressType;
 
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     public int $siteNomen;
 
     /**
      * @var int|null
+     * @Serializer\Type("integer")
      */
     public ?int $defaultOfficeId = null;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      */
     public array $streetTypes;
 
     /**
      * @var array
+     * @Serializer\Type("array")
      */
     public array $complexTypes;
 

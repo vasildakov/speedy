@@ -10,11 +10,11 @@ use VasilDakov\Speedy\ToArray;
 /**
  * Class Address
  *
- * @Serializer\AccessType("public_method")
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  * @psalm-suppress MissingConstructor
+ * @Serializer\AccessType("public_method")
  */
 class Address
 {
@@ -161,16 +161,19 @@ class Address
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $fullAddressString = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $siteAddressString = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $localAddressString = null;
 
@@ -215,19 +218,19 @@ class Address
     }
 
     /**
-     * @return int
+     * @param int|null $siteId
      */
-    public function getSiteId(): int
+    public function setSiteId(?int $siteId): void
     {
-        return $this->siteId;
+        $this->siteId = $siteId;
     }
 
     /**
-     * @param int $siteId
+     * @return int|null
      */
-    public function setSiteId(int $siteId): void
+    public function getSiteId(): ?int
     {
-        $this->siteId = $siteId;
+        return $this->siteId;
     }
 
     /**

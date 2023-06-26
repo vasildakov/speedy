@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Location\Country;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Criteria;
-use Doctrine\Common\Collections\Expr\Comparison;
+use JMS\Serializer\Annotation as Serializer;
 use VasilDakov\Speedy\Model\Country;
 
 use function array_filter;
@@ -19,12 +18,24 @@ use function mb_strtoupper;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @Serializer\AccessType("public_method")
  */
 class FindCountryResponse
 {
+    /**
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Model\Country>")
+     */
     private ArrayCollection $countries;
 
-    public function __construct(ArrayCollection $countries)
+    public function __construct()
+    {
+        $this->countries = new ArrayCollection();
+    }
+
+    /**
+     * @param ArrayCollection $countries
+     */
+    public function setCountries(ArrayCollection $countries): void
     {
         $this->countries = $countries;
     }

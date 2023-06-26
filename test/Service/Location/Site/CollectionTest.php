@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Location\Site;
+namespace VasilDakov\SpeedyTest\Service\Location\Site;
 
 use PHPUnit\Framework\TestCase;
-// the class that will be tested
 use VasilDakov\Speedy\Service\Location\Site\Collection;
+
+// the class that will be tested
 
 class CollectionTest extends TestCase
 {

@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Client\ClientExceptionInterface;
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
-use Psr\Http\Client\ClientInterface;
 use Throwable;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
-use VasilDakov\Speedy\Printing\PrintRequest;
-use VasilDakov\Speedy\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
@@ -25,14 +21,15 @@ use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
 use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
+use VasilDakov\Speedy\Service\Printing\PrintRequest;
+use VasilDakov\Speedy\Service\Printing\PrintResponse;
+use VasilDakov\Speedy\Service\Track\TrackRequest;
+use VasilDakov\Speedy\Service\Track\TrackResponse;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
-use VasilDakov\Speedy\Track\TrackRequest;
-use VasilDakov\Speedy\Track\TrackResponse;
 
-use function json_encode;
-use function json_decode;
 use function array_merge;
+use function json_encode;
 
 /**
  * Class Speedy

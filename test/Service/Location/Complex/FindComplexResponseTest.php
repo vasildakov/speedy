@@ -11,32 +11,33 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Location\Complex;
+namespace VasilDakov\SpeedyTest\Service\Location\Complex;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
+use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 
 /**
- * Class FindComplexRequestTest
+ * Class FindComplexResponseTest
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
  * @version 1.0
  */
-class FindComplexRequestTest extends TestCase
+class FindComplexResponseTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
-        $instance = new FindComplexRequest(1000, 'name');
+        $instance = new FindComplexResponse();
 
-        $this->assertInstanceOf(FindComplexRequest::class, $instance);
+        $this->assertInstanceOf(FindComplexResponse::class, $instance);
+
     }
 
     public function testItCanSetAndGet(): void
     {
-        $instance = new FindComplexRequest(1000, 'name');
+        $instance = new FindComplexResponse();
 
-        $this->assertEquals(1000, $instance->getSiteId());
-        $this->assertEquals('name', $instance->getName());
+        $this->assertInstanceOf(ArrayCollection::class, $instance->getComplexes());
     }
 }

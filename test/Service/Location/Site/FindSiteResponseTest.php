@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Location\Site;
+namespace VasilDakov\SpeedyTest\Service\Location\Site;
 
 use PHPUnit\Framework\TestCase;
-// the class that will be tested
-use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Model\Site;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
+
+// the class that will be tested
 
 class FindSiteResponseTest extends TestCase
 {

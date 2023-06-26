@@ -6,7 +6,6 @@ namespace VasilDakov\SpeedyTest;
 
 use Fig\Http\Message\RequestMethodInterface;
 use JsonException;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
@@ -14,9 +13,10 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
-use VasilDakov\Speedy\Service\Calculation;
 use VasilDakov\Speedy\Configuration;
 use VasilDakov\Speedy\Printing;
+use VasilDakov\Speedy\Service;
+use VasilDakov\Speedy\Service\Calculation;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
@@ -32,12 +32,10 @@ use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetResponse;
 use VasilDakov\Speedy\Shipment;
-use VasilDakov\Speedy\Track;
 use VasilDakov\Speedy\Speedy;
-use VasilDakov\Speedy\Service;
+use VasilDakov\Speedy\Track;
 
 use function json_encode;
-use function json_decode;
 
 /**
  * Class SpeedyTest
@@ -491,9 +489,9 @@ class SpeedyTest extends TestCase
     {
         $speedy = $this->getClient();
 
-        $response = $speedy->track(new Track\TrackRequest());
+        $response = $speedy->track(new Service\Track\TrackRequest());
 
-        $this->assertInstanceOf(Track\TrackResponse::class, $response);
+        $this->assertInstanceOf(Service\Track\TrackResponse::class, $response);
     }
 
     /**
@@ -503,9 +501,9 @@ class SpeedyTest extends TestCase
     {
         $speedy = $this->getClient();
 
-        $response = $speedy->print(new Printing\PrintRequest());
+        $response = $speedy->print(new Service\Printing\PrintRequest());
 
-        $this->assertInstanceOf(Printing\PrintResponse::class, $response);
+        $this->assertInstanceOf(Service\Printing\PrintResponse::class, $response);
     }
 
     /**

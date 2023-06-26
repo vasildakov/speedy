@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\Speedy\Printing;
+namespace VasilDakov\Speedy\Service\Printing;
 
 /**
  * Class Client
