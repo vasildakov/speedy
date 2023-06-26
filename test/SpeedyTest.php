@@ -17,6 +17,7 @@ use VasilDakov\Speedy\Configuration;
 use VasilDakov\Speedy\Printing;
 use VasilDakov\Speedy\Service;
 use VasilDakov\Speedy\Service\Calculation;
+use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
@@ -477,7 +478,57 @@ class SpeedyTest extends TestCase
     {
         $speedy = $this->getClient();
 
-        $response = $speedy->calculation(new Calculation\CalculationRequest());
+        $request = new CalculationRequest();
+        $request->setSender($this->createMock(Calculation\CalculationSender::class));
+        $request->setRecipient($this->createMock(Calculation\CalculationRecipient::class));
+        $request->setService($this->createMock(Calculation\CalculationService::class));
+        $request->setContent($this->createMock(Calculation\CalculationContent::class));
+        $request->setPayment($this->createMock(Calculation\CalculationPayment::class));
+
+
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects($this->once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/calculate')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(
+                json_encode(['calculations' => [[]]], JSON_THROW_ON_ERROR)
+            )
+        ;
+
+
+        $response = $speedy->calculation($request);
 
         $this->assertInstanceOf(Calculation\CalculationResponse::class, $response);
     }

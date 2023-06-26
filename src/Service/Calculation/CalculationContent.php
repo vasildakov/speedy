@@ -13,7 +13,7 @@ use VasilDakov\Speedy\ToArray;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-readonly class CalculationContent
+class CalculationContent
 {
     use ToArray;
 
