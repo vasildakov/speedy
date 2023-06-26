@@ -125,8 +125,7 @@ class Address
 
     /**
      * @var int|null
-     * @Serializer\Type("string")
-     * TODO Validate for valid point of interest
+     * @Serializer\Type("integer")
      */
     private ?int $poiId = null;
 

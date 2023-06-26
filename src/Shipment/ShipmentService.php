@@ -52,7 +52,7 @@ class ShipmentService
      */
     public function __construct(int $serviceId)
     {
-        $this->setServiceId($serviceId);
+        $this->serviceId = $serviceId;
     }
 
     /**

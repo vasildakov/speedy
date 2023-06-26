@@ -6,6 +6,8 @@ namespace VasilDakov\Speedy\Shipment;
 
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Model\CountryCode;
+use VasilDakov\Speedy\ToArray;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class ShipmentAddress
@@ -14,121 +16,147 @@ use VasilDakov\Speedy\Model\CountryCode;
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  * @version
+ * @Serializer\AccessType("public_method")
  */
 class ShipmentAddress
 {
+    use ToArray;
+
     /**
-     * @var CountryCode|null
+     * @var int|null
+     * @Serializer\Type("integer")
      */
-    private ?CountryCode $countryId = null;
+    private ?int $countryId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $stateId = null;
 
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     private int $siteId;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $siteType = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $siteName = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $postCode = null;
 
     /**
      * @var int|null
+     * @Serializer\Type("integer")
      */
     private ?int $streetId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $streetType = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $streetName = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $streetNo = null;
 
     /**
      * @var int|null
+     * @Serializer\Type("integer")
      */
     private ?int $complexId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $complexType = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $complexName = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $blockNo = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $entranceNo = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $floorNo = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $apartmentNo = null;
 
     /**
      * @var int|null
+     * @Serializer\Type("integer")
      */
     private ?int $poiId = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $addressNote = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $addressLine1 = null;
 
     /**
      * @var string|null
+     * @Serializer\Type("string")
      */
     private ?string $addressLine2 = null;
 
     /**
      * @var float|null
+     * @Serializer\Type("float")
      */
     private ?float $x = null;
 
     /**
      * @var float|null
+     * @Serializer\Type("float")
      */
     private ?float $y = null;
 
@@ -137,26 +165,23 @@ class ShipmentAddress
      */
     public function __construct(int $siteId)
     {
-        $this->setSiteId($siteId);
+        $this->siteId = $siteId;
     }
 
     /**
-     * @return CountryCode|null
+     * @return int
      */
-    public function getCountryId(): ?CountryCode
+    public function getCountryId(): int
     {
         return $this->countryId;
     }
 
     /**
-     * @param CountryCode $countryId
-     * @return self
+     * @param int $countryId
      */
-    public function setCountryId(CountryCode $countryId): self
+    public function setCountryId(int $countryId): void
     {
         $this->countryId = $countryId;
-
-        return $this;
     }
 
     /**
@@ -315,9 +340,9 @@ class ShipmentAddress
     }
 
     /**
-     * @param int $complexId
+     * @param ?int $complexId
      */
-    public function setComplexId(int $complexId): void
+    public function setComplexId(?int $complexId): void
     {
         $this->complexId = $complexId;
     }
@@ -331,9 +356,9 @@ class ShipmentAddress
     }
 
     /**
-     * @param string $complexType
+     * @param ?string $complexType
      */
-    public function setComplexType(string $complexType): void
+    public function setComplexType(?string $complexType): void
     {
         $this->complexType = $complexType;
     }
@@ -427,9 +452,9 @@ class ShipmentAddress
     }
 
     /**
-     * @param int $poiId
+     * @param ?int $poiId
      */
-    public function setPoiId(int $poiId): void
+    public function setPoiId(?int $poiId): void
     {
         $this->poiId = $poiId;
     }
@@ -512,105 +537,5 @@ class ShipmentAddress
     public function setY(float $y): void
     {
         $this->y = $y;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        $data = [
-            Speedy::SITE_ID => $this->getSiteId()
-        ];
-
-        if (null !== $this->countryId) {
-            $data[Speedy::COUNTRY_ID]  = $this->getCountryId();
-        }
-
-        if (null !== $this->countryId) {
-            $data[Speedy::STATE_ID]  = $this->getStateId();
-        }
-
-        if (null !== $this->siteType) {
-            $data[Speedy::SITE_TYPE]  = $this->getSiteType();
-        }
-
-        if (null !== $this->siteName) {
-            $data[Speedy::SITE_NAME]  = $this->getSiteName();
-        }
-
-        if (null !== $this->postCode) {
-            $data[Speedy::POST_CODE]  = $this->getPostCode();
-        }
-
-        if (null !== $this->streetId) {
-            $data[Speedy::STREET_ID]  = $this->getStreetId();
-        }
-        if (null !== $this->streetType) {
-            $data[Speedy::STREET_TYPE]  = $this->getStreetType();
-        }
-
-        if (null !== $this->streetName) {
-            $data[Speedy::STREET_NAME] = $this->getStreetName();
-        }
-
-        if (null !== $this->streetNo) {
-            $data[Speedy::STREET_NO] = $this->getStreetNo();
-        }
-
-        if (null !== $this->complexId) {
-            $data[Speedy::COMPLEX_ID] = $this->getComplexId();
-        }
-
-        if (null !== $this->complexType) {
-            $data[Speedy::COMPLEX_TYPE] = $this->getComplexType();
-        }
-
-        if (null !== $this->complexName) {
-            $data[Speedy::COMPLEX_NAME] = $this->getComplexName();
-        }
-
-        if (null !== $this->blockNo) {
-            $data[Speedy::BLOCK_NO] = $this->getBlockNo();
-        }
-
-        if (null !== $this->entranceNo) {
-            $data[Speedy::ENTRANCE_NO] = $this->getEntranceNo();
-        }
-
-        if (null !== $this->floorNo) {
-            $data[Speedy::FLOOR_NO] = $this->getFloorNo();
-        }
-
-        if (null !== $this->apartmentNo) {
-            $data[Speedy::APARTMENT_NO] = $this->getApartmentNo();
-        }
-
-        if (null !== $this->poiId) {
-            $data[Speedy::POI_ID] = $this->getPoiId();
-        }
-
-        if (null !== $this->addressNote) {
-            $data[Speedy::ADDRESS_NOTE] = $this->getAddressNote();
-        }
-
-        if (null !== $this->addressLine1) {
-            $data[Speedy::ADDRESS_LINE_1] = $this->getAddressLine1();
-        }
-
-        if (null !== $this->addressLine2) {
-            $data[Speedy::ADDRESS_LINE_2] = $this->getAddressLine2();
-        }
-
-        if (null !== $this->x) {
-            $data[Speedy::X] = $this->getX();
-        }
-
-        if (null !== $this->y) {
-            $data[Speedy::Y] = $this->getY();
-        }
-
-
-        return $data;
     }
 }

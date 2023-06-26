@@ -10,11 +10,19 @@
   "entranceNo":"1",
   "floorNo": "8",
   "apartmentNo": "39",
-  "streetId": null,
-  "x": 0.0,
-  "y": 0.0,
+  "streetId": 112233,
+  "stateId": "stateId",
+  "x": 3.0,
+  "y": 4.0,
   "complexId": 1234,
   "fullAddressString": "full address string",
   "siteAddressString": "site address string",
-  "localAddressString": "local address string"
+  "localAddressString": "local address string",
+  "complexType": "complexType",
+  "complexName": "complexName",
+  "blockNo": "blockNo",
+  "poiId": 111,
+  "addressNote": "some address note",
+  "addressLine1": "address line 1",
+  "addressLine2": "address line 2"
 }

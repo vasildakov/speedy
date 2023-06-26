@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Serializer;
 
 use JMS\Serializer;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use VasilDakov\Speedy\Exception\ServiceNotCreatedException;
 
@@ -29,6 +30,11 @@ final class SerializerFactory
                         new Serializer\Naming\IdenticalPropertyNamingStrategy()
                     )
                 )
+                ->setSerializationContextFactory(function () {
+                    return SerializationContext::create()
+                        ->setSerializeNull(true)
+                        ;
+                })
                 ->build()
             ;
         } catch (\Throwable $e) {
