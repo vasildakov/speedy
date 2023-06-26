@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Site;
 
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class FindSiteRequest
  *
@@ -15,16 +17,7 @@ namespace VasilDakov\Speedy\Service\Location\Site;
  */
 class FindSiteRequest
 {
-    /**
-     * @var string|null
-     */
-    private ?string $language = null;
-
-    /**
-     * @var int|null
-     * TODO Validated against system register for external customers.
-     */
-    private ?int $clientSystemId = null;
+    use ToArray;
 
     /**
      * @var int
@@ -54,40 +47,8 @@ class FindSiteRequest
 
     public function __construct(int $countryId, string $name)
     {
-        $this->countryId = $countryId;
-        $this->name = $name;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLanguage(): ?string
-    {
-        return $this->language;
-    }
-
-    /**
-     * @param string|null $language
-     */
-    public function setLanguage(?string $language): void
-    {
-        $this->language = $language;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getClientSystemId(): ?int
-    {
-        return $this->clientSystemId;
-    }
-
-    /**
-     * @param int|null $clientSystemId
-     */
-    public function setClientSystemId(?int $clientSystemId): void
-    {
-        $this->clientSystemId = $clientSystemId;
+        $this->setCountryId($countryId);
+        $this->setName($name);
     }
 
     /**
@@ -168,13 +129,5 @@ class FindSiteRequest
     public function setMunicipality(?string $municipality): void
     {
         $this->municipality = $municipality;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'countryId' => $this->countryId,
-            'name' => $this->name,
-        ];
     }
 }

@@ -14,24 +14,22 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTest\Service\Location\Office;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponseFactory;
 
 /**
- * Class FindOfficeRequestTest
+ * Class FindOfficeResponseFactoryTest
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
  * @version 1.0
  */
-class FindOfficeRequestTest extends TestCase
+class FindOfficeResponseFactoryTest extends TestCase
 {
-
-    public function testItCanBeConstructed()
+    public function testItThrowsAnExceptionForInvalidJson(): void
     {
-        $instance = new FindOfficeRequest(123);
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid or malformed JSON');
 
-        $this->assertInstanceOf(FindOfficeRequest::class, $instance);
-
-        $this->assertEquals(123, $instance->getSiteId());
+        (new FindOfficeResponseFactory())("{invalid json or malformed json}");
     }
 }

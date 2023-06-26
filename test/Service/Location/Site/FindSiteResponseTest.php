@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Service\Location\Site;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Site;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
@@ -24,6 +25,13 @@ class FindSiteResponseTest extends TestCase
      */
     public function testItCanBeInitialized(): void
     {
-        $this->assertInstanceOf(FindSiteResponse::class, new FindSiteResponse());
+        $instance = new FindSiteResponse();
+        $instance->setError(null);
+
+        $this->assertInstanceOf(FindSiteResponse::class, $instance);
+
+        $this->assertInstanceOf(ArrayCollection::class, $instance->getSites());
+
+        $this->assertIsArray($instance->toArray());
     }
 }

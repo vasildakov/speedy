@@ -18,6 +18,7 @@ use Laminas\Hydrator\ReflectionHydrator;
 use RuntimeException;
 use VasilDakov\Speedy\Model\Site;
 use VasilDakov\Speedy\Model\State;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class FindSiteResponseFactory
@@ -37,17 +38,9 @@ class FindSiteResponseFactory
             throw new InvalidArgumentException('Invalid or malformed JSON');
         }
 
-        if (! isset($array['sites']) || ! is_array($array['sites'])) {
-            throw new RuntimeException('Service can not be created');
-        }
+        $serializer = (new SerializerFactory())();
 
-        $response = new FindSiteResponse();
-
-        foreach ($array['sites'] as $item) {
-            $site = (new ReflectionHydrator())->hydrate($item, new Site());
-            $response->getSites()->add($site);
-        }
-
-        return $response;
+        /**  @var FindSiteResponse $response */
+        return $serializer->deserialize($json, FindSiteResponse::class, 'json');
     }
 }

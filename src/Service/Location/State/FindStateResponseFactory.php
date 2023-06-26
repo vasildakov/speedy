@@ -17,6 +17,7 @@ use RuntimeException;
 use InvalidArgumentException;
 use Laminas\Hydrator\ReflectionHydrator;
 use VasilDakov\Speedy\Model\State;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class FindStateResponseFactory
@@ -30,8 +31,6 @@ class FindStateResponseFactory
 {
     public function __invoke(string $json): FindStateResponse
     {
-        $states = [];
-
         /** @var array $array */
         $array = json_decode($json, true);
 
@@ -39,15 +38,9 @@ class FindStateResponseFactory
             throw new InvalidArgumentException('Invalid or malformed JSON');
         }
 
-        if (! isset($array['states']) || ! is_array($array['states'])) {
-            throw new RuntimeException('Service can not be created');
-        }
+        $serializer = (new SerializerFactory())();
 
-        foreach ($array['states'] as $item) {
-            $hydrator = new ReflectionHydrator();
-            $states[] = $hydrator->hydrate($item, new State());
-        }
-
-        return new FindStateResponse($states);
+        /**  @var FindStateResponse $response */
+        return $serializer->deserialize($json, FindStateResponse::class, 'json');
     }
 }

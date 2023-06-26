@@ -24,9 +24,8 @@ class FindCountryResponseTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
-        $countries = $this->getCountriesArray();
+        $instance = new FindCountryResponse();
 
-        $instance = new FindCountryResponse(new ArrayCollection($countries));
         $this->assertInstanceOf(FindCountryResponse::class, $instance);
     }
 
@@ -56,7 +55,7 @@ class FindCountryResponseTest extends TestCase
     }
 
 
-    public function testNullResults()
+    public function testNullResults(): void
     {
         $json = $this->getCountriesJson();
         $instance = (new FindCountryResponseFactory())($json);
@@ -64,7 +63,6 @@ class FindCountryResponseTest extends TestCase
         $this->assertNull($instance->findCountryById(999999999999));
         $this->assertNull($instance->findCountryByName('Some None Existing Name'));
         $this->assertNull($instance->findCountryByIsoAlpha2('Some None Existing Alpha-2'));
-
     }
 
 

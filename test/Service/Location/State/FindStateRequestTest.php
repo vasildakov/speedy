@@ -11,27 +11,24 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Service\Location\Office;
+namespace VasilDakov\SpeedyTest\Service\Location\State;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
+use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 
 /**
- * Class FindOfficeRequestTest
+ * Class FindStateRequestTest
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
  * @version 1.0
  */
-class FindOfficeRequestTest extends TestCase
+class FindStateRequestTest extends TestCase
 {
-
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
-        $instance = new FindOfficeRequest(123);
+        $instance = new FindStateRequest(100, 'State');
 
-        $this->assertInstanceOf(FindOfficeRequest::class, $instance);
-
-        $this->assertEquals(123, $instance->getSiteId());
+        $this->assertInstanceOf(FindStateRequest::class, $instance);
     }
 }
