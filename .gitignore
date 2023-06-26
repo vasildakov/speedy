@@ -10,3 +10,4 @@ public/.env
 /build/logs
 /cache
 .php-cs-fixer.cache
+.env

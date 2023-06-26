@@ -6,7 +6,7 @@ namespace VasilDakov\Speedy\Service\Location\Site;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use VasilDakov\Speedy\Error;
-use VasilDakov\Speedy\Model\Site;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class FindSiteResponse
@@ -16,17 +16,29 @@ use VasilDakov\Speedy\Model\Site;
  * @copyright 2009-2022 Neutrino.bg
  * @version   1.0
  * @see       https://api.speedy.bg/web-api.html#href-find-site-resp
+ * @Serializer\AccessType("public_method")
  */
 class FindSiteResponse
 {
+    /**
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Model\Site>")
+     */
     private ArrayCollection $sites;
 
     private ?Error $error = null;
 
-    public function __construct(Error $error = null)
+    public function __construct(?Error $error = null)
     {
         $this->sites = new ArrayCollection();
         $this->error = $error;
+    }
+
+    /**
+     * @param ArrayCollection $sites
+     */
+    public function setSites(ArrayCollection $sites): void
+    {
+        $this->sites = $sites;
     }
 
     /**

@@ -12,6 +12,7 @@ use Psr\Http\Message\RequestInterface;
 use Throwable;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
+use VasilDakov\Speedy\Service\Calculation\CalculationResponseFactory;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
@@ -399,12 +400,23 @@ final class Speedy
     }
 
     /**
-     * @param CalculationRequest $request
+     * @param CalculationRequest $object
      * @return CalculationResponse
+     * @throws ClientExceptionInterface
      */
-    public function calculation(CalculationRequest $request): CalculationResponse
+    public function calculation(CalculationRequest $object): CalculationResponse
     {
-        return new CalculationResponse();
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/calculate',
+            $payload
+        );
+
+        $json = $this->getContents($request);
+
+        return (new CalculationResponseFactory())($json);
     }
 
     /**

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Calculation;
 
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class CalculationService
  *
@@ -13,4 +15,47 @@ namespace VasilDakov\Speedy\Service\Calculation;
  */
 class CalculationService
 {
+    use ToArray;
+
+    private bool $autoAdjustPickupDate = true;
+
+    private array $serviceIds = [];
+
+    public function __construct(bool $autoAdjustPickupDate, array $serviceIds)
+    {
+        $this->autoAdjustPickupDate = $autoAdjustPickupDate;
+        $this->serviceIds = $serviceIds;
+    }
+
+    /**
+     * @param bool $autoAdjustPickupDate
+     */
+    public function setAutoAdjustPickupDate(bool $autoAdjustPickupDate): void
+    {
+        $this->autoAdjustPickupDate = $autoAdjustPickupDate;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAutoAdjustPickupDate(): bool
+    {
+        return $this->autoAdjustPickupDate;
+    }
+
+    /**
+     * @param array $serviceIds
+     */
+    public function setServiceIds(array $serviceIds): void
+    {
+        $this->serviceIds = $serviceIds;
+    }
+
+    /**
+     * @return array
+     */
+    public function getServiceIds(): array
+    {
+        return $this->serviceIds;
+    }
 }

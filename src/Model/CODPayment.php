@@ -64,8 +64,6 @@ class CODPayment
 
     public function toArray(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

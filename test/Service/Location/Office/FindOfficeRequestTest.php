@@ -25,8 +25,7 @@ use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
  */
 class FindOfficeRequestTest extends TestCase
 {
-
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $instance = new FindOfficeRequest(123);
 

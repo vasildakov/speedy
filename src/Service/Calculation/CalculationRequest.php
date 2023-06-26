@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Calculation;
 
 use JMS\Serializer\Annotation as Serializer;
-use VasilDakov\Speedy\Shipment\ShipmentPayment;
+use VasilDakov\Speedy\Speedy;
 
 /**
  * Class CalculationRequest
@@ -18,69 +18,47 @@ use VasilDakov\Speedy\Shipment\ShipmentPayment;
 class CalculationRequest
 {
     /**
-     * @var string|null
-     * @Serializer\Type("string")
+     * @var CalculationSender
+     * @Serializer\Type("VasilDakov\Speedy\Service\Calculation\CalculationSender")
      */
-    private ?string $clientSystemId = null;
-
-    /**
-     * @var CalculationSender|null
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\CalculationSender")
-     */
-    private ?CalculationSender $sender = null;
+    private CalculationSender $sender;
 
     /**
      * @var CalculationRecipient
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\CalculationRecipient")
+     * @Serializer\Type("VasilDakov\Speedy\Service\Calculation\CalculationRecipient")
      */
     private CalculationRecipient $recipient;
 
     /**
      * @var CalculationService
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\CalculationService")
+     * @Serializer\Type("VasilDakov\Speedy\Service\Calculation\CalculationService")
      */
     private CalculationService $service;
 
     /**
      * @var CalculationContent
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\CalculationContent")
+     * @Serializer\Type("VasilDakov\Speedy\Service\Calculation\CalculationContent")
      */
     private CalculationContent $content;
 
     /**
-     * @var ShipmentPayment
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentPayment")
+     * @var CalculationPayment
+     * @Serializer\Type("VasilDakov\Speedy\Service\Calculation\CalculationPayment")
      */
-    private ShipmentPayment $payment;
+    private CalculationPayment $payment;
 
     /**
-     * @return string|null
+     * @return CalculationSender
      */
-    public function getClientSystemId(): ?string
-    {
-        return $this->clientSystemId;
-    }
-
-    /**
-     * @param string|null $clientSystemId
-     */
-    public function setClientSystemId(?string $clientSystemId): void
-    {
-        $this->clientSystemId = $clientSystemId;
-    }
-
-    /**
-     * @return CalculationSender|null
-     */
-    public function getSender(): ?CalculationSender
+    public function getSender(): CalculationSender
     {
         return $this->sender;
     }
 
     /**
-     * @param CalculationSender|null $sender
+     * @param CalculationSender $sender
      */
-    public function setSender(?CalculationSender $sender): void
+    public function setSender(CalculationSender $sender): void
     {
         $this->sender = $sender;
     }
@@ -134,18 +112,30 @@ class CalculationRequest
     }
 
     /**
-     * @return ShipmentPayment
+     * @return CalculationPayment
      */
-    public function getPayment(): ShipmentPayment
+    public function getPayment(): CalculationPayment
     {
         return $this->payment;
     }
 
     /**
-     * @param ShipmentPayment $payment
+     * @param CalculationPayment $payment
      */
-    public function setPayment(ShipmentPayment $payment): void
+    public function setPayment(CalculationPayment $payment): void
     {
         $this->payment = $payment;
+    }
+
+
+    public function toArray(): array
+    {
+        return [
+            Speedy::SENDER    => $this->sender->toArray(),
+            Speedy::RECIPIENT => $this->recipient->toArray(),
+            Speedy::SERVICE   =>  $this->service->toArray(),
+            Speedy::CONTENT   =>  $this->content->toArray(),
+            Speedy::PAYMENT   =>  $this->payment->toArray()
+        ];
     }
 }

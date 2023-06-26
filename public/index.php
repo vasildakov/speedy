@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+use VasilDakov\Speedy\Service\Calculation\CalculationContent;
+use VasilDakov\Speedy\Service\Calculation\CalculationPayment;
+use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
+use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
+use VasilDakov\Speedy\Service\Calculation\CalculationSender;
+use VasilDakov\Speedy\Service\Calculation\CalculationService;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
@@ -34,7 +40,7 @@ $guzzleHttp = new GuzzleHttp();
 $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 
 # 1. Client
-# $response = $speedy->getContractClient(new GetContractClientsRequest());
+// $response = $speedy->getContractClient(new GetContractClientsRequest()); var_dump($response); exit();
 
 # 2. Find Country
 // $response = $speedy->findCountry(new FindCountryRequest('БЪЛГАРИЯ'));
@@ -57,9 +63,19 @@ $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 // $response = $speedy->findComplex(new \VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest(68134, "KRASN"));
 
 # 7. Find Street
-$response = $speedy->findStreet(
-    new \VasilDakov\Speedy\Service\Location\Street\FindStreetRequest(68134, "VASIL LEVSKI")
-);
+// $response = $speedy->findStreet(new \VasilDakov\Speedy\Service\Location\Street\FindStreetRequest(68134, "VASIL LEVSKI"));
+
+# 8. Calculation Request
+$request = new CalculationRequest();
+$request->setSender(new CalculationSender(11003520101536000));
+$request->setRecipient(new CalculationRecipient(true, 77));
+$request->setService(new CalculationService(true, [505]));
+$request->setContent(new CalculationContent(1, 1, false, false));
+$request->setPayment(new CalculationPayment('RECIPIENT'));
+
+//var_dump($request->toArray()); exit();
+
+$response = $speedy->calculation($request);
 
 
 echo '<pre>';

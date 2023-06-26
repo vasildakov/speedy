@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Calculation;
 
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class CalculationSender
  *
@@ -13,4 +15,15 @@ namespace VasilDakov\Speedy\Service\Calculation;
  */
 class CalculationSender
 {
+    use ToArray;
+
+    private int $clientId;
+
+    private ?int $dropoffOfficeId;
+
+    public function __construct(int $clientId, int $dropoffOfficeId = null)
+    {
+        $this->clientId = $clientId;
+        $this->dropoffOfficeId = $dropoffOfficeId;
+    }
 }

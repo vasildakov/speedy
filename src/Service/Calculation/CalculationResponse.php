@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Calculation;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use VasilDakov\Speedy\Error;
 use JMS\Serializer\Annotation as Serializer;
 
@@ -17,29 +18,40 @@ use JMS\Serializer\Annotation as Serializer;
 class CalculationResponse
 {
     /**
-     * Calculations for all service ids in request
-     *
-     * @var CalculationResult[]
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Model\CalculationResult>")
      */
-    private array $calculations;
+    private ArrayCollection $calculations;
 
     /**
-     * @var Error
+     * @var Error|null
      */
-    private Error $error;
+    private ?Error $error = null;
+
+    public function __construct()
+    {
+        $this->calculations = new ArrayCollection();
+    }
 
     /**
-     * @return array
+     * @param ArrayCollection $calculations
      */
-    public function getCalculations(): array
+    public function setCalculations(ArrayCollection $calculations): void
+    {
+        $this->calculations = $calculations;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCalculations(): ArrayCollection
     {
         return $this->calculations;
     }
 
     /**
-     * @return Error
+     * @return Error|null
      */
-    public function getError(): Error
+    public function getError(): ?Error
     {
         return $this->error;
     }

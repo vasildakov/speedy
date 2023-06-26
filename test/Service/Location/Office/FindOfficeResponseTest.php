@@ -26,9 +26,9 @@ use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
  */
 class FindOfficeResponseTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
-        $instance = new FindOfficeResponse(123);
+        $instance = new FindOfficeResponse();
 
         $this->assertInstanceOf(FindOfficeResponse::class, $instance);
 

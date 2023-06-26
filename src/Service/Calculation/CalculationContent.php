@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Calculation;
 
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class CalculationContent
  *
@@ -13,6 +15,8 @@ namespace VasilDakov\Speedy\Service\Calculation;
  */
 readonly class CalculationContent
 {
+    use ToArray;
+
     public function __construct(
         public int $parcelsCount,
         public float $totalWeight,

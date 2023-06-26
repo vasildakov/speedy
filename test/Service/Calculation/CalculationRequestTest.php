@@ -11,24 +11,24 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\SpeedyTest\Service\Location\State;
+namespace VasilDakov\SpeedyTest\Service\Calculation;
 
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 
 /**
- * Class FindStateRequestTest
+ * Class CalculationRequestTest
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
  * @version 1.0
  */
-class FindStateRequestTest extends TestCase
+class CalculationRequestTest extends TestCase
 {
-    public function testItCanBeConstructed(): void
+    public function testConstructor()
     {
-        $instance = new FindStateRequest(100, 'State');
+        $instance = new CalculationRequest();
 
-        $this->assertInstanceOf(FindStateRequest::class, $instance);
+        $this->assertInstanceOf(CalculationRequest::class, $instance);
     }
 }

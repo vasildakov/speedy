@@ -25,14 +25,14 @@ use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
  */
 class FindSiteRequestTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $instance = new FindSiteRequest(100, 'B');
 
         $this->assertInstanceOf(FindSiteRequest::class, $instance);
     }
 
-    public function testItCanBeConstructedWithOptionalArguments()
+    public function testItCanBeConstructedWithOptionalArguments(): void
     {
         $instance = new FindSiteRequest(100, 'B');
         $instance->setPostCode('1000');

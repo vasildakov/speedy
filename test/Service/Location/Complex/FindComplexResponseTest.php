@@ -31,7 +31,6 @@ class FindComplexResponseTest extends TestCase
         $instance = new FindComplexResponse();
 
         $this->assertInstanceOf(FindComplexResponse::class, $instance);
-
     }
 
     public function testItCanSetAndGet(): void
