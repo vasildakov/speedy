@@ -30,6 +30,7 @@ use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Track\TrackRequest;
 use VasilDakov\Speedy\Track\TrackResponse;
 
+
 use function json_encode;
 use function json_decode;
 use function array_merge;
@@ -242,6 +243,19 @@ final class Speedy
     }
 
     /**
+     * @param RequestInterface $request
+     * @return string
+     * @throws ClientExceptionInterface
+     */
+    private function getContents(RequestInterface $request): string
+    {
+        $response = $this->client->sendRequest($request);
+
+        return $response->getBody()->getContents();
+    }
+
+
+    /**
      * @param GetContractClientsRequest $object
      * @return GetContractClientsResponse
      * @throws ClientExceptionInterface
@@ -258,8 +272,7 @@ final class Speedy
             $payload
         );
 
-        $response = $this->client->sendRequest($request);
-        $json     = $response->getBody()->getContents();
+        $json = $this->getContents($request);
 
         return (new GetContractClientsResponseFactory())($json);
     }
@@ -280,8 +293,7 @@ final class Speedy
             $payload
         );
 
-        $response = $this->client->sendRequest($request);
-        $json = $response->getBody()->getContents();
+        $json = $this->getContents($request);
 
         return (new Location\Country\FindCountryResponseFactory())($json);
     }
@@ -302,8 +314,7 @@ final class Speedy
             $payload
         );
 
-        $response = $this->client->sendRequest($request);
-        $json = $response->getBody()->getContents();
+        $json = $this->getContents($request);
 
         return (new Location\State\FindStateResponseFactory())($json);
     }
@@ -324,8 +335,7 @@ final class Speedy
             $payload
         );
 
-        $response = $this->client->sendRequest($request);
-        $json = $response->getBody()->getContents();
+        $json = $this->getContents($request);
 
         return (new Location\Site\FindSiteResponseFactory())($json);
     }
@@ -346,8 +356,7 @@ final class Speedy
             $payload
         );
 
-        $response = $this->client->sendRequest($request);
-        $json = $response->getBody()->getContents();
+        $json = $this->getContents($request);
 
         return (new Location\Office\FindOfficeResponseFactory())($json);
     }
@@ -368,19 +377,29 @@ final class Speedy
             $payload
         );
 
-        $response = $this->client->sendRequest($request);
-        $json = $response->getBody()->getContents();
+        $json = $this->getContents($request);
 
         return (new Location\Complex\FindComplexResponseFactory())($json);
     }
 
     /**
-     * @param Location\Street\FindStreetRequest $request
+     * @param Location\Street\FindStreetRequest $object
      * @return Location\Street\FindStreetResponse
+     * @throws ClientExceptionInterface
      */
-    public function findStreet(Location\Street\FindStreetRequest $request): Location\Street\FindStreetResponse
+    public function findStreet(Location\Street\FindStreetRequest $object): Location\Street\FindStreetResponse
     {
-        return new Location\Street\FindStreetResponse();
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/location/street',
+            $payload
+        );
+
+        $json = $this->getContents($request);
+
+        return (new Location\Street\FindStreetResponseFactory())($json);
     }
 
     /**

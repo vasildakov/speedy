@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class Street
  *
@@ -11,61 +14,75 @@ namespace VasilDakov\Speedy\Model;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  * @psalm-suppress MissingConstructor
+ * @Serializer\AccessType("public_method")
  */
 class Street
 {
+    use ToArray;
+
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     private int $id;
 
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     private int $siteId;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $type;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $typeEn;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $name;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $nameEn;
 
     /**
      * @var int
+     * @Serializer\Type("int")
      */
     private int $actualId;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $actualType;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $actualTypeEn;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $actualName;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $actualNameEn;
 
@@ -244,15 +261,4 @@ class Street
     {
         $this->actualNameEn = $actualNameEn;
     }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-
-        ];
-    }
-
 }

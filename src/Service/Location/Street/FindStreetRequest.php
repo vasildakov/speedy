@@ -5,6 +5,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Street;
 
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class FindStreetRequest
  *
@@ -14,5 +16,18 @@ namespace VasilDakov\Speedy\Service\Location\Street;
  */
 class FindStreetRequest
 {
+    use ToArray;
 
+    private int $siteId;
+
+    private string $name;
+
+    private ?string $type = null;
+
+    public function __construct($siteId, $name, $type = null)
+    {
+        $this->siteId = $siteId;
+        $this->name = $name;
+        $this->type = $type;
+    }
 }

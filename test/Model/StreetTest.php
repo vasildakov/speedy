@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
@@ -15,7 +17,6 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  * @version
  */
 class StreetTest extends TestCase
-
 {
     public function testItCanSetAndGet(): void
     {
@@ -25,17 +26,20 @@ class StreetTest extends TestCase
         $this->assertIsObject($instance);
 
         $json = $serializer->serialize($instance, 'json');
+
         $this->assertIsString($json);
     }
 
     public function testItCanBeExportedToArray(): void
     {
-        $this->assertIsArray((new Street())->toArray());
+        $serializer = (new SerializerFactory())();
+        $instance = $serializer->deserialize($this->getJson(), Street::class, 'json');
+        $this->assertIsArray($instance->toArray());
     }
 
     private function getJson(): string
     {
-        return \file_get_contents("./test/Assets/Site.json");
+        return \file_get_contents("./test/Assets/Street.json");
     }
 
     /**

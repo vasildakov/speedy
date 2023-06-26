@@ -54,7 +54,11 @@ $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 // $response = $speedy->findOffice(new FindOfficeRequest(67338));
 
 # 6. Find Complex
-$response = $speedy->findComplex(new \VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest(68134, "KRASN"));
+// $response = $speedy->findComplex(new \VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest(68134, "KRASN"));
+
+# 7. Find Street
+$response = $speedy->findStreet(new \VasilDakov\Speedy\Service\Location\Street\FindStreetRequest(68134, "VASIL LEVSKI"));
+
 
 echo '<pre>';
 var_dump($response);
