@@ -55,6 +55,19 @@ class FindCountryResponseTest extends TestCase
         $this->assertInstanceOf(Country::class, $instance->findCountryByName("БЪЛГАРИЯ"));
     }
 
+
+    public function testNullResults()
+    {
+        $json = $this->getCountriesJson();
+        $instance = (new FindCountryResponseFactory())($json);
+
+        $this->assertNull($instance->findCountryById(999999999999));
+        $this->assertNull($instance->findCountryByName('Some None Existing Name'));
+        $this->assertNull($instance->findCountryByIsoAlpha2('Some None Existing Alpha-2'));
+
+    }
+
+
     private function getCountriesArray(): array
     {
         $json = $this->getCountriesJson();

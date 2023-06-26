@@ -64,22 +64,6 @@ class FindCountryResponse
     }
 
 
-
-    public function findCountryArrayByName(string $name): ?Country
-    {
-        $countries = (array)$this->countries;
-        $array = array_filter($countries, function (Country $country) use ($name) {
-            return (0 === strcasecmp(mb_strtoupper($name, 'UTF-8'), $country->getName()));
-        });
-
-        if (empty($array)) {
-            return null;
-        }
-        /** @var Country */
-        return $array[0];
-    }
-
-
     /**
      * @param string $name
      * @return Country|null
