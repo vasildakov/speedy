@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
@@ -41,6 +43,4 @@ class ParcelTest extends TestCase
     {
         return \file_get_contents("./test/Assets/Parcel.json");
     }
-
-
 }

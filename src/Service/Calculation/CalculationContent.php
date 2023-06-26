@@ -18,6 +18,6 @@ readonly class CalculationContent
         public float $totalWeight,
         public bool $documents,
         public bool $palletized,
-    ){
+    ) {
     }
 }

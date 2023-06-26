@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
@@ -15,7 +17,6 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentDiscountCardIdTest extends TestCase
 {
-
     /**
      * @var int
      */
@@ -78,7 +79,4 @@ class ShipmentDiscountCardIdTest extends TestCase
         $this->assertArrayHasKey(Speedy::CONTRACT_ID, $array);
         $this->assertArrayHasKey(Speedy::CARD_ID, $array);
     }
-
-
-
 }

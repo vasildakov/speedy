@@ -53,7 +53,7 @@ class CreateShipmentRequestTest extends TestCase
     /**
      * @return void
      */
-    protected function setUp():void
+    protected function setUp(): void
     {
         $this->sender    = $this->createMock(ShipmentSender::class);
         $this->recipient = $this->createMock(ShipmentRecipient::class);
@@ -69,16 +69,26 @@ class CreateShipmentRequestTest extends TestCase
         $this->requireUnsuccessfulDeliveryStickerImage = true;
 
         parent::setUp();
+    }
 
+    private function getInstance(): CreateShipmentRequest
+    {
+        return new CreateShipmentRequest(
+            $this->sender,
+            $this->recipient,
+            $this->service,
+            $this->content,
+            $this->payment
+        );
     }
 
     /**
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanBeCreated() :void
+    public function testItCanBeCreated(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $this->assertInstanceOf(CreateShipmentRequest::class, $object);
     }
@@ -87,9 +97,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheRecipient():void
+    public function testItCanRetrieveTheRecipient(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $this->assertEquals($this->recipient, $object->getRecipient());
     }
@@ -98,9 +108,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheService():void
+    public function testItCanRetrieveTheService(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $this->assertEquals($this->service, $object->getService());
     }
@@ -109,9 +119,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheContent():void
+    public function testItCanRetrieveTheContent(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $this->assertEquals($this->content, $object->getContent());
     }
@@ -120,9 +130,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveThePayment():void
+    public function testItCanRetrieveThePayment(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $this->assertEquals($this->payment, $object->getPayment());
     }
@@ -131,9 +141,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheSender():void
+    public function testItCanRetrieveTheSender(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $object->setSender($this->sender);
 
@@ -144,9 +154,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheShipmentNote():void
+    public function testItCanRetrieveTheShipmentNote(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $object->setShipmentNote($this->shipmentNote);
 
@@ -157,9 +167,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheRef1():void
+    public function testItCanRetrieveTheRef1(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $object->setRef1($this->ref1);
 
@@ -170,9 +180,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheRef2():void
+    public function testItCanRetrieveTheRef2(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $object->setRef2($this->ref2);
 
@@ -183,9 +193,9 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheConsolidationRef():void
+    public function testItCanRetrieveTheConsolidationRef(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $object->setConsolidationRef($this->consolidationRef);
 
@@ -196,13 +206,16 @@ class CreateShipmentRequestTest extends TestCase
      * @return void
      * @group CreateShipmentRequest
      */
-    public function testItCanRetrieveTheRequireUnsuccessfulDeliveryStickerImage():void
+    public function testItCanRetrieveTheRequireUnsuccessfulDeliveryStickerImage(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $object->setRequireUnsuccessfulDeliveryStickerImage($this->requireUnsuccessfulDeliveryStickerImage);
 
-        $this->assertEquals($this->requireUnsuccessfulDeliveryStickerImage, $object->getRequireUnsuccessfulDeliveryStickerImage());
+        $this->assertEquals(
+            $this->requireUnsuccessfulDeliveryStickerImage,
+            $object->getRequireUnsuccessfulDeliveryStickerImage()
+        );
     }
 
     /**
@@ -211,7 +224,7 @@ class CreateShipmentRequestTest extends TestCase
      */
     public function testItCanBeConvertedAsArray(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $this->assertIsArray($object->toArray());
     }
@@ -222,7 +235,7 @@ class CreateShipmentRequestTest extends TestCase
      */
     public function testExportedArrayHasRequiredKeys(): void
     {
-        $object = new CreateShipmentRequest($this->sender, $this->recipient, $this->service, $this->content, $this->payment);
+        $object = $this->getInstance();
 
         $array = $object->toArray();
 

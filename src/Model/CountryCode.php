@@ -54,7 +54,7 @@ class CountryCode
      */
     public function setCode(int $code): self
     {
-        if (!in_array($code, self::CODES)) {
+        if (! in_array($code, self::CODES)) {
             throw new \InvalidArgumentException();
         }
         $this->code = $code;

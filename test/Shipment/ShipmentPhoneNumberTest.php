@@ -15,30 +15,29 @@ use VasilDakov\Speedy\Speedy;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  */
-class ShipmentPhoneNumberTest extends TestCase 
+class ShipmentPhoneNumberTest extends TestCase
 {
-
     protected string $number;
     protected string $extension;
 
-    protected function setUp(): void 
+    protected function setUp(): void
     {
         $this->number = '0888302050';
-        $this->extension ='Extension';
+        $this->extension = 'Extension';
     }
-    
+
     /**
      * @group phone
      */
-    public function testItCanBeCreated() 
+    public function testItCanBeCreated()
     {
         $object = new ShipmentPhoneNumber($this->number);
         $this->assertInstanceOf(ShipmentPhoneNumber::class, $object);
     }
-    
-    public function testItCanRetrieveTheNumber() 
+
+    public function testItCanRetrieveTheNumber()
     {
-        $object = new ShipmentPhoneNumber($this->number); 
+        $object = new ShipmentPhoneNumber($this->number);
         $this->assertEquals($this->number, $object->getNumber());
     }
 

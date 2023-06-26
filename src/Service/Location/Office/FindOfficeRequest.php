@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Service\Location\Office;
 
 use VasilDakov\Speedy\ToArray;
@@ -32,6 +31,4 @@ class FindOfficeRequest
     {
         return $this->siteId;
     }
-
-
 }

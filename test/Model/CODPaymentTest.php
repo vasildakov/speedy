@@ -30,7 +30,6 @@ class CODPaymentTest extends TestCase
         $this->assertInstanceOf(CODPayment::class, $instance);
         $this->assertInstanceOf(\DateTime::class, $instance->getDate());
         $this->assertEquals($array['totalPayedOutAmount'], $instance->getTotalPayedOutAmount());
-
     }
 
     public function testItCanBeDeserialized(): void

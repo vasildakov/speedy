@@ -37,7 +37,7 @@ class FindSiteResponseFactory
             throw new InvalidArgumentException('Invalid or malformed JSON');
         }
 
-        if (!isset($array['sites']) || !is_array($array['sites'])) {
+        if (! isset($array['sites']) || ! is_array($array['sites'])) {
             throw new RuntimeException('Service can not be created');
         }
 

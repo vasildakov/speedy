@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\SpeedyTest\Shipment;
 
 use Laminas\Hydrator\ClassMethodsHydrator;

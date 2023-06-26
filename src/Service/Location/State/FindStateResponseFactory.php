@@ -39,7 +39,7 @@ class FindStateResponseFactory
             throw new InvalidArgumentException('Invalid or malformed JSON');
         }
 
-        if (!isset($array['states']) || !is_array($array['states'])) {
+        if (! isset($array['states']) || ! is_array($array['states'])) {
             throw new RuntimeException('Service can not be created');
         }
 

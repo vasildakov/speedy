@@ -15,26 +15,26 @@ use VasilDakov\Speedy\Speedy;
  * @version 1.0
  * @todo https://api.speedy.bg/web-api.html?fbclid=IwAR1pcF0uXsAZheAKesQcArBJ7QenkDVyEz36aXwfRGCQZvcInjIYMuE82E4#href-ds-shipment-phone-number
  */
-class ShipmentPhoneNumber {
-    
+class ShipmentPhoneNumber
+{
     /**
      * @var string
      */
     private string $number;
-    
+
     /**
      * @var string|null
      */
     private ?string $extension = null;
-    
+
     /**
      * @param string $number
      */
-    public function __construct(string $number) 
+    public function __construct(string $number)
     {
         $this->setNumber($number);
     }
-    
+
     /**
      * @param string $number
      * @return void
@@ -43,15 +43,15 @@ class ShipmentPhoneNumber {
     {
         $this->number = $number;
     }
-    
+
     /**
      * @return string number
      */
-    public function getNumber(): string 
+    public function getNumber(): string
     {
         return $this->number;
     }
-    
+
     /**
      * @param string $extension
      * @return self
@@ -59,14 +59,14 @@ class ShipmentPhoneNumber {
     public function setExtension(string $extension): self
     {
         $this->extension = $extension;
-        
+
         return $this;
     }
 
     /**
      * @return string|null
      */
-    public function getExtension(): ?string 
+    public function getExtension(): ?string
     {
         return $this->extension;
     }

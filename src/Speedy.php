@@ -30,7 +30,6 @@ use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Track\TrackRequest;
 use VasilDakov\Speedy\Track\TrackResponse;
 
-
 use function json_encode;
 use function json_decode;
 use function array_merge;
@@ -367,7 +366,7 @@ final class Speedy
      * @return FindComplexResponse
      * @throws ClientExceptionInterface
      */
-    public function findComplex(Location\Complex\FindComplexRequest $object) : Location\Complex\FindComplexResponse
+    public function findComplex(Location\Complex\FindComplexRequest $object): Location\Complex\FindComplexResponse
     {
         $payload = $this->createPayload($object->toArray());
 

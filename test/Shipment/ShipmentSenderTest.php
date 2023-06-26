@@ -40,7 +40,7 @@ class ShipmentSenderTest extends TestCase
 
     protected int $pickupOfficeId;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
         $this->phone1 = $this->createMock(ShipmentPhoneNumber::class);
         $this->phone2 = $this->createMock(ShipmentPhoneNumber::class);
@@ -59,7 +59,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanBeCreated() :void
+    public function testItCanBeCreated(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -70,7 +70,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveThePhone1():void
+    public function testItCanRetrieveThePhone1(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -83,7 +83,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveThePhone2():void
+    public function testItCanRetrieveThePhone2(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -96,7 +96,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveThePhone3():void
+    public function testItCanRetrieveThePhone3(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -109,7 +109,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveTheClientName():void
+    public function testItCanRetrieveTheClientName(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -122,7 +122,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveTheContactName():void
+    public function testItCanRetrieveTheContactName(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -135,7 +135,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveTheEmail():void
+    public function testItCanRetrieveTheEmail(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -148,7 +148,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveThePrivatePerson():void
+    public function testItCanRetrieveThePrivatePerson(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -161,7 +161,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveTheAddress():void
+    public function testItCanRetrieveTheAddress(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -174,7 +174,7 @@ class ShipmentSenderTest extends TestCase
      * @return void
      * @group ShipmentSender
      */
-    public function testItCanRetrieveThePickupOfficeId():void
+    public function testItCanRetrieveThePickupOfficeId(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -193,7 +193,7 @@ class ShipmentSenderTest extends TestCase
         $this->assertIsArray($object->toArray());
     }
 
-    public function testExportedArrayHasRequiredKeys() :void
+    public function testExportedArrayHasRequiredKeys(): void
     {
         $object = new ShipmentSender($this->phone1, $this->clientName, $this->email);
 
@@ -204,4 +204,3 @@ class ShipmentSenderTest extends TestCase
         $this->assertArrayHasKey(Speedy::EMAIL, $array);
     }
 }
-

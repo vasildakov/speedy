@@ -81,7 +81,7 @@ class Client
     /**
      * @return string|null
      */
-    public function getClientName():?string
+    public function getClientName(): ?string
     {
         return $this->clientName;
     }
@@ -173,5 +173,4 @@ class Client
     {
         $this->privatePerson = $privatePerson;
     }
-
 }

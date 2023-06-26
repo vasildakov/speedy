@@ -1,10 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+
 /**
  * Class OfficeWorkingTimeScheduleTest
  *
@@ -29,8 +32,6 @@ class OfficeWorkingTimeScheduleTest extends TestCase
         $this->assertInstanceOf(\DateTime::class, $instance->getWorkingTimeTo());
         $this->assertInstanceOf(\DateTime::class, $instance->getSameDayDepartureCutoff());
         $this->assertEquals($array['standardSchedule'], $instance->isStandardSchedule());
-
-
     }
 
     public function testItCanBeExportedToArray(): void

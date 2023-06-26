@@ -8,7 +8,6 @@ use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\ReflectionHydrator;
 use Laminas\Hydrator\Strategy\HydratorStrategy;
 use PHPUnit\Framework\TestCase;
-
 use VasilDakov\Speedy\Model\Address;
 use VasilDakov\Speedy\Model\Client;
 use VasilDakov\Speedy\Serializer\SerializerFactory;

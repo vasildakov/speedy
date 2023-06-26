@@ -45,7 +45,7 @@ class GetContractClientsRequest
     {
         $array = [];
 
-        if (!is_null($this->clientSystemId)) {
+        if (! is_null($this->clientSystemId)) {
             $array['clientSystemId'] = $this->clientSystemId;
         }
 

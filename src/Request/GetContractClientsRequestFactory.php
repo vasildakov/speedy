@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Request;
 
@@ -17,8 +19,8 @@ class GetContractClientsRequestFactory
 {
     private RequestFactoryInterface $requestFactory;
 
-    const METHOD = 'POST';
-    const URI    = 'https://api.speedy.bg/v1/client/contract/';
+    private const METHOD = 'POST';
+    private const URI    = 'https://api.speedy.bg/v1/client/contract/';
 
     /**
      * @param RequestFactoryInterface|null $requestFactory

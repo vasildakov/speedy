@@ -37,7 +37,7 @@ class AddressHydrator implements HydratorInterface
     public function extract($object): array
     {
         if (! $object instanceof Address) {
-            return array();
+            return [];
         }
 
         // ... continue extraction ...

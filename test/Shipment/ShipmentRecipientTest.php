@@ -72,7 +72,7 @@ class ShipmentRecipientTest extends TestCase
     /**
      * @return void
      */
-    protected function setUp():void
+    protected function setUp(): void
     {
         $this->phone1 = $this->createMock(ShipmentPhoneNumber::class);
         $this->phone2 = $this->createMock(ShipmentPhoneNumber::class);
@@ -92,7 +92,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveThePhone1():void
+    public function testItCanRetrieveThePhone1(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -105,7 +105,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveThePhone2():void
+    public function testItCanRetrieveThePhone2(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -118,7 +118,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveThePhone3():void
+    public function testItCanRetrieveThePhone3(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -131,7 +131,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveTheClientName():void
+    public function testItCanRetrieveTheClientName(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -144,7 +144,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveTheObjectName():void
+    public function testItCanRetrieveTheObjectName(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -157,7 +157,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveTheContactName():void
+    public function testItCanRetrieveTheContactName(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -170,7 +170,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveTheEmail():void
+    public function testItCanRetrieveTheEmail(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -183,7 +183,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveThePrivatePerson():void
+    public function testItCanRetrieveThePrivatePerson(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -196,7 +196,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveTheAddress():void
+    public function testItCanRetrieveTheAddress(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -209,7 +209,7 @@ class ShipmentRecipientTest extends TestCase
      * @return void
      * &group ShipmentRecipient
      */
-    public function testItCanRetrieveThePickupOfficeId():void
+    public function testItCanRetrieveThePickupOfficeId(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -229,7 +229,7 @@ class ShipmentRecipientTest extends TestCase
         $this->assertIsArray($object->toArray());
     }
 
-    public function testExportedArrayHasRequiredKeys() :void
+    public function testExportedArrayHasRequiredKeys(): void
     {
         $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
 
@@ -245,5 +245,4 @@ class ShipmentRecipientTest extends TestCase
 //        $this->assertArrayHasKey(Speedy::ADDRESS, $array);
 //        $this->assertArrayHasKey(Speedy::PICKUP_OFFICE_ID, $array);
     }
-
 }

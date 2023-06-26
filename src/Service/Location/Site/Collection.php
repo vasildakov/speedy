@@ -27,7 +27,7 @@ class Collection
      */
     public function addItem($key, $item): bool
     {
-        if (!array_key_exists($key, $this->items)) {
+        if (! array_key_exists($key, $this->items)) {
             $this->items[$key] = $item;
 
             return true;
@@ -67,7 +67,7 @@ class Collection
      */
     public function findItemById($id): int
     {
-        if (!empty($this->items)) {
+        if (! empty($this->items)) {
             $value = 0;
             foreach ($this->items as $item) {
                 if ($item->getId() === $id) {
@@ -96,6 +96,6 @@ class Collection
 
     public function isEmpty(): bool
     {
-        return !($this->count() > 0);
+        return ! ($this->count() > 0);
     }
 }

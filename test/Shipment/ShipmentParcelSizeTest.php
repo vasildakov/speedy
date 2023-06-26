@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
@@ -37,15 +39,15 @@ class ShipmentParcelSizeTest extends TestCase
     {
         $this->width = 1;
         $this->depth = 2;
-        $this->height =3;
+        $this->height = 3;
 
-    parent::setUp();
+        parent::setUp();
     }
 
     /**
      * @return void
      */
-    public function testItCanBeCreated() :void
+    public function testItCanBeCreated(): void
     {
         $object = new ShipmentParcelSize($this->width, $this->depth, $this->height);
 
@@ -55,7 +57,7 @@ class ShipmentParcelSizeTest extends TestCase
     /**
      * @return void
      */
-    public function testItCanRetrieveTheWidth():void
+    public function testItCanRetrieveTheWidth(): void
     {
         $object = new ShipmentParcelSize($this->width, $this->depth, $this->height);
 
@@ -65,7 +67,7 @@ class ShipmentParcelSizeTest extends TestCase
     /**
      * @return void
      */
-    public function testItCanRetrieveTheDepth():void
+    public function testItCanRetrieveTheDepth(): void
     {
         $object = new ShipmentParcelSize($this->width, $this->depth, $this->height);
 
@@ -75,7 +77,7 @@ class ShipmentParcelSizeTest extends TestCase
     /**
      * @return void
      */
-    public function testItCanRetrieveTheHeight():void
+    public function testItCanRetrieveTheHeight(): void
     {
         $object = new ShipmentParcelSize($this->width, $this->depth, $this->height);
 

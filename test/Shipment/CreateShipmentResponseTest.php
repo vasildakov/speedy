@@ -11,7 +11,6 @@ use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Shipment\ShipmentPrice;
 use VasilDakov\Speedy\Shipment\ShipmentPriceAmount;
 
-
 /**
  * Class CreateShipmentResponseTest
  *

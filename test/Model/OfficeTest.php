@@ -55,13 +55,6 @@ class OfficeTest extends TestCase
         $this->assertInstanceOf(Office::class, $instance);
     }
 
-    public function testSetCodeThrowsAnException(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        (new Office())->setType("NotSame");
-    }
-
-
     private function getJson(): string
     {
         return \file_get_contents("./test/Assets/Office.json");

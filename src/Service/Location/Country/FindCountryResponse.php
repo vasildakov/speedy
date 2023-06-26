@@ -58,12 +58,11 @@ class FindCountryResponse
     {
         $countries = (array)$this->countries;
         $array = array_filter($countries, function (Country $country) use ($name) {
-            return (0 === strcasecmp(mb_strtoupper($name, 'UTF-8'), $country->getName() ));
+            return (0 === strcasecmp(mb_strtoupper($name, 'UTF-8'), $country->getName()));
         });
 
         if (empty($array)) {
             return null;
-
         }
         /** @var Country */
         return $array[0];
@@ -96,7 +95,7 @@ class FindCountryResponse
      */
     public function findCountryByIsoAlpha2(string $isoAlpha2): ?Country
     {
-        $collection =  $this->getCountries()->filter(function (Country $country) use ($isoAlpha2) {
+        $collection = $this->getCountries()->filter(function (Country $country) use ($isoAlpha2) {
             return $country->getIsoAlpha2() === $isoAlpha2;
         });
 

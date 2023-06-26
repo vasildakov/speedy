@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
@@ -15,7 +17,6 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  * @version
  */
 class SenderTest extends TestCase
-
 {
     public function testItCanSetAndGet(): void
     {

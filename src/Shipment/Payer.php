@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -43,7 +45,7 @@ class Payer
      */
     public function setValue(string $value): void
     {
-        if (!in_array($value, self::OPTIONS, true)) {
+        if (! in_array($value, self::OPTIONS, true)) {
             throw new \InvalidArgumentException();
         }
         $this->value = $value;

@@ -244,13 +244,13 @@ class ShipmentRecipient
     public function toArray(): array
     {
         return [
-            Speedy::PHONE_1           =>$this->phone1->toArray(),
+            Speedy::PHONE_1           => $this->phone1->toArray(),
             //Speedy::PHONE_2           =>$this->phone2->toArray(),
             //Speedy::PHONE_3           =>$this->phone3->toArray(),
-            Speedy::CLIENT_NAME       =>$this->getClientName(),
+            Speedy::CLIENT_NAME       => $this->getClientName(),
             //Speedy::OBJECT_NAME       =>$this->getObjectName(),
             //Speedy::CONTACT_NAME      =>$this->getContactName(),
-            Speedy::EMAIL             =>$this->getEmail(),
+            Speedy::EMAIL             => $this->getEmail(),
             //Speedy::PRIVATE_PERSON    =>$this->getPrivatePerson(),
             //Speedy::ADDRESS           =>$this->getAddress(),
             //Speedy::PICKUP_OFFICE_ID  =>$this->getPickupOfficeId(),

@@ -13,5 +13,4 @@ namespace VasilDakov\Speedy\Service\Calculation;
  */
 class CalculationRecipient
 {
-
 }

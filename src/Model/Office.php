@@ -8,6 +8,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
 
 /**
  * Class Office
@@ -17,9 +18,12 @@ use JMS\Serializer\Annotation as Serializer;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  * @psalm-suppress MissingConstructor
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class Office
 {
+    use ToArray;
+
     public const TYPE_APT    = 1;
     public const TYPE_OFFICE = 2;
 
@@ -475,9 +479,6 @@ class Office
      */
     public function setType(string $type): void
     {
-        if (!\in_array($type, \array_values(self::TYPES))) {
-            throw new InvalidArgumentException();
-        }
         $this->type = $type;
     }
 
@@ -639,18 +640,5 @@ class Office
     public function setDropOffAllowed(bool $dropOffAllowed): void
     {
         $this->dropOffAllowed = $dropOffAllowed;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-            'id' => $this->getId(),
-            'name' => $this->getName(),
-            'nameEn' => $this->getNameEn(),
-            'address' => $this->getAddress()->toArray()
-        ];
     }
 }

@@ -175,7 +175,7 @@ class ShipmentContent
      */
     public function setDocuments(): self
     {
-        $this->documents = True;
+        $this->documents = true;
         return $this;
     }
 
@@ -192,7 +192,7 @@ class ShipmentContent
      */
     public function setPalletized(): self
     {
-        $this->palletized = True;
+        $this->palletized = true;
         return $this;
     }
 
@@ -209,7 +209,7 @@ class ShipmentContent
      */
     public function setPendingParcels(): self
     {
-        $this->pendingParcels = True;
+        $this->pendingParcels = true;
 
         return $this;
     }
@@ -227,7 +227,7 @@ class ShipmentContent
      */
     public function setExciseGoods(): self
     {
-        $this->exciseGoods = True;
+        $this->exciseGoods = true;
 
         return $this;
     }
@@ -248,5 +248,4 @@ class ShipmentContent
             Speedy::PENDING_PARCELS     => $this->isPendingParcels(),
         ];
     }
-
 }

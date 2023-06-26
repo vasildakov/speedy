@@ -82,7 +82,7 @@ class Complex
      * @var string
      * @Serializer\Type("string")
      */
-    private string  $actualNameEn;
+    private string $actualNameEn;
 
     /**
      * @return int

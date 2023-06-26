@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -12,5 +14,4 @@ namespace VasilDakov\Speedy\Shipment;
  */
 class ShipmentAdditionalServices
 {
-
 }

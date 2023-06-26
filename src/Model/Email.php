@@ -39,7 +39,7 @@ class Email implements \JsonSerializable
      */
     private function setValue(string $value): void
     {
-        if (!\filter_var($value, FILTER_VALIDATE_EMAIL)) {
+        if (! \filter_var($value, FILTER_VALIDATE_EMAIL)) {
             throw new \InvalidArgumentException();
         }
         $this->value = $value;

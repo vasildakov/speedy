@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -115,7 +117,6 @@ class CreateShipmentRequest
     public function setRecipient(ShipmentRecipient $recipient): void
     {
         $this->recipient = $recipient;
-
     }
 
     /**
@@ -133,7 +134,6 @@ class CreateShipmentRequest
     public function setService(ShipmentService $service): void
     {
         $this->service = $service;
-
     }
 
     /**
@@ -151,7 +151,6 @@ class CreateShipmentRequest
     public function setContent(ShipmentContent $content): void
     {
         $this->content = $content;
-
     }
 
     /**
@@ -169,7 +168,6 @@ class CreateShipmentRequest
     public function setPayment(ShipmentPayment $payment): void
     {
         $this->payment = $payment;
-
     }
 
     /**
@@ -205,8 +203,7 @@ class CreateShipmentRequest
      */
     public function setShipmentNote(string $shipmentNote): self
     {
-        if (null !== $shipmentNote && strlen($shipmentNote) > 200)
-        {
+        if (null !== $shipmentNote && strlen($shipmentNote) > 200) {
             throw new InvalidArgumentException();
         }
 
@@ -229,8 +226,7 @@ class CreateShipmentRequest
      */
     public function setRef1(string $ref1): self
     {
-        if (null !== $ref1 && strlen($ref1) > 30)
-        {
+        if (null !== $ref1 && strlen($ref1) > 30) {
             throw new InvalidArgumentException();
         }
 
@@ -253,8 +249,7 @@ class CreateShipmentRequest
      */
     public function setRef2(string $ref2): ?self
     {
-        if (null !== $ref2 && strlen($ref2) > 30)
-        {
+        if (null !== $ref2 && strlen($ref2) > 30) {
             throw new InvalidArgumentException();
         }
 
@@ -278,7 +273,6 @@ class CreateShipmentRequest
     public function setConsolidationRef(string $consolidationRef): void
     {
         $this->consolidationRef = $consolidationRef;
-
     }
 
     /**

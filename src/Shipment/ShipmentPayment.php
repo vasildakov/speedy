@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -100,7 +102,7 @@ class ShipmentPayment
      * @param string $packagePayer
      * @return $this
      */
-    public function setPackagePayer(string $packagePayer) :self
+    public function setPackagePayer(string $packagePayer): self
     {
         $this->packagePayer = $packagePayer;
 
@@ -118,7 +120,7 @@ class ShipmentPayment
      * @param int|null $thirdPartyClientId
      * @return $this
      */
-    public function setThirdPartyClientId(?int $thirdPartyClientId) : self
+    public function setThirdPartyClientId(?int $thirdPartyClientId): self
     {
         $this->thirdPartyClientId = $thirdPartyClientId;
 
@@ -149,7 +151,7 @@ class ShipmentPayment
      */
     public function getDiscountCardId(): ?ShipmentDiscountCardId
     {
-       return $this->discountCardId;
+        return $this->discountCardId;
     }
 
     /**
@@ -184,7 +186,7 @@ class ShipmentPayment
             $data[Speedy::DECLARED_VALUE_PAYER] = $this->getDeclaredValuePayer();
         }
 
-        if (null !== $this->packagePayer ) {
+        if (null !== $this->packagePayer) {
             $data[Speedy::PACKAGE_PAYER] = $this->getPackagePayer();
         }
 

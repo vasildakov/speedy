@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -29,8 +31,8 @@ class ShipmentDiscountCardId
      */
     public function __construct(
         int $contractId,
-        int $cardId)
-    {
+        int $cardId
+    ) {
         $this->setContractId($contractId);
         $this->setCardId($cardId);
     }

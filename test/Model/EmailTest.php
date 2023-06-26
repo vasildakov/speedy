@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
@@ -39,7 +41,7 @@ class EmailTest extends TestCase
     {
         $email = new Email('vasildakov@gmail.com');
 
-        $this->assertIsString( (string)$email);
+        $this->assertIsString((string)$email);
     }
 
     public function testItCanBeJsonSerialized()

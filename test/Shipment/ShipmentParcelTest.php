@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
@@ -16,7 +18,6 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentParcelTest extends TestCase
 {
-
     /**
      * @var string
      */

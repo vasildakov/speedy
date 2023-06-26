@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -13,5 +15,4 @@ use VasilDakov\Speedy\Model\Size;
  */
 class ShipmentParcelSize extends Size
 {
-
 }

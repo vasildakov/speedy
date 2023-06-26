@@ -13,5 +13,4 @@ namespace VasilDakov\Speedy\Service\Location\State;
  */
 class FindStateRequest extends \VasilDakov\Speedy\Service\Location\Site\FindSiteRequest
 {
-
 }

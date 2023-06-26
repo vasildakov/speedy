@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
 
@@ -15,5 +17,4 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentParcel extends Parcel
 {
-
 }

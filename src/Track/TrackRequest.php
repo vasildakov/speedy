@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace VasilDakov\Speedy\Track;
 
 /**
@@ -14,5 +13,4 @@ namespace VasilDakov\Speedy\Track;
  */
 class TrackRequest
 {
-
 }

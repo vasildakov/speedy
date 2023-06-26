@@ -79,7 +79,7 @@ class BankAccount
     public function toArray(): array
     {
         return [
-            Speedy::IBAN    =>  $this->getIban(),
+            Speedy::IBAN    => $this->getIban(),
             Speedy::ACCOUNT_HOLDER => $this->getAccountHolder()
         ];
     }

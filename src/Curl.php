@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy;
 
@@ -31,7 +33,7 @@ class Curl
         $data[self::PASSWORD]  = $this->getPassword();
         $data[self::LANGUAGE]  = $this->getLanguage();
 
-        $curl = curl_init(self::API_URL.$uri);
+        $curl = curl_init(self::API_URL . $uri);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 

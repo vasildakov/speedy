@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Shipment;
 
@@ -81,6 +83,5 @@ class ShipmentPaymentTest extends TestCase
         $this->assertArrayHasKey(Speedy::THIRD_PARTY_CLIENT_ID, $array);
         $this->assertArrayHasKey(Speedy::DISCOUNT_CARD_ID, $array);
         $this->assertArrayHasKey(Speedy::SENDER_BANK_ACCOUNT, $array);
-
     }
 }

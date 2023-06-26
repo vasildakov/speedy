@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Calculation;
 
@@ -22,28 +24,28 @@ class CalculationAddressLocation
      * @var CountryCode
      */
     private CountryCode $countryId;
-    
+
     /**
      * Required, if country supports states
      *
      * @var string
      */
     private string $stateId;
-    
+
     /**
      * Required, if country has full site nomenclature and pair (siteType, siteName) is not provided.
      *
      * @var int
      */
     private int $siteId;
-    
+
     /**
      * Forbidden, if siteId is provided. Otherwise, is not mandatory
      *
      * @var string
      */
     private string $siteType;
-    
+
     /**
      * Forbidden, if siteId is provided. Otherwise, is not mandatory
      *
@@ -67,15 +69,15 @@ class CalculationAddressLocation
         $this->setSiteId($siteId);
         $this->setPostCode($postCode);
     }
-    
+
     /**
      * @return CountryCode countryId
      */
-     public function getCountryId(): CountryCode
+    public function getCountryId(): CountryCode
     {
         return $this->countryId;
     }
-    
+
     /**
      * @param CountryCode $countryId
      * @return self
@@ -84,17 +86,17 @@ class CalculationAddressLocation
     {
         $this->countryId = $countryId;
 
-        return $this;    
+        return $this;
     }
-    
+
     /**
      * @return string stateId
      */
-    public function getStateId(): string 
+    public function getStateId(): string
     {
         return $this->stateId;
     }
-    
+
     /**
      * @param string $stateId
      * @return self
@@ -102,19 +104,19 @@ class CalculationAddressLocation
     public function setStateId(string $stateId): self
     {
         $this->stateId = $stateId;
-        
+
         return $this;
     }
-    
+
     /**
      * @return int stateId
      */
 
-    public function getSiteId(): int 
+    public function getSiteId(): int
     {
         return $this->siteId;
     }
-    
+
     /**
      * @param int $siteId
      * @return void
@@ -122,17 +124,16 @@ class CalculationAddressLocation
     private function setSiteId(int $siteId): void
     {
         $this->siteId = $siteId;
-
     }
-    
+
     /**
      * @return string siteType
      */
-    public function getSiteType(): string 
+    public function getSiteType(): string
     {
         return $this->siteType;
     }
-    
+
     /**
      * @param string $siteType
      * @return self
@@ -140,18 +141,18 @@ class CalculationAddressLocation
     public function setSiteType(string $siteType): self
     {
         $this->siteType = $siteType;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string siteName
      */
-    public function getSiteName(): string 
+    public function getSiteName(): string
     {
         return $this->siteName;
     }
-    
+
     /**
      * @param string $siteName
      * @return self
@@ -159,10 +160,10 @@ class CalculationAddressLocation
     public function setSiteName(string $siteName): self
     {
         $this->siteName = $siteName;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string postCode
      */
@@ -170,7 +171,7 @@ class CalculationAddressLocation
     {
         return $this->postCode;
     }
-    
+
     /**
      * @param string $postCode
      * @return void

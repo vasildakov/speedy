@@ -225,7 +225,7 @@ class ShipmentSender
      */
     public function toArray(): array
     {
-       return [
+        return [
            Speedy::PHONE_1             => $this->phone1->toArray(),
            //Speedy::PHONE_2             => $this->phone2->toArray(),
            //Speedy::PHONE_3             => $this->phone3->toArray(),
@@ -235,6 +235,6 @@ class ShipmentSender
            //Speedy::PRIVATE_PERSON    => $this->getPrivatePerson(),
            //Speedy::ADDRESS           => $this->getAddress(),
            //Speedy::PICKUP_OFFICE_ID  => $this->getPickupOfficeId(),
-       ];
+        ];
     }
 }

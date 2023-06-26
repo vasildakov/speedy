@@ -18,7 +18,6 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class CODPayment
 {
-
     /**
      * @var DateTime
      * @Serializer\Type("DateTime<'Y-m-d\TH:i:sP'>")
@@ -69,5 +68,4 @@ class CODPayment
 
         ];
     }
-
 }

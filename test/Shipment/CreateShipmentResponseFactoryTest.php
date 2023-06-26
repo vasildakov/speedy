@@ -28,7 +28,6 @@ class CreateShipmentResponseFactoryTest extends TestCase
 
         $instance = (new CreateShipmentResponseFactory())($json);
         $this->assertInstanceOf(CreateShipmentResponse::class, $instance);
-
     }
 
     public function testInstanceHasRequiredProperties(): void

@@ -3,6 +3,10 @@
 declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Shipment;
+
+use DateTime;
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class ShipmentService
  *
@@ -11,9 +15,6 @@ namespace VasilDakov\Speedy\Shipment;
  * @copyright
  * @version
  */
-use DateTime;
-use VasilDakov\Speedy\Speedy;
-
 class ShipmentService
 {
     /**
@@ -52,7 +53,6 @@ class ShipmentService
     public function __construct(int $serviceId)
     {
         $this->setServiceId($serviceId);
-
     }
 
     /**
