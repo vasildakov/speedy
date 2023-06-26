@@ -13,6 +13,7 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  * Class StateTest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  * @version
  */

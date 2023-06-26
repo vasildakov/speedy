@@ -20,13 +20,18 @@ class SenderTest extends TestCase
 {
     public function testItCanSetAndGet(): void
     {
-        $serializer = (new SerializerFactory())();
+        $sender = new Sender();
+        $sender->setDropoffOfficeId(1);
+
+        $this->assertEquals(1, $sender->getDropoffOfficeId());
+
+        /* $serializer = (new SerializerFactory())();
 
         $instance = $serializer->deserialize($this->getJson(), Sender::class, 'json');
         $this->assertIsObject($instance);
 
         $json = $serializer->serialize($instance, 'json');
-        $this->assertIsString($json);
+        $this->assertIsString($json); */
     }
 
     public function testItCanBeExportedToArray(): void

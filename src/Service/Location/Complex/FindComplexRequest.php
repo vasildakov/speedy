@@ -29,8 +29,8 @@ class FindComplexRequest
 
     public function __construct(int $siteId, string $name)
     {
-        $this->siteId = $siteId;
-        $this->name = $name;
+        $this->setSiteId($siteId);
+        $this->setName($name);
     }
 
     /**
@@ -47,5 +47,21 @@ class FindComplexRequest
     public function getSiteId(): int
     {
         return $this->siteId;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

@@ -32,13 +32,14 @@ final class SerializerFactory
                 )
                 ->setSerializationContextFactory(function () {
                     return SerializationContext::create()
-                        ->setSerializeNull(true)
-                        ;
+                        ->setSerializeNull(true);
                 })
                 ->build()
             ;
+            // @codeCoverageIgnoreStart
         } catch (\Throwable $e) {
             throw new ServiceNotCreatedException();
         }
+        // @codeCoverageIgnoreEnd
     }
 }

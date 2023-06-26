@@ -4,52 +4,63 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class State
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
+ * @Serializer\AccessType("public_method")
  */
 class State
 {
+    use ToArray;
+
     /**
-     * @var string|null
+     * @var int|null
+     * @Serializer\Type("integer")
      */
-    private ?string $id = null;
+    private ?int $id = null;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $name;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $nameEn;
 
     /**
      * @var string
+     * @Serializer\Type("string")
      */
     private string $stateAlpha;
 
     /**
      * @var int
+     * @Serializer\Type("integer")
      */
     private int $countryId;
 
     /**
-     * @return string
+     * @return ?int
      */
-    public function getId(): string
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param string $id
+     * @param ?int $id
      */
-    public function setId(string $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }

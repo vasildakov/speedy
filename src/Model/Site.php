@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
+use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
+
 /**
  * Class Site
  *
@@ -11,26 +14,118 @@ namespace VasilDakov\Speedy\Model;
  * @copyright 2009-2022 Neutrino.bg
  * @version 1.0
  * @psalm-suppress MissingConstructor
+ * @Serializer\AccessType("public_method")
  */
 class Site
 {
+    use ToArray;
+
+    /**
+     * @var int|null
+     * @Serializer\Type("integer")
+     */
     private ?int $id;
+
+    /**
+     * @var int|null
+     * @Serializer\Type("integer")
+     */
     private ?int $countryId;
+
+    /**
+     * @var int|null
+     * @Serializer\Type("integer")
+     */
     private ?int $mainSiteId;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $type;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $typeEn;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $name;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $nameEn;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $municipality;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $municipalityEn;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $region;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $regionEn;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $postCode;
+
+    /**
+     * @var int|null
+     * @Serializer\Type("integer")
+     */
     private ?int $addressNomenclature;
+
+    /**
+     * @var float|null
+     * @Serializer\Type("float")
+     */
     private ?float $x;
+
+    /**
+     * @var float|null
+     * @Serializer\Type("float")
+     */
     private ?float $y;
+
+    /**
+     * @var string|null
+     * @Serializer\Type("string")
+     */
     private ?string $servingDays;
+
+    /**
+     * @var int|null
+     * @Serializer\Type("integer")
+     */
     private ?int $servingOfficeId;
+
+    /**
+     * @var int|null
+     * @Serializer\Type("integer")
+     */
     private ?int $servingHubOfficeId;
 
     /**
