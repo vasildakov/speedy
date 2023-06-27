@@ -17,12 +17,24 @@ class CalculationRecipient
 {
     use ToArray;
 
+    /**
+     * @var bool
+     */
     private bool $privatePerson;
 
+    /**
+     * @var CalculationAddressLocation|null
+     */
     private ?CalculationAddressLocation $addressLocation = null;
 
+    /**
+     * @var int|null
+     */
     private ?int $siteId = null;
 
+    /**
+     * @var int|null
+     */
     private ?int $pickupOfficeId = null;
 
     public function __construct(
@@ -30,10 +42,19 @@ class CalculationRecipient
         ?int $pickupOfficeId = null,
         ?CalculationAddressLocation $addressLocation = null
     ) {
-        $this->privatePerson = $privatePerson;
-        $this->pickupOfficeId = $pickupOfficeId;
+        $this->privatePerson   = $privatePerson;
+        $this->pickupOfficeId  = $pickupOfficeId;
         $this->addressLocation = $addressLocation;
     }
+
+    /**
+     * @return bool
+     */
+    public function isPrivatePerson(): bool
+    {
+        return $this->privatePerson;
+    }
+
 
     /**
      * @param int|null $siteId
@@ -65,5 +86,13 @@ class CalculationRecipient
     public function getPickupOfficeId(): ?int
     {
         return $this->pickupOfficeId;
+    }
+
+    /**
+     * @return CalculationAddressLocation|null
+     */
+    public function getAddressLocation(): ?CalculationAddressLocation
+    {
+        return $this->addressLocation;
     }
 }

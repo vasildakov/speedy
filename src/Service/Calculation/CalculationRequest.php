@@ -131,11 +131,11 @@ class CalculationRequest
     public function toArray(): array
     {
         return [
-            Speedy::SENDER    => $this->sender->toArray(),
-            Speedy::RECIPIENT => $this->recipient->toArray(),
-            Speedy::SERVICE   =>  $this->service->toArray(),
-            Speedy::CONTENT   =>  $this->content->toArray(),
-            Speedy::PAYMENT   =>  $this->payment->toArray()
+            Speedy::SENDER    => $this->getSender()->toArray(),
+            Speedy::RECIPIENT => $this->getRecipient()->toArray(),
+            Speedy::SERVICE   =>  $this->getService()->toArray(),
+            Speedy::CONTENT   =>  $this->getContent()->toArray(),
+            Speedy::PAYMENT   =>  $this->getPayment()->toArray()
         ];
     }
 }

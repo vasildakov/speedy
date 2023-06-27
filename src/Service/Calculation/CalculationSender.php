@@ -26,4 +26,20 @@ class CalculationSender
         $this->clientId = $clientId;
         $this->dropoffOfficeId = $dropoffOfficeId;
     }
+
+    /**
+     * @return int
+     */
+    public function getClientId(): int
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDropoffOfficeId(): ?int
+    {
+        return $this->dropoffOfficeId;
+    }
 }

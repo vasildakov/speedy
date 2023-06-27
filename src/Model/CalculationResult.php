@@ -36,10 +36,10 @@ class CalculationResult
     private int $serviceId;
 
     /**
-     * @var ShipmentAdditionalServices
+     * @var ShipmentAdditionalServices|null
      * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentAdditionalServices")
      */
-    private ShipmentAdditionalServices $additionalServices;
+    private ?ShipmentAdditionalServices $additionalServices = null;
 
     /**
      * @var ShipmentPrice
@@ -63,7 +63,7 @@ class CalculationResult
      * @var ?Error
      * @Serializer\Type("VasilDakov\Speedy\Error")
      */
-    private ?Error $error;
+    private ?Error $error = null;
 
     /**
      * @return int
@@ -82,17 +82,17 @@ class CalculationResult
     }
 
     /**
-     * @param ShipmentAdditionalServices $additionalServices
+     * @param ?ShipmentAdditionalServices $additionalServices
      */
-    public function setAdditionalServices(ShipmentAdditionalServices $additionalServices): void
+    public function setAdditionalServices(?ShipmentAdditionalServices $additionalServices): void
     {
         $this->additionalServices = $additionalServices;
     }
 
     /**
-     * @return ShipmentAdditionalServices
+     * @return ?ShipmentAdditionalServices
      */
-    public function getAdditionalServices(): ShipmentAdditionalServices
+    public function getAdditionalServices(): ?ShipmentAdditionalServices
     {
         return $this->additionalServices;
     }

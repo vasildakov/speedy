@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Service\Calculation;
 
+use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Service\Calculation\CalculationAddressLocation;
+use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
+
 /**
  * Class CalculationRecipientTest
  *
@@ -20,7 +24,40 @@ namespace VasilDakov\SpeedyTest\Service\Calculation;
  * @copyright 2009-2023 Neutrino.bg
  * @version 1.0
  */
-class CalculationRecipientTest
+class CalculationRecipientTest extends TestCase
 {
+    public function testConstructorToOffice(): void
+    {
+        $instance = new CalculationRecipient(
+            true,
+            77,
+            null
+        );
 
+        $this->assertInstanceOf(CalculationRecipient::class, $instance);
+    }
+
+    public function testConstructorToAddress(): void
+    {
+        $instance = new CalculationRecipient(
+            true,
+            null,
+            $this->createMock(CalculationAddressLocation::class)
+        );
+
+        $this->assertInstanceOf(CalculationRecipient::class, $instance);
+    }
+
+    public function testAccessors(): void
+    {
+        $instance = new CalculationRecipient(
+            true,
+            null,
+            $this->createMock(CalculationAddressLocation::class)
+        );
+
+        $this->assertTrue($instance->isPrivatePerson());
+        $this->assertNull($instance->getPickupOfficeId());
+        $this->assertInstanceOf(CalculationAddressLocation::class, $instance->getAddressLocation());
+    }
 }

@@ -62,7 +62,7 @@ class AddressTest extends TestCase
     /**
      * @group model
      */
-    public function testItCanBeDeserialized()
+    public function testItCanBeDeserialized(): void
     {
         $json = $this->getJson();
 

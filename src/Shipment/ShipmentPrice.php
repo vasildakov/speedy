@@ -90,10 +90,10 @@ class ShipmentPrice
     private float $currencyExchangeRate;
 
     /**
-     * @var ReturnAmounts
+     * @var ?ReturnAmounts
      * @Serializer\Type("VasilDakov\Speedy\Shipment\ReturnAmounts")
      */
-    private ReturnAmounts $returnAmounts;
+    private ?ReturnAmounts $returnAmounts = null;
 
 
     public function __construct()
@@ -300,19 +300,17 @@ class ShipmentPrice
     }
 
     /**
-     * @codeCoverageIgnore
-     * @return ReturnAmounts
+     * @return ?ReturnAmounts
      */
-    public function getReturnAmounts(): ReturnAmounts
+    public function getReturnAmounts(): ?ReturnAmounts
     {
         return $this->returnAmounts;
     }
 
     /**
-     * @codeCoverageIgnore
-     * @param ReturnAmounts $returnAmounts
+     * @param ?ReturnAmounts $returnAmounts
      */
-    public function setReturnAmounts(ReturnAmounts $returnAmounts): void
+    public function setReturnAmounts(?ReturnAmounts $returnAmounts): void
     {
         $this->returnAmounts = $returnAmounts;
     }
