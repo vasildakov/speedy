@@ -67,16 +67,18 @@ $speedy = new Speedy($configuration, $guzzleHttp, $factory);
 // $response = $speedy->findStreet(new \VasilDakov\Speedy\Service\Location\Street\FindStreetRequest(68134, "VASIL LEVSKI"));
 
 # 8. Calculation Request
-$request = new CalculationRequest();
+/* $request = new CalculationRequest();
 $request->setSender(new CalculationSender(11003520101536000));
 $request->setRecipient(new CalculationRecipient(true, 77));
 $request->setService(new CalculationService(true, [505]));
 $request->setContent(new CalculationContent(1, 1, false, false));
 $request->setPayment(new CalculationPayment(Payment::RECIPIENT));
+$response = $speedy->calculation($request); */
 
-//var_dump($request->toArray()); exit();
+$response = $speedy->destination(new \VasilDakov\Speedy\Service\Service\DestinationServicesRequest(
+    new CalculationRecipient(true, 77)
+));
 
-$response = $speedy->calculation($request);
 
 
 echo '<pre>';

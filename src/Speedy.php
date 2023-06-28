@@ -24,6 +24,9 @@ use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Service\Printing\PrintRequest;
 use VasilDakov\Speedy\Service\Printing\PrintResponse;
+use VasilDakov\Speedy\Service\Service\DestinationServicesRequest;
+use VasilDakov\Speedy\Service\Service\DestinationServicesResponse;
+use VasilDakov\Speedy\Service\Service\DestinationServicesResponseFactory;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 use VasilDakov\Speedy\Service\Track\TrackResponse;
 use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
@@ -444,5 +447,23 @@ final class Speedy
     public function createShipment(CreateShipmentRequest $request): CreateShipmentResponse
     {
         return new CreateShipmentResponse();
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     */
+    public function destination(DestinationServicesRequest $object): DestinationServicesResponse
+    {
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/services/destination',
+            $payload
+        );
+
+        $json = $this->getContents($request);
+
+        return (new DestinationServicesResponseFactory())($json);
     }
 }

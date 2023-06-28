@@ -84,8 +84,6 @@ class Email implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

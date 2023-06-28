@@ -1,0 +1,48 @@
+{
+  "services":[
+    {
+      "id":505,
+      "name":"СТАНДАРТ 24 ЧАСА",
+      "nameEn":"STANDARD 24 HOURS",
+      "additionalServices":{
+        "cod":{
+          "allowance":"ALLOWED"
+        },
+        "obpd":{
+          "allowance":"ALLOWED"
+        },
+        "declaredValue":{
+          "allowance":"ALLOWED"
+        },
+        "fixedTimeDelivery":{
+          "allowance":"FORBIDDEN"
+        },
+        "specialDelivery":{
+          "allowance":"ALLOWED"
+        },
+        "deliveryToFloor":{
+          "allowance":"FORBIDDEN"
+        },
+        "rod":{
+          "allowance":"FORBIDDEN"
+        },
+        "returnReceipt":{
+          "allowance":"ALLOWED"
+        },
+        "swap":{
+          "allowance":"ALLOWED"
+        },
+        "rop":{
+          "allowance":"FORBIDDEN"
+        },
+        "returnVoucher":{
+          "allowance":"ALLOWED"
+        }
+      },
+      "cargoType":"PARCEL",
+      "requireParcelWeight":false,
+      "requireParcelSize":false,
+      "deadline":"2023-06-29T19:00:00+0300"
+    }
+  ]
+}
