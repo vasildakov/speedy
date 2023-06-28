@@ -6,11 +6,13 @@ namespace VasilDakov\Speedy\Model;
 
 use DateTime;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
 
 /**
  * Class CODPayment
  *
  * @Serializer\AccessType("public_method")
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version 1.0
@@ -18,6 +20,8 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class CODPayment
 {
+    use ToArray;
+
     /**
      * @var DateTime
      * @Serializer\Type("DateTime<'Y-m-d\TH:i:sP'>")
@@ -60,10 +64,5 @@ class CODPayment
     public function setTotalPayedOutAmount(float $totalPayedOutAmount): void
     {
         $this->totalPayedOutAmount = $totalPayedOutAmount;
-    }
-
-    public function toArray(): array
-    {
-        return [];
     }
 }

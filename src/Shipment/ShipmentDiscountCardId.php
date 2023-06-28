@@ -5,16 +5,20 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Shipment;
 
 use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\ToArray;
 
 /**
  * Class ShipmentDiscountCardId
  *
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright
  * @version
  */
 class ShipmentDiscountCardId
 {
+    use ToArray;
+
     /**
      * @var int
      */
@@ -36,7 +40,6 @@ class ShipmentDiscountCardId
         $this->setContractId($contractId);
         $this->setCardId($cardId);
     }
-
 
     /**
      * @return int
@@ -68,16 +71,5 @@ class ShipmentDiscountCardId
     public function setCardId(int $cardId): void
     {
         $this->cardId = $cardId;
-    }
-
-    /**
-     * @return int[]
-     */
-    public function toArray(): array
-    {
-        return [
-            Speedy::CONTRACT_ID   => $this->getContractId(),
-            Speedy::CARD_ID       => $this->getCardId()
-        ];
     }
 }

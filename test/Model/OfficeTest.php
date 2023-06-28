@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
-use DateTime;
 use JsonException;
 use PHPUnit\Framework\TestCase;
-use VasilDakov\Speedy\Model\Address;
 use VasilDakov\Speedy\Model\Office;
-use VasilDakov\Speedy\Model\OfficeWorkingTimeSchedule;
-use VasilDakov\Speedy\Model\Size;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 use function json_decode;
+use function file_get_contents;
 
 /**
  * Class OfficeTest
@@ -24,6 +21,11 @@ use function json_decode;
  */
 class OfficeTest extends TestCase
 {
+    public function testConstructor(): void
+    {
+        $this->assertInstanceOf(Office::class, new Office());
+    }
+
     public function testItCanBeConvertedToArray(): void
     {
         $serializer = (new SerializerFactory())();
@@ -57,7 +59,7 @@ class OfficeTest extends TestCase
 
     private function getJson(): string
     {
-        return \file_get_contents("./test/Assets/Office.json");
+        return file_get_contents("./test/Assets/Office.json");
     }
 
     /**

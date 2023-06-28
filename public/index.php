@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use VasilDakov\Speedy\Model\Payment;
 use VasilDakov\Speedy\Service\Calculation\CalculationContent;
 use VasilDakov\Speedy\Service\Calculation\CalculationPayment;
 use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
@@ -71,7 +72,7 @@ $request->setSender(new CalculationSender(11003520101536000));
 $request->setRecipient(new CalculationRecipient(true, 77));
 $request->setService(new CalculationService(true, [505]));
 $request->setContent(new CalculationContent(1, 1, false, false));
-$request->setPayment(new CalculationPayment('RECIPIENT'));
+$request->setPayment(new CalculationPayment(Payment::RECIPIENT));
 
 //var_dump($request->toArray()); exit();
 

@@ -133,9 +133,9 @@ class CalculationRequest
         return [
             Speedy::SENDER    => $this->getSender()->toArray(),
             Speedy::RECIPIENT => $this->getRecipient()->toArray(),
-            Speedy::SERVICE   =>  $this->getService()->toArray(),
-            Speedy::CONTENT   =>  $this->getContent()->toArray(),
-            Speedy::PAYMENT   =>  $this->getPayment()->toArray()
+            Speedy::SERVICE   => $this->getService()->toArray(),
+            Speedy::CONTENT   => $this->getContent()->toArray(),
+            Speedy::PAYMENT   => $this->getPayment()->toArray()
         ];
     }
 }

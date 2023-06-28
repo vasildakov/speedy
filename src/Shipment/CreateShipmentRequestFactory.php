@@ -6,6 +6,8 @@ namespace VasilDakov\Speedy\Shipment;
 
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
+use function json_encode;
+
 /**
  * Class CreateShipmentRequestFactory
  *
@@ -22,8 +24,11 @@ class CreateShipmentRequestFactory
     public function __invoke(array $array): CreateShipmentRequest
     {
         $serializer = (new SerializerFactory())();
-        $json = \json_encode($array);
+        $json = json_encode($array);
 
-        return $serializer->deserialize($json, CreateShipmentRequest::class, 'json');
+        /** @var CreateShipmentRequest $request */
+        $request = $serializer->deserialize($json, CreateShipmentRequest::class, 'json');
+
+        return $request;
     }
 }

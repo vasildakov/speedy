@@ -6,6 +6,9 @@ namespace VasilDakov\Speedy;
 
 use ReflectionClass;
 
+use function is_object;
+use function method_exists;
+
 trait ToArray
 {
     public function toArray(): array
@@ -17,7 +20,15 @@ trait ToArray
 
         foreach ($properties as $property) {
             if ($property->getValue($this)) {
-                $array[$property->getName()] = $property->getValue($this);
+                $value = $property->getValue($this);
+                if (
+                    is_object($value) &&
+                    method_exists($value, 'toArray')
+                ) {
+                    $array[$property->getName()] = $value->toArray();
+                } else {
+                    $array[$property->getName()] = $property->getValue($this);
+                }
             }
         }
 

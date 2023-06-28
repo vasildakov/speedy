@@ -7,6 +7,7 @@ namespace VasilDakov\Speedy\Model;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\ToArray;
 
 /**
  * Class Payment
@@ -18,16 +19,17 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Payment
 {
-    public const SENDER      = 1;
 
-    public const RECIPIENT   = 2;
+    use ToArray;
 
-    public const THIRD_PARTY = 3;
+    public const SENDER      = 'SENDER';
+    public const RECIPIENT   = 'RECIPIENT';
+    public const THIRD_PARTY = 'THIRD_PARTY';
 
     public const PAYER_OPTIONS = [
-        self::SENDER      => 'SENDER',
-        self::RECIPIENT   => 'RECIPIENT',
-        self::THIRD_PARTY => 'THIRD_PARTY'
+        self::SENDER,
+        self::RECIPIENT,
+        self::THIRD_PARTY
     ];
 
     /**
@@ -177,7 +179,7 @@ class Payment
      */
     private function isValidPayer(string $payer): bool
     {
-        if (\in_array($payer, \array_values(self::PAYER_OPTIONS), true)) {
+        if (\in_array($payer, self::PAYER_OPTIONS)) {
             return true;
         }
         return false;
@@ -186,7 +188,7 @@ class Payment
     /**
      * @return array
      */
-    public function toArray(): array
+    /*public function toArray(): array
     {
         $array = [
             'courierServicePayer' => $this->getCourierServicePayer(),
@@ -195,16 +197,14 @@ class Payment
             'thirdPartyClientId'  => $this->getThirdPartyClientId(),
         ];
 
-        if ($this->getDiscountCardId() instanceof ShipmentDiscountCardId) {
-            $array['discountCardId'] = $this->getDiscountCardId()->toArray();
+        if ($this->discountCardId instanceof ShipmentDiscountCardId) {
+            $array['discountCardId'] = $this->discountCardId->toArray();
         }
 
-        if ($this->getCodPayment() instanceof CODPayment) {
-            $array['codPayment'] = $this->getCodPayment()->toArray();
+        if ($this->codPayment instanceof CODPayment) {
+            $array['codPayment'] = $this->codPayment->toArray();
         }
-
-        //'codPayment' => $this->getCodPayment()->toArray()
 
         return $array;
-    }
+    }*/
 }

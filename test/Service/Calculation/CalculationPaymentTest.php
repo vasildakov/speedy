@@ -30,6 +30,5 @@ class CalculationPaymentTest extends TestCase
         $instance = new CalculationPayment("SENDER");
 
         $this->assertInstanceOf(CalculationPayment::class, $instance);
-
     }
 }

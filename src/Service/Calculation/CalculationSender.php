@@ -21,6 +21,10 @@ class CalculationSender
 
     private ?int $dropoffOfficeId;
 
+    /**
+     * @param int $clientId
+     * @param int|null $dropoffOfficeId
+     */
     public function __construct(int $clientId, int $dropoffOfficeId = null)
     {
         $this->clientId = $clientId;

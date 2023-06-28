@@ -30,6 +30,5 @@ class CalculationContentTest extends TestCase
         $instance = new CalculationContent(1, 2, false, false);
 
         $this->assertInstanceOf(CalculationContent::class, $instance);
-
     }
 }

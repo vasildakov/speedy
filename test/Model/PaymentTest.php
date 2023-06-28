@@ -11,6 +11,9 @@ use VasilDakov\Speedy\Model\Payment;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
 
+use function json_decode;
+use function file_get_contents;
+
 /**
  * Class PaymentTest
  *
@@ -55,12 +58,17 @@ class PaymentTest extends TestCase
 
     public function testItCanBeExportedToArray(): void
     {
-        $this->assertIsArray((new Payment())->toArray());
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($this->getJson(), Payment::class, 'json');
+
+        var_dump($instance->toArray());
+        $this->assertIsArray($instance->toArray());
     }
 
     private function getJson(): string
     {
-        return \file_get_contents("./test/Assets/Payment.json");
+        return file_get_contents("./test/Assets/Payment.json");
     }
 
     /**
@@ -70,6 +78,6 @@ class PaymentTest extends TestCase
     {
         $json = $this->getJson();
 
-        return \json_decode($json, true, 512,JSON_THROW_ON_ERROR);
+        return json_decode($json, true, 512,JSON_THROW_ON_ERROR);
     }
 }

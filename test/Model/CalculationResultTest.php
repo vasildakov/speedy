@@ -16,7 +16,10 @@ namespace VasilDakov\SpeedyTest\Model;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\CalculationResult;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+use VasilDakov\Speedy\Shipment\ShipmentAdditionalServices;
 
+use function json_decode;
+use function file_get_contents;
 /**
  * Class CalculationResultTest
  *
@@ -39,17 +42,20 @@ class CalculationResultTest extends TestCase
 
         /** @var CalculationResult $instance */
         $instance = $serializer->deserialize($this->getJson(), CalculationResult::class, 'json');
+        $instance->setAdditionalServices($this->createMock(ShipmentAdditionalServices::class));
+        $instance->setError(null);
 
         $this->assertInstanceOf(CalculationResult::class, $instance);
 
         // serialize: create a json from object, testing GETTERS
         $json = $serializer->serialize($instance, 'json');
 
-        $this->assertIsString($json);
+        $this->assertStringContainsString('serviceId', $json);
     }
 
     private function getArray(): array
     {
+        /** @var array */
         return json_decode($this->getJson(), true);
     }
 

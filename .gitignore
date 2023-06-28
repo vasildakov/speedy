@@ -11,3 +11,4 @@ public/.env
 /cache
 .php-cs-fixer.cache
 .env
+/tmp

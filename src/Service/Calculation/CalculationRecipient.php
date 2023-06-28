@@ -37,6 +37,11 @@ class CalculationRecipient
      */
     private ?int $pickupOfficeId = null;
 
+    /**
+     * @param bool $privatePerson
+     * @param int|null $pickupOfficeId
+     * @param CalculationAddressLocation|null $addressLocation
+     */
     public function __construct(
         bool $privatePerson,
         ?int $pickupOfficeId = null,
