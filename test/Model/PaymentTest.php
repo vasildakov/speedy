@@ -62,7 +62,6 @@ class PaymentTest extends TestCase
 
         $instance = $serializer->deserialize($this->getJson(), Payment::class, 'json');
 
-        var_dump($instance->toArray());
         $this->assertIsArray($instance->toArray());
     }
 

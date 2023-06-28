@@ -45,7 +45,11 @@ class CODPaymentTest extends TestCase
 
     public function testItCanBeExportedToArray(): void
     {
-        $this->assertIsArray((new CODPayment())->toArray());
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($this->getJson(), CODPayment::class, 'json');
+
+        $this->assertIsArray($instance->toArray());
     }
 
     private function getArray(): array
