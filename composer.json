@@ -46,7 +46,7 @@
         "laminas/laminas-hydrator": "^4.14",
         "laminas/laminas-serializer": "^2.14",
         "jms/serializer": "^3.25",
-        "doctrine/cache": "^2.2",
+        "doctrine/cache": "^1.13",
         "guzzlehttp/guzzle": "^7.7"
     },
     "require-dev": {
