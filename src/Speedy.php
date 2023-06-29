@@ -27,10 +27,10 @@ use VasilDakov\Speedy\Service\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesRequest;
 use VasilDakov\Speedy\Service\Service\DestinationServicesResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesResponseFactory;
+use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
+use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 use VasilDakov\Speedy\Service\Track\TrackResponse;
-use VasilDakov\Speedy\Shipment\CreateShipmentRequest;
-use VasilDakov\Speedy\Shipment\CreateShipmentResponse;
 
 use function array_merge;
 use function json_encode;

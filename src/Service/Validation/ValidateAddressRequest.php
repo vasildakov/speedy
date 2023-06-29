@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Validation;
 
-use VasilDakov\Speedy\Shipment\ShipmentAddress;
+use VasilDakov\Speedy\Service\Shipment\ShipmentAddress;
 
 /**
  * Class ValidateAddressRequest

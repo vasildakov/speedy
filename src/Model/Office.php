@@ -6,9 +6,8 @@ namespace VasilDakov\Speedy\Model;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use JMS\Serializer\Annotation as Serializer;
-use VasilDakov\Speedy\ToArray;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class Office

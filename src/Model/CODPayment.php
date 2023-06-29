@@ -6,7 +6,7 @@ namespace VasilDakov\Speedy\Model;
 
 use DateTime;
 use JMS\Serializer\Annotation as Serializer;
-use VasilDakov\Speedy\ToArray;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class CODPayment

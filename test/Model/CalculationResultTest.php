@@ -16,10 +16,11 @@ namespace VasilDakov\SpeedyTest\Model;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\CalculationResult;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
-use VasilDakov\Speedy\Shipment\ShipmentAdditionalServices;
+use VasilDakov\Speedy\Service\Shipment\ShipmentAdditionalServices;
 
-use function json_decode;
 use function file_get_contents;
+use function json_decode;
+
 /**
  * Class CalculationResultTest
  *

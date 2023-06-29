@@ -32,7 +32,11 @@ class SiteTest extends TestCase
 
     public function testItCanBeExportedToArray(): void
     {
-        $this->assertIsArray((new Site())->toArray());
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($this->getJson(), Site::class, 'json');
+
+        $this->assertIsArray($instance->toArray());
     }
 
     private function getJson(): string

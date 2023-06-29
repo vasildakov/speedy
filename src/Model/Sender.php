@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
-use VasilDakov\Speedy\ToArray;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class Sender

@@ -32,9 +32,9 @@ use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetResponse;
-use VasilDakov\Speedy\Shipment;
+use VasilDakov\Speedy\Service\Shipment;
 use VasilDakov\Speedy\Speedy;
-use VasilDakov\Speedy\Track;
+use VasilDakov\Speedy\Service\Track;
 
 use function json_encode;
 
@@ -562,12 +562,12 @@ class SpeedyTest extends TestCase
      */
     public function testItCanCreateShipment(): void
     {
-        $request = $this->createMock(Shipment\CreateShipmentRequest::class);
+        $request = $this->createMock(Service\Shipment\CreateShipmentRequest::class);
 
         $speedy = $this->getClient();
 
         $response = $speedy->createShipment($request);
 
-        $this->assertInstanceOf(Shipment\CreateShipmentResponse::class, $response);
+        $this->assertInstanceOf(Service\Shipment\CreateShipmentResponse::class, $response);
     }
 }

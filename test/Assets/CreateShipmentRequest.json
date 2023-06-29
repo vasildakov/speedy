@@ -1,4 +1,11 @@
 {
+  "sender" : {
+    "phone1" : {
+      "number" : "0888112233"
+    },
+    "contactName" : "IVAN PETROV",
+    "email" : "ivan@petrov.bg"
+  },
   "service":{
     "serviceId":2002,
     "additionalServices":{

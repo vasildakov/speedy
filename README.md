@@ -151,10 +151,10 @@ $clients = $response->getClients();
 
 use VasilDakov\Speedy\Shipment;
 
-$shipmentRequest = new Shipment\CreateShipmentRequest(
-    new Shipment\ShipmentRecipient(),
-    new Shipment\ShipmentSender(),
-    new Shipment\ShipmentService()
+$shipmentRequest = new \VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest(
+    new \VasilDakov\Speedy\Service\Shipment\ShipmentRecipient(),
+    new \VasilDakov\Speedy\Service\Shipment\ShipmentSender(),
+    new \VasilDakov\Speedy\Service\Shipment\ShipmentService()
 );
 
 $response = $speedy->createShipment($shipmentRequest);

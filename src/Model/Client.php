@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 use JMS\Serializer\Annotation as Serializer;
-use VasilDakov\Speedy\ToArray;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class Client

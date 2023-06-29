@@ -14,10 +14,10 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 use DateTime;
-use VasilDakov\Speedy\Error;
-use VasilDakov\Speedy\Shipment\ShipmentAdditionalServices;
-use VasilDakov\Speedy\Shipment\ShipmentPrice;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Error;
+use VasilDakov\Speedy\Service\Shipment\ShipmentAdditionalServices;
+use VasilDakov\Speedy\Service\Shipment\ShipmentPrice;
 
 /**
  * Class CalculationResult
@@ -37,13 +37,13 @@ class CalculationResult
 
     /**
      * @var ShipmentAdditionalServices|null
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentAdditionalServices")
+     * @Serializer\Type("VasilDakov\Speedy\Service\Shipment\ShipmentAdditionalServices")
      */
     private ?ShipmentAdditionalServices $additionalServices = null;
 
     /**
      * @var ShipmentPrice
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentPrice")
+     * @Serializer\Type("VasilDakov\Speedy\Service\Shipment\ShipmentPrice")
      */
     private ShipmentPrice $price;
 

@@ -16,7 +16,7 @@ namespace VasilDakov\Speedy\Service\Service;
 use DateTime;
 use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
 use VasilDakov\Speedy\Service\Calculation\CalculationSender;
-use VasilDakov\Speedy\ToArray;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class DestinationServicesRequest

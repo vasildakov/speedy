@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
-use VasilDakov\Speedy\Exception\InvalidArgumentException;
-use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
 use JMS\Serializer\Annotation as Serializer;
-use VasilDakov\Speedy\ToArray;
+use VasilDakov\Speedy\Exception\InvalidArgumentException;
+use VasilDakov\Speedy\Service\Shipment\ShipmentDiscountCardId;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class Payment
@@ -58,7 +58,7 @@ class Payment
 
     /**
      * @var ShipmentDiscountCardId|null
-     * @Serializer\Type("VasilDakov\Speedy\Shipment\ShipmentDiscountCardId")
+     * @Serializer\Type("VasilDakov\Speedy\Service\Shipment\ShipmentDiscountCardId")
      */
     private ?ShipmentDiscountCardId $discountCardId = null;
 

@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTest\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Content;
 use VasilDakov\Speedy\Model\Size;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
-use VasilDakov\Speedy\Shipment\ShipmentParcelSize;
 
 /**
  * Class ContentTest

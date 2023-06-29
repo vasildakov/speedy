@@ -9,10 +9,9 @@ use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Model\Payment;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
-use VasilDakov\Speedy\Shipment\ShipmentDiscountCardId;
 
-use function json_decode;
 use function file_get_contents;
+use function json_decode;
 
 /**
  * Class PaymentTest

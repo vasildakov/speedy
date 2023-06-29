@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Street;
 
-use VasilDakov\Speedy\ToArray;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class FindStreetRequest
