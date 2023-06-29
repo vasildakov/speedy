@@ -45,7 +45,7 @@ class FindSiteRequest
     private ?string $municipality = null;
 
 
-    public function __construct(int $countryId, string $name)
+    public function __construct(int $countryId, ?string $name)
     {
         $this->setCountryId($countryId);
         $this->setName($name);

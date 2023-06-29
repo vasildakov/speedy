@@ -415,12 +415,4 @@ class Site
     {
         $this->servingHubOfficeId = $servingHubOfficeId;
     }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [ ];
-    }
 }
