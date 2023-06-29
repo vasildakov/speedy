@@ -42,7 +42,7 @@
         "php-http/message": "^1.13",
         "php-http/discovery": "^1.14",
         "vlucas/phpdotenv": "^5.5",
-        "doctrine/collections": "^2.1",
+        "doctrine/collections": "^1.8",
         "laminas/laminas-hydrator": "^4.14",
         "laminas/laminas-serializer": "^2.14",
         "jms/serializer": "^3.25",
