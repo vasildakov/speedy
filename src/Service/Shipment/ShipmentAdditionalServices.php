@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Shipment;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class ShipmentAdditionalServices
@@ -17,47 +18,49 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class ShipmentAdditionalServices
 {
-    /**
-     * @var array
-     * @Serializer\Type("array")
-     */
-    private array $cod;
+    use ToArray;
 
     /**
      * @var array
      * @Serializer\Type("array")
      */
-    private array $obpd;
+    private ?array $cod = null;
 
     /**
      * @var array
      * @Serializer\Type("array")
      */
-    private array $declaredValue;
+    private ?array $obpd = null;
+
+    /**
+     * @var array
+     * @Serializer\Type("array")
+     */
+    private ?array $declaredValue = null;
 
     /**
      * @var int
      * @Serializer\Type("integer")
      */
-    private int $fixedTimeDelivery;
+    private ?int $fixedTimeDelivery = null;
 
     /**
      * @var array
      * @Serializer\Type("array")
      */
-    private array $returns;
+    private ?array $returns = null;
 
     /**
      * @var int
      * @Serializer\Type("integer")
      */
-    private int $specialDeliveryId;
+    private ?int $specialDeliveryId = null;
 
     /**
      * @var int
      * @Serializer\Type("integer")
      */
-    private int $deliveryToFloor;
+    private ?int $deliveryToFloor = null;
 
     /**
      * @return array

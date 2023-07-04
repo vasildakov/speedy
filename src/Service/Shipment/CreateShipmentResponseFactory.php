@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Shipment;
 
 use JMS\Serializer;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
  * Class CreateShipmentResponseFactory
@@ -21,14 +22,9 @@ class CreateShipmentResponseFactory
      */
     public function __invoke(string $json): CreateShipmentResponse
     {
-        $serializer = Serializer\SerializerBuilder::create()
-            ->setPropertyNamingStrategy(
-                new Serializer\Naming\SerializedNameAnnotationStrategy(
-                    new Serializer\Naming\IdenticalPropertyNamingStrategy()
-                )
-            )
-            ->build();
+        $serializer = (new SerializerFactory())();
 
+        /** @var CreateShipmentResponse */
         return $serializer->deserialize($json, CreateShipmentResponse::class, 'json');
     }
 }

@@ -22,19 +22,25 @@ class ShipmentSender
     use ToArray;
 
     /**
+     * @var int|null
+     * @Serializer\Type("integer")
+     */
+    private ?int $clientId = null;
+
+    /**
      * @var ShipmentPhoneNumber
      */
     private ShipmentPhoneNumber $phone1;
 
     /**
-     * @var ShipmentPhoneNumber
+     * @var ?ShipmentPhoneNumber
      */
-    private ShipmentPhoneNumber $phone2;
+    private ?ShipmentPhoneNumber $phone2 = null;
 
     /**
-     * @var ShipmentPhoneNumber
+     * @var ?ShipmentPhoneNumber
      */
-    private ShipmentPhoneNumber $phone3;
+    private ?ShipmentPhoneNumber $phone3 = null;
 
     /**
      * @var string|null
@@ -58,32 +64,30 @@ class ShipmentSender
      * @var bool
      * @Serializer\Type("bool")
      */
-    private bool $privatePerson = false;
+    private bool $privatePerson = true;
 
     /**
-     * @var ShipmentAddress
+     * @var ?ShipmentAddress
      */
-    private ShipmentAddress $address;
+    private ?ShipmentAddress $address = null;
 
     /**
      * @var int
      * @Serializer\Type("integer")
      */
-    private int $dropoffOfficeId;
+    private ?int $dropoffOfficeId = null;
 
-    /**
-     * @param ShipmentPhoneNumber $phone1
-     * @param string $email
-     * @param string $clientName
-     */
+
     public function __construct(
         ShipmentPhoneNumber $phone1,
         string $email,
-        string $clientName
+        string $clientName,
+        int $dropoffOfficeId = null,
     ) {
-        $this->setPhone1($phone1);
-        $this->setEmail($email);
-        $this->setClientName($clientName);
+        $this->phone1 = $phone1;
+        $this->email = $email;
+        $this->clientName = $clientName;
+        $this->dropoffOfficeId = $dropoffOfficeId;
     }
 
     /**
@@ -230,22 +234,29 @@ class ShipmentSender
         $this->dropoffOfficeId = $dropoffOfficeId;
     }
 
+    /**
+     * @param int|null $clientId
+     */
+    public function setClientId(?int $clientId): void
+    {
+        $this->clientId = $clientId;
+    }
 
     /**
-     * @return array
+     * @return int|null
      */
+    public function getClientId(): ?int
+    {
+        return $this->clientId;
+    }
+
     public function toArray(): array
     {
         return [
-           Speedy::PHONE_1             => $this->phone1->toArray(),
-           //Speedy::PHONE_2             => $this->phone2->toArray(),
-           //Speedy::PHONE_3             => $this->phone3->toArray(),
-           Speedy::CLIENT_NAME         => $this->getClientName(),
-           //Speedy::CONTACT_NAME      => $this->getContactName(),
-           Speedy::EMAIL               => $this->getEmail(),
-           //Speedy::PRIVATE_PERSON    => $this->getPrivatePerson(),
-           //Speedy::ADDRESS           => $this->getAddress(),
-           //Speedy::PICKUP_OFFICE_ID  => $this->getPickupOfficeId(),
+            Speedy::PHONE_1 => $this->phone1->toArray(),
+            Speedy::CONTACT_NAME => $this->contactName,
+            Speedy::EMAIL => $this->email,
         ];
     }
+
 }

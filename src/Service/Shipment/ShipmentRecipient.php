@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Shipment;
 
 use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class ShipmentRecipient
@@ -16,6 +17,8 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentRecipient
 {
+    use ToArray;
+
     /**
      * @var ShipmentPhoneNumber
      */
@@ -24,12 +27,12 @@ class ShipmentRecipient
     /**
      * @var ShipmentPhoneNumber
      */
-    private ShipmentPhoneNumber $phone2;
+    private ?ShipmentPhoneNumber $phone2 = null;
 
     /**
      * @var ShipmentPhoneNumber
      */
-    private ShipmentPhoneNumber $phone3;
+    private ?ShipmentPhoneNumber $phone3 = null;
 
     /**
      * @var string
@@ -37,14 +40,14 @@ class ShipmentRecipient
     private string $clientName;
 
     /**
-     * @var string
+     * @var ?string
      */
-    private string $objectName;
+    private ?string $objectName = null;
 
     /**
-     * @var string
+     * @var ?string
      */
-    private string $contactName;
+    private ?string $contactName = null;
 
     /**
      * @var string
@@ -54,28 +57,34 @@ class ShipmentRecipient
     /**
      * @var bool
      */
-    private bool $privatePerson;
+    private bool $privatePerson = true;
 
     /**
-     * @var ShipmentAddress
+     * @var ShipmentAddress|null
      */
-    private ShipmentAddress $address;
+    private ?ShipmentAddress $address;
 
     /**
-     * @var int
+     * @var ?int
      */
-    private int $pickupOfficeId;
+    private ?int $pickupOfficeId = null;
 
     /**
+     * @param ShipmentPhoneNumber $phone1
      * @param string $clientName
      * @param string $email
-     * @param ShipmentPhoneNumber $phone1
+     * @param ShipmentAddress|null $address
      */
-    public function __construct(ShipmentPhoneNumber $phone1, string $clientName, string $email)
-    {
+    public function __construct(
+        ShipmentPhoneNumber $phone1,
+        string $clientName,
+        string $email,
+        ?ShipmentAddress $address = null
+    ) {
         $this->setClientName($clientName);
         $this->setEmail($email);
         $this->setPhone1($phone1);
+        $this->address = $address;
     }
 
     /**
@@ -207,17 +216,17 @@ class ShipmentRecipient
     }
 
     /**
-     * @return ShipmentAddress
+     * @return ShipmentAddress|null
      */
-    public function getAddress(): ShipmentAddress
+    public function getAddress(): ?ShipmentAddress
     {
         return $this->address;
     }
 
     /**
-     * @param ShipmentAddress $address
+     * @param ShipmentAddress|null $address
      */
-    public function setAddress(ShipmentAddress $address): void
+    public function setAddress(?ShipmentAddress $address = null): void
     {
         $this->address = $address;
     }
@@ -236,24 +245,5 @@ class ShipmentRecipient
     public function setPickupOfficeId(int $pickupOfficeId): void
     {
         $this->pickupOfficeId = $pickupOfficeId;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-            Speedy::PHONE_1           => $this->phone1->toArray(),
-            //Speedy::PHONE_2           =>$this->phone2->toArray(),
-            //Speedy::PHONE_3           =>$this->phone3->toArray(),
-            Speedy::CLIENT_NAME       => $this->getClientName(),
-            //Speedy::OBJECT_NAME       =>$this->getObjectName(),
-            //Speedy::CONTACT_NAME      =>$this->getContactName(),
-            Speedy::EMAIL             => $this->getEmail(),
-            //Speedy::PRIVATE_PERSON    =>$this->getPrivatePerson(),
-            //Speedy::ADDRESS           =>$this->getAddress(),
-            //Speedy::PICKUP_OFFICE_ID  =>$this->getPickupOfficeId(),
-        ];
     }
 }

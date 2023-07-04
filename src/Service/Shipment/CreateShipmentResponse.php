@@ -6,6 +6,7 @@ namespace VasilDakov\Speedy\Service\Shipment;
 
 use DateTime;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Error;
 
 /**
  * Class CreateShipmentResponse
@@ -25,23 +26,23 @@ class CreateShipmentResponse
     private string $id;
 
     /**
-     * @var array
+     * @var array|null
      * @Serializer\Type("array")
      */
-    private array $parcels;
+    private ?array $parcels = null;
 
     /**
-     * @var ShipmentPrice
+     * @var ShipmentPrice|null
      * @Serializer\Type("VasilDakov\Speedy\Service\Shipment\ShipmentPrice")
      * @Serializer\Accessor(getter="getPrice", setter="setPrice")
      */
-    private ShipmentPrice $price;
+    private ?ShipmentPrice $price = null;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      * @Serializer\Type("DateTime<'Y-m-d'>")
      */
-    private DateTime $pickupDate;
+    private ?DateTime $pickupDate = null;
 
     /**
      * @var DateTime
@@ -50,25 +51,23 @@ class CreateShipmentResponse
     private DateTime $deliveryDeadline;
 
     /**
-     * @var
+     * @var Error|null
+     * @Serializer\Type("VasilDakov\Speedy\Error")
      */
-    private $error;
+    private ?Error $error = null;
 
     /**
-     * @param $id
-     * @return $this
+     * @param string|null $id
      */
-    public function setId($id): self
+    public function setId(?string $id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -90,17 +89,17 @@ class CreateShipmentResponse
     }
 
     /**
-     * @return ShipmentPrice
+     * @return ShipmentPrice|null
      */
-    public function getPrice(): ShipmentPrice
+    public function getPrice(): ?ShipmentPrice
     {
         return $this->price;
     }
 
     /**
-     * @param ShipmentPrice $price
+     * @param ?ShipmentPrice $price
      */
-    public function setPrice(ShipmentPrice $price): void
+    public function setPrice(?ShipmentPrice $price): void
     {
         $this->price = $price;
     }

@@ -77,7 +77,8 @@ class CreateShipmentRequestTest extends TestCase
             $this->recipient,
             $this->service,
             $this->content,
-            $this->payment
+            $this->payment,
+            $this->ref1
         );
     }
 
@@ -256,13 +257,7 @@ class CreateShipmentRequestTest extends TestCase
     {
         $json = $this->getJson();
 
-        $serializer = Serializer\SerializerBuilder::create()
-            ->setPropertyNamingStrategy(
-                new Serializer\Naming\SerializedNameAnnotationStrategy(
-                    new Serializer\Naming\IdenticalPropertyNamingStrategy()
-                )
-            )
-            ->build();
+        $serializer = (new SerializerFactory())();
 
         $instance = $serializer->deserialize($json, CreateShipmentRequest::class, 'json');
 

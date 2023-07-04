@@ -19,7 +19,6 @@ use VasilDakov\Speedy\Traits\ToArray;
  */
 class Payment
 {
-
     use ToArray;
 
     public const SENDER      = 'SENDER';
@@ -184,27 +183,4 @@ class Payment
         }
         return false;
     }
-
-    /**
-     * @return array
-     */
-    /*public function toArray(): array
-    {
-        $array = [
-            'courierServicePayer' => $this->getCourierServicePayer(),
-            'declaredValuePayer'  => $this->getDeclaredValuePayer(),
-            'packagePayer'        => $this->getPackagePayer(),
-            'thirdPartyClientId'  => $this->getThirdPartyClientId(),
-        ];
-
-        if ($this->discountCardId instanceof ShipmentDiscountCardId) {
-            $array['discountCardId'] = $this->discountCardId->toArray();
-        }
-
-        if ($this->codPayment instanceof CODPayment) {
-            $array['codPayment'] = $this->codPayment->toArray();
-        }
-
-        return $array;
-    }*/
 }

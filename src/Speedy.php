@@ -27,11 +27,15 @@ use VasilDakov\Speedy\Service\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesRequest;
 use VasilDakov\Speedy\Service\Service\DestinationServicesResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesResponseFactory;
+use VasilDakov\Speedy\Service\Shipment\CancelShipmentRequest;
+use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponse;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponse;
+use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponseFactory;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 use VasilDakov\Speedy\Service\Track\TrackResponse;
 
+use function Amp\Promise\rethrow;
 use function array_merge;
 use function json_encode;
 
@@ -441,12 +445,33 @@ final class Speedy
     }
 
     /**
-     * @param CreateShipmentRequest $request
+     * @param CreateShipmentRequest $object
      * @return CreateShipmentResponse
+     * @throws ClientExceptionInterface
      */
-    public function createShipment(CreateShipmentRequest $request): CreateShipmentResponse
+    public function createShipment(CreateShipmentRequest $object): CreateShipmentResponse
     {
-        return new CreateShipmentResponse();
+        $payload = $this->createPayload($object->toArray());
+
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/shipment',
+            $payload
+        );
+
+        $json = $this->getContents($request);
+
+        return (new CreateShipmentResponseFactory())($json);
+    }
+
+    /**
+     * @param CancelShipmentRequest $object
+     * @return CancelShipmentResponse
+     */
+    public function cancelShipment(CancelShipmentRequest $object): CancelShipmentResponse
+    {
+        return new CancelShipmentResponse();
     }
 
     /**

@@ -200,7 +200,7 @@ class ShipmentSenderTest extends TestCase
         $array = $object->toArray();
 
         $this->assertArrayHasKey(Speedy::PHONE_1, $array);
-        $this->assertArrayHasKey(Speedy::CLIENT_NAME, $array);
+        $this->assertArrayHasKey(Speedy::CONTACT_NAME, $array);
         $this->assertArrayHasKey(Speedy::EMAIL, $array);
     }
 }

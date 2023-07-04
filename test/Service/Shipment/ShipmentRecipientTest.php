@@ -14,6 +14,7 @@ use VasilDakov\Speedy\Speedy;
  * Class ShipmentRecipientTest
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  * @version
  */
@@ -74,18 +75,24 @@ class ShipmentRecipientTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->phone1 = $this->createMock(ShipmentPhoneNumber::class);
-        $this->phone2 = $this->createMock(ShipmentPhoneNumber::class);
-        $this->phone3 = $this->createMock(ShipmentPhoneNumber::class);
-        $this->clientName = "Client name";
-        $this->objectName = "Object name";
-        $this->contactName = "Contact name";
-        $this->email = "Email";
-        $this->privatePerson = false;
+        $this->phone1  = $this->createMock(ShipmentPhoneNumber::class);
+        $this->phone2  = $this->createMock(ShipmentPhoneNumber::class);
+        $this->phone3  = $this->createMock(ShipmentPhoneNumber::class);
         $this->address = $this->createMock(ShipmentAddress::class);
+
+        $this->clientName     = "Client name";
+        $this->objectName     = "Object name";
+        $this->contactName    = "Contact name";
+        $this->email          = "Email";
+        $this->privatePerson  = false;
         $this->pickupOfficeId = 4;
 
         parent::setUp();
+    }
+
+    private function getShipmentRecipient(): ShipmentRecipient
+    {
+        return new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
     }
 
     /**
@@ -94,7 +101,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePhone1(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setPhone1($this->phone1);
 
@@ -107,7 +114,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePhone2(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setPhone2($this->phone2);
 
@@ -120,7 +127,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePhone3(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setPhone3($this->phone3);
 
@@ -133,7 +140,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheClientName(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setClientName($this->clientName);
 
@@ -146,7 +153,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheObjectName(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setObjectName($this->clientName);
 
@@ -159,7 +166,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheContactName(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setContactName($this->contactName);
 
@@ -172,7 +179,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheEmail(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setEmail($this->email);
 
@@ -185,7 +192,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePrivatePerson(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setPrivatePerson($this->privatePerson);
 
@@ -198,7 +205,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveTheAddress(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setAddress($this->address);
 
@@ -211,7 +218,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanRetrieveThePickupOfficeId(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $object->setPickupOfficeId($this->pickupOfficeId);
 
@@ -224,7 +231,7 @@ class ShipmentRecipientTest extends TestCase
      */
     public function testItCanBeConvertedAsArray(): void
     {
-        $object = new ShipmentRecipient($this->phone1, $this->clientName, $this->email);
+        $object = $this->getShipmentRecipient();
 
         $this->assertIsArray($object->toArray());
     }
@@ -238,11 +245,11 @@ class ShipmentRecipientTest extends TestCase
         $this->assertArrayHasKey(Speedy::PHONE_1, $array);
         $this->assertArrayHasKey(Speedy::CLIENT_NAME, $array);
         $this->assertArrayHasKey(Speedy::EMAIL, $array);
-//        $this->assertArrayHasKey(Speedy::PHONE_2, $array);
-//        $this->assertarrayHasKey(Speedy::PHONE_3, $array);
-//        $this->assertArrayHasKey(Speedy::CONTACT_NAME, $array);
-//        $this->assertArrayHasKey(Speedy::PRIVATE_PERSON, $array);
-//        $this->assertArrayHasKey(Speedy::ADDRESS, $array);
-//        $this->assertArrayHasKey(Speedy::PICKUP_OFFICE_ID, $array);
+        //        $this->assertArrayHasKey(Speedy::PHONE_2, $array);
+        //        $this->assertArrayHasKey(Speedy::PHONE_3, $array);
+        //        $this->assertArrayHasKey(Speedy::CONTACT_NAME, $array);
+        //        $this->assertArrayHasKey(Speedy::PRIVATE_PERSON, $array);
+        //        $this->assertArrayHasKey(Speedy::ADDRESS, $array);
+        //        $this->assertArrayHasKey(Speedy::PICKUP_OFFICE_ID, $array);
     }
 }

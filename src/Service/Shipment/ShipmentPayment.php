@@ -6,7 +6,7 @@ namespace VasilDakov\Speedy\Service\Shipment;
 
 use JMS\Serializer\Annotation as Serializer;
 use VasilDakov\Speedy\Model\BankAccount;
-use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class ShipmentPayment
@@ -19,6 +19,8 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentPayment
 {
+    use ToArray;
+
     /**
      * @var string
      * @Serializer\Type("string")
@@ -56,17 +58,20 @@ class ShipmentPayment
     private ?BankAccount $senderBankAccount = null;
 
     /**
-     * @param string|null $courierServicePayer
+     * @param string $courierServicePayer
+     * @param string $declaredValuePayer
      */
-    public function __construct(string $courierServicePayer)
+    public function __construct(string $courierServicePayer, string $declaredValuePayer)
     {
-        $this->setCourierServicePayer($courierServicePayer);
+        $this->courierServicePayer = $courierServicePayer;
+        $this->declaredValuePayer = $declaredValuePayer;
     }
 
     /**
-     * @param string
+     * @param string $courierServicePayer
+     * @return void
      */
-    public function setCourierServicePayer(string $courierServicePayer)
+    public function setCourierServicePayer(string $courierServicePayer): void
     {
         $this->courierServicePayer = $courierServicePayer;
     }
@@ -80,20 +85,17 @@ class ShipmentPayment
     }
 
     /**
-     * @param string|null $declaredValuePayer
-     * @return $this
+     * @param string $declaredValuePayer
      */
-    public function setDeclaredValuePayer(?string $declaredValuePayer = null): self
+    public function setDeclaredValuePayer(string $declaredValuePayer): void
     {
         $this->declaredValuePayer = $declaredValuePayer;
-
-        return $this;
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getDeclaredValuePayer(): ?string
+    public function getDeclaredValuePayer(): string
     {
         return $this->declaredValuePayer;
     }
@@ -173,35 +175,11 @@ class ShipmentPayment
         return $this->senderBankAccount;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
-        $data = [
-            Speedy::COURIER_SERVICE_PAYER => $this->getCourierServicePayer()
+        return [
+            'courierServicePayer' => $this->courierServicePayer,
+            'declaredValuePayer'  => $this->declaredValuePayer,
         ];
-
-        if (null !== $this->declaredValuePayer) {
-            $data[Speedy::DECLARED_VALUE_PAYER] = $this->getDeclaredValuePayer();
-        }
-
-        if (null !== $this->packagePayer) {
-            $data[Speedy::PACKAGE_PAYER] = $this->getPackagePayer();
-        }
-
-        if (null !== $this->thirdPartyClientId) {
-            $data[Speedy::THIRD_PARTY_CLIENT_ID] = $this->getThirdPartyClientId();
-        }
-
-        if (null !== $this->discountCardId) {
-            $data[Speedy::DISCOUNT_CARD_ID] = $this->getDiscountCardId();
-        }
-
-        if (null !== $this->senderBankAccount) {
-            $data[Speedy::SENDER_BANK_ACCOUNT] = $this->getSenderBankAccount();
-        }
-
-        return $data;
     }
 }

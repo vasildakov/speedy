@@ -102,7 +102,6 @@ class ShipmentPrice
         $this->detailsLocal = new ArrayCollection();
     }
 
-
     /**
      * @return float
      */

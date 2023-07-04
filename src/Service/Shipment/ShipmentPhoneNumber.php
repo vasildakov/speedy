@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Shipment;
 
 use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class ShipmentPhoneNumber
@@ -17,6 +18,8 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentPhoneNumber
 {
+    use ToArray;
+
     /**
      * @var string
      */
@@ -69,16 +72,5 @@ class ShipmentPhoneNumber
     public function getExtension(): ?string
     {
         return $this->extension;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-            Speedy::NUMBER    => $this->getNumber(),
-            Speedy::EXTENSION => $this->getExtension()
-        ];
     }
 }

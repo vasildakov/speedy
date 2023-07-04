@@ -44,6 +44,7 @@
     "contactName":"TEST",
     "email":"a@b.c",
     "address":{
+      "siteId": 100,
       "siteName":"Sofia",
       "streetType":"str.",
       "streetName":"Vitosha Blvd",

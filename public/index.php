@@ -14,6 +14,8 @@ use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Service\Shipment;
+use VasilDakov\Speedy\Service\Shipment\ShipmentPayment;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Configuration;
 use Laminas\Diactoros\RequestFactory;
@@ -75,11 +77,49 @@ $request->setContent(new CalculationContent(1, 1, false, false));
 $request->setPayment(new CalculationPayment(Payment::RECIPIENT));
 $response = $speedy->calculation($request); */
 
-$response = $speedy->destination(new \VasilDakov\Speedy\Service\Service\DestinationServicesRequest(
+# 9. Destination
+/* $response = $speedy->destination(new \VasilDakov\Speedy\Service\Service\DestinationServicesRequest(
     new CalculationRecipient(true, 77)
-));
+)); */
 
+$sender = new Shipment\ShipmentSender(
+    new Shipment\ShipmentPhoneNumber('0888112233'),
+    'ivan@petrov.bg',
+    'IVAN PETROV',
+    77
+);
+
+$recipient = new Shipment\ShipmentRecipient(
+    new Shipment\ShipmentPhoneNumber('0899445566'),
+    'VASIL GEORGIEV',
+    'vasil@georgiev.bg',
+    new Shipment\ShipmentAddress(68134, 29, 3109, '1A')
+);
+
+$additionalServices = new Shipment\ShipmentAdditionalServices();
+$additionalServices->setCod(["amount" => 100, "processingType" => "CASH"]);
+$additionalServices->setDeclaredValue(["amount" => 100, "fragile" => true, "ignoreIfNotApplicable" => true]);
+$additionalServices->setObpd(["option" => "OPEN", "returnShipmentServiceId" => 505, "returnShipmentPayer" => "SENDER"]);
+
+$service = new Shipment\ShipmentService(505);
+$service->setAdditionalServices($additionalServices);
+$content = new Shipment\ShipmentContent(1, 0.6, 'MOBILE PHONE', 'BOX', null);
+$payment = new Shipment\ShipmentPayment('RECIPIENT', 'RECIPIENT');
+
+$response = $speedy->createShipment(
+    new Shipment\CreateShipmentRequest(
+        sender: $sender,
+        recipient: $recipient,
+        service: $service,
+        content: $content,
+        payment: $payment,
+        ref1: "ORDER 123456"
+    )
+);
 
 
 echo '<pre>';
-var_dump($response);
+var_dump([
+    $response->getPrice()->getTotalLocal(),
+    $response->getPrice()->getCurrencyLocal()
+]);

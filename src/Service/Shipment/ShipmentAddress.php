@@ -160,10 +160,16 @@ class ShipmentAddress
 
     /**
      * @param int $siteId
+     * @param int|null $complexId
+     * @param int|null $streetId
+     * @param string|null $streetNo
      */
-    public function __construct(int $siteId)
+    public function __construct(int $siteId, ?int $complexId = null, ?int $streetId = null, ?string $streetNo = null)
     {
         $this->siteId = $siteId;
+        $this->complexId = $complexId;
+        $this->streetId = $streetId;
+        $this->streetNo = $streetNo;
     }
 
     /**

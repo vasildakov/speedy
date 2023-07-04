@@ -10,11 +10,11 @@ use VasilDakov\Speedy\Traits\ToArray;
 /**
  * Class CreateShipmentRequest
  *
- * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @author Vasil Dakov <vasildakov@gmail.com>
- * @copyright
- * @version
+ * @copyright 2009-2023 Neutrino.bg
+ * @version 1.0
+ * @Serializer\AccessType("public_method")
  */
 class CreateShipmentRequest
 {
@@ -86,19 +86,22 @@ class CreateShipmentRequest
      * @param ShipmentService $service
      * @param ShipmentContent $content
      * @param ShipmentPayment $payment
+     * @param string $ref1
      */
     public function __construct(
         ShipmentSender $sender,
         ShipmentRecipient $recipient,
         ShipmentService $service,
         ShipmentContent $content,
-        ShipmentPayment $payment
+        ShipmentPayment $payment,
+        string $ref1
     ) {
-        $this->setSender($sender);
-        $this->setRecipient($recipient);
-        $this->setService($service);
-        $this->setContent($content);
-        $this->setPayment($payment);
+        $this->sender = $sender;
+        $this->recipient = $recipient;
+        $this->service = $service;
+        $this->content = $content;
+        $this->payment = $payment;
+        $this->ref1 = $ref1;
     }
 
     /**
@@ -179,13 +182,10 @@ class CreateShipmentRequest
 
     /**
      * @param ShipmentSender $sender
-     * @return $this
      */
-    public function setSender(ShipmentSender $sender): self
+    public function setSender(ShipmentSender $sender): void
     {
         $this->sender = $sender;
-
-        return $this;
     }
 
     /**
@@ -198,13 +198,10 @@ class CreateShipmentRequest
 
     /**
      * @param string $shipmentNote
-     * @return $this
      */
-    public function setShipmentNote(string $shipmentNote): self
+    public function setShipmentNote(string $shipmentNote): void
     {
         $this->shipmentNote = $shipmentNote;
-
-        return $this;
     }
 
     /**
@@ -217,17 +214,14 @@ class CreateShipmentRequest
 
     /**
      * @param string $ref1
-     * @return $this
      */
-    public function setRef1(string $ref1): self
+    public function setRef1(string $ref1): void
     {
         $this->ref1 = $ref1;
-
-        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRef2(): ?string
     {
@@ -236,13 +230,10 @@ class CreateShipmentRequest
 
     /**
      * @param string $ref2
-     * @return $this|null
      */
-    public function setRef2(string $ref2): ?self
+    public function setRef2(string $ref2): void
     {
         $this->ref2 = $ref2;
-
-        return $this;
     }
 
     /**
@@ -272,12 +263,31 @@ class CreateShipmentRequest
 
     /**
      * @param bool $requireUnsuccessfulDeliveryStickerImage
-     * @return $this
      */
-    public function setRequireUnsuccessfulDeliveryStickerImage(bool $requireUnsuccessfulDeliveryStickerImage): self
+    public function setRequireUnsuccessfulDeliveryStickerImage(bool $requireUnsuccessfulDeliveryStickerImage): void
     {
         $this->requireUnsuccessfulDeliveryStickerImage = $requireUnsuccessfulDeliveryStickerImage;
+    }
 
-        return $this;
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            "service" => $this->service->toArray(), // ok
+            "content" => $this->content->toArray(), // ok
+            "payment" => $this->payment->toArray(), // ok
+            "sender"  => $this->sender->toArray(),  // ok
+            /* "sender" => [
+                "phone1" => [
+                    "number" => "0888323020"
+                ],
+                "contactName" => "VASIL DAKOV",
+                "email" => "vasildakov@gmail.com"
+            ], */
+            "recipient" => $this->recipient->toArray(), // ok
+            "ref1" => $this->ref1
+        ];
     }
 }

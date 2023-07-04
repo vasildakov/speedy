@@ -6,6 +6,7 @@ namespace VasilDakov\Speedy\Service\Shipment;
 
 use DateTime;
 use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\Traits\ToArray;
 
 /**
  * Class ShipmentService
@@ -17,6 +18,8 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentService
 {
+    use ToArray;
+
     /**
      * @var DateTime|null
      */
@@ -164,32 +167,5 @@ class ShipmentService
         $this->saturdayDelivery = $saturdayDelivery;
 
         return $this;
-    }
-
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        $data = [
-            Speedy::SERVICE_ID => $this->getServiceId(),
-            Speedy::AUTO_ADJUST_PICKUP_DATE => $this->isAutoAdjustPickupDate(),
-            Speedy::SATURDAY_DELIVERY => $this->isSaturdayDelivery()
-        ];
-
-        if (null !== $this->pickupDate) {
-            $data[Speedy::PICKUP_DATE]  = $this->getPickupDate();
-        }
-
-        if (null !== $this->additionalServices) {
-            $data[Speedy::ADDITIONAL_SERVICES]  = $this->getAdditionalServices();
-        }
-
-        if (null !== $this->deferredDays) {
-            $data[Speedy::DEFERRED_DAYS]  = $this->getDeferredDays();
-        }
-
-        return $data;
     }
 }
