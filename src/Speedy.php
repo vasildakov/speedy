@@ -430,8 +430,20 @@ final class Speedy
      * @param TrackRequest $request
      * @return TrackResponse
      */
-    public function track(TrackRequest $request): TrackResponse
+    public function track(TrackRequest $object): TrackResponse
     {
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/track',
+            $payload
+        );
+
+        $json = $this->getContents($request);
+
+        var_dump($json); exit();
+
         return new TrackResponse();
     }
 

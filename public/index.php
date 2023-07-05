@@ -82,7 +82,8 @@ $response = $speedy->calculation($request); */
     new CalculationRecipient(true, 77)
 )); */
 
-$sender = new Shipment\ShipmentSender(
+# 10. Create Shipment
+/* $sender = new Shipment\ShipmentSender(
     new Shipment\ShipmentPhoneNumber('0888112233'),
     'ivan@petrov.bg',
     'IVAN PETROV',
@@ -116,10 +117,9 @@ $response = $speedy->createShipment(
         ref1: "ORDER 123456"
     )
 );
+*/
 
+$response = $speedy->track(new \VasilDakov\Speedy\Service\Track\TrackRequest([[ "id" => "299999990"]]));
 
 echo '<pre>';
-var_dump([
-    $response->getPrice()->getTotalLocal(),
-    $response->getPrice()->getCurrencyLocal()
-]);
+var_dump($response);

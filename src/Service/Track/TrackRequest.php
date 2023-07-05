@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Track;
 
+use VasilDakov\Speedy\Speedy;
+
 /**
  * Class TrackRequest
  *
@@ -13,4 +15,25 @@ namespace VasilDakov\Speedy\Service\Track;
  */
 class TrackRequest
 {
+    private array $parcels;
+
+    public function __construct(array $parcels)
+    {
+        $this->parcels = $parcels;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParcels(): array
+    {
+        return $this->parcels;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            Speedy::PARCELS => $this->parcels
+        ];
+    }
 }

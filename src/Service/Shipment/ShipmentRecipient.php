@@ -74,17 +74,20 @@ class ShipmentRecipient
      * @param string $clientName
      * @param string $email
      * @param ShipmentAddress|null $address
+     * @param int|null $pickupOfficeId
      */
     public function __construct(
         ShipmentPhoneNumber $phone1,
         string $clientName,
         string $email,
-        ?ShipmentAddress $address = null
+        ?ShipmentAddress $address = null,
+        ?int $pickupOfficeId = null,
     ) {
-        $this->setClientName($clientName);
-        $this->setEmail($email);
-        $this->setPhone1($phone1);
+        $this->phone1 = $phone1;
+        $this->clientName = $clientName;
+        $this->email = $email;
         $this->address = $address;
+        $this->pickupOfficeId = $pickupOfficeId;
     }
 
     /**
