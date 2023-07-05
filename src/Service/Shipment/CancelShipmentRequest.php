@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Shipment;
 
+use VasilDakov\Speedy\Traits\ToArray;
+
 /**
  * Class CancelShipmentRequest
  *
@@ -22,6 +24,8 @@ namespace VasilDakov\Speedy\Service\Shipment;
  */
 class CancelShipmentRequest
 {
+    use ToArray;
+
     private string $shipmentId;
 
     private string $comment;

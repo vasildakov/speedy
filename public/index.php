@@ -119,7 +119,10 @@ $response = $speedy->createShipment(
 );
 */
 
-$response = $speedy->track(new \VasilDakov\Speedy\Service\Track\TrackRequest([[ "id" => "299999990"]]));
+// $response = $speedy->track(new \VasilDakov\Speedy\Service\Track\TrackRequest([[ "id" => "299999990"]]));
+
+
+$response = $speedy->cancelShipment(new Shipment\CancelShipmentRequest("62225513842", "just a test"));
 
 echo '<pre>';
 var_dump($response);

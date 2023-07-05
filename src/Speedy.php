@@ -29,15 +29,14 @@ use VasilDakov\Speedy\Service\Service\DestinationServicesResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesResponseFactory;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentRequest;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponse;
+use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponseFactory;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponse;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponseFactory;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 use VasilDakov\Speedy\Service\Track\TrackResponse;
-
 use VasilDakov\Speedy\Service\Track\TrackResponseFactory;
 
-use function Amp\Promise\rethrow;
 use function array_merge;
 use function json_encode;
 
@@ -480,10 +479,22 @@ final class Speedy
     /**
      * @param CancelShipmentRequest $object
      * @return CancelShipmentResponse
+     * @throws ClientExceptionInterface
      */
     public function cancelShipment(CancelShipmentRequest $object): CancelShipmentResponse
     {
-        return new CancelShipmentResponse();
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/shipment/cancel',
+            $payload
+        );
+
+        $json = $this->getContents($request);
+
+        /** @var CancelShipmentResponse */
+        return (new CancelShipmentResponseFactory())($json);
     }
 
     /**

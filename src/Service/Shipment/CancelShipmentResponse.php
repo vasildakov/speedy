@@ -38,6 +38,14 @@ class CancelShipmentResponse
     }
 
     /**
+     * @param Error|null $error
+     */
+    public function setError(?Error $error): void
+    {
+        $this->error = $error;
+    }
+
+    /**
      * @return Error|null
      */
     public function getError(): ?Error
