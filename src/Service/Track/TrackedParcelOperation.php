@@ -39,16 +39,16 @@ class TrackedParcelOperation
     private int $operationCode;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    private string $description;
+    private ?string $description = null;
 
     /**
-     * @var string
+     * @var string|null
      * @Serializer\Type("string")
      */
-    private string $comment;
+    private ?string $comment = null;
 
     /**
      * @var string|null
