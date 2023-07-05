@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Track;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation as Serializer;
+
 /**
  * Class TrackResponse
  *
@@ -13,4 +16,24 @@ namespace VasilDakov\Speedy\Service\Track;
  */
 class TrackResponse
 {
+    /**
+     * @Serializer\Type("ArrayCollection<VasilDakov\Speedy\Service\Track\TrackedParcel>")
+     */
+    private ArrayCollection $parcels;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getParcels(): ArrayCollection
+    {
+        return $this->parcels;
+    }
+
+    /**
+     * @param ArrayCollection $parcels
+     */
+    public function setParcels(ArrayCollection $parcels): void
+    {
+        $this->parcels = $parcels;
+    }
 }

@@ -527,7 +527,6 @@ class SpeedyTest extends TestCase
             )
         ;
 
-
         $response = $speedy->calculation($request);
 
         $this->assertInstanceOf(Calculation\CalculationResponse::class, $response);
@@ -538,9 +537,48 @@ class SpeedyTest extends TestCase
      */
     public function testItCanTrack(): void
     {
+        $this->client
+            ->expects($this->once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects($this->once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/track')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects($this->once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects($this->once())
+            ->method('getContents')
+            ->willReturn(json_encode(['parcels' => [[]]], JSON_THROW_ON_ERROR))
+        ;
+
         $speedy = $this->getClient();
 
-        $response = $speedy->track(new Service\Track\TrackRequest());
+        $response = $speedy->track(new Service\Track\TrackRequest([]));
 
         $this->assertInstanceOf(Service\Track\TrackResponse::class, $response);
     }

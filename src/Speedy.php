@@ -35,6 +35,8 @@ use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponseFactory;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 use VasilDakov\Speedy\Service\Track\TrackResponse;
 
+use VasilDakov\Speedy\Service\Track\TrackResponseFactory;
+
 use function Amp\Promise\rethrow;
 use function array_merge;
 use function json_encode;
@@ -442,9 +444,7 @@ final class Speedy
 
         $json = $this->getContents($request);
 
-        var_dump($json); exit();
-
-        return new TrackResponse();
+        return (new TrackResponseFactory())($json);
     }
 
     /**

@@ -11,11 +11,11 @@ use VasilDakov\Speedy\Traits\ToArray;
 /**
  * Class ShipmentPayment
  *
- * @Serializer\AccessType("public_method")
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  * @version
+ * @Serializer\AccessType("public_method")
  */
 class ShipmentPayment
 {
