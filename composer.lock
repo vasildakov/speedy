@@ -1936,16 +1936,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.22.0",
+            "version": "1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "ec58baf7b3c7f1c81b3b00617c953249fb8cf30c"
+                "reference": "65c39594fbd8c67abfc68bb323f86447bab79cc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/ec58baf7b3c7f1c81b3b00617c953249fb8cf30c",
-                "reference": "ec58baf7b3c7f1c81b3b00617c953249fb8cf30c",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/65c39594fbd8c67abfc68bb323f86447bab79cc0",
+                "reference": "65c39594fbd8c67abfc68bb323f86447bab79cc0",
                 "shasum": ""
             },
             "require": {
@@ -1977,9 +1977,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.22.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.22.1"
             },
-            "time": "2023-06-01T12:35:21+00:00"
+            "time": "2023-06-29T20:46:06+00:00"
         },
         {
             "name": "psr/cache",
@@ -3361,12 +3361,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "1d25926e14d7dc121509d2f6eea71c2353729860"
+                "reference": "5d7c151a743a75fe6f24e461ac74287c0f686a19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/1d25926e14d7dc121509d2f6eea71c2353729860",
-                "reference": "1d25926e14d7dc121509d2f6eea71c2353729860",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/5d7c151a743a75fe6f24e461ac74287c0f686a19",
+                "reference": "5d7c151a743a75fe6f24e461ac74287c0f686a19",
                 "shasum": ""
             },
             "require": {
@@ -3450,7 +3450,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-29T20:44:52+00:00"
+            "time": "2023-07-04T21:35:04+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -4103,12 +4103,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "b4d6e1c45fa5e6f6476f228ac81b37397357c5a0"
+                "reference": "5cc8bf8cab337152b45657082936b46d948e0a4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/b4d6e1c45fa5e6f6476f228ac81b37397357c5a0",
-                "reference": "b4d6e1c45fa5e6f6476f228ac81b37397357c5a0",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/5cc8bf8cab337152b45657082936b46d948e0a4f",
+                "reference": "5cc8bf8cab337152b45657082936b46d948e0a4f",
                 "shasum": ""
             },
             "require": {
@@ -4180,7 +4180,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-23T12:05:08+00:00"
+            "time": "2023-07-03T19:37:21+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
