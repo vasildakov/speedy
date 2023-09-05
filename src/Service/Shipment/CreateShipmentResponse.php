@@ -19,11 +19,11 @@ use VasilDakov\Speedy\Error;
 class CreateShipmentResponse
 {
     /**
-     * @var string
+     * @var ?string
      * @Serializer\Type("string")
      * @Serializer\Accessor(getter="getId", setter="setId")
      */
-    private string $id;
+    private ?string $id = '';
 
     /**
      * @var array|null
