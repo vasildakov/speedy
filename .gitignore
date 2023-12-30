@@ -12,3 +12,5 @@ public/.env
 .php-cs-fixer.cache
 .env
 /tmp
+INFO.md
+/public/example.php

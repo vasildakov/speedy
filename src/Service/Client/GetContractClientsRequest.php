@@ -20,7 +20,12 @@ class GetContractClientsRequest
      * @var string|null
      * @Serializer\Type("string")
      */
-    private ?string $clientSystemId = null;
+    private ?string $clientSystemId;
+
+    public function __construct(?string $clientSystemId = null)
+    {
+        $this->clientSystemId = $clientSystemId;
+    }
 
     /**
      * @return string|null

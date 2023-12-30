@@ -173,4 +173,9 @@ class Client
     {
         $this->privatePerson = $privatePerson;
     }
+
+    public function getSiteName()
+    {
+        return $this->siteName;
+    }
 }
