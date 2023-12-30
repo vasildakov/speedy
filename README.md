@@ -9,7 +9,6 @@
 [![Packagist Downloads](https://img.shields.io/packagist/dt/vasildakov/speedy?color=blue)](https://packagist.org/packages/vasildakov/speedy/stats)
 
 
-
 Documentation
 
 ## Features

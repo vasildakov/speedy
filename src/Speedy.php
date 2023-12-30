@@ -21,7 +21,10 @@ use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
 use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
+use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
 use VasilDakov\Speedy\Service\Printing\PrintRequest;
 use VasilDakov\Speedy\Service\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesRequest;
@@ -261,15 +264,13 @@ final class Speedy implements SpeedyInterface
 
 
     /**
-     * @param GetContractClientsRequest $object
-     * @return GetContractClientsResponse
+     * @param GetContractClientsRequest $req
+     * @return string
      * @throws ClientExceptionInterface
-     * @throws Throwable
      */
-    public function getContractClient(
-        GetContractClientsRequest $object
-    ): GetContractClientsResponse {
-        $payload = $this->createPayload($object->toArray());
+    public function getContractClient(GetContractClientsRequest $req): string
+    {
+        $payload = $this->createPayload($req->toArray());
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
@@ -277,20 +278,17 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
-
-        return (new GetContractClientsResponseFactory())($json);
+        return $this->getContents($request);
     }
 
     /**
-     * @param Location\Country\FindCountryRequest $object
-     * @return Location\Country\FindCountryResponse
+     * @param Location\Country\FindCountryRequest $req
+     * @return string
      * @throws ClientExceptionInterface
      */
-    public function findCountry(
-        Location\Country\FindCountryRequest $object
-    ): Location\Country\FindCountryResponse {
-        $payload = $this->createPayload($object->toArray());
+    public function findCountry(Location\Country\FindCountryRequest $req): string
+    {
+        $payload = $this->createPayload($req->toArray());
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
@@ -298,20 +296,19 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new Location\Country\FindCountryResponseFactory())($json);
+        //return (new Location\Country\FindCountryResponseFactory())($json);
     }
 
     /**
-     * @param Location\State\FindStateRequest $request
-     * @return Location\State\FindStateResponse
+     * @param FindStateRequest $req
+     * @return string
      * @throws ClientExceptionInterface
      */
-    public function findState(
-        Location\State\FindStateRequest $request
-    ): Location\State\FindStateResponse {
-        $payload = $this->createPayload($request->toArray());
+    public function findState(Location\State\FindStateRequest $req): string
+    {
+        $payload = $this->createPayload($req->toArray());
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
@@ -319,20 +316,20 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new Location\State\FindStateResponseFactory())($json);
+        // return (new Location\State\FindStateResponseFactory())($json);
     }
 
 
     /**
-     * @param Location\Site\FindSiteRequest $object
-     * @return FindSiteResponse
+     * @param FindSiteRequest $req
+     * @return string
      * @throws ClientExceptionInterface
      */
-    public function findSite(Location\Site\FindSiteRequest $object): Location\Site\FindSiteResponse
+    public function findSite(Location\Site\FindSiteRequest $req): string
     {
-        $payload = $this->createPayload($object->toArray());
+        $payload = $this->createPayload($req->toArray());
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
@@ -340,20 +337,20 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new Location\Site\FindSiteResponseFactory())($json);
+        //return (new Location\Site\FindSiteResponseFactory())($json);
     }
 
 
     /**
-     * @param FindOfficeRequest $object
-     * @return FindOfficeResponse
+     * @param FindOfficeRequest $req
+     * @return string
      * @throws ClientExceptionInterface
      */
-    public function findOffice(Location\Office\FindOfficeRequest $object): FindOfficeResponse
+    public function findOffice(Location\Office\FindOfficeRequest $req): string
     {
-        $payload = $this->createPayload($object->toArray());
+        $payload = $this->createPayload($req->toArray());
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
@@ -361,20 +358,20 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new Location\Office\FindOfficeResponseFactory())($json);
+        //return (new Location\Office\FindOfficeResponseFactory())($json);
     }
 
 
     /**
-     * @param FindComplexRequest $object
-     * @return FindComplexResponse
+     * @param FindComplexRequest $req
+     * @return string
      * @throws ClientExceptionInterface
      */
-    public function findComplex(Location\Complex\FindComplexRequest $object): Location\Complex\FindComplexResponse
+    public function findComplex(Location\Complex\FindComplexRequest $req): string
     {
-        $payload = $this->createPayload($object->toArray());
+        $payload = $this->createPayload($req->toArray());
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
@@ -382,19 +379,19 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new Location\Complex\FindComplexResponseFactory())($json);
+        //return (new Location\Complex\FindComplexResponseFactory())($json);
     }
 
     /**
-     * @param Location\Street\FindStreetRequest $object
-     * @return Location\Street\FindStreetResponse
+     * @param FindStreetRequest $req
+     * @return string
      * @throws ClientExceptionInterface
      */
-    public function findStreet(Location\Street\FindStreetRequest $object): Location\Street\FindStreetResponse
+    public function findStreet(Location\Street\FindStreetRequest $req): string
     {
-        $payload = $this->createPayload($object->toArray());
+        $payload = $this->createPayload($req->toArray());
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,
@@ -402,9 +399,9 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new Location\Street\FindStreetResponseFactory())($json);
+        //return (new Location\Street\FindStreetResponseFactory())($json);
     }
 
     /**
@@ -457,13 +454,13 @@ final class Speedy implements SpeedyInterface
     }
 
     /**
-     * @param CreateShipmentRequest $object
-     * @return CreateShipmentResponse
+     * @param CreateShipmentRequest $req
+     * @return string
      * @throws ClientExceptionInterface
      */
-    public function createShipment(CreateShipmentRequest $object): CreateShipmentResponse
+    public function createShipment(CreateShipmentRequest $req): string
     {
-        $payload = $this->createPayload($object->toArray());
+        $payload = $this->createPayload($req->toArray());
 
 
         $request = $this->createRequest(
@@ -472,9 +469,9 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new CreateShipmentResponseFactory())($json);
+        //return (new CreateShipmentResponseFactory())($json);
     }
 
     /**

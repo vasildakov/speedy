@@ -73,7 +73,7 @@ class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanBeInstantiated(): void
+    public function testItCanBeConstructed(): void
     {
         $client = $this->getClient();
 
@@ -89,7 +89,7 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with(
                 RequestMethodInterface::METHOD_POST,
@@ -99,33 +99,33 @@ class SpeedyTest extends TestCase
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode([
@@ -139,7 +139,7 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->getContractClient(new GetContractClientsRequest());
 
-        $this->assertInstanceOf(GetContractClientsResponse::class, $response);
+        self::assertJson($response);
     }
 
 
@@ -152,40 +152,40 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/location/country')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode([
@@ -198,7 +198,9 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->findCountry(new FindCountryRequest('Bulgaria'));
 
-        $this->assertInstanceOf(FindCountryResponse::class, $response);
+        self::assertJson($response);
+
+        //$this->assertInstanceOf(FindCountryResponse::class, $response);
     }
 
     /**
@@ -209,40 +211,40 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/location/state')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode([
@@ -255,7 +257,9 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->findState(new FindStateRequest(100, 'SL'));
 
-        $this->assertInstanceOf(FindStateResponse::class, $response);
+        self::assertJson($response);
+
+        //$this->assertInstanceOf(FindStateResponse::class, $response);
     }
 
     /**
@@ -266,34 +270,34 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/location/site')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
@@ -308,7 +312,9 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->findSite(new FindSiteRequest(100, 'SL'));
 
-        $this->assertInstanceOf(FindSiteResponse::class, $response);
+        self::assertJson($response);
+
+        // $this->assertInstanceOf(FindSiteResponse::class, $response);
     }
 
     /**
@@ -319,40 +325,40 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/location/office')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode(['offices' => [[]]], JSON_THROW_ON_ERROR)
@@ -361,7 +367,9 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->findOffice(new FindOfficeRequest(123));
 
-        $this->assertInstanceOf(FindOfficeResponse::class, $response);
+        self::assertJson($response);
+
+        //$this->assertInstanceOf(FindOfficeResponse::class, $response);
     }
 
 
@@ -373,40 +381,40 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/location/complex')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode(['complexes' => [[]]], JSON_THROW_ON_ERROR)
@@ -415,7 +423,9 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->findComplex(new FindComplexRequest(68134, "KRASN"));
 
-        $this->assertInstanceOf(FindComplexResponse::class, $response);
+        self::assertJson($response);
+
+        //$this->assertInstanceOf(FindComplexResponse::class, $response);
     }
 
     /**
@@ -426,40 +436,40 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/location/street')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode(['streets' => [[]]], JSON_THROW_ON_ERROR)
@@ -467,8 +477,9 @@ class SpeedyTest extends TestCase
         ;
 
         $response = $speedy->findStreet(new FindStreetRequest(68134, "VASIL LEVSKI"));
+        self::assertJson($response);
 
-        $this->assertInstanceOf(FindStreetResponse::class, $response);
+        //$this->assertInstanceOf(FindStreetResponse::class, $response);
     }
 
     /**
@@ -487,40 +498,40 @@ class SpeedyTest extends TestCase
 
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/calculate')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode(['calculations' => [[]]], JSON_THROW_ON_ERROR)
@@ -538,40 +549,40 @@ class SpeedyTest extends TestCase
     public function testItCanTrack(): void
     {
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/track')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(json_encode(['parcels' => [[]]], JSON_THROW_ON_ERROR))
         ;
@@ -605,40 +616,40 @@ class SpeedyTest extends TestCase
         $speedy = $this->getClient();
 
         $this->client
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('sendRequest')
             ->with($this->request)
             ->willReturn($this->response)
         ;
 
         $this->factory
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('createRequest')
             ->with('POST', 'https://api.speedy.bg/v1/shipment')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('withAddedHeader')
             ->with('Content-Type', 'application/json')
             ->willReturn($this->request)
         ;
 
         $this->request
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->response
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getBody')
             ->willReturn($this->stream)
         ;
 
         $this->stream
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('getContents')
             ->willReturn(
                 json_encode(['calculations' => [[]]], JSON_THROW_ON_ERROR)
@@ -647,6 +658,8 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->createShipment($request);
 
-        $this->assertInstanceOf(Service\Shipment\CreateShipmentResponse::class, $response);
+        self::assertJson($response);
+
+        //$this->assertInstanceOf(Service\Shipment\CreateShipmentResponse::class, $response);
     }
 }
