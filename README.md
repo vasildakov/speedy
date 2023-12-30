@@ -1,10 +1,14 @@
 # Speedy API Client
 
-![build](https://github.com/vasildakov/speedy/actions/workflows/php.yml/badge.svg)
+[![build](https://github.com/vasildakov/speedy/actions/workflows/php.yml/badge.svg)](https://github.com/vasildakov/speedy/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/build.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/build-status/main)
-[![Total Downloads](https://img.shields.io/packagist/dt/vasildakov/speedy.svg)](https://packagist.org/packages/vasildakov/speedy/stats)
+[![Packagist License](https://img.shields.io/packagist/l/vasildakov/speedy?color=blue)](https://github.com/vasildakov/speedy/blob/main/LICENSE)
+[![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/vasildakov/speedy/php)](https://packagist.org/packages/vasildakov/shipping)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/vasildakov/speedy?color=blue)](https://packagist.org/packages/vasildakov/speedy/stats)
+
+
 
 Documentation
 

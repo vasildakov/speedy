@@ -47,7 +47,7 @@ use function json_encode;
  * @copyright 2009-2022 Neutrino.bg
  * @version   1.0
  */
-final class Speedy
+final class Speedy implements SpeedyInterface
 {
     public const API_URL = 'https://api.speedy.bg/v1';
     public const USER_NAME = 'userName';
@@ -428,8 +428,9 @@ final class Speedy
     }
 
     /**
-     * @param TrackRequest $request
+     * @param TrackRequest $object
      * @return TrackResponse
+     * @throws ClientExceptionInterface
      */
     public function track(TrackRequest $object): TrackResponse
     {
