@@ -1,5 +1,7 @@
 # Speedy API Client
 
+An easy to use PHP client for [Speedy REST API](https://api.speedy.bg/web-api.html) 
+
 [![build](https://github.com/vasildakov/speedy/actions/workflows/php.yml/badge.svg)](https://github.com/vasildakov/speedy/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/?branch=main)
@@ -10,6 +12,10 @@
 
 
 Documentation
+
+Speedy client is a PSR-7 and PSR-18 compliant HTTP client that implements Speedy communication protocol. 
+It has clean and consistent API, is fully unit tested and even comes with an example application to get you started.
+
 
 ## Features
 
@@ -25,6 +31,38 @@ $ composer require vasildakov/speedy
 ```
 
 ## Usage
+
+### Set up Speedy Client
+
+The client can be set with any PSR-18 HTTP Client 
+
+```php 
+// configuration
+$configuration = new Configuration(
+    username: 'username',
+    password: 'password',
+    language: 'language'
+);
+```
+
+
+Example with [Guzzle](https://github.com/guzzle/guzzle) and [Laminas Diactoros](https://github.com/laminas/laminas-diactoros)
+```php
+
+$client = new \GuzzleHttp\Client(); // PSR-18 HTTP Client
+$factory = new \Laminas\Diactoros\RequestFactory(); // PSR-17 HTTP Factory
+$speedy = new Speedy($configuration, $client, $factory);
+```
+
+Example with [Curl Client](https://github.com/php-http/curl-client) and [Nyholm](https://github.com/Nyholm/psr7) HTTP Factory
+```php
+
+$client = \Http\Client\Curl\Client(); // PSR-18 HTTP Client
+$factory = new \Nyholm\Psr7\Factory\Psr17Factory(); // PSR-17 HTTP Factory
+$speedy = new Speedy($configuration, $client, $factory);
+
+```
+
 
 ### I. Making a Request
 Using PSR-17 RequestFactoryInterface to create the Request that could be sent with 
