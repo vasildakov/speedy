@@ -29,21 +29,35 @@ $ composer require vasildakov/speedy
 
 ## Usage
 
-### Set up Speedy Client
+### The Configuration
 
-The client can be set with any PSR-18 HTTP Client 
+Let's presume that you are using PHP dotenv to load environment variables 
+from a file named .env. In this case, you need to add the following variables:
+
+```dotenv
+SPEEDY_USERNAME="username"
+SPEEDY_PASSWORD="password"
+SPEEDY_LANGUAGE="EN"
+
+```
+
+The next step is to create a new Configuration instance like in the example bellow:
 
 ```php 
 <?php
 
 // configuration
 $configuration = new Configuration(
-    username: 'username',
-    password: 'password',
-    language: 'language'
+    username: $_ENV['SPEEDY_USERNAME'],
+    password: $_ENV['SPEEDY_PASSWORD'],
+    language: $_ENV['SPEEDY_LANGUAGE']
 );
 ```
 
+### Configuring Speedy Client
+
+The final step is to configure the Speedy client. 
+The client can be configured with any `PSR-18 HTTP Client` and `PSR-17 HTTP Factory`:
 
 Example with [Guzzle](https://github.com/guzzle/guzzle) and [Laminas Diactoros](https://github.com/laminas/laminas-diactoros)
 ```php
@@ -57,7 +71,8 @@ $factory = new RequestFactory(); // PSR-17 HTTP Factory
 $speedy  = new Speedy($configuration, $client, $factory);
 ```
 
-Example with [Symfony HTTP Client](https://github.com/symfony/http-client) and [Nyholm HTTP Factory](https://github.com/Nyholm/psr7)
+Example with [Symfony HTTP Client](https://github.com/symfony/http-client) 
+and [Nyholm HTTP Factory](https://github.com/Nyholm/psr7)
 ```php
 <?php
 
