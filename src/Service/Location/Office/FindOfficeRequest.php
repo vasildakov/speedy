@@ -7,10 +7,11 @@ namespace VasilDakov\Speedy\Service\Location\Office;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
- * Class FindOfficeRequest
+ * Class FindOfficeRequest.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
  */
 class FindOfficeRequest
@@ -24,9 +25,6 @@ class FindOfficeRequest
         $this->siteId = $siteId;
     }
 
-    /**
-     * @return int
-     */
     public function getSiteId(): int
     {
         return $this->siteId;

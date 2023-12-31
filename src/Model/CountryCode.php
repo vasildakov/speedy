@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 /**
- * Class CountryCode
+ * Class CountryCode.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
  */
 class CountryCode
@@ -24,37 +25,27 @@ class CountryCode
     ];
 
     /**
-     * Current ISO 3166 country numeric code
-     * @var int
+     * Current ISO 3166 country numeric code.
      */
     private int $code;
 
-    /**
-     * @param int $code
-     */
     public function __construct(int $code)
     {
         $this->setCode($code);
     }
 
     /**
-     * @param CountryCode $other
-     * @return bool
      * @todo Implement the logic for checking if $this and $other are equals
      */
-    public function equals(CountryCode $other): bool
+    public function equals(self $other): bool
     {
         // you can try make it with one line of code
         return $this->getCode() === $other->getCode();
     }
 
-    /**
-     * @param int $code
-     * @return self
-     */
     public function setCode(int $code): self
     {
-        if (! in_array($code, self::CODES)) {
+        if (! \in_array($code, self::CODES)) {
             throw new \InvalidArgumentException();
         }
         $this->code = $code;
@@ -72,6 +63,6 @@ class CountryCode
 
     public function toArray(): array
     {
-        return [ ];
+        return [];
     }
 }

@@ -16,10 +16,11 @@ namespace VasilDakov\Speedy\Service\Calculation;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
- * Class CalculationPayment
+ * Class CalculationPayment.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
 class CalculationPayment

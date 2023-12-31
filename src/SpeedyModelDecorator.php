@@ -15,7 +15,7 @@ final class SpeedyModelDecorator
 
     private SerializerInterface $serializer;
 
-    public function __construct(SpeedyInterface $speedy, ?SerializerInterface $serializer = null)
+    public function __construct(SpeedyInterface $speedy, SerializerInterface $serializer = null)
     {
         $this->speedy = $speedy;
 
@@ -25,10 +25,6 @@ final class SpeedyModelDecorator
         $this->serializer = $serializer;
     }
 
-    /**
-     * @param GetContractClientsRequest $req
-     * @return GetContractClientsResponse
-     */
     public function getContractClient(GetContractClientsRequest $req): GetContractClientsResponse
     {
         $json = $this->speedy->getContractClient($req);

@@ -8,62 +8,48 @@ use JMS\Serializer\Annotation as Serializer;
 use VasilDakov\Speedy\Model\CountryCode;
 
 /**
- * Class CalculationAddressLocation
+ * Class CalculationAddressLocation.
  *
  * @Serializer\AccessType("public_method")
+ *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
  */
 class CalculationAddressLocation
 {
     /**
      * Country ISO code. If not provided, local country is assumed. Used for all address types.
-     *
-     * @var CountryCode
      */
     private CountryCode $countryId;
 
     /**
-     * Required, if country supports states
-     *
-     * @var string
+     * Required, if country supports states.
      */
     private string $stateId;
 
     /**
      * Required, if country has full site nomenclature and pair (siteType, siteName) is not provided.
-     *
-     * @var int
      */
     private int $siteId;
 
     /**
-     * Forbidden, if siteId is provided. Otherwise, is not mandatory
-     *
-     * @var string
+     * Forbidden, if siteId is provided. Otherwise, is not mandatory.
      */
     private string $siteType;
 
     /**
-     * Forbidden, if siteId is provided. Otherwise, is not mandatory
-     *
-     * @var string
+     * Forbidden, if siteId is provided. Otherwise, is not mandatory.
      */
     private string $siteName;
 
     /**
-     * Required if country requires postcode for addresses
-     *
-     * @var string
+     * Required if country requires postcode for addresses.
      */
     private string $postCode;
 
-    /**
-     * @param int $siteId
-     * @param string $postCode
-     */
     public function __construct(int $siteId, string $postCode)
     {
         $this->setSiteId($siteId);
@@ -78,10 +64,6 @@ class CalculationAddressLocation
         return $this->countryId;
     }
 
-    /**
-     * @param CountryCode $countryId
-     * @return self
-     */
     public function setCountryId(CountryCode $countryId): self
     {
         $this->countryId = $countryId;
@@ -97,10 +79,6 @@ class CalculationAddressLocation
         return $this->stateId;
     }
 
-    /**
-     * @param string $stateId
-     * @return self
-     */
     public function setStateId(string $stateId): self
     {
         $this->stateId = $stateId;
@@ -111,16 +89,11 @@ class CalculationAddressLocation
     /**
      * @return int stateId
      */
-
     public function getSiteId(): int
     {
         return $this->siteId;
     }
 
-    /**
-     * @param int $siteId
-     * @return void
-     */
     private function setSiteId(int $siteId): void
     {
         $this->siteId = $siteId;
@@ -134,10 +107,6 @@ class CalculationAddressLocation
         return $this->siteType;
     }
 
-    /**
-     * @param string $siteType
-     * @return self
-     */
     public function setSiteType(string $siteType): self
     {
         $this->siteType = $siteType;
@@ -153,10 +122,6 @@ class CalculationAddressLocation
         return $this->siteName;
     }
 
-    /**
-     * @param string $siteName
-     * @return self
-     */
     public function setSiteName(string $siteName): self
     {
         $this->siteName = $siteName;
@@ -172,10 +137,6 @@ class CalculationAddressLocation
         return $this->postCode;
     }
 
-    /**
-     * @param string $postCode
-     * @return void
-     */
     private function setPostCode(string $postCode): void
     {
         $this->postCode = $postCode;

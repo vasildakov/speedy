@@ -16,10 +16,11 @@ namespace VasilDakov\Speedy\Service\Location\Street;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
- * Class FindStreetResponseFactory
+ * Class FindStreetResponseFactory.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
 class FindStreetResponseFactory
@@ -28,7 +29,7 @@ class FindStreetResponseFactory
     {
         $serializer = (new SerializerFactory())();
 
-        /**  @var FindStreetResponse $response */
+        /*  @var FindStreetResponse $response */
         return $serializer->deserialize($json, FindStreetResponse::class, 'json');
     }
 }

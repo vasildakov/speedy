@@ -7,10 +7,11 @@ namespace VasilDakov\Speedy\Service\Calculation;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
- * Class CalculationService
+ * Class CalculationService.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
  */
 class CalculationService
@@ -27,33 +28,21 @@ class CalculationService
         $this->serviceIds = $serviceIds;
     }
 
-    /**
-     * @param bool $autoAdjustPickupDate
-     */
     public function setAutoAdjustPickupDate(bool $autoAdjustPickupDate): void
     {
         $this->autoAdjustPickupDate = $autoAdjustPickupDate;
     }
 
-    /**
-     * @return bool
-     */
     public function getAutoAdjustPickupDate(): bool
     {
         return $this->autoAdjustPickupDate;
     }
 
-    /**
-     * @param array $serviceIds
-     */
     public function setServiceIds(array $serviceIds): void
     {
         $this->serviceIds = $serviceIds;
     }
 
-    /**
-     * @return array
-     */
     public function getServiceIds(): array
     {
         return $this->serviceIds;

@@ -28,5 +28,4 @@ interface SpeedyInterface
     public function findStreet(FindStreetRequest $req): string;
 
     public function createShipment(CreateShipmentRequest $req): string;
-
 }

@@ -17,19 +17,20 @@ use VasilDakov\Speedy\Exception\InvalidArgumentException;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
- * Class DestinationServicesResponseFactory
+ * Class DestinationServicesResponseFactory.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
 class DestinationServicesResponseFactory
 {
     public function __invoke(string $json): DestinationServicesResponse
     {
-        json_decode($json, true);
+        \json_decode($json, true);
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
+        if (\JSON_ERROR_NONE !== \json_last_error()) {
             throw new InvalidArgumentException('Invalid or malformed JSON');
         }
 

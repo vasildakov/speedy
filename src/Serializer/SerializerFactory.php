@@ -10,17 +10,15 @@ use JMS\Serializer\SerializerInterface;
 use VasilDakov\Speedy\Exception\ServiceNotCreatedException;
 
 /**
- * Class SerializerFactory
+ * Class SerializerFactory.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
  */
 final class SerializerFactory
 {
-    /**
-     * @return SerializerInterface
-     */
     public function __invoke(): SerializerInterface
     {
         try {

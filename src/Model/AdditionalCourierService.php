@@ -14,13 +14,13 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 /**
- * Class AdditionalCourierService
+ * Class AdditionalCourierService.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
 class AdditionalCourierService
 {
-
 }
