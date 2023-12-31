@@ -9,20 +9,15 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
-use Throwable;
+use VasilDakov\Speedy\Exception\JsonException;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponseFactory;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
-use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
-use VasilDakov\Speedy\Service\Client\GetContractClientsResponseFactory;
 use VasilDakov\Speedy\Service\Location;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
-use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
-use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
-use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
 use VasilDakov\Speedy\Service\Printing\PrintRequest;
@@ -34,8 +29,6 @@ use VasilDakov\Speedy\Service\Shipment\CancelShipmentRequest;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponse;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponseFactory;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
-use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponse;
-use VasilDakov\Speedy\Service\Shipment\CreateShipmentResponseFactory;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 use VasilDakov\Speedy\Service\Track\TrackResponse;
 use VasilDakov\Speedy\Service\Track\TrackResponseFactory;
@@ -231,9 +224,7 @@ final class Speedy implements SpeedyInterface
     private function createRequest(string $method, string $uri, array $data): RequestInterface
     {
         $request = $this->factory->createRequest($method, $uri);
-
         $request = $request->withAddedHeader('Content-Type', 'application/json');
-
         $request->getBody()->write(json_encode($data));
 
         return $request;
@@ -254,19 +245,25 @@ final class Speedy implements SpeedyInterface
      * @param RequestInterface $request
      * @return string
      * @throws ClientExceptionInterface
+     * @throws JsonException
      */
     private function getContents(RequestInterface $request): string
     {
         $response = $this->client->sendRequest($request);
 
-        return $response->getBody()->getContents();
+        $json = $response->getBody()->getContents();
+        if (false === json_validate($json)) {
+            throw new JsonException(json_last_error_msg(), json_last_error());
+        }
+
+        return $json;
     }
 
 
     /**
      * @param GetContractClientsRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function getContractClient(GetContractClientsRequest $req): string
     {
@@ -284,7 +281,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @param Location\Country\FindCountryRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function findCountry(Location\Country\FindCountryRequest $req): string
     {
@@ -297,14 +294,12 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        //return (new Location\Country\FindCountryResponseFactory())($json);
     }
 
     /**
      * @param FindStateRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function findState(Location\State\FindStateRequest $req): string
     {
@@ -317,15 +312,13 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        // return (new Location\State\FindStateResponseFactory())($json);
     }
 
 
     /**
      * @param FindSiteRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function findSite(Location\Site\FindSiteRequest $req): string
     {
@@ -346,7 +339,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindOfficeRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function findOffice(Location\Office\FindOfficeRequest $req): string
     {
@@ -367,7 +360,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindComplexRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function findComplex(Location\Complex\FindComplexRequest $req): string
     {
@@ -387,7 +380,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindStreetRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function findStreet(Location\Street\FindStreetRequest $req): string
     {
@@ -407,7 +400,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @param CalculationRequest $object
      * @return CalculationResponse
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function calculation(CalculationRequest $object): CalculationResponse
     {
@@ -427,7 +420,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @param TrackRequest $object
      * @return TrackResponse
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function track(TrackRequest $object): TrackResponse
     {
@@ -456,7 +449,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @param CreateShipmentRequest $req
      * @return string
-     * @throws ClientExceptionInterface
+     * @throws ClientExceptionInterface|JsonException
      */
     public function createShipment(CreateShipmentRequest $req): string
     {

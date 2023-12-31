@@ -49,18 +49,24 @@ Example with [Guzzle](https://github.com/guzzle/guzzle) and [Laminas Diactoros](
 ```php
 <?php
 
-$client = new \GuzzleHttp\Client(); // PSR-18 HTTP Client
-$factory = new \Laminas\Diactoros\RequestFactory(); // PSR-17 HTTP Factory
-$speedy = new Speedy($configuration, $client, $factory);
+use GuzzleHttp\Client;
+use Laminas\Diactoros\RequestFactory;
+
+$client  = new Client(); // PSR-18 HTTP Client
+$factory = new RequestFactory(); // PSR-17 HTTP Factory
+$speedy  = new Speedy($configuration, $client, $factory);
 ```
 
-Example with [Curl Client](https://github.com/php-http/curl-client) and [Nyholm](https://github.com/Nyholm/psr7) HTTP Factory
+Example with [Symfony HTTP Client](https://github.com/symfony/http-client) and [Nyholm HTTP Factory](https://github.com/Nyholm/psr7)
 ```php
 <?php
 
-$client = \Http\Client\Curl\Client(); // PSR-18 HTTP Client
-$factory = new \Nyholm\Psr7\Factory\Psr17Factory(); // PSR-17 HTTP Factory
-$speedy = new Speedy($configuration, $client, $factory);
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Symfony\Component\HttpClient\Psr18Client;
+
+$client  = new Psr18Client(); // PSR-18 HTTP Client
+$factory = new Psr17Factory(); // PSR-17 HTTP Factory
+$speedy  = new Speedy($configuration, $client, $factory);
 
 ```
 
@@ -78,25 +84,61 @@ $json = $speedy->getContractClient($request);
 $array = json_decode($json, true);
 ```
 
-### JSON deserialization
+### Processing the response
 
-The JSON data can be deserialized into model objects:
+The client API always returns the raw json response received by the endpoint.
+The json can be used as it is, it can be decoded to php associative array, or
+deserialized into model object.
+
+Deserialization could be done in two different ways: 1) by using `serializer`, or 2) by
+decorating the original speedy client with `SpeedyModelDecorator`:
+
+
+Using serializer:
 
 ```php
-// or 
-// @var GetContractClientsResponse $response
-$response = (new GetContractClientsResponseFactory())($json);
+<?php
+
+$json = $speedy->getContractClient($request); // json
+
+$serializer = (new SerializerFactory())(); // JMS\Serializer\SerializerInterface
+
+$response = $serializer->deserialize(
+    data: $json, 
+    type: GetContractClientsResponse::class, 
+    format: 'json'
+); // GetContractClientsResponse
+```
+
+Instead to call the serializer every time, you can decorate the original Speedy client
+with the SpeedyModelDecorator, which makes the responses more predictable.
+
+```php
+<?php
+
+$decorator = new SpeedyModelDecorator(
+    new Speedy($configuration, $client, $factory)
+);
+
+/** @var GetContractClientsResponse $response */
+$response = $decorator->getContractClient(new GetContractClientsRequest());
+```
+
+Using the model
+
+```php
+<?php
 
 // @var ArrayCollection $collection
-$collection = $response->getClients(); 
+$collection = $response->getClients();
 foreach ($collection as $client) {
     dump($client); // Client
     dump($client->getClientName());
     dump($client->getAddress()->getSiteName());
     dump($client->getAddress()->getPostcode());
 }
-
 ```
+
 
 ## Documentation
 
