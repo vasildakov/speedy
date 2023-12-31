@@ -84,14 +84,14 @@ $json = $speedy->getContractClient($request);
 $array = json_decode($json, true);
 ```
 
-### Processing the response
+### Processing the Response
 
-The client API always returns the raw json response received by the endpoint.
-The json can be used as it is, it can be decoded to php associative array, or
-deserialized into model object.
+The client API always returns the raw JSON response received from the endpoint. 
+The JSON can be used as it is, decoded into a PHP associative array, or deserialized 
+into a model object.
 
-Deserialization could be done in two different ways: 1) by using `serializer`, or 2) by
-decorating the original speedy client with `SpeedyModelDecorator`:
+Deserialization can be achieved in two different ways: 1) by using the serializer, 
+or 2) by decorating the original Speedy client with the SpeedyModelDecorator.
 
 
 Using serializer:
@@ -99,19 +99,20 @@ Using serializer:
 ```php
 <?php
 
-$json = $speedy->getContractClient($request); // json
+$json = $speedy->getContractClient($request); # json
 
-$serializer = (new SerializerFactory())(); // JMS\Serializer\SerializerInterface
+$serializer = (new SerializerFactory())(); # JMS\Serializer\SerializerInterface
 
 $response = $serializer->deserialize(
     data: $json, 
     type: GetContractClientsResponse::class, 
     format: 'json'
-); // GetContractClientsResponse
+); # GetContractClientsResponse
 ```
 
-Instead to call the serializer every time, you can decorate the original Speedy client
-with the SpeedyModelDecorator, which makes the responses more predictable.
+Instead of calling the serializer every time, you can enhance the original Speedy client 
+by decorating it with the SpeedyModelDecorator. This enhancement makes the responses more 
+convenient, predictable and easy to use.
 
 ```php
 <?php
@@ -132,10 +133,11 @@ Using the model
 // @var ArrayCollection $collection
 $collection = $response->getClients();
 foreach ($collection as $client) {
-    dump($client); // Client
+    dump($client); # Model\Client
     dump($client->getClientName());
-    dump($client->getAddress()->getSiteName());
-    dump($client->getAddress()->getPostcode());
+    dump($client->getAddress()); # Model\Address
+    dump($client->getAddress()->getSiteName()); # string
+    dump($client->getAddress()->getPostcode()); # string 
 }
 ```
 
