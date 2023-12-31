@@ -35,11 +35,30 @@ class CreateShipmentResponseFactoryTest extends TestCase
 
         $instance = (new CreateShipmentResponseFactory())($json);
 
-        $this->assertInstanceOf(ShipmentPrice::class, $instance->getPrice());
-        $this->assertInstanceOf(ArrayCollection::class, $instance->getPrice()->getDetails());
-        $this->assertInstanceOf(ArrayCollection::class, $instance->getPrice()->getDetailsLocal());
-        $this->assertInstanceOf(ShipmentPriceAmount::class, $instance->getPrice()->getDetails()->get('netAmount'));
-        $this->assertInstanceOf(ShipmentPriceAmount::class, $instance->getPrice()->getDetailsLocal()->get('netAmount'));
+        $this->assertInstanceOf(
+            ShipmentPrice::class,
+            $instance->getPrice()
+        );
+
+        $this->assertInstanceOf(
+            ArrayCollection::class,
+            $instance->getPrice()->getDetails()
+        );
+
+        $this->assertInstanceOf(
+            ArrayCollection::class,
+            $instance->getPrice()->getDetailsLocal()
+        );
+
+        $this->assertInstanceOf(
+            ShipmentPriceAmount::class,
+            $instance->getPrice()->getDetails()->get('netAmount')
+        );
+
+        $this->assertInstanceOf(
+            ShipmentPriceAmount::class,
+            $instance->getPrice()->getDetailsLocal()->get('netAmount')
+        );
     }
 
     private function getJson(): string
