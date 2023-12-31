@@ -1,4 +1,6 @@
-# [<img src="docs/img/speedy-logo-4c.jpg" height="35"/>](docs/img/speedy-logo-4c.jpg) Speedy API Client 
+![Speedy Logo](docs/img/speedy-logo-4c.jpg "Speedy Logo").
+
+# Speedy API Client 
 
 An easy to use PHP client for [Speedy REST API](https://api.speedy.bg/web-api.html) 
 
