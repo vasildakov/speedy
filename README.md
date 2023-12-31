@@ -31,14 +31,13 @@ $ composer require vasildakov/speedy
 
 ### The Configuration
 
-Let's presume that you are using PHP dotenv to load environment variables 
-from a file named .env. In this case, you need to add the following variables:
+Let's presume that you are using [PHP dotenv](https://github.com/vlucas/phpdotenv) to load environment variables 
+from a file named `.env`. In this case, you need to add the following variables:
 
-```dotenv
+```
 SPEEDY_USERNAME="username"
 SPEEDY_PASSWORD="password"
 SPEEDY_LANGUAGE="EN"
-
 ```
 
 The next step is to create a new Configuration instance like in the example bellow:
