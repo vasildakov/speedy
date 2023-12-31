@@ -86,8 +86,9 @@ $speedy  = new Speedy($configuration, $client, $factory);
 
 ### Making a Request
 
-Once you've got the client configured, you can make your first request. By default, each method returns
-the data in json and then can be used as a simple php array, or deserialized to the PHP model:
+Once you have configured the client, you can proceed to make your first request. 
+By default, each method returns the data in JSON, which can then be utilized as a 
+simple PHP array or deserialized into the PHP model.
 
 ```php
 <?php
