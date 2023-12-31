@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests;
+namespace VasilDakov\SpeedyTests;
 
 use Fig\Http\Message\RequestMethodInterface;
 use PHPUnit\Framework\TestCase;

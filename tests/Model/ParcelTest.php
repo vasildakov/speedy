@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Model;
+namespace VasilDakov\SpeedyTests\Model;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Parcel;

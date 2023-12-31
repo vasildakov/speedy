@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Client;
+namespace VasilDakov\SpeedyTests\Service\Client;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Exception\InvalidArgumentException;

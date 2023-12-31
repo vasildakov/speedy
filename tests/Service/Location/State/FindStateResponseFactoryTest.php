@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Location\State;
+namespace VasilDakov\SpeedyTests\Service\Location\State;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Location\State\FindStateResponseFactory;

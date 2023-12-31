@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Location\Site;
+namespace VasilDakov\SpeedyTests\Service\Location\Site;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;

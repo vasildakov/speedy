@@ -1,6 +1,6 @@
 <?php
 
-namespace VasilDakov\tests;
+namespace VasilDakov\SpeedyTests;
 
 use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;

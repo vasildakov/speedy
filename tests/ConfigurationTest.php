@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests;
+namespace VasilDakov\SpeedyTests;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Configuration;

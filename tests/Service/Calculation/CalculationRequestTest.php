@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Calculation;
+namespace VasilDakov\SpeedyTests\Service\Calculation;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;

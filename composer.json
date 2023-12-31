@@ -51,6 +51,7 @@
     "require-dev": {
         "php-coveralls/php-coveralls": "dev-master",
         "phpmd/phpmd": "dev-master",
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "dev-master",
         "squizlabs/php_codesniffer": "4.0.x-dev",
@@ -80,7 +81,8 @@
         "test-coverage": "./vendor/bin/phpunit --coverage-html ./build/coverage",
         "cs-check": "vendor/bin/phpcs",
         "cs-fix": "vendor/bin/phpcbf",
-        "static-analysis": "vendor/bin/psalm --shepherd --stats"
+        "psalm": "vendor/bin/psalm --shepherd --stats",
+        "phpstan": "vendor/bin/phpstan analyse src tests"
     },
     "config": {
         "platform": {

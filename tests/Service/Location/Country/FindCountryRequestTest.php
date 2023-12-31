@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Location\Country;
+namespace VasilDakov\SpeedyTests\Service\Location\Country;
 
 use Laminas\Hydrator\ClassMethodsHydrator;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +18,7 @@ use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
  */
 class FindCountryRequestTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $hydrator = new ClassMethodsHydrator();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace VasilDakov\tests\Service\Shipment;
+namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentRequest;

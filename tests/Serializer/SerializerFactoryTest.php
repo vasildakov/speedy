@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Serializer;
+namespace VasilDakov\SpeedyTests\Serializer;
 
 use JMS\Serializer\Serializer;
 use PHPUnit\Framework\TestCase;

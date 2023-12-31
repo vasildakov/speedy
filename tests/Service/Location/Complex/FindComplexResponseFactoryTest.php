@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Location\Complex;
+namespace VasilDakov\SpeedyTests\Service\Location\Complex;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponseFactory;
@@ -26,7 +26,7 @@ use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponseFactory;
  */
 class FindComplexResponseFactoryTest extends TestCase
 {
-    public function testItCanThrowAnException()
+    public function testItCanThrowAnException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

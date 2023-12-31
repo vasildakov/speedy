@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Shipment;
+namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Shipment\ShipmentParcel;
@@ -50,7 +50,7 @@ class ShipmentParcelTest extends TestCase
 
     public function testItCanExportToArrayWithMandatoryProperty(): void
     {
-        $object = new ShipmentParcel($this->seqNo, $this->size);
+        $object = new ShipmentParcel();
 
         $array = $object->toArray();
 
@@ -62,7 +62,7 @@ class ShipmentParcelTest extends TestCase
 
     public function testItCanExportToArrayWithOptionalProperty(): void
     {
-        $object = new ShipmentParcel($this->seqNo, $this->size);
+        $object = new ShipmentParcel();
 
         $object->setId($this->id);
         $object->setPackageUniqueNumber($this->packageUniqueNumber);

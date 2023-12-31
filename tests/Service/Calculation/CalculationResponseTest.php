@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Calculation;
+namespace VasilDakov\SpeedyTests\Service\Calculation;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
@@ -27,12 +27,12 @@ use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
  */
 class CalculationResponseTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertInstanceOf(CalculationResponse::class, new CalculationResponse());
     }
 
-    public function testAccessors()
+    public function testAccessors(): void
     {
         $instance = new CalculationResponse();
 

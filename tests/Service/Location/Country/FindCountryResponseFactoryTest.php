@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace VasilDakov\tests\Service\Location\Country;
+namespace VasilDakov\SpeedyTests\Service\Location\Country;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponseFactory;
