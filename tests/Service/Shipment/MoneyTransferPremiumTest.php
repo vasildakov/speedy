@@ -18,7 +18,7 @@ use VasilDakov\Speedy\Service\Shipment\MoneyTransferPremium;
  */
 class MoneyTransferPremiumTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $json = \file_get_contents('./tests/Assets/MoneyTransferPremium.json');
         $array = \json_decode($json, true);

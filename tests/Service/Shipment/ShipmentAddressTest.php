@@ -22,11 +22,6 @@ use VasilDakov\Speedy\Speedy;
  */
 class ShipmentAddressTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testItCanExportToArrayWithMandatoryProperty(): void
     {
         $object = new ShipmentAddress(1000);
@@ -42,7 +37,7 @@ class ShipmentAddressTest extends TestCase
         $instance = $serializer->deserialize($this->getJson(), ShipmentAddress::class, 'json');
 
         $json = $serializer->serialize($instance, 'json');
-        $this->assertIsString($json);
+        $this->assertJson($json);
     }
 
     public function testItCanBeDeserialized(): void

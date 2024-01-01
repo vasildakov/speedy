@@ -17,20 +17,20 @@ use VasilDakov\Speedy\Service\Shipment\Payer;
  */
 class PayerTest extends TestCase
 {
-    public function testItCanBeConstructedWithValidArgument()
+    public function testItCanBeConstructedWithValidArgument(): void
     {
         $instance = new Payer('SENDER');
 
         $this->assertInstanceOf(Payer::class, $instance);
     }
 
-    public function testItThrowsAnExceptionForInvalidArgument()
+    public function testItThrowsAnExceptionForInvalidArgument(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $instance = new Payer('INVALID');
     }
 
-    public function testItCanBeConvertedToString()
+    public function testItCanBeConvertedToString(): void
     {
         $instance = new Payer('SENDER');
 

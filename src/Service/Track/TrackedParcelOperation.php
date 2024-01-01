@@ -70,6 +70,8 @@ class TrackedParcelOperation
         $this->operationCode = $operationCode;
         $this->description = $description;
         $this->comment = $comment;
+        $this->place = $place;
+        $this->additionalInfo = $additionalInfo;
     }
 
     public function getDateTime(): \DateTime

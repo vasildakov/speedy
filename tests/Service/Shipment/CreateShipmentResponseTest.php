@@ -21,7 +21,7 @@ use VasilDakov\Speedy\Service\Shipment\ShipmentPriceAmount;
  */
 class CreateShipmentResponseTest extends TestCase
 {
-    public function testItCanBeDeserialized()
+    public function testItCanBeDeserialized(): void
     {
         $json = $this->getJson();
 
@@ -38,7 +38,7 @@ class CreateShipmentResponseTest extends TestCase
         $this->assertInstanceOf(CreateShipmentResponse::class, $instance);
     }
 
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $hydrator = new ReflectionHydrator();
 
@@ -77,8 +77,6 @@ class CreateShipmentResponseTest extends TestCase
 
     private function getJson(): string
     {
-        $json = \file_get_contents('./tests/Assets/CreateShipmentResponse.json');
-
-        return $json;
+        return \file_get_contents('./tests/Assets/CreateShipmentResponse.json');
     }
 }
