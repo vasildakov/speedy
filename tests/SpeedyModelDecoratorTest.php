@@ -63,7 +63,8 @@ class SpeedyModelDecoratorTest extends TestCase
             ->with(
                 data: '[]',
                 type: GetContractClientsResponse::class,
-                format: 'json')
+                format: 'json'
+            )
             ->willReturn($response)
         ;
 

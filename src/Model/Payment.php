@@ -70,7 +70,7 @@ class Payment
 
     public function setCourierServicePayer(string $courierServicePayer): void
     {
-        if (!$this->isValidPayer($courierServicePayer)) {
+        if (! $this->isValidPayer($courierServicePayer)) {
             throw new InvalidArgumentException();
         }
         $this->courierServicePayer = $courierServicePayer;
@@ -83,7 +83,7 @@ class Payment
 
     public function setDeclaredValuePayer(string $declaredValuePayer): void
     {
-        if (!$this->isValidPayer($declaredValuePayer)) {
+        if (! $this->isValidPayer($declaredValuePayer)) {
             throw new InvalidArgumentException();
         }
         $this->declaredValuePayer = $declaredValuePayer;
@@ -96,7 +96,7 @@ class Payment
 
     public function setPackagePayer(string $packagePayer): void
     {
-        if (!$this->isValidPayer($packagePayer)) {
+        if (! $this->isValidPayer($packagePayer)) {
             throw new InvalidArgumentException();
         }
         $this->packagePayer = $packagePayer;

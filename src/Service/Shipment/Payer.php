@@ -39,7 +39,7 @@ class Payer
 
     public function setValue(string $value): void
     {
-        if (!\in_array($value, self::OPTIONS, true)) {
+        if (! \in_array($value, self::OPTIONS, true)) {
             throw new \InvalidArgumentException();
         }
         $this->value = $value;
