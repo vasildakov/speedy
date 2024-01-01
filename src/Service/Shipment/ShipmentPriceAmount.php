@@ -14,13 +14,13 @@ namespace VasilDakov\Speedy\Service\Shipment;
  */
 class ShipmentPriceAmount
 {
-    private float $amount;
+    private ?float $amount = null;
 
     private ?float $percent = null;
 
-    private float $vatPercent;
+    private ?float $vatPercent = null;
 
-    public function getAmount(): float
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
@@ -35,12 +35,12 @@ class ShipmentPriceAmount
         return $this->percent;
     }
 
-    public function setPercent(?float $percent): void
+    public function setPercent(float $percent): void
     {
         $this->percent = $percent;
     }
 
-    public function getVatPercent(): float
+    public function getVatPercent(): ?float
     {
         return $this->vatPercent;
     }

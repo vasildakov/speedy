@@ -11,9 +11,7 @@ use VasilDakov\Speedy\Traits\ToArray;
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @author Vasil Dakov <vasildakov@gmail.com>
- * @copyright
- *
- * @version
+ * @psalm-suppress MissingConstructor
  */
 class ShipmentRecipient
 {
@@ -72,7 +70,7 @@ class ShipmentRecipient
         $this->phone1 = $phone1;
     }
 
-    public function getPhone2(): ShipmentPhoneNumber
+    public function getPhone2(): ?ShipmentPhoneNumber
     {
         return $this->phone2;
     }
@@ -82,7 +80,7 @@ class ShipmentRecipient
         $this->phone2 = $phone2;
     }
 
-    public function getPhone3(): ShipmentPhoneNumber
+    public function getPhone3(): ?ShipmentPhoneNumber
     {
         return $this->phone3;
     }
@@ -102,7 +100,7 @@ class ShipmentRecipient
         $this->clientName = $clientName;
     }
 
-    public function getObjectName(): string
+    public function getObjectName(): ?string
     {
         return $this->objectName;
     }
@@ -112,7 +110,7 @@ class ShipmentRecipient
         $this->objectName = $objectName;
     }
 
-    public function getContactName(): string
+    public function getContactName(): ?string
     {
         return $this->contactName;
     }
@@ -152,7 +150,7 @@ class ShipmentRecipient
         $this->address = $address;
     }
 
-    public function getPickupOfficeId(): int
+    public function getPickupOfficeId(): ?int
     {
         return $this->pickupOfficeId;
     }

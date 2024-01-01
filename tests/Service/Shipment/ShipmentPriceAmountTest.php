@@ -18,7 +18,7 @@ use VasilDakov\Speedy\Service\Shipment\ShipmentPriceAmount;
  */
 class ShipmentPriceAmountTest extends TestCase
 {
-    public function testItCanDoSomething()
+    public function testItCanDoSomething(): void
     {
         $array = $this->getArray();
 

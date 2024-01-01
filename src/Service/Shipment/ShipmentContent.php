@@ -11,9 +11,7 @@ use VasilDakov\Speedy\Traits\ToArray;
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @author Vasil Dakov <vasildakov@gmail.com>
- * @copyright
- *
- * @version
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class ShipmentContent
 {
@@ -96,7 +94,7 @@ class ShipmentContent
         $this->parcel = $parcel;
     }
 
-    public function getParcel(): ShipmentParcel
+    public function getParcel(): ?ShipmentParcel
     {
         return $this->parcel;
     }

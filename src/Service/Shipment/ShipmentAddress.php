@@ -145,7 +145,7 @@ class ShipmentAddress
         $this->streetNo = $streetNo;
     }
 
-    public function getCountryId(): int
+    public function getCountryId(): ?int
     {
         return $this->countryId;
     }

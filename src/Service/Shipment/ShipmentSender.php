@@ -92,7 +92,7 @@ class ShipmentSender
         $this->phone1 = $phone1;
     }
 
-    public function getPhone2(): ShipmentPhoneNumber
+    public function getPhone2(): ?ShipmentPhoneNumber
     {
         return $this->phone2;
     }
@@ -102,7 +102,7 @@ class ShipmentSender
         $this->phone2 = $phone2;
     }
 
-    public function getPhone3(): ShipmentPhoneNumber
+    public function getPhone3(): ?ShipmentPhoneNumber
     {
         return $this->phone3;
     }
@@ -122,7 +122,7 @@ class ShipmentSender
         $this->clientName = $clientName;
     }
 
-    public function getContactName(): string
+    public function getContactName(): ?string
     {
         return $this->contactName;
     }
@@ -132,7 +132,7 @@ class ShipmentSender
         $this->contactName = $contactName;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -152,7 +152,7 @@ class ShipmentSender
         $this->privatePerson = $privatePerson;
     }
 
-    public function getAddress(): ShipmentAddress
+    public function getAddress(): ?ShipmentAddress
     {
         return $this->address;
     }
@@ -162,7 +162,7 @@ class ShipmentSender
         $this->address = $address;
     }
 
-    public function getDropoffOfficeId(): int
+    public function getDropoffOfficeId(): ?int
     {
         return $this->dropoffOfficeId;
     }

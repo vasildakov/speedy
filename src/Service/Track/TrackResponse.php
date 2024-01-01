@@ -22,6 +22,11 @@ class TrackResponse
      */
     private ArrayCollection $parcels;
 
+    public function __construct()
+    {
+        $this->parcels = new ArrayCollection();
+    }
+
     public function getParcels(): ArrayCollection
     {
         return $this->parcels;

@@ -56,7 +56,7 @@ class TrackedParcelOperation
     /**
      * @Serializer\Type("array")
      */
-    private array $additionalInfo = [];
+    private array|null $additionalInfo;
 
     public function __construct(
         \DateTime $dateTime,
@@ -129,7 +129,7 @@ class TrackedParcelOperation
         return $this->additionalInfo;
     }
 
-    public function setAdditionalInfo(?array $additionalInfo): void
+    public function setAdditionalInfo(array $additionalInfo): void
     {
         $this->additionalInfo = $additionalInfo;
     }

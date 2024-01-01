@@ -87,7 +87,7 @@ class ShipmentAdditionalServices
         $this->declaredValue = $declaredValue;
     }
 
-    public function getFixedTimeDelivery(): int
+    public function getFixedTimeDelivery(): ?int
     {
         return $this->fixedTimeDelivery;
     }
@@ -97,7 +97,7 @@ class ShipmentAdditionalServices
         $this->fixedTimeDelivery = $fixedTimeDelivery;
     }
 
-    public function getReturns(): array
+    public function getReturns(): ?array
     {
         return $this->returns;
     }
@@ -107,7 +107,7 @@ class ShipmentAdditionalServices
         $this->returns = $returns;
     }
 
-    public function getSpecialDeliveryId(): int
+    public function getSpecialDeliveryId(): ?int
     {
         return $this->specialDeliveryId;
     }
@@ -117,7 +117,7 @@ class ShipmentAdditionalServices
         $this->specialDeliveryId = $specialDeliveryId;
     }
 
-    public function getDeliveryToFloor(): int
+    public function getDeliveryToFloor(): ?int
     {
         return $this->deliveryToFloor;
     }

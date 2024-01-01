@@ -11,9 +11,7 @@ use VasilDakov\Speedy\Traits\ToArray;
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
- * @copyright
- *
- * @version
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class ShipmentDiscountCardId
 {
