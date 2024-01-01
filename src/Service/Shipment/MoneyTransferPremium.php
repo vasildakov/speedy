@@ -9,16 +9,15 @@ namespace VasilDakov\Speedy\Service\Shipment;
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
- *
- * @version 1.0
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class MoneyTransferPremium
 {
-    private float $amount;
+    private ?float $amount = null;
 
-    private float $amountLocal;
+    private ?float $amountLocal = null;
 
-    private string $payer;
+    private ?string $payer = null;
 
     /**
      * @return $this
@@ -30,7 +29,7 @@ class MoneyTransferPremium
         return $this;
     }
 
-    public function getAmount(): float
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
@@ -45,7 +44,7 @@ class MoneyTransferPremium
         return $this;
     }
 
-    public function getAmountLocal(): float
+    public function getAmountLocal(): ?float
     {
         return $this->amountLocal;
     }
@@ -60,7 +59,7 @@ class MoneyTransferPremium
         return $this;
     }
 
-    public function getPayer(): string
+    public function getPayer(): ?string
     {
         return $this->payer;
     }

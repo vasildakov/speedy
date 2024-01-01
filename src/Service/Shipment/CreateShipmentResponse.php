@@ -49,7 +49,7 @@ class CreateShipmentResponse
     /**
      * @Serializer\Type("DateTime")
      */
-    private \DateTime $deliveryDeadline;
+    private ?\DateTime $deliveryDeadline = null;
 
     /**
      * @Serializer\Type("VasilDakov\Speedy\Error")
@@ -66,7 +66,7 @@ class CreateShipmentResponse
         return $this->id;
     }
 
-    public function getParcels(): array
+    public function getParcels(): ?array
     {
         return $this->parcels;
     }
@@ -89,7 +89,7 @@ class CreateShipmentResponse
         $this->price = $price;
     }
 
-    public function getPickupDate(): \DateTime
+    public function getPickupDate(): ?\DateTime
     {
         return $this->pickupDate;
     }
@@ -99,7 +99,7 @@ class CreateShipmentResponse
         $this->pickupDate = $pickupDate;
     }
 
-    public function getDeliveryDeadline(): \DateTime
+    public function getDeliveryDeadline(): ?\DateTime
     {
         return $this->deliveryDeadline;
     }
@@ -109,12 +109,12 @@ class CreateShipmentResponse
         $this->deliveryDeadline = $deliveryDeadline;
     }
 
-    public function getError()
+    public function getError(): ?Error
     {
         return $this->error;
     }
 
-    public function setError($error = null): void
+    public function setError(?Error $error = null): void
     {
         $this->error = $error;
     }

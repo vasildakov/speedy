@@ -33,8 +33,8 @@ class FindSiteRequest
 
     public function __construct(int $countryId, ?string $name)
     {
-        $this->setCountryId($countryId);
-        $this->setName($name);
+        $this->countryId = $countryId;
+        $this->name = $name;
     }
 
     public function getCountryId(): int

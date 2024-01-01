@@ -24,10 +24,34 @@ class FindStreetRequest
 
     private ?string $type = null;
 
-    public function __construct($siteId, $name, $type = null)
+    public function __construct(int $siteId, string $name, ?string $type)
     {
         $this->siteId = $siteId;
         $this->name = $name;
         $this->type = $type;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSiteId(): int
+    {
+        return $this->siteId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }

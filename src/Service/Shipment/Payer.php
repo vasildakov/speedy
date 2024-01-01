@@ -34,15 +34,18 @@ class Payer
 
     public function __construct(string $value)
     {
-        $this->setValue($value);
-    }
-
-    public function setValue(string $value): void
-    {
-        if (! \in_array($value, self::OPTIONS, true)) {
+        if (! $this->isValid($value)) {
             throw new \InvalidArgumentException();
         }
         $this->value = $value;
+    }
+
+    private function isValid(string $value): bool
+    {
+        if (! \in_array($value, self::OPTIONS, true)) {
+            return false;
+        }
+        return true;
     }
 
     public function getValue(): string

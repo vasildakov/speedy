@@ -470,7 +470,7 @@ class SpeedyTest extends TestCase
             )
         ;
 
-        $response = $speedy->findStreet(new FindStreetRequest(68134, 'VASIL LEVSKI'));
+        $response = $speedy->findStreet(new FindStreetRequest(68134, 'VASIL LEVSKI', null));
         self::assertJson($response);
 
         // $this->assertInstanceOf(FindStreetResponse::class, $response);

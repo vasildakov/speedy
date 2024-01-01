@@ -57,7 +57,7 @@ class ShipmentAdditionalServices
      */
     private ?int $deliveryToFloor = null;
 
-    public function getCod(): array
+    public function getCod(): ?array
     {
         return $this->cod;
     }
@@ -67,7 +67,7 @@ class ShipmentAdditionalServices
         $this->cod = $cod;
     }
 
-    public function getObpd(): array
+    public function getObpd(): ?array
     {
         return $this->obpd;
     }
@@ -77,7 +77,7 @@ class ShipmentAdditionalServices
         $this->obpd = $obpd;
     }
 
-    public function getDeclaredValue(): array
+    public function getDeclaredValue(): ?array
     {
         return $this->declaredValue;
     }
