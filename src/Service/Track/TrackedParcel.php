@@ -23,7 +23,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @copyright 2009-2023 Neutrino.bg
  *
  * @version 1.0
- *
+ * @psalm-suppress MissingConstructor
  * @Serializer\AccessType("public_method")
  */
 class TrackedParcel

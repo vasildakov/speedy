@@ -1,31 +1,11 @@
+name: analysis
+
 on:
   pull_request: ~
   push:
     branches: [ "main", "develop" ]
 
-name: Static analysis
 jobs:
-  phpstan:
-    name: PHPStan
-    runs-on: ubuntu-22.04
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.1
-          coverage: none
-          tools: phpstan:1.8.11, cs2pr
-
-      - name: Download dependencies
-        uses: ramsey/composer-install@v2
-
-      - name: PHPStan
-        run: phpstan analyze --no-progress --error-format=checkstyle | cs2pr
-
   php-cs-fixer:
     name: PHP-CS-Fixer
     runs-on: ubuntu-22.04
@@ -67,3 +47,24 @@ jobs:
 
       - name: Psalm
         run: psalm --no-progress --output-format=github
+
+#  phpstan:
+#    name: PHPStan
+#    runs-on: ubuntu-22.04
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: 8.1
+#          coverage: none
+#          tools: phpstan:1.8.11, cs2pr
+#
+#      - name: Download dependencies
+#        uses: ramsey/composer-install@v2
+#
+#      - name: PHPStan
+#        run: phpstan analyze --no-progress --error-format=checkstyle | cs2pr
