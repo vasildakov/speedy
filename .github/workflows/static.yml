@@ -27,31 +27,9 @@ jobs:
       - name: PHP-CS-Fixer
         run: php-cs-fixer fix --dry-run --format=checkstyle | cs2pr
 
-  psalm:
-    name: Psalm
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.1
-          extensions: apcu, redis
-          coverage: none
-          tools: vimeo/psalm:5.9
-
-      - name: Download dependencies
-        uses: ramsey/composer-install@v2
-
-      - name: Psalm
-        run: psalm --no-progress --output-format=github
-
-#  phpstan:
-#    name: PHPStan
+#  psalm:
+#    name: Psalm
 #    runs-on: ubuntu-22.04
-#
 #    steps:
 #      - name: Checkout code
 #        uses: actions/checkout@v3
@@ -60,11 +38,33 @@ jobs:
 #        uses: shivammathur/setup-php@v2
 #        with:
 #          php-version: 8.1
+#          extensions: apcu, redis
 #          coverage: none
-#          tools: phpstan:1.8.11, cs2pr
+#          tools: vimeo/psalm:5.9
 #
 #      - name: Download dependencies
 #        uses: ramsey/composer-install@v2
 #
-#      - name: PHPStan
-#        run: phpstan analyze --no-progress --error-format=checkstyle | cs2pr
+#      - name: Psalm
+#        run: psalm --no-progress --output-format=github
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          coverage: none
+          tools: phpstan:1.8.11, cs2pr
+
+      - name: Download dependencies
+        uses: ramsey/composer-install@v2
+
+      - name: PHPStan
+        run: phpstan analyze --no-progress --error-format=checkstyle | cs2pr
