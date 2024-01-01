@@ -2,6 +2,20 @@
 Services
 ========
 
+Instead of calling the serializer every time, you can enhance the original Speedy client
+by decorating it with the SpeedyModelDecorator. This enhancement makes the responses
+more convenient, predictable and easy to use.
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+
+    $speedy = new SpeedyModelDecorator(
+        new Speedy($configuration, $client, $factory)
+    );
+
+
 **************
 Client Service
 **************
