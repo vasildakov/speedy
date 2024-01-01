@@ -112,6 +112,8 @@ Location Service
 ****************
 Location Service
 
+
+
 Find Country
 ============
 
@@ -131,3 +133,21 @@ Find Country
 
     $countryId = $country->getId(); // int 100
     $countryName = $country->getName(); // string BULGARIA
+
+
+Find Site
+============
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+
+    $request = new FindSite(countryId: 100, name: 'Sof');
+
+    $response = $speedy->findSite($request);
+    foreach($response->getCities()) {
+        $countryId = $city->getId();
+        $countryName = $city->getName();
+    }
+
