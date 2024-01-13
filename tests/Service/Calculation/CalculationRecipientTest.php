@@ -57,8 +57,12 @@ class CalculationRecipientTest extends TestCase
             $this->createMock(CalculationAddressLocation::class)
         );
 
+        $instance->setSiteId(41);
+        $instance->setPickupOfficeId(null);
+
         $this->assertTrue($instance->isPrivatePerson());
         $this->assertNull($instance->getPickupOfficeId());
+        $this->assertEquals(41, $instance->getSiteId());
         $this->assertInstanceOf(CalculationAddressLocation::class, $instance->getAddressLocation());
     }
 }
