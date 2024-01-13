@@ -2,8 +2,7 @@
 
 An easy to use PHP client for [Speedy REST API](https://api.speedy.bg/web-api.html) 
 
-[![build](https://github.com/vasildakov/speedy/actions/workflows/php.yml/badge.svg)](https://github.com/vasildakov/speedy/actions)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/?branch=main)
+[![build](https://github.com/vasildakov/speedy/actions/workflows/build.yml/badge.svg)](https://github.com/vasildakov/speedy/actions/workflows/build.yml)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/vasildakov/speedy/badges/build.png?b=main)](https://scrutinizer-ci.com/g/vasildakov/speedy/build-status/main)
 [![Packagist License](https://img.shields.io/packagist/l/vasildakov/speedy?color=blue)](https://github.com/vasildakov/speedy/blob/main/LICENSE)
