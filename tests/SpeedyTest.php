@@ -41,7 +41,7 @@ use VasilDakov\Speedy\Speedy;
  *
  * @psalm-suppress MissingConstructor
  */
-class SpeedyTest extends TestCase
+final class SpeedyTest extends TestCase
 {
     protected Configuration $config;
     protected ClientInterface $client;
@@ -52,11 +52,11 @@ class SpeedyTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->config = $this->createMock(Configuration::class);
-        $this->client = $this->createMock(ClientInterface::class);
-        $this->factory = $this->createMock(RequestFactoryInterface::class);
-        $this->stream = $this->createMock(StreamInterface::class);
-        $this->request = $this->createMock(RequestInterface::class);
+        $this->config   = $this->createMock(Configuration::class);
+        $this->client   = $this->createMock(ClientInterface::class);
+        $this->factory  = $this->createMock(RequestFactoryInterface::class);
+        $this->stream   = $this->createMock(StreamInterface::class);
+        $this->request  = $this->createMock(RequestInterface::class);
         $this->response = $this->createMock(ResponseInterface::class);
     }
 
@@ -531,9 +531,9 @@ class SpeedyTest extends TestCase
             )
         ;
 
-        $response = $speedy->calculation($request);
+        $response = $speedy->calculate($request);
 
-        $this->assertInstanceOf(Calculation\CalculationResponse::class, $response);
+        $this->assertJson($response);
     }
 
     /**
@@ -584,7 +584,7 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->track(new Service\Track\TrackRequest([]));
 
-        $this->assertInstanceOf(Service\Track\TrackResponse::class, $response);
+        $this->assertJson($response);
     }
 
     /**
@@ -596,7 +596,7 @@ class SpeedyTest extends TestCase
 
         $response = $speedy->print(new Service\Printing\PrintRequest());
 
-        $this->assertInstanceOf(Service\Printing\PrintResponse::class, $response);
+        $this->assertJson($response);
     }
 
     /**
@@ -654,5 +654,61 @@ class SpeedyTest extends TestCase
         self::assertJson($response);
 
         // $this->assertInstanceOf(Service\Shipment\CreateShipmentResponse::class, $response);
+    }
+
+    public function testItCanSendDestinationReq(): void
+    {
+        $speedy = $this->getClient();
+
+        $this->client
+            ->expects(self::once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects(self::once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/services/destination')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects(self::once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects(self::once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects(self::once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects(self::once())
+            ->method('getContents')
+            ->willReturn(
+                \json_encode(['services' => [[]]], \JSON_THROW_ON_ERROR)
+            )
+        ;
+
+        $response = $speedy->destination(new Service\Service\DestinationServicesRequest(
+            new Calculation\CalculationRecipient(
+                privatePerson: true,
+                pickupOfficeId: 1,
+                addressLocation: null
+            )
+        ));
+
+        self::assertJson($response);
     }
 }

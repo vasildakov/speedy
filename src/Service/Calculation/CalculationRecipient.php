@@ -31,8 +31,8 @@ class CalculationRecipient
         int $pickupOfficeId = null,
         CalculationAddressLocation $addressLocation = null
     ) {
-        $this->privatePerson = $privatePerson;
-        $this->pickupOfficeId = $pickupOfficeId;
+        $this->privatePerson  = $privatePerson;
+        $this->pickupOfficeId  = $pickupOfficeId;
         $this->addressLocation = $addressLocation;
     }
 

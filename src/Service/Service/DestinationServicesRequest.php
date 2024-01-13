@@ -15,6 +15,8 @@ namespace VasilDakov\Speedy\Service\Service;
 
 use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
 use VasilDakov\Speedy\Service\Calculation\CalculationSender;
+use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
+use VasilDakov\Speedy\Service\Shipment\ShipmentRecipient;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
@@ -25,7 +27,7 @@ use VasilDakov\Speedy\Traits\ToArray;
  *
  * @version 1.0
  */
-class DestinationServicesRequest
+class DestinationServicesRequest extends CreateShipmentRequest
 {
     use ToArray;
 
@@ -40,7 +42,7 @@ class DestinationServicesRequest
         $this->recipient = $recipient;
     }
 
-    public function getRecipient(): CalculationRecipient
+    public function getRecipient(): ShipmentRecipient
     {
         return $this->recipient;
     }

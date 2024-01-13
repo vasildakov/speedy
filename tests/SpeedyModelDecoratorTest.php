@@ -6,10 +6,14 @@ use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
+use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
+use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
 use VasilDakov\Speedy\SpeedyInterface;
 use VasilDakov\Speedy\SpeedyModelDecorator;
 
-class SpeedyModelDecoratorTest extends TestCase
+final class SpeedyModelDecoratorTest extends TestCase
 {
     private SpeedyInterface $speedy;
 
@@ -71,6 +75,66 @@ class SpeedyModelDecoratorTest extends TestCase
         self::assertInstanceOf(
             GetContractClientsResponse::class,
             $decorator->getContractClient($request)
+        );
+    }
+
+    public function testItCanReturnFindCountryResponse(): void
+    {
+        $request = $this->createMock(FindCountryRequest::class);
+        $response = $this->createMock(FindCountryResponse::class);
+
+        $decorator = new SpeedyModelDecorator($this->speedy, $this->serializer);
+
+        $this->speedy
+            ->expects(self::once())
+            ->method('findCountry')
+            ->willReturn('[]')
+        ;
+
+        $this->serializer
+            ->expects(self::once())
+            ->method('deserialize')
+            ->with(
+                data: '[]',
+                type: FindCountryResponse::class,
+                format: 'json'
+            )
+            ->willReturn($response)
+        ;
+
+        self::assertInstanceOf(
+            FindCountryResponse::class,
+            $decorator->findCountry($request)
+        );
+    }
+
+    public function testItCanReturnFindStateResponse(): void
+    {
+        $request = $this->createMock(FindStateRequest::class);
+        $response = $this->createMock(FindStateResponse::class);
+
+        $decorator = new SpeedyModelDecorator($this->speedy, $this->serializer);
+
+        $this->speedy
+            ->expects(self::once())
+            ->method('findState')
+            ->willReturn('[]')
+        ;
+
+        $this->serializer
+            ->expects(self::once())
+            ->method('deserialize')
+            ->with(
+                data: '[]',
+                type: FindStateResponse::class,
+                format: 'json'
+            )
+            ->willReturn($response)
+        ;
+
+        self::assertInstanceOf(
+            FindStateResponse::class,
+            $decorator->findState($request)
         );
     }
 }

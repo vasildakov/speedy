@@ -270,7 +270,9 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindStateRequest $req
      *
-     * @throws ClientExceptionInterface|JsonException
+     * @return string
+     * @throws ClientExceptionInterface
+     * @throws JsonException
      */
     public function findState(Location\State\FindStateRequest $req): string
     {
@@ -308,7 +310,9 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindOfficeRequest $req
      *
-     * @throws ClientExceptionInterface|JsonException
+     * @return string
+     * @throws ClientExceptionInterface
+     * @throws JsonException
      */
     public function findOffice(Location\Office\FindOfficeRequest $req): string
     {
@@ -328,7 +332,9 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindComplexRequest $req
      *
-     * @throws ClientExceptionInterface|JsonException
+     * @return string
+     * @throws ClientExceptionInterface
+     * @throws JsonException
      */
     public function findComplex(Location\Complex\FindComplexRequest $req): string
     {
@@ -348,7 +354,9 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindStreetRequest $req
      *
-     * @throws ClientExceptionInterface|JsonException
+     * @return string
+     * @throws ClientExceptionInterface
+     * @throws JsonException
      */
     public function findStreet(Location\Street\FindStreetRequest $req): string
     {
@@ -368,7 +376,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @throws ClientExceptionInterface|JsonException
      */
-    public function calculation(CalculationRequest $object): CalculationResponse
+    public function calculate(CalculationRequest $object): string
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -378,15 +386,15 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new CalculationResponseFactory())($json);
+        // return (new CalculationResponseFactory())($json);
     }
 
     /**
      * @throws ClientExceptionInterface|JsonException
      */
-    public function track(TrackRequest $object): TrackResponse
+    public function track(TrackRequest $object): string
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -396,14 +404,14 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
+        return $this->getContents($request);
 
-        return (new TrackResponseFactory())($json);
+        //return (new TrackResponseFactory())($json);
     }
 
-    public function print(PrintRequest $request): PrintResponse
+    public function print(PrintRequest $request): string
     {
-        return new PrintResponse();
+        return \json_encode([]);
     }
 
     /**
@@ -420,8 +428,6 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        // return (new CreateShipmentResponseFactory())($json);
     }
 
     /**
@@ -443,10 +449,12 @@ final class Speedy implements SpeedyInterface
         return (new CancelShipmentResponseFactory())($json);
     }
 
+
     /**
+     * @throws JsonException
      * @throws ClientExceptionInterface
      */
-    public function destination(DestinationServicesRequest $object): DestinationServicesResponse
+    public function destination(DestinationServicesRequest $object): string
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -456,8 +464,6 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
-
-        return (new DestinationServicesResponseFactory())($json);
+        return $this->getContents($request);
     }
 }

@@ -164,3 +164,7 @@ TBC
 ## License
 
 Code released under [the MIT license](https://github.com/vasildakov/speedy/blob/main/LICENSE)
+
+Speedy REST API [examples](https://services.speedy.bg/api/api_examples.html)
+
+Speedy Web API [Integration](https://api.speedy.bg/web-api.html)
