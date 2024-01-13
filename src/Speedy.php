@@ -409,9 +409,17 @@ final class Speedy implements SpeedyInterface
         //return (new TrackResponseFactory())($json);
     }
 
-    public function print(PrintRequest $request): string
+    public function print(PrintRequest $object): string
     {
-        return \json_encode([]);
+        $payload = $this->createPayload($object->toArray());
+
+        $request = $this->createRequest(
+            RequestMethodInterface::METHOD_POST,
+            self::API_URL . '/print',
+            $payload
+        );
+
+        return $this->getContents($request);
     }
 
     /**

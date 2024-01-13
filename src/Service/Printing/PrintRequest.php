@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Printing;
 
+use VasilDakov\Speedy\Traits\ToArray;
+
 /**
  * Class Client.
  *
@@ -14,4 +16,10 @@ namespace VasilDakov\Speedy\Service\Printing;
  */
 class PrintRequest
 {
+    use ToArray;
+
+    public function __construct(public string $paperSize, public array $parcels)
+    {
+
+    }
 }

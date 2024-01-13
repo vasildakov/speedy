@@ -590,18 +590,6 @@ final class SpeedyTest extends TestCase
     /**
      * @group client
      */
-    public function testItCanPrint(): void
-    {
-        $speedy = $this->getClient();
-
-        $response = $speedy->print(new Service\Printing\PrintRequest());
-
-        $this->assertJson($response);
-    }
-
-    /**
-     * @group client
-     */
     public function testItCanCreateShipment(): void
     {
         $request = $this->createMock(Service\Shipment\CreateShipmentRequest::class);
@@ -711,4 +699,59 @@ final class SpeedyTest extends TestCase
 
         self::assertJson($response);
     }
+
+    public function testItCanSendPrintRequest(): void
+    {
+        $speedy = $this->getClient();
+
+        $this->client
+            ->expects(self::once())
+            ->method('sendRequest')
+            ->with($this->request)
+            ->willReturn($this->response)
+        ;
+
+        $this->factory
+            ->expects(self::once())
+            ->method('createRequest')
+            ->with('POST', 'https://api.speedy.bg/v1/print')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects(self::once())
+            ->method('withAddedHeader')
+            ->with('Content-Type', 'application/json')
+            ->willReturn($this->request)
+        ;
+
+        $this->request
+            ->expects(self::once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->response
+            ->expects(self::once())
+            ->method('getBody')
+            ->willReturn($this->stream)
+        ;
+
+        $this->stream
+            ->expects(self::once())
+            ->method('getContents')
+            ->willReturn(
+                \json_encode([], \JSON_THROW_ON_ERROR)
+            )
+        ;
+
+        $json = $speedy->print(
+            new Service\Printing\PrintRequest(
+                paperSize: 'A4',
+                parcels: [299999990]
+            )
+        );
+        self::assertJson($json);
+    }
 }
+
