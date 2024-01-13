@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Calculation;
 
+use VasilDakov\Speedy\Service\Shipment\ShipmentRecipient;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
@@ -14,7 +15,7 @@ use VasilDakov\Speedy\Traits\ToArray;
  *
  * @version 1.0
  */
-class CalculationRecipient
+class CalculationRecipient extends ShipmentRecipient
 {
     use ToArray;
 

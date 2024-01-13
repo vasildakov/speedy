@@ -24,7 +24,7 @@ use VasilDakov\Speedy\Service\Calculation\CalculationSender;
  *
  * @version 1.0
  */
-class CalculationSenderTest extends TestCase
+final class CalculationSenderTest extends TestCase
 {
     public function testConstructor(): void
     {

@@ -42,7 +42,7 @@ class DestinationServicesRequest extends CreateShipmentRequest
         $this->recipient = $recipient;
     }
 
-    public function getRecipient(): ShipmentRecipient
+    public function getRecipient(): CalculationRecipient
     {
         return $this->recipient;
     }

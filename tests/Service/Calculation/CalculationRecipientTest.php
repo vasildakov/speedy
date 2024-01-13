@@ -25,7 +25,7 @@ use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
  *
  * @version 1.0
  */
-class CalculationRecipientTest extends TestCase
+final class CalculationRecipientTest extends TestCase
 {
     public function testConstructorToOffice(): void
     {

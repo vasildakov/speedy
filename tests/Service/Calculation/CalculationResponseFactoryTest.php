@@ -24,7 +24,7 @@ use VasilDakov\Speedy\Service\Calculation\CalculationResponseFactory;
  *
  * @version 1.0
  */
-class CalculationResponseFactoryTest extends TestCase
+final class CalculationResponseFactoryTest extends TestCase
 {
     /**
      * @throws \Throwable

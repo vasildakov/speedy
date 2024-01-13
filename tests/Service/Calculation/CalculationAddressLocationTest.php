@@ -18,7 +18,7 @@ use VasilDakov\Speedy\Service\Calculation\CalculationAddressLocation;
  *
  * @version 1.0
  */
-class CalculationAddressLocationTest extends TestCase
+final class CalculationAddressLocationTest extends TestCase
 {
     protected int $siteId;
 

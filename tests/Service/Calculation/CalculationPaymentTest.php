@@ -24,7 +24,7 @@ use VasilDakov\Speedy\Service\Calculation\CalculationPayment;
  *
  * @version 1.0
  */
-class CalculationPaymentTest extends TestCase
+final class CalculationPaymentTest extends TestCase
 {
     public function testConstructor(): void
     {

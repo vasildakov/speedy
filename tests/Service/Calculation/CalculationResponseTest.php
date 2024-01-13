@@ -25,7 +25,7 @@ use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
  *
  * @version 1.0
  */
-class CalculationResponseTest extends TestCase
+final class CalculationResponseTest extends TestCase
 {
     public function testConstructor(): void
     {

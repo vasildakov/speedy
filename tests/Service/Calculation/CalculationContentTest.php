@@ -24,7 +24,7 @@ use VasilDakov\Speedy\Service\Calculation\CalculationContent;
  *
  * @version 1.0
  */
-class CalculationContentTest extends TestCase
+final class CalculationContentTest extends TestCase
 {
     public function testConstructor()
     {
