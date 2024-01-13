@@ -8,16 +8,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use VasilDakov\Speedy\Model\Country;
 
-use function array_filter;
-use function strcasecmp;
-use function mb_strtoupper;
-
 /**
- * Class FindCountryResponse
+ * Class FindCountryResponse.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
+ *
  * @Serializer\AccessType("public_method")
  */
 class FindCountryResponse
@@ -32,22 +30,15 @@ class FindCountryResponse
         $this->countries = new ArrayCollection();
     }
 
-    /**
-     * @param ArrayCollection $countries
-     */
     public function setCountries(ArrayCollection $countries): void
     {
         $this->countries = $countries;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getCountries(): ArrayCollection
     {
         return $this->countries;
     }
-
 
     public function findCountryById(int $id): ?Country
     {
@@ -59,46 +50,28 @@ class FindCountryResponse
             return null;
         }
 
-        /** @var Country */
+        /* @var Country */
         return $collection->first();
     }
 
-
-    /**
-     * @param string $name
-     * @return Country|null
-     */
-    public function findCountryByName(string $name): ?Country
+    public function findCountryByName(string $name): false|null|Country
     {
-        $name = mb_strtoupper($name, 'UTF-8');
+        $name = \mb_strtoupper($name, 'UTF-8');
 
         $collection = $this->countries->filter(function (Country $country) use ($name) {
             return $country->getName() === $name;
         });
 
-        if ($collection->isEmpty()) {
-            return null;
-        }
-
-        /** @var Country */
-        return $collection->first();
+        return (! $collection->isEmpty()) ? $collection->first() : null;
     }
 
-    /**
-     * @param string $isoAlpha2
-     * @return Country|null
-     */
-    public function findCountryByIsoAlpha2(string $isoAlpha2): ?Country
+
+    public function findCountryByIsoAlpha2(string $isoAlpha2): false|null|Country
     {
         $collection = $this->getCountries()->filter(function (Country $country) use ($isoAlpha2) {
             return $country->getIsoAlpha2() === $isoAlpha2;
         });
 
-        if ($collection->isEmpty()) {
-            return null;
-        }
-
-        /** @var Country */
-        return $collection->first();
+        return (! $collection->isEmpty()) ? $collection->first() : null;
     }
 }

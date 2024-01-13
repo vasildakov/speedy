@@ -16,10 +16,11 @@ namespace VasilDakov\Speedy\Service\Shipment;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
- * Class CancelShipmentResponseFactory
+ * Class CancelShipmentResponseFactory.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
 class CancelShipmentResponseFactory
@@ -28,7 +29,7 @@ class CancelShipmentResponseFactory
     {
         $serializer = (new SerializerFactory())();
 
-        /** @var CancelShipmentResponse */
+        /* @var CancelShipmentResponse */
         return $serializer->deserialize($json, CancelShipmentResponse::class, 'json');
     }
 }

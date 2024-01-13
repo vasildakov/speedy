@@ -16,23 +16,20 @@ namespace VasilDakov\Speedy\Service\Track;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 
 /**
- * Class TrackResponseFactory
+ * Class TrackResponseFactory.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
 class TrackResponseFactory
 {
-    /**
-     * @param string $json
-     * @return TrackResponse
-     */
     public function __invoke(string $json): TrackResponse
     {
         $serializer = (new SerializerFactory())();
 
-        /** @var TrackResponse */
+        /* @var TrackResponse */
         return $serializer->deserialize($json, TrackResponse::class, 'json');
     }
 }

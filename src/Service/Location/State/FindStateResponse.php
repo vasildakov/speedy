@@ -8,11 +8,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Class FindStateResponse
+ * Class FindStateResponse.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
+ *
  * @Serializer\AccessType("public_method")
  */
 class FindStateResponse
@@ -27,17 +29,11 @@ class FindStateResponse
         $this->states = new ArrayCollection();
     }
 
-    /**
-     * @param ArrayCollection $states
-     */
     public function setStates(ArrayCollection $states): void
     {
         $this->states = $states;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getStates(): ArrayCollection
     {
         return $this->states;

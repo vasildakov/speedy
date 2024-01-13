@@ -8,11 +8,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Class FindStreetResponse
+ * Class FindStreetResponse.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
+ *
  * @Serializer\AccessType("public_method")
  */
 class FindStreetResponse
@@ -27,17 +29,11 @@ class FindStreetResponse
         $this->streets = new ArrayCollection();
     }
 
-    /**
-     * @param ArrayCollection $streets
-     */
     public function setStreets(ArrayCollection $streets): void
     {
         $this->streets = $streets;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getStreets(): ArrayCollection
     {
         return $this->streets;

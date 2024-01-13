@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="./tests/bootstrap.php"
          cacheResult="false"
          colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
   <coverage includeUncoveredFiles="true">
@@ -9,7 +10,7 @@
   </coverage>
   <testsuites>
     <testsuite name="Speedy Test Suite">
-      <directory>./test</directory>
+      <directory>./tests</directory>
     </testsuite>
   </testsuites>
   <logging>

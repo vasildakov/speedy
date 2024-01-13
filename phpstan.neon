@@ -1,0 +1,11 @@
+parameters:
+    level: 1
+    paths:
+        - src
+        - tests
+    bootstrapFiles:
+        - tests/bootstrap.php
+    scanDirectories:
+        - src
+    scanFiles:
+        - src/functions.php

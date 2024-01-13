@@ -7,20 +7,19 @@ namespace VasilDakov\Speedy\Model;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
- * Class Sender
+ * Class Sender.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
+ *
  * @psalm-suppress MissingConstructor
  */
 class Sender extends Client
 {
     use ToArray;
 
-    /**
-     * @var int|null
-     */
     private ?int $dropoffOfficeId = null;
 
     /**

@@ -13,35 +13,28 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Service;
 
-use DateTime;
 use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
 use VasilDakov\Speedy\Service\Calculation\CalculationSender;
+use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
+use VasilDakov\Speedy\Service\Shipment\ShipmentRecipient;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
- * Class DestinationServicesRequest
+ * Class DestinationServicesRequest.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
-class DestinationServicesRequest
+class DestinationServicesRequest extends CreateShipmentRequest
 {
     use ToArray;
 
-    /**
-     * @var DateTime|null
-     */
-    private ?DateTime $date = null;
+    private ?\DateTime $date = null;
 
-    /**
-     * @var CalculationSender|null
-     */
     private ?CalculationSender $sender = null;
 
-    /**
-     * @var CalculationRecipient
-     */
     private CalculationRecipient $recipient;
 
     public function __construct(CalculationRecipient $recipient)
@@ -49,10 +42,7 @@ class DestinationServicesRequest
         $this->recipient = $recipient;
     }
 
-    /**
-     * @return CalculationRecipient
-     */
-    public function getRecipient(): CalculationRecipient
+    public function getRecipient(): ShipmentRecipient
     {
         return $this->recipient;
     }

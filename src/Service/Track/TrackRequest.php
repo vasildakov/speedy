@@ -7,10 +7,11 @@ namespace VasilDakov\Speedy\Service\Track;
 use VasilDakov\Speedy\Speedy;
 
 /**
- * Class TrackRequest
+ * Class TrackRequest.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
  */
 class TrackRequest
@@ -22,9 +23,6 @@ class TrackRequest
         $this->parcels = $parcels;
     }
 
-    /**
-     * @return array
-     */
     public function getParcels(): array
     {
         return $this->parcels;
@@ -33,7 +31,7 @@ class TrackRequest
     public function toArray(): array
     {
         return [
-            Speedy::PARCELS => $this->parcels
+            Speedy::PARCELS => $this->parcels,
         ];
     }
 }

@@ -14,13 +14,13 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Validation;
 
 /**
- * Class ValidationResponse
+ * Class ValidationResponse.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
  */
 class ValidationResponse
 {
-
 }

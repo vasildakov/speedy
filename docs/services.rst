@@ -2,6 +2,20 @@
 Services
 ========
 
+Instead of calling the serializer every time, you can enhance the original Speedy client
+by decorating it with the SpeedyModelDecorator. This enhancement makes the responses
+more convenient, predictable and easy to use.
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+
+    $speedy = new SpeedyModelDecorator(
+        new Speedy($configuration, $client, $factory)
+    );
+
+
 **************
 Client Service
 **************
@@ -112,6 +126,8 @@ Location Service
 ****************
 Location Service
 
+
+
 Find Country
 ============
 
@@ -131,3 +147,21 @@ Find Country
 
     $countryId = $country->getId(); // int 100
     $countryName = $country->getName(); // string BULGARIA
+
+
+Find Site
+============
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+
+    $request = new FindSite(countryId: 100, name: 'Sof');
+
+    $response = $speedy->findSite($request);
+    foreach($response->getCities()) {
+        $countryId = $city->getId();
+        $countryName = $city->getName();
+    }
+

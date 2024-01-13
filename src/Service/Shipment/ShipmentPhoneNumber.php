@@ -8,40 +8,29 @@ use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
- * Class ShipmentPhoneNumber
+ * Class ShipmentPhoneNumber.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
  * @copyright 2009-2022 Neutrino.bg
+ *
  * @version 1.0
+ *
  * @todo https://api.speedy.bg/web-api.html?fbclid=IwAR1pcF0uXsAZheAKesQcArBJ7QenkDVyEz36aXwfRGCQZvcInjIYMuE82E4#href-ds-shipment-phone-number
  */
 class ShipmentPhoneNumber
 {
     use ToArray;
 
-    /**
-     * @var string
-     */
     private string $number;
 
-    /**
-     * @var string|null
-     */
     private ?string $extension = null;
 
-    /**
-     * @param string $number
-     */
     public function __construct(string $number)
     {
         $this->setNumber($number);
     }
 
-    /**
-     * @param string $number
-     * @return void
-     */
     private function setNumber(string $number): void
     {
         $this->number = $number;
@@ -55,10 +44,6 @@ class ShipmentPhoneNumber
         return $this->number;
     }
 
-    /**
-     * @param string $extension
-     * @return self
-     */
     public function setExtension(string $extension): self
     {
         $this->extension = $extension;
@@ -66,9 +51,6 @@ class ShipmentPhoneNumber
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getExtension(): ?string
     {
         return $this->extension;

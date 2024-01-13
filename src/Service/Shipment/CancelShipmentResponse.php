@@ -13,21 +13,22 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Shipment;
 
-use VasilDakov\Speedy\Error;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Error;
 
 /**
- * Class CancelShipmentResponse
+ * Class CancelShipmentResponse.
  *
  * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright 2009-2023 Neutrino.bg
+ *
  * @version 1.0
+ *
  * @Serializer\AccessType("public_method")
  */
 class CancelShipmentResponse
 {
     /**
-     * @var Error|null
      * @Serializer\Type("VasilDakov\Speedy\Error")
      */
     private ?Error $error = null;
@@ -37,17 +38,11 @@ class CancelShipmentResponse
         $this->error = $error;
     }
 
-    /**
-     * @param Error|null $error
-     */
     public function setError(?Error $error): void
     {
         $this->error = $error;
     }
 
-    /**
-     * @return Error|null
-     */
     public function getError(): ?Error
     {
         return $this->error;

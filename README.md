@@ -1,4 +1,4 @@
-# Speedy API Client
+# Speedy API Client 
 
 An easy to use PHP client for [Speedy REST API](https://api.speedy.bg/web-api.html) 
 
@@ -29,45 +29,66 @@ $ composer require vasildakov/speedy
 
 ## Usage
 
-### Set up Speedy Client
+### The Configuration
 
-The client can be set with any PSR-18 HTTP Client 
+Let's presume that you are using [PHP dotenv](https://github.com/vlucas/phpdotenv) to load environment variables 
+from a file named `.env`. In this case, you need to add the following variables:
+
+```
+SPEEDY_USERNAME="username"
+SPEEDY_PASSWORD="password"
+SPEEDY_LANGUAGE="EN"
+```
+
+The next step is to create a new Configuration instance like in the example bellow:
 
 ```php 
 <?php
 
 // configuration
 $configuration = new Configuration(
-    username: 'username',
-    password: 'password',
-    language: 'language'
+    username: $_ENV['SPEEDY_USERNAME'],
+    password: $_ENV['SPEEDY_PASSWORD'],
+    language: $_ENV['SPEEDY_LANGUAGE']
 );
 ```
 
+### Configuring Speedy Client
+
+The final step is to configure the Speedy client. 
+The client can be configured with any `PSR-18 HTTP Client` and `PSR-17 HTTP Factory`:
 
 Example with [Guzzle](https://github.com/guzzle/guzzle) and [Laminas Diactoros](https://github.com/laminas/laminas-diactoros)
 ```php
 <?php
 
-$client = new \GuzzleHttp\Client(); // PSR-18 HTTP Client
-$factory = new \Laminas\Diactoros\RequestFactory(); // PSR-17 HTTP Factory
-$speedy = new Speedy($configuration, $client, $factory);
+use GuzzleHttp\Client;
+use Laminas\Diactoros\RequestFactory;
+
+$client  = new Client(); // PSR-18 HTTP Client
+$factory = new RequestFactory(); // PSR-17 HTTP Factory
+$speedy  = new Speedy($configuration, $client, $factory);
 ```
 
-Example with [Curl Client](https://github.com/php-http/curl-client) and [Nyholm](https://github.com/Nyholm/psr7) HTTP Factory
+Example with [Symfony HTTP Client](https://github.com/symfony/http-client) 
+and [Nyholm HTTP Factory](https://github.com/Nyholm/psr7)
 ```php
 <?php
 
-$client = \Http\Client\Curl\Client(); // PSR-18 HTTP Client
-$factory = new \Nyholm\Psr7\Factory\Psr17Factory(); // PSR-17 HTTP Factory
-$speedy = new Speedy($configuration, $client, $factory);
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Symfony\Component\HttpClient\Psr18Client;
+
+$client  = new Psr18Client(); // PSR-18 HTTP Client
+$factory = new Psr17Factory(); // PSR-17 HTTP Factory
+$speedy  = new Speedy($configuration, $client, $factory);
 
 ```
 
 ### Making a Request
 
-Once you've got the client configured, you can make your first request. By default, each method returns
-the data in json and then can be used as a simple php array, or deserialized to the PHP model:
+Once you have configured the client, you can proceed to make your first request. 
+By default, each method returns the data in JSON, which can then be utilized as a 
+simple PHP array or deserialized into the PHP model.
 
 ```php
 <?php
@@ -78,25 +99,63 @@ $json = $speedy->getContractClient($request);
 $array = json_decode($json, true);
 ```
 
-### JSON deserialization
+### Processing the Response
 
-The JSON data can be deserialized into model objects:
+The client API always returns the raw JSON response received from the endpoint. 
+The JSON can be used as it is, decoded into a PHP associative array, or deserialized 
+into a model object.
+
+Deserialization can be achieved in two different ways: 1) by using the serializer, 
+or 2) by decorating the original Speedy client with the SpeedyModelDecorator.
+
+
+Using serializer:
 
 ```php
-// or 
-// @var GetContractClientsResponse $response
-$response = (new GetContractClientsResponseFactory())($json);
+<?php
+
+$json = $speedy->getContractClient($request); # json
+
+$serializer = (new SerializerFactory())(); # JMS\Serializer\SerializerInterface
+
+$response = $serializer->deserialize(
+    data: $json, 
+    type: GetContractClientsResponse::class, 
+    format: 'json'
+); # GetContractClientsResponse
+```
+
+Instead of calling the serializer every time, you can enhance the original Speedy client 
+by decorating it with the SpeedyModelDecorator. This enhancement makes the responses more 
+convenient, predictable and easy to use.
+
+```php
+<?php
+
+$decorator = new SpeedyModelDecorator(
+    new Speedy($configuration, $client, $factory)
+);
+
+/** @var GetContractClientsResponse $response */
+$response = $decorator->getContractClient(new GetContractClientsRequest());
+```
+
+Using the model
+
+```php
+<?php
 
 // @var ArrayCollection $collection
-$collection = $response->getClients(); 
+$collection = $response->getClients();
 foreach ($collection as $client) {
-    dump($client); // Client
+    dump($client); # Model\Client
     dump($client->getClientName());
-    dump($client->getAddress()->getSiteName());
-    dump($client->getAddress()->getPostcode());
+    dump($client->getAddress()); # Model\Address
+    dump($client->getAddress()->getSiteName()); # string
+    dump($client->getAddress()->getPostcode()); # string 
 }
-
 ```
+
 
 ## Documentation
 
@@ -105,3 +164,7 @@ TBC
 ## License
 
 Code released under [the MIT license](https://github.com/vasildakov/speedy/blob/main/LICENSE)
+
+Speedy REST API [examples](https://services.speedy.bg/api/api_examples.html)
+
+Speedy Web API [Integration](https://api.speedy.bg/web-api.html)
