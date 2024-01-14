@@ -2,27 +2,21 @@
   "id": "id",
   "seqNo": 12,
   "packageUniqueNumber": 123,
-  "declaredSize": [
-    {
+  "declaredSize": {
       "width": 80,
       "depth": 120,
       "height": 100
-    }
-  ],
-  "measuredSize": [
-    {
+    },
+  "measuredSize": {
       "width": 80,
       "depth": 120,
       "height": 100
-    }
-  ],
-  "calculationSize": [
-    {
+    },
+  "calculationSize": {
       "width": 80,
       "depth": 120,
       "height": 100
-    }
-  ],
+    },
   "declaredWeight": 0.618,
   "measuredWeight": 1.618,
   "calculationWeight": 2.618,

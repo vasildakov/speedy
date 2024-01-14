@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
-use VasilDakov\Speedy\Speedy;
+use VasilDakov\Speedy\Property;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Size.
@@ -16,17 +17,26 @@ use VasilDakov\Speedy\Speedy;
  */
 class Size
 {
+    /**
+     * @Serializer\Type("int")
+     */
     private int $width;
 
+    /**
+     * @Serializer\Type("int")
+     */
     private int $depth;
 
+    /**
+     * @Serializer\Type("int")
+     */
     private int $height;
 
     public function __construct(int $width, int $depth, int $height)
     {
-        $this->setWidth($width);
-        $this->setDepth($depth);
-        $this->setHeight($height);
+        $this->width = $width;
+        $this->depth = $depth;
+        $this->height = $height;
     }
 
     public function getWidth(): int
@@ -62,9 +72,9 @@ class Size
     public function toArray(): array
     {
         return [
-            Speedy::WIDTH => $this->getWidth(),
-            Speedy::DEPTH => $this->getDepth(),
-            Speedy::HEIGHT => $this->getHeight(),
+            Property::WIDTH->value => $this->getWidth(),
+            Property::DEPTH->value => $this->getDepth(),
+            Property::HEIGHT->value => $this->getHeight(),
         ];
     }
 }

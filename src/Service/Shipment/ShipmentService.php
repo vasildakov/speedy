@@ -21,7 +21,7 @@ class ShipmentService
 
     private ?\DateTime $pickupDate = null;
 
-    private bool $autoAdjustPickupDate = false;
+    private bool $autoAdjustPickupDate = true;
 
     private int $serviceId;
 

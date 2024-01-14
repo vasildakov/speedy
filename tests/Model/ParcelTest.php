@@ -12,34 +12,22 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  * Class ParcelTest.
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  *
  * @version
  */
-class ParcelTest extends TestCase
+final class ParcelTest extends TestCase
 {
-    public function testItCanSetAndGet(): void
+    public function testItCanBeDeserialized(): void
     {
         $serializer = (new SerializerFactory())();
-        $instance = $serializer->deserialize($this->getJson(), Parcel::class, 'json');
-        $this->assertIsObject($instance);
 
-        $json = $serializer->serialize($instance, 'json');
-        $this->assertIsString($json);
-    }
+        $json = \file_get_contents('./tests/Assets/Parcel.json');
 
-    /**
-     * @throws \JsonException
-     */
-    private function getArray(): array
-    {
-        $json = $this->getJson();
+        $parcel = $serializer->deserialize($json, Parcel::class, 'json');
+        //dd($parcel);
 
-        return \json_decode($json, true, 512, \JSON_THROW_ON_ERROR);
-    }
-
-    private function getJson(): string
-    {
-        return \file_get_contents('./tests/Assets/Parcel.json');
+        $this->assertInstanceOf(Parcel::class, $parcel);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VasilDakov\SpeedyTests\Service\Track;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -20,11 +22,11 @@ final class TrackedParcelTest extends TestCase
     {
         $object = new TrackedParcel();
         $object->setParcelId(1);
-        $object->setExternalCarrierParcelNumbers(120);
+        $object->setExternalCarrierParcelNumbers('1203344556677');
         $object->setOperations(new ArrayCollection());
 
         self::assertEquals(1, $object->getParcelId());
-        self::assertEquals(120, $object->getExternalCarrierParcelNumbers());
+        self::assertEquals('1203344556677', $object->getExternalCarrierParcelNumbers());
         self::assertInstanceOf(ArrayCollection::class, $object->getOperations());
     }
 

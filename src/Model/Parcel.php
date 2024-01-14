@@ -34,7 +34,7 @@ class Parcel
     private int $packageUniqueNumber;
 
     /**
-     * @Serializer\Type("VasilDakov\Speedy\Model\Size>")
+     * @Serializer\Type("VasilDakov\Speedy\Model\Size")
      */
     private Size $declaredSize;
 
@@ -64,10 +64,9 @@ class Parcel
     private float $calculationWeight;
 
     /**
-     * @Serializer\Type("array")
-     * In documentation the data type is described as "String[]"
+     * @Serializer\Type("string")
      */
-    private array $externalCarrierParcelNumbers;
+    private string $externalCarrierParcelNumber;
 
     /**
      * @Serializer\Type("string")
@@ -169,14 +168,14 @@ class Parcel
         $this->calculationWeight = $calculationWeight;
     }
 
-    public function getExternalCarrierParcelNumbers(): array
+    public function getExternalCarrierParcelNumber(): string
     {
-        return $this->externalCarrierParcelNumbers;
+        return $this->externalCarrierParcelNumber;
     }
 
-    public function setExternalCarrierParcelNumbers(array $externalCarrierParcelNumbers): void
+    public function setExternalCarrierParcelNumber(string $externalCarrierParcelNumber): void
     {
-        $this->externalCarrierParcelNumbers = $externalCarrierParcelNumbers;
+        $this->externalCarrierParcelNumber = $externalCarrierParcelNumber;
     }
 
     public function getBaseType(): string

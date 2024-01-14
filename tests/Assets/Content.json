@@ -16,17 +16,19 @@
         "depth":120,
         "height":110
       },
-      "weight":80.0
+      "weight":80.0,
+      "externalCarrierParcelNumber":"1726912312312314"
     },
     {
       "seqNo":2,
       "size": "string",
-      "declaredSize":{
+      "declaredSize": {
         "width":90,
         "depth":130,
         "height":150
       },
-      "weight":90.0
+      "weight":90.0,
+      "externalCarrierParcelNumber":"1726912312312315"
     }
   ],
   "pendingParcels": false

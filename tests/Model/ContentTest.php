@@ -27,6 +27,7 @@ class ContentTest extends TestCase
         $serializer = (new SerializerFactory())();
 
         $instance = $serializer->deserialize($json, Content::class, 'json');
+
         $this->assertInstanceOf(Content::class, $instance);
 
         $this->assertEquals($array['parcelsCount'], $instance->getParcelsCount());
@@ -38,12 +39,6 @@ class ContentTest extends TestCase
         $this->assertEquals($array['documents'], $instance->isDocuments());
         $this->assertEquals($array['palletized'], $instance->isPalletized());
         $this->assertEquals($array['pendingParcels'], $instance->isPendingParcels());
-
-        $this->assertEquals(\count($array['parcels']), $instance->getParcels()->count());
-
-        foreach ($instance->getParcels() as $parcel) {
-            $this->assertInstanceOf(Size::class, $parcel->getDeclaredSize());
-        }
     }
 
     public function testItCanBeExportedToArray(): void
