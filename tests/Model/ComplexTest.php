@@ -43,7 +43,13 @@ class ComplexTest extends TestCase
 
     public function testItCanBeExportedToArray(): void
     {
-        $this->assertIsArray((new Complex())->toArray());
+        $json = $this->getJson();
+
+        $serializer = (new SerializerFactory())();
+
+        $instance = $serializer->deserialize($json, Complex::class, 'json');
+
+        $this->assertIsArray($instance->toArray());
     }
 
     private function getArray(): array

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Speedy;
 
 /**
@@ -64,8 +65,8 @@ class BankAccount
     public function toArray(): array
     {
         return [
-            Speedy::IBAN => $this->getIban(),
-            Speedy::ACCOUNT_HOLDER => $this->getAccountHolder(),
+            Property::IBAN->value => $this->getIban(),
+            Property::ACCOUNT_HOLDER->value => $this->getAccountHolder(),
         ];
     }
 }

@@ -24,7 +24,7 @@ use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
  *
  * @version 1.0
  */
-class FindComplexRequestTest extends TestCase
+final class FindComplexRequestTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {

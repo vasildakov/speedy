@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Model;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Property;
 
 /**
  * Class Complex.
@@ -188,6 +189,17 @@ class Complex
     public function toArray(): array
     {
         return [
+            Property::ID->value             => $this->id,
+            Property::SITE_ID->value        => $this->siteId,
+            Property::TYPE->value           => $this->type,
+            Property::TYPE_EN->value        => $this->typeEn,
+            Property::NAME->value           => $this->name,
+            Property::NAME_EN->value        => $this->nameEn,
+            Property::ACTUAL_ID->value      => $this->actualId,
+            Property::ACTUAL_TYPE->value    => $this->actualType,
+            Property::ACTUAL_TYPE_EN->value => $this->actualTypeEn,
+            Property::ACTUAL_NAME->value    => $this->actualName,
+            Property::ACTUAL_NAME_EN->value => $this->actualNameEn,
         ];
     }
 }

@@ -37,8 +37,10 @@ final class SpeedyModelDecorator implements SpeedyInterface
 
     private SerializerInterface $serializer;
 
-    public function __construct(SpeedyInterface $speedy, SerializerInterface $serializer = null)
-    {
+    public function __construct(
+        SpeedyInterface $speedy,
+        SerializerInterface $serializer = null
+    ) {
         $this->speedy = $speedy;
 
         if (null === $serializer) {

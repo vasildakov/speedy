@@ -25,9 +25,9 @@ use VasilDakov\Speedy\Serializer\SerializerFactory;
  *
  * @version 1.0
  */
-class SerializerFactoryTest extends TestCase
+final class SerializerFactoryTest extends TestCase
 {
-    public function testItReturnInstance()
+    public function testItReturnInstance(): void
     {
         $instance = (new SerializerFactory())();
 

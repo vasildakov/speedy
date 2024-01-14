@@ -9,12 +9,10 @@ final class CancelShipmentRequestTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
-        $req = new CancelShipmentRequest('shipmentId', 'comment');
+        $request = new CancelShipmentRequest('shipmentId', 'comment');
 
-        self::assertInstanceOf(CancelShipmentRequest::class, $req);
-
-        self::assertEquals('shipmentId', $req->getShipmentId());
-
-        self::assertEquals('comment', $req->getComment());
+        self::assertInstanceOf(CancelShipmentRequest::class, $request);
+        self::assertEquals('shipmentId', $request->getShipmentId());
+        self::assertEquals('comment', $request->getComment());
     }
 }

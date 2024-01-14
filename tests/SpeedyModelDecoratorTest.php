@@ -8,6 +8,8 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
 use VasilDakov\Speedy\SpeedyInterface;
@@ -110,16 +112,12 @@ final class SpeedyModelDecoratorTest extends TestCase
 
     public function testItCanReturnFindStateResponse(): void
     {
-        $request = $this->createMock(FindStateRequest::class);
+        $request  = $this->createMock(FindStateRequest::class);
         $response = $this->createMock(FindStateResponse::class);
 
         $decorator = new SpeedyModelDecorator($this->speedy, $this->serializer);
 
-        $this->speedy
-            ->expects(self::once())
-            ->method('findState')
-            ->willReturn('[]')
-        ;
+        $this->speedy->expects(self::once())->method('findState')->willReturn('[]');
 
         $this->serializer
             ->expects(self::once())
@@ -136,5 +134,30 @@ final class SpeedyModelDecoratorTest extends TestCase
             FindStateResponse::class,
             $decorator->findState($request)
         );
+    }
+
+    public function testItCanReturnFindSiteResponse(): void
+    {
+        $request  = $this->createMock(FindSiteRequest::class);
+        $response = $this->createMock(FindSiteResponse::class);
+
+        $decorator = new SpeedyModelDecorator($this->speedy, $this->serializer);
+
+        $this->speedy->expects(self::once())->method('findSite')->willReturn('[]');
+
+        $this->serializer
+            ->expects(self::once())
+            ->method('deserialize')
+            ->with(
+                data: '[]',
+                type: FindSiteResponse::class,
+                format: 'json'
+            )
+            ->willReturn($response)
+        ;
+
+        $response = $decorator->findSite($request);
+
+        self::assertInstanceOf(FindSiteResponse::class, $response);
     }
 }

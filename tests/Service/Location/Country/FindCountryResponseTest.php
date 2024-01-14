@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace VasilDakov\SpeedyTests\Service\Location\Country;
 
+use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\Country;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
-use VasilDakov\Speedy\Service\Location\Country\FindCountryResponseFactory;
 
 /**
  * Class FindCountryResponseTest.
@@ -17,8 +18,16 @@ use VasilDakov\Speedy\Service\Location\Country\FindCountryResponseFactory;
  *
  * @version 1.0
  */
-class FindCountryResponseTest extends TestCase
+final class FindCountryResponseTest extends TestCase
 {
+    protected SerializerInterface $serializer;
+
+    protected function setUp(): void
+    {
+        $this->serializer = (new SerializerFactory())();
+        parent::setUp();
+    }
+
     public function testItCanBeConstructed(): void
     {
         $instance = new FindCountryResponse();
@@ -30,7 +39,7 @@ class FindCountryResponseTest extends TestCase
     {
         $json = $this->getCountriesJson();
 
-        $instance = (new FindCountryResponseFactory())($json);
+        $instance = $this->serializer->deserialize($json, FindCountryResponse::class, 'json');
 
         $this->assertInstanceOf(Country::class, $instance->findCountryById(100));
     }
@@ -38,7 +47,8 @@ class FindCountryResponseTest extends TestCase
     public function testItCanFindCountryIsoAlpha2(): void
     {
         $json = $this->getCountriesJson();
-        $instance = (new FindCountryResponseFactory())($json);
+
+        $instance = $this->serializer->deserialize($json, FindCountryResponse::class, 'json');
 
         $this->assertInstanceOf(Country::class, $instance->findCountryByIsoAlpha2('BG'));
     }
@@ -46,7 +56,7 @@ class FindCountryResponseTest extends TestCase
     public function testItCanFindCountryByName(): void
     {
         $json = $this->getCountriesJson();
-        $instance = (new FindCountryResponseFactory())($json);
+        $instance = $this->serializer->deserialize($json, FindCountryResponse::class, 'json');
 
         $this->assertInstanceOf(Country::class, $instance->findCountryByName('БЪЛГАРИЯ'));
     }
@@ -54,7 +64,7 @@ class FindCountryResponseTest extends TestCase
     public function testNullResults(): void
     {
         $json = $this->getCountriesJson();
-        $instance = (new FindCountryResponseFactory())($json);
+        $instance = $this->serializer->deserialize($json, FindCountryResponse::class, 'json');
 
         $this->assertNull($instance->findCountryById(999999999999));
         $this->assertNull($instance->findCountryByName('Some None Existing Name'));

@@ -325,8 +325,6 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        // return (new Location\Office\FindOfficeResponseFactory())($json);
     }
 
     /**
@@ -347,8 +345,6 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        // return (new Location\Complex\FindComplexResponseFactory())($json);
     }
 
     /**
@@ -369,8 +365,6 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        // return (new Location\Street\FindStreetResponseFactory())($json);
     }
 
     /**
@@ -387,8 +381,6 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        // return (new CalculationResponseFactory())($json);
     }
 
     /**
@@ -405,8 +397,6 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        //return (new TrackResponseFactory())($json);
     }
 
     public function print(PrintRequest $object): string
