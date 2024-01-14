@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Shipment;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Traits\ToArray;
 
@@ -185,9 +186,9 @@ class ShipmentSender
     public function toArray(): array
     {
         return [
-            Speedy::PHONE_1 => $this->phone1->toArray(),
-            Speedy::CONTACT_NAME => $this->contactName,
-            Speedy::EMAIL => $this->email,
+            Property::PHONE_1->value => $this->phone1->toArray(),
+            Property::CONTACT_NAME->value => $this->contactName,
+            Property::EMAIL->value => $this->email,
         ];
     }
 }

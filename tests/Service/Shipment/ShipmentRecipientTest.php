@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Service\Shipment\ShipmentAddress;
 use VasilDakov\Speedy\Service\Shipment\ShipmentPhoneNumber;
 use VasilDakov\Speedy\Service\Shipment\ShipmentRecipient;
@@ -210,9 +211,9 @@ class ShipmentRecipientTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::PHONE_1, $array);
-        $this->assertArrayHasKey(Speedy::CLIENT_NAME, $array);
-        $this->assertArrayHasKey(Speedy::EMAIL, $array);
+        $this->assertArrayHasKey(Property::PHONE_1->value, $array);
+        $this->assertArrayHasKey(Property::CLIENT_NAME->value, $array);
+        $this->assertArrayHasKey(Property::EMAIL->value, $array);
         //        $this->assertArrayHasKey(Speedy::PHONE_2, $array);
         //        $this->assertArrayHasKey(Speedy::PHONE_3, $array);
         //        $this->assertArrayHasKey(Speedy::CONTACT_NAME, $array);

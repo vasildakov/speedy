@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Service\Shipment\ShipmentAddress;
@@ -224,11 +225,11 @@ class CreateShipmentRequestTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::SENDER, $array);
-        $this->assertArrayHasKey(Speedy::RECIPIENT, $array);
-        $this->assertArrayHasKey(Speedy::SERVICE, $array);
-        $this->assertArrayHasKey(Speedy::CONTENT, $array);
-        $this->assertArrayHasKey(Speedy::PAYMENT, $array);
+        $this->assertArrayHasKey(Property::SENDER->value, $array);
+        $this->assertArrayHasKey(Property::RECIPIENT->value, $array);
+        $this->assertArrayHasKey(Property::SERVICE->value, $array);
+        $this->assertArrayHasKey(Property::CONTENT->value, $array);
+        $this->assertArrayHasKey(Property::PAYMENT->value, $array);
         // $this->assertArrayHasKey(Speedy::SHIPMENT_NOTE, $array);
         // $this->assertArrayHasKey(Speedy::REF_1, $array);
         // $this->assertArrayHasKey(Speedy::REF_2, $array);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Service\Shipment\ShipmentDiscountCardId;
 use VasilDakov\Speedy\Speedy;
 
@@ -56,7 +57,7 @@ class ShipmentDiscountCardIdTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::CONTRACT_ID, $array);
-        $this->assertArrayHasKey(Speedy::CARD_ID, $array);
+        $this->assertArrayHasKey(Property::CONTRACT_ID->value, $array);
+        $this->assertArrayHasKey(Property::CARD_ID->value, $array);
     }
 }

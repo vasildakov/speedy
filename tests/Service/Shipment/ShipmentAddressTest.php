@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Shipment\ShipmentAddress;
 use VasilDakov\Speedy\Speedy;
@@ -28,7 +29,7 @@ class ShipmentAddressTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::SITE_ID, $array);
+        $this->assertArrayHasKey(Property::SITE_ID->value, $array);
     }
 
     public function testItCanBeSerialized(): void

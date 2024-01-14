@@ -6,6 +6,7 @@ namespace VasilDakov\Speedy\Service\Shipment;
 
 use JMS\Serializer\Annotation as Serializer;
 use VasilDakov\Speedy\Model\BankAccount;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Speedy;
 use VasilDakov\Speedy\Traits\ToArray;
 
@@ -140,8 +141,8 @@ class ShipmentPayment
     public function toArray(): array
     {
         return [
-            Speedy::COURIER_SERVICE_PAYER => $this->courierServicePayer,
-            Speedy::DECLARED_VALUE_PAYER => $this->declaredValuePayer,
+            Property::COURIER_SERVICE_PAYER->value => $this->courierServicePayer,
+            Property::DECLARED_VALUE_PAYER->value => $this->declaredValuePayer,
         ];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Service\Shipment\ShipmentPhoneNumber;
 use VasilDakov\Speedy\Speedy;
 
@@ -61,7 +62,7 @@ class ShipmentPhoneNumberTest extends TestCase
     {
         $object = new ShipmentPhoneNumber($this->number);
         $array = $object->toArray();
-        $this->assertArrayHasKey(Speedy::NUMBER, $array);
+        $this->assertArrayHasKey(Property::NUMBER->value, $array);
         // $this->assertArrayHasKey(Speedy::EXTENSION, $array);
     }
 }

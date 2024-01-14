@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Calculation;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Speedy;
 
 /**
@@ -97,11 +98,11 @@ class CalculationRequest
     public function toArray(): array
     {
         return [
-            Speedy::SENDER => $this->getSender()->toArray(),
-            Speedy::RECIPIENT => $this->getRecipient()->toArray(),
-            Speedy::SERVICE => $this->getService()->toArray(),
-            Speedy::CONTENT => $this->getContent()->toArray(),
-            Speedy::PAYMENT => $this->getPayment()->toArray(),
+            Property::SENDER->value => $this->getSender()->toArray(),
+            Property::RECIPIENT->value => $this->getRecipient()->toArray(),
+            Property::SERVICE->value => $this->getService()->toArray(),
+            Property::CONTENT->value => $this->getContent()->toArray(),
+            Property::PAYMENT->value => $this->getPayment()->toArray(),
         ];
     }
 }

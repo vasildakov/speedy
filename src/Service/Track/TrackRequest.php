@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Track;
 
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Speedy;
 
 /**
@@ -31,7 +32,7 @@ class TrackRequest
     public function toArray(): array
     {
         return [
-            Speedy::PARCELS => $this->parcels,
+            Property::PARCELS->value => $this->parcels,
         ];
     }
 }

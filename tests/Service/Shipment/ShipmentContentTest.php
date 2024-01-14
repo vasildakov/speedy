@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Service\Shipment\ShipmentContent;
 use VasilDakov\Speedy\Service\Shipment\ShipmentParcel;
 use VasilDakov\Speedy\Speedy;
@@ -189,11 +190,11 @@ class ShipmentContentTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::PARCEL, $array);
-        $this->assertArrayHasKey(Speedy::PARCELS_COUNT, $array);
-        $this->assertArrayHasKey(Speedy::TOTAL_WEIGHT, $array);
-        $this->assertArrayHasKey(Speedy::CONTENTS, $array);
-        $this->assertArrayHasKey(Speedy::PACKAGE, $array);
+        $this->assertArrayHasKey(Property::PARCEL->value, $array);
+        $this->assertArrayHasKey(Property::PARCELS_COUNT->value, $array);
+        $this->assertArrayHasKey(Property::TOTAL_WEIGHT->value, $array);
+        $this->assertArrayHasKey(Property::CONTENTS->value, $array);
+        $this->assertArrayHasKey(Property::PACKAGE->value, $array);
         // $this->assertArrayHasKey(Speedy::PALLETIZED, $array);
         // $this->assertArrayHasKey(Speedy::DOCUMENTS, $array);
         // $this->assertArrayHasKey(Speedy::PENDING_PARCELS, $array);

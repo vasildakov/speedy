@@ -6,6 +6,7 @@ namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Model\BankAccount;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Service\Shipment\ShipmentDiscountCardId;
 use VasilDakov\Speedy\Service\Shipment\ShipmentPayment;
 use VasilDakov\Speedy\Speedy;
@@ -41,26 +42,26 @@ class ShipmentPaymentTest extends TestCase
 
     public function testItCanExportToArrayWithMandatoryProperty(): void
     {
-        $object = new ShipmentPayment('RECIPIENT', 'RECIPIENT');
+        $object = new ShipmentPayment(Property::RECIPIENT->value, Property::RECIPIENT->value);
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::COURIER_SERVICE_PAYER, $array);
+        $this->assertArrayHasKey(Property::COURIER_SERVICE_PAYER->value, $array);
     }
 
     public function testItCanExportToArrayWithOptionalProperty(): void
     {
-        $object = new ShipmentPayment('RECIPIENT', 'RECIPIENT');
+        $object = new ShipmentPayment(Property::RECIPIENT->value, Property::RECIPIENT->value);
 
-        $object->setDeclaredValuePayer('THIRD_PARTY');
-        $object->setPackagePayer('SENDER');
+        $object->setDeclaredValuePayer(Property::RECIPIENT->value);
+        $object->setPackagePayer(Property::RECIPIENT->value);
         $object->setThirdPartyClientId($this->thirdParty);
         $object->setDiscountCardId($this->discount);
         $object->setSenderBankAccount($this->account);
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::DECLARED_VALUE_PAYER, $array);
+        $this->assertArrayHasKey(Property::DECLARED_VALUE_PAYER->value, $array);
         // $this->assertArrayHasKey(Speedy::PACKAGE_PAYER, $array);
         // $this->assertArrayHasKey(Speedy::THIRD_PARTY_CLIENT_ID, $array);
         // $this->assertArrayHasKey(Speedy::DISCOUNT_CARD_ID, $array);

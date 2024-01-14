@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\SpeedyTests\Service\Shipment;
 
 use PHPUnit\Framework\TestCase;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Service\Shipment\ShipmentParcelSize;
 use VasilDakov\Speedy\Speedy;
 
@@ -67,8 +68,8 @@ class ShipmentParcelSizeTest extends TestCase
 
         $array = $object->toArray();
 
-        $this->assertArrayHasKey(Speedy::WIDTH, $array);
-        $this->assertArrayHasKey(Speedy::DEPTH, $array);
-        $this->assertArrayHasKey(Speedy::HEIGHT, $array);
+        $this->assertArrayHasKey(Property::WIDTH->value, $array);
+        $this->assertArrayHasKey(Property::DEPTH->value, $array);
+        $this->assertArrayHasKey(Property::HEIGHT->value, $array);
     }
 }

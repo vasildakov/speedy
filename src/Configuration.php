@@ -45,9 +45,9 @@ class Configuration
     public function toArray(): array
     {
         return [
-            Speedy::USER_NAME => $this->getUsername(),
-            Speedy::PASSWORD => $this->getPassword(),
-            Speedy::LANGUAGE => $this->getLanguage(),
+            Property::USER_NAME->value => $this->getUsername(),
+            Property::PASSWORD->value => $this->getPassword(),
+            Property::LANGUAGE->value => $this->getLanguage(),
         ];
     }
 }
