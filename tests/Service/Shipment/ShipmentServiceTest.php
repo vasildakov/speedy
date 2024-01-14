@@ -14,6 +14,7 @@ use VasilDakov\Speedy\Speedy;
  * Class ShipmentServiceTest.
  *
  * @author Valentin Valkanov <valentinvalkanof@gmail.com>
+ * @author Vasil Dakov <vasildakov@gmail.com>
  * @copyright
  *
  * @version
