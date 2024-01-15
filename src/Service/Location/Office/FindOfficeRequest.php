@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Office;
 
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
@@ -18,15 +19,34 @@ class FindOfficeRequest
 {
     use ToArray;
 
-    private int $siteId;
+    private ?int $countryId;
 
-    public function __construct(int $siteId)
+    private ?int $siteId;
+
+    private ?string $name;
+
+    public function __construct(?int $countryId = null, ?int $siteId = null, ?string $name = null)
     {
-        $this->siteId = $siteId;
+        $this->countryId = $countryId;
+        $this->siteId    = $siteId;
+        $this->name = $name;
     }
 
-    public function getSiteId(): int
+    /**
+     * @return int
+     */
+    public function getCountryId(): int
     {
-        return $this->siteId;
+        return $this->countryId;
+    }
+
+
+    public function toArray(): array
+    {
+        return [
+            Property::COUNTRY_ID->value => $this->countryId,
+            Property::SITE_ID->value => $this->siteId,
+            Property::NAME->value => $this->name,
+        ];
     }
 }
