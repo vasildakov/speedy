@@ -51,31 +51,6 @@ class Complex
      */
     private string $nameEn;
 
-    /**
-     * @Serializer\Type("int")
-     */
-    private int $actualId;
-
-    /**
-     * @Serializer\Type("string")
-     */
-    private string $actualType;
-
-    /**
-     * @Serializer\Type("string")
-     */
-    private string $actualTypeEn;
-
-    /**
-     * @Serializer\Type("string")
-     */
-    private string $actualName;
-
-    /**
-     * @Serializer\Type("string")
-     */
-    private string $actualNameEn;
-
     public function getId(): int
     {
         return $this->id;
@@ -136,70 +111,18 @@ class Complex
         $this->nameEn = $nameEn;
     }
 
-    public function getActualId(): int
-    {
-        return $this->actualId;
-    }
-
-    public function setActualId(int $actualId): void
-    {
-        $this->actualId = $actualId;
-    }
-
-    public function getActualType(): string
-    {
-        return $this->actualType;
-    }
-
-    public function setActualType(string $actualType): void
-    {
-        $this->actualType = $actualType;
-    }
-
-    public function getActualTypeEn(): string
-    {
-        return $this->actualTypeEn;
-    }
-
-    public function setActualTypeEn(string $actualTypeEn): void
-    {
-        $this->actualTypeEn = $actualTypeEn;
-    }
-
-    public function getActualName(): string
-    {
-        return $this->actualName;
-    }
-
-    public function setActualName(string $actualName): void
-    {
-        $this->actualName = $actualName;
-    }
-
-    public function getActualNameEn(): string
-    {
-        return $this->actualNameEn;
-    }
-
-    public function setActualNameEn(string $actualNameEn): void
-    {
-        $this->actualNameEn = $actualNameEn;
-    }
-
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [
-            Property::ID->value             => $this->id,
-            Property::SITE_ID->value        => $this->siteId,
-            Property::TYPE->value           => $this->type,
-            Property::TYPE_EN->value        => $this->typeEn,
-            Property::NAME->value           => $this->name,
-            Property::NAME_EN->value        => $this->nameEn,
-            Property::ACTUAL_ID->value      => $this->actualId,
-            Property::ACTUAL_TYPE->value    => $this->actualType,
-            Property::ACTUAL_TYPE_EN->value => $this->actualTypeEn,
-            Property::ACTUAL_NAME->value    => $this->actualName,
-            Property::ACTUAL_NAME_EN->value => $this->actualNameEn,
+            Property::ID->value       => $this->id,
+            Property::SITE_ID->value  => $this->siteId,
+            Property::TYPE->value     => $this->type,
+            Property::TYPE_EN->value  => $this->typeEn,
+            Property::NAME->value     => $this->name,
+            Property::NAME_EN->value  => $this->nameEn,
         ];
     }
 }
