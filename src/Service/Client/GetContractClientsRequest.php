@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy\Service\Client;
 
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Property;
 
 /**
  * Class GetContractClientsRequest.
@@ -21,9 +22,9 @@ class GetContractClientsRequest
     /**
      * @Serializer\Type("string")
      */
-    private ?string $clientSystemId;
+    private ?string $clientSystemId = null;
 
-    public function __construct(string $clientSystemId = null)
+    public function __construct(?string $clientSystemId)
     {
         $this->clientSystemId = $clientSystemId;
     }
@@ -38,14 +39,15 @@ class GetContractClientsRequest
         $this->clientSystemId = $clientSystemId;
     }
 
+    public function __serialize(): array
+    {
+        return $this->toArray();
+    }
+
     public function toArray(): array
     {
-        $array = [];
-
-        if (null !== $this->clientSystemId) {
-            $array['clientSystemId'] = $this->clientSystemId;
-        }
-
-        return $array;
+        return [
+            Property::CLIENT_SYSTEM_ID->value => $this->clientSystemId
+        ];
     }
 }

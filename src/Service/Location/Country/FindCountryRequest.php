@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Country;
 
+use VasilDakov\Speedy\Property;
+
 /**
  * Class FindCountry.
  *
@@ -14,15 +16,17 @@ namespace VasilDakov\Speedy\Service\Location\Country;
  */
 class FindCountryRequest
 {
-    private string $name;
+    private ?string $name = null;
 
-    private ?string $isoAlpha2;
+    private ?string $isoAlpha2 = null;
 
-    private ?string $isoAlpha3;
+    private ?string $isoAlpha3 = null;
 
-    public function __construct(string $name)
+    public function __construct(?string $name, ?string $isoAlpha2, ?string $isoAlpha3)
     {
         $this->name = $name;
+        $this->isoAlpha2 = $isoAlpha2;
+        $this->isoAlpha3 = $isoAlpha3;
     }
 
     public function setName(string $name): void
@@ -30,7 +34,7 @@ class FindCountryRequest
         $this->name = $name;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -56,12 +60,14 @@ class FindCountryRequest
     }
 
     /**
-     * @return string[]
+     * @return array<string,string|null>
      */
     public function toArray(): array
     {
         return [
-            'name' => $this->name,
+            Property::NAME->value        => $this->name,
+            Property::ISO_ALPHA_2->value => $this->isoAlpha2,
+            Property::ISO_ALPHA_3->value => $this->isoAlpha3
         ];
     }
 }

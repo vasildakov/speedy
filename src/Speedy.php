@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace VasilDakov\Speedy;
 
 use Fig\Http\Message\RequestMethodInterface;
+use JMS\Serializer\SerializerInterface;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use VasilDakov\Speedy\Exception\JsonException;
+use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
 use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
-use VasilDakov\Speedy\Service\Calculation\CalculationResponseFactory;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Location;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
@@ -24,14 +25,11 @@ use VasilDakov\Speedy\Service\Printing\PrintRequest;
 use VasilDakov\Speedy\Service\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesRequest;
 use VasilDakov\Speedy\Service\Service\DestinationServicesResponse;
-use VasilDakov\Speedy\Service\Service\DestinationServicesResponseFactory;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentRequest;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponse;
-use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponseFactory;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 use VasilDakov\Speedy\Service\Track\TrackResponse;
-use VasilDakov\Speedy\Service\Track\TrackResponseFactory;
 
 /**
  * Class Speedy.
@@ -58,14 +56,22 @@ final class Speedy implements SpeedyInterface
      */
     private RequestFactoryInterface $factory;
 
+    private SerializerInterface $serializer;
+
     public function __construct(
         Configuration $configuration,
         ClientInterface $client,
-        RequestFactoryInterface $factory
+        RequestFactoryInterface $factory,
+        ?SerializerInterface $serializer = null
     ) {
         $this->configuration = $configuration;
         $this->client = $client;
         $this->factory = $factory;
+
+        if (null === $serializer) {
+            $serializer = (new SerializerFactory())();
+        }
+        $this->serializer = $serializer;
     }
 
     private function createRequest(string $method, string $uri, array $data): RequestInterface
@@ -155,7 +161,9 @@ final class Speedy implements SpeedyInterface
     /**
      * @param FindSiteRequest $req
      *
-     * @throws ClientExceptionInterface|JsonException
+     * @return string
+     * @throws ClientExceptionInterface
+     * @throws JsonException
      */
     public function findSite(Location\Site\FindSiteRequest $req): string
     {
@@ -168,8 +176,6 @@ final class Speedy implements SpeedyInterface
         );
 
         return $this->getContents($request);
-
-        // return (new Location\Site\FindSiteResponseFactory())($json);
     }
 
     /**
