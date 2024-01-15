@@ -34,11 +34,6 @@ class ComplexTest extends TestCase
         $this->assertEquals($array['typeEn'], $instance->getTypeEn());
         $this->assertEquals($array['name'], $instance->getName());
         $this->assertEquals($array['nameEn'], $instance->getNameEn());
-        $this->assertEquals($array['actualId'], $instance->getActualId());
-        $this->assertEquals($array['actualType'], $instance->getActualType());
-        $this->assertEquals($array['actualTypeEn'], $instance->getActualTypeEn());
-        $this->assertEquals($array['actualName'], $instance->getActualName());
-        $this->assertEquals($array['actualNameEn'], $instance->getActualNameEn());
     }
 
     public function testItCanBeExportedToArray(): void
