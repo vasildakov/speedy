@@ -13,7 +13,6 @@ use Psr\Http\Message\RequestInterface;
 use VasilDakov\Speedy\Exception\JsonException;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
-use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Location;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
@@ -22,14 +21,11 @@ use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
 use VasilDakov\Speedy\Service\Printing\PrintRequest;
-use VasilDakov\Speedy\Service\Printing\PrintResponse;
 use VasilDakov\Speedy\Service\Service\DestinationServicesRequest;
-use VasilDakov\Speedy\Service\Service\DestinationServicesResponse;
 use VasilDakov\Speedy\Service\Shipment\CancelShipmentRequest;
-use VasilDakov\Speedy\Service\Shipment\CancelShipmentResponse;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
-use VasilDakov\Speedy\Service\Track\TrackResponse;
+
 
 /**
  * Class Speedy.
