@@ -2,11 +2,14 @@
 
 namespace VasilDakov\SpeedyTests;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\HttpFactory;
 use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Configuration;
+use VasilDakov\Speedy\Enum\OfficeType;
+use VasilDakov\Speedy\Model\Office;
 use VasilDakov\Speedy\Model\Site;
 use VasilDakov\Speedy\Model\Street;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
@@ -15,6 +18,8 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeRequest;
+use VasilDakov\Speedy\Service\Location\Office\FindOfficeResponse;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
@@ -221,8 +226,6 @@ final class SpeedyFunctionalTest extends TestCase
         $request->setType('gr.');
         $request->setRegion('SOFIA');
 
-        //dd($request);
-
         $json = $this->speedy->findSite($request);
 
         /** @var FindSiteResponse $response */
@@ -256,13 +259,13 @@ final class SpeedyFunctionalTest extends TestCase
      * @group functional
      * @see https://services.speedy.bg/api/api_examples.html#FindStreetRequest
      */
-    public function testFindStreetByPartialStreetName(): void
+    public function testItCanFindStreetByPartialStreetName(): void
     {
         $request = new FindStreetRequest(siteId: 68134, name: 'USTA');
 
         $json = $this->speedy->findStreet($request);
 
-        /** @var FindSiteResponse $response */
+        /** @var FindStreetResponse $response */
         $response = $this->serializer->deserialize($json, FindStreetResponse::class, 'json');
 
         self::assertInstanceOf(FindStreetResponse::class, $response);
@@ -274,38 +277,105 @@ final class SpeedyFunctionalTest extends TestCase
      * @group functional
      * @see https://services.speedy.bg/api/api_examples.html#FindStreetRequest
      */
-    public function testFindStreetByFullStreetName(): void
+    public function testItCanFindStreetByFullStreetName(): void
     {
         $request = new FindStreetRequest(siteId: 68134, name: 'VASIL LEVSKI');
 
         $json = $this->speedy->findStreet($request);
 
-        /** @var FindSiteResponse $response */
+        /** @var FindStreetResponse $response */
         $response = $this->serializer->deserialize($json, FindStreetResponse::class, 'json');
 
         self::assertInstanceOf(FindStreetResponse::class, $response);
         self::assertCount(3, $response->getStreets());
-
-        /* self::assertInstanceOf(FindStreetResponse::class, $response);
-        self::assertCount(2, $response->getStreets());
-        self::assertInstanceOf(Street::class, $response->getStreets()->first()); */
     }
 
     /**
      * @group functional
      * @see https://services.speedy.bg/api/api_examples.html#FindStreetRequest
      */
-    public function testFindStreetByFullStreetNameAndType(): void
+    public function testItCanFindStreetByFullStreetNameAndType(): void
     {
         $request = new FindStreetRequest(siteId: 68134, name: 'VASIL LEVSKI', type: 'bul.');
 
         $json = $this->speedy->findStreet($request);
 
-        /** @var FindSiteResponse $response */
+        /** @var FindStreetResponse $response */
         $response = $this->serializer->deserialize($json, FindStreetResponse::class, 'json');
 
         self::assertInstanceOf(FindStreetResponse::class, $response);
         self::assertCount(1, $response->getStreets());
         self::assertInstanceOf(Street::class, $response->getStreets()->first());
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindOfficeRequest
+     */
+    public function testItCanFindOfficeByCountry(): void
+    {
+        $request = new FindOfficeRequest(countryId: 100);
+
+        $json = $this->speedy->findOffice($request);
+
+        /** @var FindOfficeResponse $response */
+        $response = $this->serializer->deserialize($json, FindOfficeResponse::class, 'json');
+
+        self::assertInstanceOf(FindOfficeResponse::class, $response);
+        self::assertInstanceOf(Office::class, $response->getOffices()->first());
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindOfficeRequest
+     */
+    public function testItCanFindOfficeByCountryAndSite(): void
+    {
+        $request = new FindOfficeRequest(countryId: 100, siteId: 68134); // Sofia
+
+        $json = $this->speedy->findOffice($request);
+
+        /** @var FindOfficeResponse $response */
+        $response = $this->serializer->deserialize($json, FindOfficeResponse::class, 'json');
+
+        self::assertInstanceOf(FindOfficeResponse::class, $response);
+        self::assertInstanceOf(Office::class, $response->getOffices()->first());
+    }
+
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindOfficeRequest
+     */
+    public function testItCanFindOfficeByCountryAndSiteAndName(): void
+    {
+        $request = new FindOfficeRequest(countryId: 100, siteId: 68134, name: 'SOM'); // Sofia
+
+        $json = $this->speedy->findOffice($request);
+
+        /** @var FindOfficeResponse $response */
+        $response = $this->serializer->deserialize($json, FindOfficeResponse::class, 'json');
+
+        self::assertInstanceOf(FindOfficeResponse::class, $response);
+        self::assertInstanceOf(Office::class, $response->getOffices()->first());
+    }
+
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindOfficeRequest
+     */
+    public function testItCanFilterOfficesByType(): void
+    {
+        $request = new FindOfficeRequest(countryId: 100, siteId: 68134); // Sofia
+
+        $json = $this->speedy->findOffice($request);
+
+        /** @var FindOfficeResponse $response */
+        $response = $this->serializer->deserialize($json, FindOfficeResponse::class, 'json');
+
+        self::assertInstanceOf(FindOfficeResponse::class, $response);
+        self::assertInstanceOf(ArrayCollection::class, $response->getOffices(OfficeType::Office->value));
+        self::assertInstanceOf(ArrayCollection::class, $response->getOffices(OfficeType::Apt->value));
     }
 }

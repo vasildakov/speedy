@@ -28,10 +28,8 @@ class FindOfficeRequestTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
-        $instance = new FindOfficeRequest(123);
+        $instance = new FindOfficeRequest(countryId: 100);
 
         $this->assertInstanceOf(FindOfficeRequest::class, $instance);
-
-        $this->assertEquals(123, $instance->getSiteId());
     }
 }

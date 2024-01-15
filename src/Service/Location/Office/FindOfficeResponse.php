@@ -6,6 +6,7 @@ namespace VasilDakov\Speedy\Service\Location\Office;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Model\Office;
 
 /**
  * Class FindOfficeResponse.
@@ -29,9 +30,15 @@ class FindOfficeResponse
         $this->offices = new ArrayCollection();
     }
 
-    public function getOffices(): ArrayCollection
+    public function getOffices(?string $type = null): ArrayCollection
     {
-        return $this->offices;
+        if (!$type) {
+            return $this->offices;
+        }
+
+        return $this->offices->filter(function (Office $office) use ($type) {
+            return $office->getType() == $type;
+        });
     }
 
     public function setOffices(ArrayCollection $offices): void
