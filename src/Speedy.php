@@ -302,7 +302,7 @@ final class Speedy implements SpeedyInterface
     /**
      * @throws ClientExceptionInterface
      */
-    public function cancelShipment(CancelShipmentRequest $object): CancelShipmentResponse
+    public function cancelShipment(CancelShipmentRequest $object): string
     {
         $payload = $this->createPayload($object->toArray());
 
@@ -312,10 +312,7 @@ final class Speedy implements SpeedyInterface
             $payload
         );
 
-        $json = $this->getContents($request);
-
-        /* @var CancelShipmentResponse */
-        return (new CancelShipmentResponseFactory())($json);
+        return $this->getContents($request);
     }
 
 
