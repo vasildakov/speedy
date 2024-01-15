@@ -9,12 +9,14 @@ use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Configuration;
 use VasilDakov\Speedy\Enum\OfficeType;
+use VasilDakov\Speedy\Model\Complex;
 use VasilDakov\Speedy\Model\Office;
 use VasilDakov\Speedy\Model\Site;
 use VasilDakov\Speedy\Model\Street;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
+use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
@@ -377,5 +379,23 @@ final class SpeedyFunctionalTest extends TestCase
         self::assertInstanceOf(FindOfficeResponse::class, $response);
         self::assertInstanceOf(ArrayCollection::class, $response->getOffices(OfficeType::Office->value));
         self::assertInstanceOf(ArrayCollection::class, $response->getOffices(OfficeType::Apt->value));
+    }
+
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindComplexRequest
+     */
+    public function testItCanFindComplexByPartialName(): void
+    {
+        $request = new FindComplexRequest(siteId: 68134, name: 'KRASN'); // Sofia
+
+        $json = $this->speedy->findComplex($request);
+
+        /** @var FindOfficeResponse $response */
+        $response = $this->serializer->deserialize($json, FindComplexResponse::class, 'json');
+
+        self::assertInstanceOf(FindComplexResponse::class, $response);
+        self::assertInstanceOf(Complex::class, $response->getComplexes()->first());
     }
 }
