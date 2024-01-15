@@ -46,8 +46,8 @@ class Configuration
     {
         return [
             Property::USER_NAME->value => $this->getUsername(),
-            Property::PASSWORD->value => $this->getPassword(),
-            Property::LANGUAGE->value => $this->getLanguage(),
+            Property::PASSWORD->value  => $this->getPassword(),
+            Property::LANGUAGE->value  => $this->getLanguage(),
         ];
     }
 }

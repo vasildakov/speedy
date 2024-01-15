@@ -17,7 +17,7 @@ use VasilDakov\Speedy\Configuration;
  */
 class ConfigurationTest extends TestCase
 {
-    public function testItCanBeConstructed()
+    public function testItCanBeConstructed(): void
     {
         $instance = new Configuration('username', 'password', 'language');
 
