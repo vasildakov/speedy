@@ -14,3 +14,4 @@ public/.env
 /tmp
 INFO.md
 /public/example.php
+phpunit.xml
