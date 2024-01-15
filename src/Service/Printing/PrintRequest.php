@@ -20,6 +20,5 @@ class PrintRequest
 
     public function __construct(public string $paperSize, public array $parcels)
     {
-
     }
 }

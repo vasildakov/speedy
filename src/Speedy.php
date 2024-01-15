@@ -26,7 +26,6 @@ use VasilDakov\Speedy\Service\Shipment\CancelShipmentRequest;
 use VasilDakov\Speedy\Service\Shipment\CreateShipmentRequest;
 use VasilDakov\Speedy\Service\Track\TrackRequest;
 
-
 /**
  * Class Speedy.
  *

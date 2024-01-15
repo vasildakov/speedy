@@ -754,4 +754,3 @@ final class SpeedyTest extends TestCase
         self::assertJson($json);
     }
 }
-

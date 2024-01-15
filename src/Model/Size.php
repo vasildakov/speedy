@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Model;
 
-use VasilDakov\Speedy\Property;
 use JMS\Serializer\Annotation as Serializer;
+use VasilDakov\Speedy\Property;
 
 /**
  * Class Size.
