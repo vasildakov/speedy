@@ -28,6 +28,10 @@ use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
 use VasilDakov\Speedy\Service\Location\Street\FindStreetResponse;
+use VasilDakov\Speedy\Service\Track\TrackedParcel;
+use VasilDakov\Speedy\Service\Track\TrackedParcelOperation;
+use VasilDakov\Speedy\Service\Track\TrackRequest;
+use VasilDakov\Speedy\Service\Track\TrackResponse;
 use VasilDakov\Speedy\Speedy;
 
 /**
@@ -392,10 +396,57 @@ final class SpeedyFunctionalTest extends TestCase
 
         $json = $this->speedy->findComplex($request);
 
-        /** @var FindOfficeResponse $response */
+        /** @var FindComplexResponse $response */
         $response = $this->serializer->deserialize($json, FindComplexResponse::class, 'json');
 
         self::assertInstanceOf(FindComplexResponse::class, $response);
         self::assertInstanceOf(Complex::class, $response->getComplexes()->first());
+    }
+
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindComplexRequest
+     */
+    public function testItCanTrackOneParcel(): void
+    {
+        $request = new TrackRequest([ ["id" => "299999991"] ]); // Sofia
+
+        $json = $this->speedy->track($request);
+
+        /** @var TrackResponse $response */
+        $response = $this->serializer->deserialize($json, TrackResponse::class, 'json');
+
+        /** @var TrackedParcel $parcel */
+        $parcel = $response->getParcels()->first();
+
+        /** @var TrackedParcelOperation $operation */
+        $operation = $parcel->getOperations()->first();
+
+        self::assertInstanceOf(TrackResponse::class, $response);
+        self::assertInstanceOf(ArrayCollection::class, $response->getParcels());
+        self::assertInstanceOf(TrackedParcel::class, $parcel);
+        self::assertInstanceOf(ArrayCollection::class, $parcel->getOperations());
+        self::assertInstanceOf(TrackedParcelOperation::class, $operation);
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#TrackRequest
+     */
+    public function testItCanTrackMultipleParcels(): void
+    {
+        $request = new TrackRequest([
+            ["id" => "299999990"],
+            ["id" => "299999991"],
+            ["id" => "299999992"],
+        ]);
+
+        $json = $this->speedy->track($request);
+
+        /** @var TrackResponse $response */
+        $response = $this->serializer->deserialize($json, TrackResponse::class, 'json');
+
+        self::assertInstanceOf(TrackResponse::class, $response);
     }
 }
