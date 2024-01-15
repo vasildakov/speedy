@@ -77,7 +77,8 @@
         ]
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit",
+        "test": "./vendor/bin/phpunit --exclude functional",
+        "test-functional": "./vendor/bin/phpunit --group functional",
         "test-coverage": "./vendor/bin/phpunit --coverage-html ./build/coverage",
         "cs-check": "vendor/bin/phpcs",
         "cs-fix": "vendor/bin/phpcbf",
