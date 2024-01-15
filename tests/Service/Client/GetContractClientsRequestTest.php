@@ -19,7 +19,7 @@ class GetContractClientsRequestTest extends TestCase
 {
     public function testItCanBeConstructed(): void
     {
-        $instance = new GetContractClientsRequest();
+        $instance = new GetContractClientsRequest(clientSystemId: null);
         $instance->setClientSystemId('SomeClientSystemId');
 
         $this->assertEquals('SomeClientSystemId', $instance->getClientSystemId());

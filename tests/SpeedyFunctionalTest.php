@@ -13,6 +13,8 @@ use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
+use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
 use VasilDakov\Speedy\Speedy;
 
 final class SpeedyFunctionalTest extends TestCase
@@ -124,5 +126,39 @@ final class SpeedyFunctionalTest extends TestCase
 
         self::assertCount(1, $response->getCountries());
         self::assertEquals("BULGARIA", $response->getCountries()->first()->getName());
+    }
+
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindStateRequest
+     */
+    public function testItCanFindStateByCountryAndFullStateName(): void
+    {
+        $request = new FindStateRequest(countryId: 840, name: "Washington");
+
+        $json = $this->speedy->findState($request);
+
+        /** @var FindStateResponse $response */
+        $response = $this->serializer->deserialize($json, FindStateResponse::class, 'json');
+
+        self::assertCount(1, $response->getStates());
+        self::assertEquals("WASHINGTON", $response->getStates()->first()->getName());
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindStateRequest
+     */
+    public function testItCanFindStateByCountryAndPartialStateName(): void
+    {
+        $request = new FindStateRequest(countryId: 840, name: "Ne");
+
+        $json = $this->speedy->findState($request);
+
+        /** @var FindStateResponse $response */
+        $response = $this->serializer->deserialize($json, FindStateResponse::class, 'json');
+
+        self::assertCount(6, $response->getStates());
     }
 }

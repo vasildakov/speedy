@@ -133,7 +133,7 @@ final class SpeedyTest extends TestCase
             )
         ;
 
-        $response = $speedy->getContractClient(new GetContractClientsRequest());
+        $response = $speedy->getContractClient(new GetContractClientsRequest(clientSystemId: null));
 
         self::assertJson($response);
     }
@@ -191,7 +191,7 @@ final class SpeedyTest extends TestCase
             )
         ;
 
-        $response = $speedy->findCountry(new FindCountryRequest('Bulgaria'));
+        $response = $speedy->findCountry(new FindCountryRequest('Bulgaria', null, null));
 
         self::assertJson($response);
 

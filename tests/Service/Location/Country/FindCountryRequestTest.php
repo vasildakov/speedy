@@ -22,7 +22,7 @@ class FindCountryRequestTest extends TestCase
     {
         $hydrator = new ClassMethodsHydrator();
 
-        $instance = $hydrator->hydrate($this->getArray(), new FindCountryRequest('BULGARIA'));
+        $instance = $hydrator->hydrate($this->getArray(), new FindCountryRequest(name: 'BULGARIA', isoAlpha2: null,isoAlpha3: null));
         $this->assertInstanceOf(FindCountryRequest::class, $instance);
         $this->assertEquals('BULGARIA', $instance->getName());
         $this->assertEquals('BG', $instance->getIsoAlpha2());
