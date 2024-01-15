@@ -32,6 +32,8 @@ class FindSiteRequest
 
     private ?string $municipality = null;
 
+    private ?string $region = null;
+
     public function __construct(int $countryId, ?string $name = null, ?string $postCode = null)
     {
         $this->countryId = $countryId;
@@ -90,6 +92,22 @@ class FindSiteRequest
     }
 
     /**
+     * @param string|null $region
+     */
+    public function setRegion(?string $region): void
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    /**
      * @return array<string,string|int|null>
      */
     public function toArray(): array
@@ -97,7 +115,9 @@ class FindSiteRequest
         return [
             Property::COUNTRY_ID->value => $this->countryId,
             Property::NAME->value       => $this->name,
-            Property::POST_CODE->value  => $this->postCode
+            Property::POST_CODE->value  => $this->postCode,
+            Property::REGION->value => $this->region,
+            Property::MUNICIPALITY->value => $this->municipality,
         ];
     }
 }

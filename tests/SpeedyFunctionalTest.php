@@ -8,6 +8,7 @@ use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Configuration;
 use VasilDakov\Speedy\Model\Site;
+use VasilDakov\Speedy\Model\Street;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
@@ -18,8 +19,13 @@ use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
 use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
+use VasilDakov\Speedy\Service\Location\Street\FindStreetRequest;
+use VasilDakov\Speedy\Service\Location\Street\FindStreetResponse;
 use VasilDakov\Speedy\Speedy;
 
+/**
+ * @author Vasil Dakov <vasildakov@gmail.com>
+ */
 final class SpeedyFunctionalTest extends TestCase
 {
     private Speedy $speedy;
@@ -202,16 +208,30 @@ final class SpeedyFunctionalTest extends TestCase
         $response = $this->serializer->deserialize($json, FindSiteResponse::class, 'json');
 
         self::assertCount(10, $response->getSites());
-        //dd($response);
+    }
 
-        /*$site = $response->getSites()->first();
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindSiteRequest
+     */
+    public function testItCanFindSiteBySiteNameAndRegion(): void
+    {
+        $request = new FindSiteRequest(countryId: 100, name: 'KOSTENETS');
+        $request->setType('gr.');
+        $request->setRegion('SOFIA');
+
+        //dd($request);
+
+        $json = $this->speedy->findSite($request);
+
+        /** @var FindSiteResponse $response */
+        $response = $this->serializer->deserialize($json, FindSiteResponse::class, 'json');
 
         self::assertInstanceOf(FindSiteResponse::class, $response);
-        self::assertInstanceOf(Site::class, $site);
-        self::assertEquals(68134, $site->getId());
-        self::assertEquals(1000, $site->getPostCode());
-        self::assertEquals('SOFIA', $site->getNameEn());*/
+        self::assertInstanceOf(Site::class, $response->getSites()->first());
     }
+
 
 
     /**
@@ -230,5 +250,62 @@ final class SpeedyFunctionalTest extends TestCase
         self::assertCount(1, $response->getSites());
         self::assertInstanceOf(Site::class, $response->getSites()->first());
         self::assertEquals('SANDANSKI', $response->getSites()->first()->getNameEn());
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindStreetRequest
+     */
+    public function testFindStreetByPartialStreetName(): void
+    {
+        $request = new FindStreetRequest(siteId: 68134, name: 'USTA');
+
+        $json = $this->speedy->findStreet($request);
+
+        /** @var FindSiteResponse $response */
+        $response = $this->serializer->deserialize($json, FindStreetResponse::class, 'json');
+
+        self::assertInstanceOf(FindStreetResponse::class, $response);
+        self::assertCount(2, $response->getStreets());
+        self::assertInstanceOf(Street::class, $response->getStreets()->first());
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindStreetRequest
+     */
+    public function testFindStreetByFullStreetName(): void
+    {
+        $request = new FindStreetRequest(siteId: 68134, name: 'VASIL LEVSKI');
+
+        $json = $this->speedy->findStreet($request);
+
+        /** @var FindSiteResponse $response */
+        $response = $this->serializer->deserialize($json, FindStreetResponse::class, 'json');
+
+        self::assertInstanceOf(FindStreetResponse::class, $response);
+        self::assertCount(3, $response->getStreets());
+
+        /* self::assertInstanceOf(FindStreetResponse::class, $response);
+        self::assertCount(2, $response->getStreets());
+        self::assertInstanceOf(Street::class, $response->getStreets()->first()); */
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindStreetRequest
+     */
+    public function testFindStreetByFullStreetNameAndType(): void
+    {
+        $request = new FindStreetRequest(siteId: 68134, name: 'VASIL LEVSKI', type: 'bul.');
+
+        $json = $this->speedy->findStreet($request);
+
+        /** @var FindSiteResponse $response */
+        $response = $this->serializer->deserialize($json, FindStreetResponse::class, 'json');
+
+        self::assertInstanceOf(FindStreetResponse::class, $response);
+        self::assertCount(1, $response->getStreets());
+        self::assertInstanceOf(Street::class, $response->getStreets()->first());
     }
 }

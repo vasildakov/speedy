@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Street;
 
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
@@ -24,7 +25,7 @@ class FindStreetRequest
 
     private ?string $type = null;
 
-    public function __construct(int $siteId, string $name, ?string $type)
+    public function __construct(int $siteId, string $name, ?string $type = null)
     {
         $this->siteId = $siteId;
         $this->name = $name;
@@ -53,5 +54,14 @@ class FindStreetRequest
     public function getType(): ?string
     {
         return $this->type;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            Property::SITE_ID->value => $this->siteId,
+            Property::NAME->value => $this->name,
+            Property::TYPE->value => $this->type,
+        ];
     }
 }
