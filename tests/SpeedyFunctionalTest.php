@@ -7,12 +7,15 @@ use GuzzleHttp\Psr7\HttpFactory;
 use JMS\Serializer\SerializerInterface;
 use PHPUnit\Framework\TestCase;
 use VasilDakov\Speedy\Configuration;
+use VasilDakov\Speedy\Model\Site;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexResponse;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryRequest;
 use VasilDakov\Speedy\Service\Location\Country\FindCountryResponse;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteRequest;
+use VasilDakov\Speedy\Service\Location\Site\FindSiteResponse;
 use VasilDakov\Speedy\Service\Location\State\FindStateRequest;
 use VasilDakov\Speedy\Service\Location\State\FindStateResponse;
 use VasilDakov\Speedy\Speedy;
@@ -160,5 +163,72 @@ final class SpeedyFunctionalTest extends TestCase
         $response = $this->serializer->deserialize($json, FindStateResponse::class, 'json');
 
         self::assertCount(6, $response->getStates());
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindSiteRequest
+     */
+    public function testItCanFindSiteByFullSiteName(): void
+    {
+        $request = new FindSiteRequest(countryId: 100, name: 'Sofia');
+
+        $json = $this->speedy->findSite($request);
+
+        /** @var FindSiteResponse $response */
+        $response = $this->serializer->deserialize($json, FindSiteResponse::class, 'json');
+
+        $site = $response->getSites()->first();
+
+        self::assertInstanceOf(FindSiteResponse::class, $response);
+        self::assertInstanceOf(Site::class, $site);
+        self::assertEquals(68134, $site->getId());
+        self::assertEquals(1000, $site->getPostCode());
+        self::assertEquals('SOFIA', $site->getNameEn());
+    }
+
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindSiteRequest
+     */
+    public function testItCanFindSiteByPartialSiteName(): void
+    {
+        $request = new FindSiteRequest(countryId: 100, name: 'Sa');
+
+        $json = $this->speedy->findSite($request);
+
+        /** @var FindSiteResponse $response */
+        $response = $this->serializer->deserialize($json, FindSiteResponse::class, 'json');
+
+        self::assertCount(10, $response->getSites());
+        //dd($response);
+
+        /*$site = $response->getSites()->first();
+
+        self::assertInstanceOf(FindSiteResponse::class, $response);
+        self::assertInstanceOf(Site::class, $site);
+        self::assertEquals(68134, $site->getId());
+        self::assertEquals(1000, $site->getPostCode());
+        self::assertEquals('SOFIA', $site->getNameEn());*/
+    }
+
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#FindSiteRequest
+     */
+    public function testItCanFindSiteByPartialSiteNameAndPostcode(): void
+    {
+        $request = new FindSiteRequest(countryId: 100, name: 'Sandanski', postCode: 2800);
+
+        $json = $this->speedy->findSite($request);
+
+        /** @var FindSiteResponse $response */
+        $response = $this->serializer->deserialize($json, FindSiteResponse::class, 'json');
+
+        self::assertCount(1, $response->getSites());
+        self::assertInstanceOf(Site::class, $response->getSites()->first());
+        self::assertEquals('SANDANSKI', $response->getSites()->first()->getNameEn());
     }
 }

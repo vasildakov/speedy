@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VasilDakov\Speedy\Service\Location\Site;
 
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Traits\ToArray;
 
 /**
@@ -31,10 +32,11 @@ class FindSiteRequest
 
     private ?string $municipality = null;
 
-    public function __construct(int $countryId, ?string $name)
+    public function __construct(int $countryId, ?string $name = null, ?string $postCode = null)
     {
         $this->countryId = $countryId;
-        $this->name = $name;
+        $this->name      = $name;
+        $this->postCode  = $postCode;
     }
 
     public function getCountryId(): int
@@ -85,5 +87,17 @@ class FindSiteRequest
     public function setMunicipality(?string $municipality): void
     {
         $this->municipality = $municipality;
+    }
+
+    /**
+     * @return array<string,string|int|null>
+     */
+    public function toArray(): array
+    {
+        return [
+            Property::COUNTRY_ID->value => $this->countryId,
+            Property::NAME->value       => $this->name,
+            Property::POST_CODE->value  => $this->postCode
+        ];
     }
 }
