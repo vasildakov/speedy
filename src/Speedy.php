@@ -94,6 +94,7 @@ final class Speedy implements SpeedyInterface
         $response = $this->client->sendRequest($request);
 
         $json = $response->getBody()->getContents();
+
         if (false === \json_validate($json)) {
             throw new JsonException(\json_last_error_msg(), \json_last_error());
         }
@@ -239,6 +240,7 @@ final class Speedy implements SpeedyInterface
     public function calculate(CalculationRequest $object): string
     {
         $payload = $this->createPayload($object->toArray());
+        //dd($payload);
 
         $request = $this->createRequest(
             RequestMethodInterface::METHOD_POST,

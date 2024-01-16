@@ -13,10 +13,15 @@ use VasilDakov\Speedy\Model\Complex;
 use VasilDakov\Speedy\Model\Office;
 use VasilDakov\Speedy\Model\Site;
 use VasilDakov\Speedy\Model\Street;
+use VasilDakov\Speedy\Property;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+use VasilDakov\Speedy\Service\Calculation\CalculationContent;
+use VasilDakov\Speedy\Service\Calculation\CalculationPayment;
 use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
 use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
+use VasilDakov\Speedy\Service\Calculation\CalculationResponse;
 use VasilDakov\Speedy\Service\Calculation\CalculationSender;
+use VasilDakov\Speedy\Service\Calculation\CalculationService;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
@@ -72,6 +77,7 @@ final class SpeedyFunctionalTest extends TestCase
         $request = new GetContractClientsRequest(clientSystemId: null);
 
         $json = $this->speedy->getContractClient($request);
+        //dd($json);
 
         /** @var GetContractClientsResponse $response */
         $response = $this->serializer->deserialize($json, GetContractClientsResponse::class, 'json');
@@ -455,16 +461,23 @@ final class SpeedyFunctionalTest extends TestCase
 
     /**
      * @group functional
-     * @see https://services.speedy.bg/api/api_examples.html#TrackRequest
+     * @group calculation
+     * @see https://services.speedy.bg/api/api_examples.html#CalculationRequest
      */
     public function testItCanCalculate(): void
     {
         $request = new CalculationRequest();
-        $request->setSender(new CalculationSender());
-        $request->setRecipient(new CalculationRecipient());
+        $request->setSender(new CalculationSender(9999999998000, 2));
+        $request->setRecipient(new CalculationRecipient(true, 77));
+        $request->setService(new CalculationService(true, [505]));
+        $request->setContent(new CalculationContent(1, 1, false, false));
+        $request->setPayment(new CalculationPayment('RECIPIENT'));
 
         $json = $this->speedy->calculate($request);
 
-        dd($json);
+        /** @var CalculationResponse $response */
+        $response = $this->serializer->deserialize($json, CalculationResponse::class, 'json');
+
+        self::assertInstanceOf(CalculationResponse::class, $response);
     }
 }

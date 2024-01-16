@@ -98,11 +98,11 @@ class CalculationRequest
     public function toArray(): array
     {
         return [
-            Property::SENDER->value => $this->getSender()->toArray(),
-            Property::RECIPIENT->value => $this->getRecipient()->toArray(),
-            Property::SERVICE->value => $this->getService()->toArray(),
-            Property::CONTENT->value => $this->getContent()->toArray(),
-            Property::PAYMENT->value => $this->getPayment()->toArray(),
+            Property::SENDER->value    => $this->sender->toArray(),
+            Property::RECIPIENT->value => $this->recipient->toArray(),
+            Property::SERVICE->value   => $this->service->toArray(),
+            Property::CONTENT->value   => $this->content->toArray(),
+            Property::PAYMENT->value   => $this->payment->toArray(),
         ];
     }
 }
