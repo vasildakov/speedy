@@ -14,6 +14,9 @@ use VasilDakov\Speedy\Model\Office;
 use VasilDakov\Speedy\Model\Site;
 use VasilDakov\Speedy\Model\Street;
 use VasilDakov\Speedy\Serializer\SerializerFactory;
+use VasilDakov\Speedy\Service\Calculation\CalculationRecipient;
+use VasilDakov\Speedy\Service\Calculation\CalculationRequest;
+use VasilDakov\Speedy\Service\Calculation\CalculationSender;
 use VasilDakov\Speedy\Service\Client\GetContractClientsRequest;
 use VasilDakov\Speedy\Service\Client\GetContractClientsResponse;
 use VasilDakov\Speedy\Service\Location\Complex\FindComplexRequest;
@@ -448,5 +451,20 @@ final class SpeedyFunctionalTest extends TestCase
         $response = $this->serializer->deserialize($json, TrackResponse::class, 'json');
 
         self::assertInstanceOf(TrackResponse::class, $response);
+    }
+
+    /**
+     * @group functional
+     * @see https://services.speedy.bg/api/api_examples.html#TrackRequest
+     */
+    public function testItCanCalculate(): void
+    {
+        $request = new CalculationRequest();
+        $request->setSender(new CalculationSender());
+        $request->setRecipient(new CalculationRecipient());
+
+        $json = $this->speedy->calculate($request);
+
+        dd($json);
     }
 }
